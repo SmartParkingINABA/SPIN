@@ -1,8 +1,9 @@
 // import Enter from "./pages/Enter";
 // import Login from "./pages/Login";
 // import Register from "./pages/Register";
-import ForgotPassword from "./pages/ForgotPassword";
-import Verify from "./pages/Verify";
+// import ForgotPassword from "./pages/ForgotPassword";
+// import Verify from "./pages/Verify";
+import PasswordReset from "./pages/PasswordReset";
 
 function App() {
   return (
@@ -10,7 +11,8 @@ function App() {
     // <Login />
     // <Register />
     // <ForgotPassword />
-    <Verify />
+    // <Verify />
+    <PasswordReset />
   );
 }
 
