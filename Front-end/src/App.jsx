@@ -1,11 +1,12 @@
-// import Enter from "./components/Enter";
-
-import Login from "./components/Login";
+// import Enter from "./pages/Enter";
+// import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   return (
-    // <Masuk />
-    <Login />
+    // <Enter />
+    // <Login />
+    <Register />
   );
 }
 
