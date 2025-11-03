@@ -3,7 +3,8 @@
 // import Register from "./pages/Register";
 // import ForgotPassword from "./pages/ForgotPassword";
 // import Verify from "./pages/Verify";
-import PasswordReset from "./pages/PasswordReset";
+// import PasswordReset from "./pages/PasswordReset";
+import NewPassword from "./pages/NewPassword";
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
     // <Register />
     // <ForgotPassword />
     // <Verify />
-    <PasswordReset />
+    // <PasswordReset />
+    <NewPassword />
   );
 }
 

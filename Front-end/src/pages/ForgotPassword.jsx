@@ -5,13 +5,10 @@ export default function ForgotPassword() {
   return (
     <div className="bg-[#1E1633] font-ubuntu h-screen w-full flex justify-center items-center">
       <div className="w-1/4">
-        <h1 className="text-center text-[#ffec78] text-[1.8rem] font-bold mb-2">
-          Forgot
+        <h1 className="text-center text-[#ffec78] text-[1.8rem] font-bold mb-4">
+          Forgot Password?
         </h1>
         <img src={forgotPasswordIcon} alt="" className="w-3/5 mx-auto" />
-        <p className="text-center text-[#ffec78] text-[1.5rem] font-semibold mb-2">
-          Forgot Password?
-        </p>
         <p className="text-center text-white leading-6.5 mb-8">
           Don’t worry! It happens. Please enter the email address with your
           account
