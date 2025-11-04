@@ -8,7 +8,8 @@
 // import Home from "./pages/Home";
 // import Regulation from "./pages/Regulation";
 // import UserTerms from "./pages/UserTerms";
-import VehicleRegistration from "./pages/VehicleRegistration";
+// import VehicleRegistration from "./pages/VehicleRegistration";
+import EntryExitAcces from "./pages/EntryExitAcces";
 
 function App() {
   return (
@@ -22,7 +23,8 @@ function App() {
     // <Home />
     // <Regulation />
     // <UserTerms />
-    <VehicleRegistration />
+    // <VehicleRegistration />
+    <EntryExitAcces />
   );
 }
 
