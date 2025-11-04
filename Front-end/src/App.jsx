@@ -9,7 +9,8 @@
 // import Regulation from "./pages/Regulation";
 // import UserTerms from "./pages/UserTerms";
 // import VehicleRegistration from "./pages/VehicleRegistration";
-import EntryExitAcces from "./pages/EntryExitAcces";
+// import EntryExitAcces from "./pages/EntryExitAcces";
+import VehicleSafety from "./pages/VehicleSafety";
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
     // <Regulation />
     // <UserTerms />
     // <VehicleRegistration />
-    <EntryExitAcces />
+    // <EntryExitAcces />
+    <VehicleSafety />
   );
 }
 
