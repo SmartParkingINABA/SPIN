@@ -4,6 +4,7 @@
 // import ForgotPassword from "./pages/ForgotPassword";
 // import Verify from "./pages/Verify";
 // import PasswordReset from "./pages/PasswordReset";
+import Home from "./pages/Home";
 import NewPassword from "./pages/NewPassword";
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
     // <ForgotPassword />
     // <Verify />
     // <PasswordReset />
-    <NewPassword />
+    // <NewPassword />
+    <Home />
   );
 }
 
