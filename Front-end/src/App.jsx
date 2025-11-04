@@ -6,8 +6,8 @@
 // import PasswordReset from "./pages/PasswordReset";
 // import NewPassword from "./pages/NewPassword";
 // import Home from "./pages/Home";
-
-import Regulation from "./pages/Regulation";
+// import Regulation from "./pages/Regulation";
+import UserTerms from "./pages/UserTerms";
 
 function App() {
   return (
@@ -19,7 +19,8 @@ function App() {
     // <PasswordReset />
     // <NewPassword />
     // <Home />
-    <Regulation />
+    // <Regulation />
+    <UserTerms />
   );
 }
 
