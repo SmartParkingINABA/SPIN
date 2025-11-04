@@ -7,7 +7,8 @@
 // import NewPassword from "./pages/NewPassword";
 // import Home from "./pages/Home";
 // import Regulation from "./pages/Regulation";
-import UserTerms from "./pages/UserTerms";
+// import UserTerms from "./pages/UserTerms";
+import VehicleRegistration from "./pages/VehicleRegistration";
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
     // <NewPassword />
     // <Home />
     // <Regulation />
-    <UserTerms />
+    // <UserTerms />
+    <VehicleRegistration />
   );
 }
 
