@@ -5,7 +5,7 @@ import landingParkingLogo from "../assets/images/landing_parkir_2.png";
 
 export default function Home() {
   return (
-    <main className="relative w-full h-screen bg-[#130F40]">
+    <main className="relative w-full font-ubuntu h-screen bg-[#130F40]">
       <img
         src={mainPatternLeft}
         alt=""

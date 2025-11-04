@@ -4,8 +4,10 @@
 // import ForgotPassword from "./pages/ForgotPassword";
 // import Verify from "./pages/Verify";
 // import PasswordReset from "./pages/PasswordReset";
-import Home from "./pages/Home";
-import NewPassword from "./pages/NewPassword";
+// import NewPassword from "./pages/NewPassword";
+// import Home from "./pages/Home";
+
+import Regulation from "./pages/Regulation";
 
 function App() {
   return (
@@ -16,7 +18,8 @@ function App() {
     // <Verify />
     // <PasswordReset />
     // <NewPassword />
-    <Home />
+    // <Home />
+    <Regulation />
   );
 }
 
