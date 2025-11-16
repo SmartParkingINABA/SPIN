@@ -1,6 +1,9 @@
 import { PieChart, Pie, Cell, Tooltip } from "recharts";
 
-export default function DiagramChart({ colors = [], exitEntryDatas = [] }) {
+export default function AdminDiagramChart({
+  colors = [],
+  exitEntryDatas = [],
+}) {
   return (
     <PieChart width={300} height={300}>
       <Pie

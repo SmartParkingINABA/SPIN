@@ -2,7 +2,7 @@ import PP from "../../assets/images/pp.jpg";
 
 export default function AdminHeader() {
   return (
-    <header className="fixed top-0 left-0 z-50 w-full bg-[#1E1633] flex items-center justify-between py-2.5 px-6">
+    <header className="fixed top-0 left-0 z-50 w-full bg-[#1F2937] flex items-center justify-between py-2.5 px-6">
       <h1 className="text-white font-bold">INABA PARKING SYSTEM</h1>
       {/* kalau ada image*/}
       <img src={PP} alt="" className="w-10 rounded-full" />

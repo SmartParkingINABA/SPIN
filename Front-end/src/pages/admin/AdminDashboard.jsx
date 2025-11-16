@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
-import AdminHeader from "../components/admin/AdminHeader";
-import AdminSidebar from "../components/admin/AdminSidebar";
-import DiagramChart from "../components/DiagramChart";
+import AdminHeader from "../../components/admin/AdminHeader";
+import AdminSidebar from "../../components/admin/AdminSidebar";
+import AdminDiagramChart from "../../components/admin/AdminDiagramChart";
+import AdminFooter from "../../components/admin/AdminFooter";
 
 export default function AdminDashboard() {
   const [entry, setEntry] = useState(3);
@@ -11,7 +12,7 @@ export default function AdminDashboard() {
   const [leftAfterADay, setLeftAfterADay] = useState(1);
 
   return (
-    <div className="w-full h-screen font-ubuntu overflow-hidden">
+    <main className="w-full h-screen font-ubuntu overflow-hidden">
       <AdminHeader />
       <AdminSidebar />
       <section className="ml-[17%] mt-[60px] w-[83%] bg-[#e3e4e0] p-4 h-[calc(100vh-60px)] overflow-y-auto">
@@ -65,7 +66,7 @@ export default function AdminDashboard() {
                 Tampilan - Masuk | Baru Keluar
               </p>
               <div className="border-2 border-[#e3e4e0] mt-3 flex justify-center items-center rounded-sm">
-                <DiagramChart
+                <AdminDiagramChart
                   colors={["#F59E0B", "#10B981"]}
                   exitEntryDatas={[
                     { name: "Masuk", value: entry },
@@ -79,7 +80,7 @@ export default function AdminDashboard() {
                 Tampilan - Total Parkir | Sudah Lama Keluar
               </p>
               <div className="border-2 border-[#e3e4e0] mt-3 flex justify-center items-center rounded-sm">
-                <DiagramChart
+                <AdminDiagramChart
                   colors={["#3B82F6", "#EF4444"]}
                   exitEntryDatas={[
                     { name: "Total", value: totalParking },
@@ -95,10 +96,8 @@ export default function AdminDashboard() {
           </p>
         </div>
 
-        <footer className="w-full mt-5 text-center text-[10px] text-[#9CA3AF] font-semibold">
-          © 2025 INABA (Indonesia Membangun)
-        </footer>
+        <AdminFooter />
       </section>
-    </div>
+    </main>
   );
 }
