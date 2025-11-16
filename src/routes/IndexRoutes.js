@@ -1,10 +1,11 @@
 import express from 'express'
 import authRoutes from './AuthRoutes.js'
-
+import forgotPasswordRoutes from './ForgotPassword.js';
 const indexRoutes = express.Router();
 
 
 indexRoutes.use('/auth', authRoutes);
+indexRoutes.use('/auth', forgotPasswordRoutes)
 
 
 
