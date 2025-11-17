@@ -21,6 +21,4 @@ const sendMail = async (to, subject, html) => {
     );
 };
 
-
-
 export default sendMail;
