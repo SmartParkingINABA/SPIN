@@ -15,8 +15,8 @@ export default function AdminDashboard() {
     <main className="w-full h-screen font-ubuntu overflow-hidden">
       <AdminHeader />
       <AdminSidebar />
-      <section className="ml-[17%] mt-[60px] w-[83%] bg-[#e3e4e0] p-4 h-[calc(100vh-60px)] overflow-y-auto">
-        <div className="bg-[#F4F3F1] w-full rounded-md px-4 py-3">
+      <div className="ml-[17%] mt-[60px] w-[83%] bg-[#e3e4e0] p-4 h-[calc(100vh-60px)] overflow-y-auto">
+        <section className="bg-[#F4F3F1] w-full rounded-md px-4 py-3">
           <p className="text-[#9CA3AF] text-[12px] font-semibold">/ Beranda</p>
           <h1 className="font-bold text-3xl mt-1 text-[#111827]">
             Selamat datang di dashboard Admin,
@@ -94,10 +94,10 @@ export default function AdminDashboard() {
           <p className="text-[#9CA3AF] text-[10px] font-semibold mt-3">
             Showing 1 to 6 of 6 entries
           </p>
-        </div>
+        </section>
 
         <AdminFooter />
-      </section>
+      </div>
     </main>
   );
 }

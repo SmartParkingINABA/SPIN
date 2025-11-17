@@ -11,7 +11,8 @@
 // import VehicleRegistration from "./pages/VehicleRegistration";
 // import EntryExitAcces from "./pages/EntryExitAcces";
 // import AdminDashboard from "./pages/admin/AdminDashboard";
-import AdminVehicleReport from "./pages/admin/AdminVehicleReport";
+// import AdminVehicleReport from "./pages/admin/AdminVehicleReport";
+import UserDashboard from "./pages/user/UserDashboard";
 
 function App() {
   return (
@@ -29,7 +30,8 @@ function App() {
     // <EntryExitAcces />
     // <VehicleSafety />
     // <AdminDashboard />
-    <AdminVehicleReport />
+    // <AdminVehicleReport />
+    <UserDashboard />
   );
 }
 
