@@ -57,12 +57,9 @@ const forgotPasswordController = {
                 }
             );
 
-            const html = `<h3>SPIN Parking - Kode OTP Reset Password</h3>
-            <p>Kode OTP Anda: </p>
-            <h2>${otp}</h2>
-            <p>Kode Berlaku Selama ${otpExpireMinutes} menit.</p>`
+            const sendToEmail = `${otp} ${otpExpireMinutes}`
 
-            await sendMail(email, 'OTP Reset Password', html);
+            await sendMail(email, sendToEmail);
 
             return res.status(200).json(
                 {
