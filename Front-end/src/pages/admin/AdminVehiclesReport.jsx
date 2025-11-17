@@ -2,7 +2,7 @@ import AdminFooter from "../../components/admin/AdminFooter";
 import AdminHeader from "../../components/admin/AdminHeader";
 import AdminSidebar from "../../components/admin/AdminSidebar";
 
-export default function AdminVehicleReport() {
+export default function AdminVehiclesReport() {
   return (
     <main className="w-full h-screen font-ubuntu bg-[#e3e4e0] overflow-hidden">
       <AdminHeader />

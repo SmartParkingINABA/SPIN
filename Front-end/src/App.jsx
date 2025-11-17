@@ -11,8 +11,9 @@
 // import VehicleRegistration from "./pages/VehicleRegistration";
 // import EntryExitAcces from "./pages/EntryExitAcces";
 // import AdminDashboard from "./pages/admin/AdminDashboard";
-// import AdminVehicleReport from "./pages/admin/AdminVehicleReport";
-import UserDashboard from "./pages/user/UserDashboard";
+// import AdminVehiclesReport from "./pages/admin/AdminVehiclesReport";
+// import UserDashboard from "./pages/user/UserDashboard";
+import UserVehiclesReport from "./pages/user/UserVehiclesReport";
 
 function App() {
   return (
@@ -30,8 +31,9 @@ function App() {
     // <EntryExitAcces />
     // <VehicleSafety />
     // <AdminDashboard />
-    // <AdminVehicleReport />
-    <UserDashboard />
+    // <AdminVehiclesReport />
+    // <UserDashboard />
+    <UserVehiclesReport />
   );
 }
 
