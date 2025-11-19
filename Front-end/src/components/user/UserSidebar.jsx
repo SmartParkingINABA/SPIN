@@ -7,8 +7,8 @@ import GearIcon from "../../assets/images/user/gearIcon.svg?react";
 
 export default function UserSidebar() {
   return (
-    <aside className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] fixed bottom-0 left-0 z-40 w-[17%] h-screen after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-[rgba(255,236,120,0.5)]">
-      <div className="flex flex-col items-center py-4 border-b border-b-[rgba(255,236,120,0.5)]">
+    <aside className="border border-[rgba(255,236,120,0.5)] border-l-0 bg-[#1E1633] fixed bottom-0 left-0 z-40 w-[17%] h-screen">
+      <div className="flex flex-col items-center py-4">
         <div>
           <h1 className="text-[#FFEC78] font-bold text-2xl">SPIN</h1>
           <p className="text-[14px] text-[#93A3B6] font-semibold">

@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import UserHeader from "../../components/user/UserHeader";
 import UserSidebar from "../../components/user/UserSidebar";
 
@@ -8,8 +10,19 @@ import EditIcon from "../../assets/images/user/editIcon.svg?react";
 import RemoveIcon from "../../assets/images/user/removeIcon.svg?react";
 import BarIcon from "../../assets/images/user/barIcon.svg?react";
 import QRCodeIcon from "../../assets/images/user/qrIcon.svg?react";
+import UserFormNewVehicle from "../../components/user/UserFormNewVehicle";
 
 export default function UserVehiclesReport() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <main className="flex font-ubuntu box-border">
       <UserSidebar />
@@ -25,10 +38,13 @@ export default function UserVehiclesReport() {
                 Kelola kendaraan yang terdaftar
               </p>
             </div>
-            <div className="bg-[#FFEC78] flex items-center gap-x-3 rounded-md px-3 py-2">
+            <button
+              onClick={handleOpenModal}
+              className="bg-[#FFEC78] flex items-center gap-x-3 rounded-md px-3 py-2 cursor-pointer"
+            >
               <PlusIcon className="w-5.5 h-fit" />
               <p className="text-[#1E1633] font-semibold">Tambah Kendaraan</p>
-            </div>
+            </button>
           </div>
           <div className="grid grid-cols-2 gap-x-5 mt-7">
             <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] rounded-md p-8">
@@ -172,6 +188,7 @@ export default function UserVehiclesReport() {
           </div>
         </section>
       </div>
+      {isModalOpen && <UserFormNewVehicle onClose={handleCloseModal} />}
     </main>
   );
 }

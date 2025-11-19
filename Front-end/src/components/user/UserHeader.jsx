@@ -1,6 +1,6 @@
 export default function UserHeader() {
   return (
-    <header className="bg-[#1E1633] py-3 px-14 border border-[rgba(255,236,120,0.5)] fixed top-0 right-0 w-[83%]">
+    <header className="bg-[#1E1633] py-3 px-14 border border-[rgba(255,236,120,0.5)] border-r-0 border-l-0 fixed top-0 right-0 w-[83%]">
       <div className="flex items-center gap-x-3">
         {/* kalau ada image*/}
         {/* <img src={PP} alt="" className="w-10 rounded-full" /> */}
