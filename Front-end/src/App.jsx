@@ -13,7 +13,8 @@
 // import AdminDashboard from "./pages/admin/AdminDashboard";
 // import AdminVehiclesReport from "./pages/admin/AdminVehiclesReport";
 // import UserDashboard from "./pages/user/UserDashboard";
-import UserVehiclesReport from "./pages/user/UserVehiclesReport";
+// import UserVehiclesReport from "./pages/user/UserVehiclesReport";
+import MyQRCode from "./pages/user/UserMyQRCode";
 
 function App() {
   return (
@@ -33,7 +34,8 @@ function App() {
     // <AdminDashboard />
     // <AdminVehiclesReport />
     // <UserDashboard />
-    <UserVehiclesReport />
+    // <UserVehiclesReport />
+    <MyQRCode />
   );
 }
 
