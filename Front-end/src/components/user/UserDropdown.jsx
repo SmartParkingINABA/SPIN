@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import dropdownIcon from "../../assets/images/user/arowIcon.svg";
 import ChecklistIcon from "../../assets/images/user/checklistIcon.svg?react";
 
-export default function UserDropdown() {
+export default function UserDropdown({ selectedOption }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState("Select option");
+  const [selected, setSelected] = useState(selectedOption);
   const dropdownRef = useRef(null);
 
   // Toggle dropdown

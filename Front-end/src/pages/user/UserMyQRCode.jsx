@@ -24,7 +24,7 @@ export default function MyQRCode() {
                 QR Code Kendaraan
               </h2>
               <p className="text-[#93A3B6] font-medium mb-2">Pilih Kendaraan</p>
-              <UserDropdown />
+              <UserDropdown selectedOption={"Semua Kendaraan"} />
               <div className="mt-12 border border-[#FFEC78] bg-[#FEF8FD] w-2/5 h-[412px] mx-auto rounded-xl flex items-center justify-center">
                 <div className="">
                   <QRCodeIcon className="w-35 mx-auto h-fit mb-10" />

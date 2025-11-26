@@ -4,10 +4,11 @@ import QrIcon from "../../assets/images/user/qrIcon.svg?react";
 import TimeIcon from "../../assets/images/user/timeIcon.svg?react";
 import BellIcon from "../../assets/images/user/bellIcon.svg?react";
 import GearIcon from "../../assets/images/user/gearIcon.svg?react";
+import UserFooter from "./UserFooter";
 
 export default function UserSidebar() {
   return (
-    <aside className="border border-[rgba(255,236,120,0.5)] border-l-0 bg-[#1E1633] fixed bottom-0 left-0 z-40 w-[17%] h-screen">
+    <aside className="border border-[rgba(255,236,120,0.5)] border-l-0 bg-[#1E1633] fixed bottom-0 left-0 z-40 w-[17%] h-screen flex flex-col">
       <div className="flex flex-col items-center py-4">
         <div>
           <h1 className="text-[#FFEC78] font-bold text-2xl">SPIN</h1>
@@ -16,8 +17,8 @@ export default function UserSidebar() {
           </p>
         </div>
       </div>
-      <div className="py-6 px-5 border-t border-t-[rgba(255,236,120,0.5)]">
-        <ul className="flex flex-col gap-y-1">
+      <div className="border-t border-t-[rgba(255,236,120,0.5)] flex flex-col justify-between grow">
+        <ul className="py-6 px-5 flex flex-col gap-y-1">
           <li className="has-[a:hover]:bg-[#130F40] transition duration-300 ease-in-out px-3 py-2.5 rounded-md">
             <a
               href="#"
@@ -73,6 +74,7 @@ export default function UserSidebar() {
             </a>
           </li>
         </ul>
+        <UserFooter />
       </div>
     </aside>
   );
