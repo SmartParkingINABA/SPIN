@@ -22,7 +22,9 @@ export default function UserParkingHistory() {
               <UserDropdown selectedOption={"Semua Status"} />
             </div>
             <div>
-              <p className="text-[#93A3B6] font-medium mb-2">Filter Status</p>
+              <p className="text-[#93A3B6] font-medium mb-2">
+                Filter Kendaraan
+              </p>
               <UserDropdown selectedOption={"Semua Kendaraan"} />
             </div>
           </div>
