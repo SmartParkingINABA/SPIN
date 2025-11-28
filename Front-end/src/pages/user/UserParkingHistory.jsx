@@ -2,8 +2,8 @@ import UserDropdown from "../../components/user/UserDropdown";
 import UserHeader from "../../components/user/UserHeader";
 import UserSidebar from "../../components/user/UserSidebar";
 
-import ClocklIcon from "../../assets/images/user/clockIcon.svg?react";
-import WaitlIcon from "../../assets/images/user/waitIcon.svg?react";
+import { RxLapTimer, RxTimer } from "react-icons/rx";
+import { LuRepeat2 } from "react-icons/lu";
 
 export default function UserParkingHistory() {
   return (
@@ -28,8 +28,8 @@ export default function UserParkingHistory() {
           </div>
           <div className="grid grid-cols-3 gap-x-7 mt-7">
             <div className="bg-[#1E1633] border border-[rgba(255,236,120,0.5)] flex items-center gap-x-4.5 rounded-md py-5 px-6">
-              <div className="p-2 bg-[#4B4141] rounded-sm">
-                <ClocklIcon className="h-fit w-6 text-[#FFEC78]" />
+              <div className="p-3 bg-[#4B4141] rounded-sm">
+                <LuRepeat2 className="h-fit w-6 text-[#FFEC78]" />
               </div>
               <div className="text-center">
                 <p className="text-[#93A3B6]">Total Parkir</p>
@@ -37,8 +37,8 @@ export default function UserParkingHistory() {
               </div>
             </div>
             <div className="bg-[#1E1633] border border-[rgba(255,236,120,0.5)] flex items-center gap-x-4.5 rounded-md py-5 px-6">
-              <div className="p-2 bg-[#4B4141] rounded-sm">
-                <ClocklIcon className="h-fit w-6 text-[#FFEC78]" />
+              <div className="p-3 bg-[#4B4141] rounded-sm">
+                <RxTimer className="h-fit w-6 text-[#FFEC78]" />
               </div>
               <div className="text-center">
                 <p className="text-[#93A3B6]">Total Durasi</p>
@@ -46,8 +46,8 @@ export default function UserParkingHistory() {
               </div>
             </div>
             <div className="bg-[#1E1633] border border-[rgba(255,236,120,0.5)] flex items-center gap-x-4.5 rounded-md py-5 px-6">
-              <div className="p-2 bg-[#4B4141] rounded-sm">
-                <WaitlIcon className="h-fit w-6 text-[#FFEC78]" />
+              <div className="p-3 bg-[#4B4141] rounded-sm">
+                <RxLapTimer className="h-fit w-6 text-[#FFEC78]" />
               </div>
               <div className="text-center">
                 <p className="text-[#93A3B6]">Sedang Parkir</p>

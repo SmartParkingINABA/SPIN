@@ -13,12 +13,26 @@
 // import AdminDashboard from "./pages/admin/AdminDashboard";
 // import AdminVehiclesReport from "./pages/admin/AdminVehiclesReport";
 import UserDashboard from "./pages/user/UserDashboard";
-// import UserVehiclesReport from "./pages/user/UserVehiclesReport";
-// import UserParkingHistory from "./pages/user/UserParkingHistory";
-// import MyQRCode from "./pages/user/UserMyQRCode";
+import UserVehiclesReport from "./pages/user/UserVehiclesReport";
+import MyQRCode from "./pages/user/UserMyQRCode";
+import UserParkingHistory from "./pages/user/UserParkingHistory";
+
+import OfficerDashboard from "./pages/officer/OfficerDasboard";
+
+import { Route, Routes } from "react-router-dom";
+import UserNotifikasi from "./pages/user/UserNotifikasi";
+import UserProfile from "./pages/user/UserProfile";
 
 function App() {
   return (
+    <Routes>
+      <Route path="/" element={<UserDashboard />} />
+      <Route path="/report-data" element={<UserVehiclesReport />} />
+      <Route path="/my-qr-code" element={<MyQRCode />} />
+      <Route path="/parking-history" element={<UserParkingHistory />} />
+      <Route path="/notifikasi" element={<UserNotifikasi />} />
+      <Route path="/user-profile" element={<UserProfile />} />
+    </Routes>
     // <Enter />
     // <Login />
     // <Register />
@@ -34,10 +48,8 @@ function App() {
     // <VehicleSafety />
     // <AdminDashboard />
     // <AdminVehiclesReport />
-    <UserDashboard />
-    // <UserVehiclesReport />
-    // <MyQRCode />
-    // <UserParkingHistory />
+    //
+    // <OfficerDashboard />
   );
 }
 

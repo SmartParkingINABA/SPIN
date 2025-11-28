@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import dropdownIcon from "../../assets/images/user/arowIcon.svg";
-import ChecklistIcon from "../../assets/images/user/checklistIcon.svg?react";
+
+import { IoMdArrowDropdown } from "react-icons/io";
+import { FaCheck } from "react-icons/fa6";
 
 export default function UserDropdown({ selectedOption }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,10 +43,8 @@ export default function UserDropdown({ selectedOption }) {
         <span id="selectedText" className="text-[#FEF8FD] font-semibold">
           {selected}
         </span>
-        <img
-          src={dropdownIcon}
-          alt=""
-          className={`w-6 transform transition-transform duration-300 ${
+        <IoMdArrowDropdown
+          className={`w-7 h-fit text-[#93A3B6] transform transition-transform duration-300 ${
             !isOpen ? "rotate-0" : "rotate-180"
           }`}
         />
@@ -67,7 +66,7 @@ export default function UserDropdown({ selectedOption }) {
               className="text-[#FEF8FD] font-semibold border border-[rgba(255,236,120,0.5)] rounded-sm p-3 cursor-pointer transition duration-300 ease-in-out hover:bg-[#FFEC78] hover:text-[#1E1633] hover:border-transparent flex items-center justify-between group"
             >
               {item}
-              <ChecklistIcon className="w-5 h-fit transition duration-300 opacity-0 group-hover:opacity-100" />
+              <FaCheck className="w-5 h-fit transition duration-300 opacity-0 group-hover:opacity-100" />
             </li>
           )
         )}

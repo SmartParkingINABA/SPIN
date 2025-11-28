@@ -1,10 +1,11 @@
-import HomeIcon from "../../assets/images/user/homeIcon.svg?react";
-import CarIcon from "../../assets/images/user/carIcon.svg?react";
-import QrIcon from "../../assets/images/user/qrIcon.svg?react";
-import TimeIcon from "../../assets/images/user/timeIcon.svg?react";
-import BellIcon from "../../assets/images/user/bellIcon.svg?react";
-import GearIcon from "../../assets/images/user/gearIcon.svg?react";
+import { NavLink } from "react-router-dom";
+
 import UserFooter from "./UserFooter";
+
+import { HiOutlineHome } from "react-icons/hi2";
+import { FaCarSide, FaBell } from "react-icons/fa6";
+import { IoQrCode, IoSettingsSharp } from "react-icons/io5";
+import { RxCountdownTimer } from "react-icons/rx";
 
 export default function UserSidebar() {
   return (
@@ -19,60 +20,144 @@ export default function UserSidebar() {
       </div>
       <div className="border-t border-t-[rgba(255,236,120,0.5)] flex flex-col justify-between grow">
         <ul className="py-6 px-5 flex flex-col gap-y-1">
-          <li className="has-[a:hover]:bg-[#130F40] transition duration-300 ease-in-out px-3 py-2.5 rounded-md">
-            <a
-              href="#"
-              className="font-medium text-[#FEF8FD] flex items-center gap-x-2.5 transition duration-300 ease-in-out hover:text-[#FFEC78] w-fit group"
-            >
-              <HomeIcon className="w-5 text-[#FEF8FD] transition duration-300 ease-in-out group-hover:text-[#FFEC78] h-fit" />
-              Dashboard
-            </a>
-          </li>
-          <li className="has-[a:hover]:bg-[#130F40] transition duration-300 ease-in-out px-3 py-2.5 rounded-md">
-            <a
-              href="#"
-              className="font-medium text-[#FEF8FD] flex items-center gap-x-2.5 transition duration-300 ease-in-out hover:text-[#FFEC78] w-fit group"
-            >
-              <CarIcon className="w-5 text-[#FEF8FD] transition duration-300 ease-in-out group-hover:text-[#FFEC78] h-fit" />
-              Data Kendaraan
-            </a>
-          </li>
-          <li className="has-[a:hover]:bg-[#130F40] transition duration-300 ease-in-out px-3 py-2.5 rounded-md">
-            <a
-              href="#"
-              className="font-medium text-[#FEF8FD] flex items-center gap-x-2.5 transition duration-300 ease-in-out hover:text-[#FFEC78] w-fit group"
-            >
-              <QrIcon className="w-5 text-[#FEF8FD] transition duration-300 ease-in-out group-hover:text-[#FFEC78] h-fit" />
-              QR Code Saya
-            </a>
-          </li>
-          <li className="has-[a:hover]:bg-[#130F40] transition duration-300 ease-in-out px-3 py-2.5 rounded-md">
-            <a
-              href="#"
-              className="font-medium text-[#FEF8FD] flex items-center gap-x-2.5 transition duration-300 ease-in-out hover:text-[#FFEC78] w-fit group"
-            >
-              <TimeIcon className="w-5 text-[#FEF8FD] transition duration-300 ease-in-out group-hover:text-[#FFEC78] h-fit" />
-              Riwayat Parkir
-            </a>
-          </li>
-          <li className="has-[a:hover]:bg-[#130F40] transition duration-300 ease-in-out px-3 py-2.5 rounded-md">
-            <a
-              href="#"
-              className="font-medium text-[#FEF8FD] flex items-center gap-x-2.5 transition duration-300 ease-in-out hover:text-[#FFEC78] w-fit group"
-            >
-              <BellIcon className="w-5 text-[#FEF8FD] transition duration-300 ease-in-out group-hover:text-[#FFEC78] h-fit" />
-              Notifikasi
-            </a>
-          </li>
-          <li className="has-[a:hover]:bg-[#130F40] transition duration-300 ease-in-out px-3 py-2.5 rounded-md">
-            <a
-              href="#"
-              className="font-medium text-[#FEF8FD] flex items-center gap-x-2.5 transition duration-300 ease-in-out hover:text-[#FFEC78] w-fit group"
-            >
-              <GearIcon className="w-5 text-[#FEF8FD] transition duration-300 ease-in-out group-hover:text-[#FFEC78] h-fit" />
-              Akun Profile
-            </a>
-          </li>
+          <NavLink to="/">
+            {({ isActive }) => (
+              <li
+                className={`transition duration-300 ease-in-out px-3 py-2.5 rounded-md hover:bg-[#130f40] group ${
+                  isActive ? "bg-[#130f40]" : "bg-transparent"
+                }`}
+              >
+                <p
+                  className={`pointer-events-auto cursor-pointer
+                  font-medium flex items-center gap-x-2.5 transition duration-300 ease-in-out w-fit group-hover:text-[#FFEC78] ${
+                    isActive ? "text-[#FFEC78]" : "text-[#FEF8FD]"
+                  }`}
+                >
+                  <HiOutlineHome
+                    className={`w-6 h-fit transition duration-300 ease-in-out group-hover:text-[#FFEC78] ${
+                      isActive ? "text-[#FFEC78]" : "text-[#FEF8FD]"
+                    }`}
+                  />
+                  Dashboard
+                </p>
+              </li>
+            )}
+          </NavLink>
+          <NavLink to="/report-data">
+            {({ isActive }) => (
+              <li
+                className={`transition duration-300 ease-in-out px-3 py-2.5 rounded-md hover:bg-[#130f40] group ${
+                  isActive ? "bg-[#130f40]" : "bg-transparent"
+                }`}
+              >
+                <p
+                  className={`
+                  font-medium flex items-center gap-x-2.5 transition duration-300 ease-in-out w-fit group-hover:text-[#FFEC78] ${
+                    isActive ? "text-[#FFEC78]" : "text-[#FEF8FD]"
+                  }`}
+                >
+                  <FaCarSide
+                    className={`w-6 h-fit transition duration-300 ease-in-out group-hover:text-[#FFEC78] ${
+                      isActive ? "text-[#FFEC78]" : "text-[#FEF8FD]"
+                    }`}
+                  />
+                  Data Kendaraan
+                </p>
+              </li>
+            )}
+          </NavLink>
+          <NavLink to="/my-qr-code">
+            {({ isActive }) => (
+              <li
+                className={`transition duration-300 ease-in-out px-3 py-2.5 rounded-md hover:bg-[#130f40] group ${
+                  isActive ? "bg-[#130f40]" : "bg-transparent"
+                }`}
+              >
+                <p
+                  className={`
+                  font-medium flex items-center gap-x-2.5 transition duration-300 ease-in-out w-fit group-hover:text-[#FFEC78] ${
+                    isActive ? "text-[#FFEC78]" : "text-[#FEF8FD]"
+                  }`}
+                >
+                  <IoQrCode
+                    className={`w-6 h-fit transition duration-300 ease-in-out group-hover:text-[#FFEC78] ${
+                      isActive ? "text-[#FFEC78]" : "text-[#FEF8FD]"
+                    }`}
+                  />
+                  QR Code Saya
+                </p>
+              </li>
+            )}
+          </NavLink>
+          <NavLink to="/parking-history">
+            {({ isActive }) => (
+              <li
+                className={`transition duration-300 ease-in-out px-3 py-2.5 rounded-md hover:bg-[#130f40] group ${
+                  isActive ? "bg-[#130f40]" : "bg-transparent"
+                }`}
+              >
+                <p
+                  className={`
+                  font-medium flex items-center gap-x-2.5 transition duration-300 ease-in-out w-fit group-hover:text-[#FFEC78] ${
+                    isActive ? "text-[#FFEC78]" : "text-[#FEF8FD]"
+                  }`}
+                >
+                  <RxCountdownTimer
+                    className={`w-6 h-fit transition duration-300 ease-in-out group-hover:text-[#FFEC78] ${
+                      isActive ? "text-[#FFEC78]" : "text-[#FEF8FD]"
+                    }`}
+                  />
+                  Riwayat Parkir
+                </p>
+              </li>
+            )}
+          </NavLink>
+          <NavLink to="/notifikasi">
+            {({ isActive }) => (
+              <li
+                className={`transition duration-300 ease-in-out px-3 py-2.5 rounded-md hover:bg-[#130f40] group ${
+                  isActive ? "bg-[#130f40]" : "bg-transparent"
+                }`}
+              >
+                <p
+                  className={`
+                  font-medium flex items-center gap-x-2.5 transition duration-300 ease-in-out w-fit group-hover:text-[#FFEC78] ${
+                    isActive ? "text-[#FFEC78]" : "text-[#FEF8FD]"
+                  }`}
+                >
+                  <FaBell
+                    className={`w-6 h-fit transition duration-300 ease-in-out group-hover:text-[#FFEC78] ${
+                      isActive ? "text-[#FFEC78]" : "text-[#FEF8FD]"
+                    }`}
+                  />
+                  Notifikasi
+                </p>
+              </li>
+            )}
+          </NavLink>
+          <NavLink to="/user-profile">
+            {({ isActive }) => (
+              <li
+                className={`transition duration-300 ease-in-out px-3 py-2.5 rounded-md hover:bg-[#130f40] group ${
+                  isActive ? "bg-[#130f40]" : "bg-transparent"
+                }`}
+              >
+                <p
+                  className={`
+                  font-medium flex items-center gap-x-2.5 transition duration-300 ease-in-out w-fit group-hover:text-[#FFEC78] ${
+                    isActive ? "text-[#FFEC78]" : "text-[#FEF8FD]"
+                  }`}
+                >
+                  <IoSettingsSharp
+                    className={`w-6 h-fit transition duration-300 ease-in-out group-hover:text-[#FFEC78] ${
+                      isActive ? "text-[#FFEC78]" : "text-[#FEF8FD]"
+                    }`}
+                  />
+                  Akun Profile
+                </p>
+              </li>
+            )}
+          </NavLink>
         </ul>
         <UserFooter />
       </div>

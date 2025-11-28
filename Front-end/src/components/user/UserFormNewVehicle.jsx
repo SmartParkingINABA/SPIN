@@ -1,12 +1,12 @@
-import DateIcon from "../../assets/images/user/dateIcon.svg?react";
-import CloseIcon from "../../assets/images/user/closeIcon.svg?react";
+import { IoClose } from "react-icons/io5";
+import { MdOutlineDateRange } from "react-icons/md";
 
 export default function UserFormNewVehicle({ onClose }) {
   return (
     <div className="font-ubuntu flex justify-center items-center h-screen w-full bg-transparent fixed inset-0 z-50">
       <div className="border border-[rgba(255,236,120,0.5)] bg-[#130F40] rounded-md p-5 pt-8 w-2/5 relative">
-        <CloseIcon
-          className="w-4.5 h-fit absolute right-4 top-4 cursor-pointer"
+        <IoClose
+          className="w-6 h-fit text-[#93A3B6] absolute right-4 top-4 cursor-pointer"
           onClick={onClose}
         />
         <h1 className="text-[#FEF8FD] text-[18px] font-semibold mb-3">
@@ -84,13 +84,13 @@ export default function UserFormNewVehicle({ onClose }) {
               placeholder="DD/MM/YYYY"
               className="bg-[#1E1633] text-[#FEF8FD] placeholder:text-[#93A3B6] outline-0 py-2 px-3 rounded-sm"
             />
-            <DateIcon className="w-5 absolute top-[15px] left-35" />
+            <MdOutlineDateRange className="w-5 h-fit absolute top-[38px] left-35 text-[#93A3B6]" />
           </div>
           <div className="grid grid-cols-2 gap-x-4 mt-8">
-            <button className="border-0 bg-[#FFEC78] py-2 rounded-sm">
+            <button className="border-0 bg-[#FFEC78] py-2 rounded-sm font-medium cursor-pointer transition duration-300 ease-in-out active:opacity-85">
               Batal
             </button>
-            <button className="border-0 bg-[#FFEC78] py-2 rounded-sm">
+            <button className="border-0 bg-[#FFEC78] py-2 rounded-sm font-medium cursor-pointer transition duration-300 ease-in-out active:opacity-85">
               Simpan
             </button>
           </div>

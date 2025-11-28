@@ -2,10 +2,8 @@ import UserDropdown from "../../components/user/UserDropdown";
 import UserHeader from "../../components/user/UserHeader";
 import UserSidebar from "../../components/user/UserSidebar";
 
-import QRCodeIcon from "../../assets/images/user/QRCodeIcon.svg?react";
-import PrintIcon from "../../assets/images/user/printIcon.svg?react";
-import DownloadIcon from "../../assets/images/user/downloadIcon.svg?react";
-import QRSmaillIcon from "../../assets/images/user/qrIcon.svg?react";
+import { IoQrCode } from "react-icons/io5";
+import { FaDownload, FaPrint } from "react-icons/fa6";
 
 export default function MyQRCode() {
   return (
@@ -13,7 +11,7 @@ export default function MyQRCode() {
       <UserSidebar />
       <div className="w-[83%] ml-auto">
         <UserHeader />
-        <section className="bg-[#130F40] px-5 py-7 mt-16  h-[calc(100vh-64px)] overflow-y-auto">
+        <section className="bg-[#130F40] px-5 py-7 mt-16 h-[calc(100vh-64px)] overflow-y-auto">
           <h1 className="text-[#FEF8FD] text-2xl font-bold">QR Code Saya</h1>
           <p className="text-[#93A3B6] font-medium mt-1">
             QR Code untuk kendaraan anda
@@ -27,7 +25,7 @@ export default function MyQRCode() {
               <UserDropdown selectedOption={"Semua Kendaraan"} />
               <div className="mt-12 border border-[#FFEC78] bg-[#FEF8FD] w-2/5 h-[412px] mx-auto rounded-xl flex items-center justify-center">
                 <div className="">
-                  <QRCodeIcon className="w-35 mx-auto h-fit mb-10" />
+                  <IoQrCode className="w-45 mx-auto h-fit mb-8" />
                   <p className="text-[#1E1633] text-center font-semibold">
                     D 1234 XYZ
                   </p>
@@ -37,17 +35,17 @@ export default function MyQRCode() {
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-x-6 mt-20">
-                <button className="bg-[#FFEC78] rounded-md border-0 cursor-pointer py-2.5 active:opacity-85">
-                  <div className="flex items-center gap-x-2 mx-auto w-fit">
-                    <DownloadIcon className="h-fit w-6" />
+                <button className="bg-[#FFEC78] rounded-md border-0 cursor-pointer py-2.5 transition duration-300 ease-in-out active:opacity-85">
+                  <div className="flex items-center gap-x-2.5 mx-auto w-fit">
+                    <FaDownload className="h-fit w-5" />
                     <span className="font-semibold text-[#1E1633]">
                       Download QR Code
                     </span>
                   </div>
                 </button>
-                <button className="bg-[#FFEC78] rounded-md border-0 cursor-pointer py-2.5 active:opacity-85">
-                  <div className="flex items-center gap-x-2 mx-auto w-fit">
-                    <PrintIcon className="h-fit w-6" />
+                <button className="bg-[#FFEC78] rounded-md border-0 cursor-pointer py-2.5 transition duration-300 ease-in-out active:opacity-85">
+                  <div className="flex items-center gap-x-2.5 mx-auto w-fit">
+                    <FaPrint className="h-fit w-5" />
                     <span className="font-semibold text-[#1E1633]">
                       Cetak QR Code
                     </span>
@@ -104,14 +102,14 @@ export default function MyQRCode() {
                 <p className="text-[#FEF8FD] text-[18px] font-semibold mb-3.5">
                   Informasi
                 </p>
-                <div className="flex items-center gap-x-3 mb-4.5">
-                  <QRSmaillIcon className="text-[#FFEC78] w-5 h-fit" />
+                <div className="flex items-center gap-x-2.5 mb-4">
+                  <IoQrCode className="text-[#FFEC78] w-5 h-fit" />
                   <p className="text-[#93A3B6] font-medium">
                     QR Code unik per kendaraan.
                   </p>
                 </div>
-                <div className="flex items-center gap-x-3">
-                  <QRSmaillIcon className="text-[#FFEC78] w-5 h-fit" />
+                <div className="flex items-center gap-x-2.5">
+                  <IoQrCode className="text-[#FFEC78] w-5 h-fit" />
                   <p className="text-[#93A3B6] font-medium">
                     Dapat diunduh ulang kapan saja.
                   </p>
