@@ -1,19 +1,20 @@
-import envelopeIcon from "../assets/images/envelope-solid-full.svg";
-import lockIcon from "../assets/images/lock-solid-full.svg";
-import eyeIcon from "../assets/images/eye.png";
+import envelopeIcon from "../../assets/images/envelope-solid-full.svg";
+import lockIcon from "../../assets/images/lock-solid-full.svg";
+import eyeIcon from "../../assets/images/eye.png";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   return (
     <div className="bg-[#1E1633] font-ubuntu h-screen w-full flex justify-center items-center">
       <div className="w-1/4">
         <h1 className="text-[#ffec78] text-[2.5rem] font-bold mb-3.5">Login</h1>
-        <p className="text-white font-bold mb-5.5">
+        <p className="text-[#FEF8FD] font-bold mb-5.5">
           Please login to your account
         </p>
         <form>
           <label
             htmlFor="email"
-            className="text-white font-bold text-[12px] ml-2.5"
+            className="text-[#FEF8FD] font-bold text-[12px] ml-2.5"
           >
             E-mail Address
           </label>
@@ -27,7 +28,7 @@ export default function Login() {
           </div>
           <label
             htmlFor="password"
-            className="text-white font-bold text-[12px] ml-2.5"
+            className="text-[#FEF8FD] font-bold text-[12px] ml-2.5"
           >
             Password
           </label>
@@ -36,9 +37,12 @@ export default function Login() {
             <input type="password" className="w-full outline-0" />
             <img src={eyeIcon} alt="" className="w-7" />
           </div>
-          <p className="text-[#93A3B6] font-bold text-[16px] text-right mt-5 mr-5">
+          <Link
+            to="/auth/forgot-password"
+            className="block text-[#93A3B6] font-bold text-[16px] text-right mt-5 mr-5"
+          >
             Forgot Password ?
-          </p>
+          </Link>
           <button className="w-full bg-transparent border border-[#ffec78] text-[#ffec78] text-[25px] font-bold py-2.5 mt-[25px] rounded-xl cursor-pointer transition duration-300 ease-in-out hover:border-transparent hover:bg-[#ffec78] hover:text-[#1E1633]">
             Login
           </button>

@@ -1,7 +1,7 @@
-import envelopeIcon from "../assets/images/envelope-solid-full.svg";
-import lockIcon from "../assets/images/lock-solid-full.svg";
-import eyeIcon from "../assets/images/eye.png";
-import Dropdown from "../components/Dropdown";
+import envelopeIcon from "../../assets/images/envelope-solid-full.svg";
+import lockIcon from "../../assets/images/lock-solid-full.svg";
+import eyeIcon from "../../assets/images/eye.png";
+import Dropdown from "../../components/auth/Dropdown.jsx";
 
 export default function Register() {
   return (

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import dropdownIcon from "../assets/images/top-arrow.png";
+import dropdownIcon from "../../assets/images/top-arrow.png";
 
 export default function Dropdown() {
   const [isOpen, setIsOpen] = useState(false);

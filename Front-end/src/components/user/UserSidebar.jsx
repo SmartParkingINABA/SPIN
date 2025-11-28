@@ -20,7 +20,7 @@ export default function UserSidebar() {
       </div>
       <div className="border-t border-t-[rgba(255,236,120,0.5)] flex flex-col justify-between grow">
         <ul className="py-6 px-5 flex flex-col gap-y-1">
-          <NavLink to="/">
+          <NavLink to="/user" end>
             {({ isActive }) => (
               <li
                 className={`transition duration-300 ease-in-out px-3 py-2.5 rounded-md hover:bg-[#130f40] group ${
@@ -43,7 +43,7 @@ export default function UserSidebar() {
               </li>
             )}
           </NavLink>
-          <NavLink to="/report-data">
+          <NavLink to="/user/report-data">
             {({ isActive }) => (
               <li
                 className={`transition duration-300 ease-in-out px-3 py-2.5 rounded-md hover:bg-[#130f40] group ${
@@ -66,7 +66,7 @@ export default function UserSidebar() {
               </li>
             )}
           </NavLink>
-          <NavLink to="/my-qr-code">
+          <NavLink to="/user/my-qr-code">
             {({ isActive }) => (
               <li
                 className={`transition duration-300 ease-in-out px-3 py-2.5 rounded-md hover:bg-[#130f40] group ${
@@ -89,7 +89,7 @@ export default function UserSidebar() {
               </li>
             )}
           </NavLink>
-          <NavLink to="/parking-history">
+          <NavLink to="/user/parking-history">
             {({ isActive }) => (
               <li
                 className={`transition duration-300 ease-in-out px-3 py-2.5 rounded-md hover:bg-[#130f40] group ${
@@ -112,7 +112,7 @@ export default function UserSidebar() {
               </li>
             )}
           </NavLink>
-          <NavLink to="/notifikasi">
+          <NavLink to="/user/notifikasi">
             {({ isActive }) => (
               <li
                 className={`transition duration-300 ease-in-out px-3 py-2.5 rounded-md hover:bg-[#130f40] group ${
@@ -135,7 +135,7 @@ export default function UserSidebar() {
               </li>
             )}
           </NavLink>
-          <NavLink to="/user-profile">
+          <NavLink to="/user/user-profile">
             {({ isActive }) => (
               <li
                 className={`transition duration-300 ease-in-out px-3 py-2.5 rounded-md hover:bg-[#130f40] group ${

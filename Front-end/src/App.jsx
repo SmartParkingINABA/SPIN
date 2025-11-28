@@ -1,55 +1,54 @@
-// import Enter from "./pages/Enter";
-// import Login from "./pages/Login";
-// import Register from "./pages/Register";
-// import ForgotPassword from "./pages/ForgotPassword";
-// import Verify from "./pages/Verify";
-// import PasswordReset from "./pages/PasswordReset";
-// import NewPassword from "./pages/NewPassword";
-// import Home from "./pages/Home";
-// import Regulation from "./pages/Regulation";
-// import UserTerms from "./pages/UserTerms";
-// import VehicleRegistration from "./pages/VehicleRegistration";
-// import EntryExitAcces from "./pages/EntryExitAcces";
-// import AdminDashboard from "./pages/admin/AdminDashboard";
-// import AdminVehiclesReport from "./pages/admin/AdminVehiclesReport";
-import UserDashboard from "./pages/user/UserDashboard";
-import UserVehiclesReport from "./pages/user/UserVehiclesReport";
-import MyQRCode from "./pages/user/UserMyQRCode";
-import UserParkingHistory from "./pages/user/UserParkingHistory";
-
-import OfficerDashboard from "./pages/officer/OfficerDasboard";
-
 import { Route, Routes } from "react-router-dom";
-import UserNotifikasi from "./pages/user/UserNotifikasi";
+
+// AUTH
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
+import ForgotPassword from "./pages/auth/ForgotPassword";
+
+// PUBLIC
+import PublicLayout from "./layouts/PublicLayout";
+import Home from "./pages/public/Home";
+import Enter from "./pages/public/Enter";
+
+// USER
+import UserLayout from "./layouts/UserLayout";
 import UserProfile from "./pages/user/UserProfile";
+import UserNotifikasi from "./pages/user/UserNotifikasi";
+import UserParkingHistory from "./pages/user/UserParkingHistory";
+import UserVehiclesReport from "./pages/user/UserVehiclesReport";
+import UserDashboard from "./pages/user/UserDashboard";
+import MyQRCode from "./pages/user/UserMyQRCode"; // perbaiki nama
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<UserDashboard />} />
-      <Route path="/report-data" element={<UserVehiclesReport />} />
-      <Route path="/my-qr-code" element={<MyQRCode />} />
-      <Route path="/parking-history" element={<UserParkingHistory />} />
-      <Route path="/notifikasi" element={<UserNotifikasi />} />
-      <Route path="/user-profile" element={<UserProfile />} />
+      {/* PUBLIC DASBOARD */}
+      <Route element={<PublicLayout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/enter" element={<Enter />} />
+      </Route>
+
+      {/* AUTH PAGES */}
+      <Route path="/auth">
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+        <Route path="forgot-password" element={<ForgotPassword />} />
+      </Route>
+
+      {/* USER DASBOARD */}
+      <Route path="/user" element={<UserLayout />}>
+        <Route index element={<UserDashboard />} />
+        <Route path="report-data" element={<UserVehiclesReport />} />
+        <Route path="my-qr-code" element={<MyQRCode />} />
+        <Route path="parking-history" element={<UserParkingHistory />} />
+        <Route path="notifikasi" element={<UserNotifikasi />} />
+        <Route path="user-profile" element={<UserProfile />} />
+      </Route>
+
+      {/* ADMIN DASBOARD*/}
+
+      {/* OFFICER DASBOARD */}
     </Routes>
-    // <Enter />
-    // <Login />
-    // <Register />
-    // <ForgotPassword />
-    // <Verify />
-    // <PasswordReset />
-    // <NewPassword />
-    // <Home />
-    // <Regulation />
-    // <UserTerms />
-    // <VehicleRegistration />
-    // <EntryExitAcces />
-    // <VehicleSafety />
-    // <AdminDashboard />
-    // <AdminVehiclesReport />
-    //
-    // <OfficerDashboard />
   );
 }
 

@@ -1,5 +1,5 @@
-import forgotPasswordIcon from "../assets/images/Forgot-password-cuate.svg";
-import envelopeIcon from "../assets/images/envelope-solid-full.svg";
+import forgotPasswordIcon from "../../assets/images/Forgot-password-cuate.svg";
+import envelopeIcon from "../../assets/images/envelope-solid-full.svg";
 
 export default function ForgotPassword() {
   return (
