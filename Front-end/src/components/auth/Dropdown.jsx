@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import dropdownIcon from "../../assets/images/top-arrow.png";
+import { IoMdArrowDropdown } from "react-icons/io";
 
 export default function Dropdown() {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,12 +44,9 @@ export default function Dropdown() {
         >
           {selected}
         </span>
-        <img
-          src={dropdownIcon}
-          alt=""
-          id="arrowIcon"
-          className={`w-6 transform transition-transform duration-300 ${
-            !isOpen ? "rotate-180" : ""
+        <IoMdArrowDropdown
+          className={`w-6 h-fit transform transition-transform duration-300 ${
+            !isOpen ? "rotate-0" : "rotate-180"
           }`}
         />
       </button>

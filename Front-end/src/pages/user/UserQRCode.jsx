@@ -3,7 +3,7 @@ import UserDropdown from "../../components/user/UserDropdown";
 import { IoQrCode } from "react-icons/io5";
 import { FaDownload, FaPrint } from "react-icons/fa6";
 
-export default function MyQRCode() {
+export default function UserQRCode() {
   return (
     <section className="bg-[#130F40] px-5 py-7 mt-16 h-[calc(100vh-64px)] overflow-y-auto">
       <h1 className="text-[#FEF8FD] text-2xl font-bold">QR Code Saya</h1>
