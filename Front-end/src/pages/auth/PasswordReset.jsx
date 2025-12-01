@@ -5,7 +5,7 @@ export default function PasswordReset() {
         <h1 className="text-[#ffec78] text-[1.8rem] font-bold mb-4">
           Password Reset
         </h1>
-        <p className="text-white font-semibold leading-6.5">
+        <p className="text-[#FEF8FD] font-semibold leading-6.5">
           Your password has been successfully reset, click confirm to set a new
           password
         </p>

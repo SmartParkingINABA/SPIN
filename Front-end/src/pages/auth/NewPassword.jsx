@@ -11,13 +11,13 @@ export default function NewPassword() {
           Set new password
         </h1>
         <img src={resetPasswordIcon} alt="" className="w-3/5 mx-auto" />
-        <p className="text-white font-bold mb-3 mt-5">
+        <p className="text-[#FEF8FD] font-bold mb-3 mt-5">
           Create new password. Ensure it differs from previous ones for security
         </p>
         <form>
           <label
             htmlFor="password"
-            className="text-white font-bold text-[15px] ml-2.5"
+            className="text-[#FEF8FD] font-bold text-[15px] ml-2.5"
           >
             Password
           </label>
@@ -28,7 +28,7 @@ export default function NewPassword() {
           </div>
           <label
             htmlFor="password"
-            className="text-white font-bold text-[15px] ml-2.5"
+            className="text-[#FEF8FD] font-bold text-[15px] ml-2.5"
           >
             Confirm password
           </label>

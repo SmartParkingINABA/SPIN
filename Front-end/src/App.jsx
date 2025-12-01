@@ -6,11 +6,13 @@ import Register from "./pages/auth/Register";
 import ForgotPassword from "./pages/auth/ForgotPassword";
 import NewPassword from "./pages/auth/NewPassword";
 import Verify from "./pages/auth/Verify";
+import PasswordReset from "./pages/auth/PasswordReset";
 
 // PUBLIC
 import PublicLayout from "./layouts/PublicLayout";
 import Home from "./pages/public/Home";
 import Enter from "./pages/public/Enter";
+import Regulation from "./pages/public/Regulation";
 
 // USER
 import UserLayout from "./layouts/UserLayout";
@@ -20,7 +22,6 @@ import UserParkingHistory from "./pages/user/UserParkingHistory";
 import UserVehiclesReport from "./pages/user/UserVehiclesReport";
 import UserDashboard from "./pages/user/UserDashboard";
 import UserQRCode from "./pages/user/UserQRCode";
-import PasswordReset from "./pages/auth/PasswordReset";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
       {/* PUBLIC DASBOARD */}
       <Route element={<PublicLayout />}>
         <Route path="/" element={<Home />} />
+        <Route path="/regulation" element={<Regulation />} />
         <Route path="/enter" element={<Enter />} />
       </Route>
 

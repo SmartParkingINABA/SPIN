@@ -15,13 +15,13 @@ export default function Enter() {
         <div className="mt-[3.5em] flex flex-col gap-y-10 w-full mx-auto">
           <Link
             to="/auth/login"
-            className="block bg-[#ffec78] text-[#1E1633] py-1.5 font-bold rounded-xl text-[1.5rem] cursor-pointer border border-transparent transition duration-300 ease-in-out hover:bg-transparent hover:text-white hover:border hover:border-white w-full text-center"
+            className="block bg-[#ffec78] text-[#1E1633] py-1.5 font-bold rounded-xl text-[1.5rem] cursor-pointer border border-transparent transition duration-300 ease-in-out hover:bg-transparent hover:text-[#FFFFFF] hover:border hover:border-[#FFFFFF] w-full text-center"
           >
             Login
           </Link>
           <Link
             to="/auth/register"
-            className="block bg-[#ffec78] text-[#1E1633] py-1.5 font-bold rounded-xl text-[1.5rem] cursor-pointer border border-transparent transition duration-300 ease-in-out hover:bg-transparent hover:text-white hover:border hover:border-[#ffec78] w-full text-center"
+            className="block bg-[#ffec78] text-[#1E1633] py-1.5 font-bold rounded-xl text-[1.5rem] cursor-pointer border border-transparent transition duration-300 ease-in-out hover:bg-transparent hover:text-[#FFFFFF] hover:border hover:border-[#ffec78] w-full text-center"
           >
             Sign Up
           </Link>

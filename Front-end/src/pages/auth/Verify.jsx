@@ -8,7 +8,7 @@ export default function Verify() {
           Enter OTP
         </h1>
         <img src={forgotPasswordIcon} alt="" className="w-3/5 mx-auto" />
-        <p className="text-center text-white font-semibold leading-6 mt-5 mb-4">
+        <p className="text-center text-[#FEF8FD] font-semibold leading-6 mt-5 mb-4">
           An 4 digit OTP has been sent to your email account
         </p>
         <form>
@@ -43,7 +43,7 @@ export default function Verify() {
             Verify
           </button>
         </form>
-        <p className="text-center font-semibold text-white mt-4">
+        <p className="text-center font-semibold text-[#FEF8FD] mt-4">
           Resend OTP <span>( 00 : 59 )</span>
         </p>
       </div>

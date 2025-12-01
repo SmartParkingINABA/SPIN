@@ -10,12 +10,12 @@ export default function Home() {
         alt=""
         className="absolute bottom-[10%] left-0 w-[8%]"
       />
-      <section className=" w-[82%] ml-auto mt-12 flex items-center relative z-1">
+      <section className=" w-[82%] pt-[118px] h-screen ml-auto flex items-center relative z-1">
         <div className="w-1/2">
-          <h1 className="text-white text-5xl font-bold mb-3">
+          <h1 className="text-[#FFFFFF] text-5xl font-bold mb-3">
             Selamat datang Di <span className="text-[#ffec78]">SPIN</span>
           </h1>
-          <p className="text-white text-2xl font-semibold leading-8.5">
+          <p className="text-[#FFFFFF] text-2xl font-semibold leading-8.5">
             Solusi parkir modern yang cerdas, cepat, dan aman untuk seluruh
             civitas akademika Universitas INABA
           </p>

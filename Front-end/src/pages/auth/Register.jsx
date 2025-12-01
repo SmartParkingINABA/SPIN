@@ -11,13 +11,13 @@ export default function Register() {
         <h1 className="text-[#ffec78] text-[2.5rem] font-bold mb-1.5">
           Register
         </h1>
-        <p className="text-white font-bold mb-3.5">
+        <p className="text-[#FEF8FD] font-bold mb-3.5">
           let’s keep it quick, just 3 steps and you’re in
         </p>
         <form>
           <label
             htmlFor="email"
-            className="text-white font-bold text-[15px] ml-2.5"
+            className="text-[#FEF8FD] font-bold text-[15px] ml-2.5"
           >
             Enter your email
           </label>
@@ -31,7 +31,7 @@ export default function Register() {
           </div>
           <label
             htmlFor="password"
-            className="text-white font-bold text-[15px] ml-2.5"
+            className="text-[#FEF8FD] font-bold text-[15px] ml-2.5"
           >
             Enter your password
           </label>
@@ -42,7 +42,7 @@ export default function Register() {
           </div>
           <label
             htmlFor="password"
-            className="text-white font-bold text-[15px] ml-2.5"
+            className="text-[#FEF8FD] font-bold text-[15px] ml-2.5"
           >
             Re-Enter your password
           </label>
@@ -52,7 +52,10 @@ export default function Register() {
             <FaRegEye className="w-7 h-fit cursor-pointer" />
           </div>
 
-          <label htmlFor="" className="text-white font-bold text-[15px] ml-2.5">
+          <label
+            htmlFor=""
+            className="text-[#FEF8FD] font-bold text-[15px] ml-2.5"
+          >
             Select user type
           </label>
           <Dropdown />

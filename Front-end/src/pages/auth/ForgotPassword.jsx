@@ -10,14 +10,14 @@ export default function ForgotPassword() {
           Forgot Password?
         </h1>
         <img src={forgotPasswordIcon} alt="" className="w-3/5 mx-auto" />
-        <p className="text-center text-white leading-6.5 mb-8">
+        <p className="text-center text-[#FEF8FD] leading-6.5 mb-8">
           Don’t worry! It happens. Please enter the email address with your
           account
         </p>
         <form>
           <label
             htmlFor="email"
-            className="text-white font-bold text-[15px] ml-2.5"
+            className="text-[#FEF8FD] font-bold text-[15px] ml-2.5"
           >
             E-mail Address
           </label>
