@@ -1,6 +1,7 @@
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { Role, Users, adminProfile, petugasProfile, pengendaraProfile } from '../models/Index.js'
+import { createUserSession } from '../utils/SessionService.js';
 
 
 const AuthController = {
@@ -9,7 +10,7 @@ const AuthController = {
             const { email, password_users, role_id, nama, alamat, shift, no_telp, lokasi_kerja } = req.body;
 
             if ( !email || !password_users || !role_id ) {
-                return res.status(400).json( 
+                    return res.status(401).json( 
                     {
                         message: 'Email, Password, Dan Role Harus Di Isi Secara Lengkap!'
                     }
@@ -136,6 +137,8 @@ const AuthController = {
                     expiresIn: process.env.JWT_EXPIRES,
                 }
             );
+
+            const sessionId = await createUserSession(user.id_users, token);
             
             
             const role = user.role.nama_role.toLowerCase();
@@ -154,9 +157,11 @@ const AuthController = {
             }
             res.status(200).json(
                 {
-                    message: `Login Berhasil!, Selamat Datang ${user.role.nama_role} ${displayName}`,
+                    status: 'OK!',
+                    message: `Selamat datang ${user.role.nama_role}, ${displayName}`,
                     redirect: redirectTo,
                     token,
+                    sessionId,
                     user: {
                         id: user.id_users,
                         email: user.email,
