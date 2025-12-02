@@ -1,21 +1,39 @@
 import express from 'express'
 import AuthController from '../controllers/AuthController.js';
 import authenticationRoleBasedUser from '../middlewares/AuthMiddlewares.js';
+import verifySession from '../middlewares/SessionMiddlewares.js';
+import dashboardAdminControllers from '../controllers/AdminDashBoardControllers.js';
+import logoutController from '../controllers/LogOutControllers.js';
+import profileController from '../controllers/ProfileController.js';
+
+
 const authRoutes = express.Router();
-
+//Auth Login & Register
 authRoutes.post('/register', AuthController.register);
-
 authRoutes.post('/login', AuthController.login);
+
+//Profile 
+authRoutes.get(
+    '/profile',
+    authenticationRoleBasedUser(['admin', 'petugas', 'pengendara']),
+    verifySession,
+    profileController.getProfile
+);
+
+//Logout
+authRoutes.get(
+    '/logout',
+    authenticationRoleBasedUser(['admin', 'petugas', 'pengendara']),
+    verifySession,
+    logoutController.handleLogout
+)
 
 //membatasi hak akses halaman berdasarkan role-user (admin, petugas, pengendara)
 authRoutes.get(
     '/admin/dashboard',
     authenticationRoleBasedUser(['admin']),
-    (req, res) => {
-        res.status(200).json({
-            message: `Selamat Datang Di Dashboard Admin, ${req.user.adminProfile?.nama_admin || req.user.email}`,
-        });
-    }
+    verifySession,
+    dashboardAdminControllers.getOverview
 );
 
 authRoutes.get(
