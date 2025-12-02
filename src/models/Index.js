@@ -10,7 +10,6 @@ import kendaraanModel from './Kendaraan.js'
 import kendaraanMasukModel from './kendaraanMasuk.js'
 import kendaraanKeluarModel from './kendaraanKeluar.js'
 import notificationModel from './Notification.js'
-import resetPasswordModel from './ResetPassword.js'
 
 
 const Role = roleModel(sequelize, DataTypes);
@@ -22,7 +21,6 @@ const kendaraan = kendaraanModel(sequelize, DataTypes);
 const kendaraanMasuk = kendaraanMasukModel(sequelize, DataTypes);
 const kendaraanKeluar = kendaraanKeluarModel(sequelize, DataTypes);
 const notification = notificationModel(sequelize, DataTypes);
-const resetPassword = resetPasswordModel(sequelize, DataTypes);
 
 
 Role.hasMany(Users, { foreignKey: 'role_id', as: 'users' });
@@ -55,10 +53,6 @@ kendaraanKeluar.belongsTo(kendaraan, { foreignKey: 'kendaraan_id ', as: 'kendara
 kendaraan.hasMany(notification, { foreignKey: 'kendaraan_id', as: 'notifikasi'});
 notification.belongsTo(kendaraan, { foreignKey: 'kendaraan_id', as: 'kendaraan'});
 
-Users.hasMany(resetPassword, { foreignKey: 'email', sourceKey: 'email', as: 'password_reset'});
-resetPassword.belongsTo(Users, { foreignKey: 'email', targetKey: 'email', as: 'users'});
-
-
 export {
     Role,
     Users,
@@ -68,7 +62,6 @@ export {
     kendaraan,
     kendaraanMasuk,
     kendaraanKeluar,
-    notification,
-    resetPassword
+    notification
 };
 
