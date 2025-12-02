@@ -11,8 +11,9 @@ import PasswordReset from "./pages/auth/PasswordReset";
 // PUBLIC
 import PublicLayout from "./layouts/PublicLayout";
 import Home from "./pages/public/Home";
-import Enter from "./pages/public/Enter";
 import Regulation from "./pages/public/Regulation";
+import About from "./pages/public/About";
+import Enter from "./pages/public/Enter";
 
 // USER
 import UserLayout from "./layouts/UserLayout";
@@ -30,6 +31,7 @@ function App() {
       <Route element={<PublicLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/regulation" element={<Regulation />} />
+        <Route path="/about" element={<About />} />
         <Route path="/enter" element={<Enter />} />
       </Route>
 

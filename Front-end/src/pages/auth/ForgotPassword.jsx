@@ -1,4 +1,4 @@
-import forgotPasswordIcon from "../../assets/images/Forgot-password-cuate.svg";
+import forgotPasswordIcon from "../../assets/images/public/Forgot-password-cuate.svg";
 
 import { IoMdMail } from "react-icons/io";
 

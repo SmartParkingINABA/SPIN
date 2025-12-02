@@ -1,4 +1,4 @@
-import regulationHero from "../../assets/images/regulation.svg";
+import regulationHero from "../../assets/images/public/regulation.svg";
 
 import { FaPeopleGroup, FaPersonBiking, FaCarOn } from "react-icons/fa6";
 import { IoWarning, IoQrCodeOutline } from "react-icons/io5";

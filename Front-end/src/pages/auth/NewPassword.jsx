@@ -1,4 +1,4 @@
-import resetPasswordIcon from "../../assets/images/My-password-pana.svg";
+import resetPasswordIcon from "../../assets/images/public/My-password-pana.svg";
 
 import { FaLock } from "react-icons/fa6";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";

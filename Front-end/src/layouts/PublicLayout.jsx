@@ -1,5 +1,5 @@
-import { Link, Outlet, useLocation } from "react-router-dom";
-import inabaLogo from "../assets/images/logo_inaba.png";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
+import inabaLogo from "../assets/images/public/logo_inaba.png";
 
 export default function PublicLayout() {
   const location = useLocation();
@@ -20,30 +20,46 @@ export default function PublicLayout() {
             </div>
           </div>
           <nav className="flex gap-x-20">
-            <Link
+            <NavLink
               to="/"
-              className="text-[#FEF8FD] font-semibold text-[20px] transition duration-300 ease-in-out border-b-2 border-b-transparent hover:border-b-[#FEF8FD]"
+              className={({ isActive }) =>
+                `${
+                  isActive ? "border-b-[#FEF8FD]" : "border-b-transparent"
+                } text-[#FEF8FD] font-semibold text-[20px] transition duration-300 ease-in-out border-b-2 hover:border-b-[#FEF8FD]`
+              }
             >
               Beranda
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               to="/regulation"
-              className="text-[#FEF8FD] font-semibold text-[20px] transition duration-300 ease-in-out border-b-2 border-b-transparent hover:border-b-[#FEF8FD]"
+              className={({ isActive }) =>
+                `${
+                  isActive ? "border-b-[#FEF8FD]" : "border-b-transparent"
+                } text-[#FEF8FD] font-semibold text-[20px] transition duration-300 ease-in-out border-b-2 hover:border-b-[#FEF8FD]`
+              }
             >
               Peraturan
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               to="/about"
-              className="text-[#FEF8FD] font-semibold text-[20px] transition duration-300 ease-in-out border-b-2 border-b-transparent hover:border-b-[#FEF8FD]"
+              className={({ isActive }) =>
+                `${
+                  isActive ? "border-b-[#FEF8FD]" : "border-b-transparent"
+                } text-[#FEF8FD] font-semibold text-[20px] transition duration-300 ease-in-out border-b-2 hover:border-b-[#FEF8FD]`
+              }
             >
               About
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               to="/enter"
-              className="text-[#FEF8FD] font-semibold text-[20px] transition duration-300 ease-in-out border-b-2 border-b-transparent hover:border-b-[#FEF8FD]"
+              className={({ isActive }) =>
+                `${
+                  isActive ? "border-b-[#FEF8FD]" : "border-b-transparent"
+                } text-[#FEF8FD] font-semibold text-[20px] transition duration-300 ease-in-out border-b-2 hover:border-b-[#FEF8FD]`
+              }
             >
               Masuk
-            </Link>
+            </NavLink>
           </nav>
         </header>
       )}

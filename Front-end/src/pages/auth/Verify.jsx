@@ -1,4 +1,4 @@
-import forgotPasswordIcon from "../../assets/images/Enter-OTP-cuate.svg";
+import forgotPasswordIcon from "../../assets/images/public/Enter-OTP-cuate.svg";
 
 export default function Verify() {
   return (
