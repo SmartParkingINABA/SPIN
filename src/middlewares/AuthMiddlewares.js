@@ -49,6 +49,7 @@ const authenticationRoleBasedUser = (roles = []) => {
                     }
                 );
             }
+
             req.user = user;
             next();
         } catch (err) {
