@@ -1,16 +1,9 @@
-import crypto from 'crypto'
 import bcrypt from 'bcrypt'
-import { Users, resetPassword } from '../models/Index.js'
-import sendMail from '../utils/SendMail.js'
+import { Users } from '../models/Index.js'
+import { sendOtpToEmail, sendNotifPasswordChangedEmail } from '../utils/SendMail.js'
+import { generateOtp, verifyOtp } from '../utils/OtpService.js'
+import redis from '../configs/RedisConfig.js';
 
-const hashValue = (v) => {
-        return crypto.createHash("sha256").update(String(v)).digest('hex');
-    }   
-const generateOTP = () => crypto.randomInt(1000, 9999).toString();
-const generateResetToken = () => crypto.randomBytes(32).toString("hex");
-
-const otpExpireMinutes = 10;
-const resetTokenExpiresMinutes = 15;
 
 const forgotPasswordController = {
     requestOtp: async (req, res) => {
@@ -39,39 +32,20 @@ const forgotPasswordController = {
                 );
             }
 
-            const otp = generateOTP();
-            const resetToken = generateResetToken();
-            const otpHash = hashValue(otp);
-            const resetTokenHash = hashValue(resetToken);
-            const expiresAt = new Date(Date.now() + otpExpireMinutes * 60 * 1000);
-
-            await resetPassword.destroy({ where: {email} });
-
-            await resetPassword.create(
-                {
-                    email,
-                    otp_hash: otpHash,
-                    reset_token_hash: resetTokenHash,
-                    expires_at: expiresAt
-
-                }
-            );
-
-            const sendToEmail = `${otp} ${otpExpireMinutes}`
-
-            await sendMail(email, sendToEmail);
-
+            const otp = await generateOtp(email);
+            
+            await sendOtpToEmail(email, otp);
             return res.status(200).json(
                 {
-                    message: 'Kode OTP Berhasil Dikirim Ke Email Anda'
+                    message: 'Kode OTP Berhasil Di Kirim Ke Email Anda'
                 }
             )
-        } catch (error) {
-            console.log(error);
+        } catch (err) {
+            console.log(err);
             return res.status(500).json(
                 {
-                    message: 'Terjadi Kesalahan Saat Mengirim OTP!',
-                    err: error
+                    message: 'Internal Server Error',
+                    err: err
                 }
             );
             
@@ -80,65 +54,37 @@ const forgotPasswordController = {
 
     verifyOTP: async (req, res) => {
         try {
-            const { email, otp } = req.body;
-            if (!email || !otp) {
-                return res.status(
+            const { otp } = req.body;
+
+            if (!otp) {
+                return res.status(400).json(
                     {
-                        message: 'Email & OTP Wajib Diisi!'
+                        message: 'Kode OTP Wajib Di Isi!'
                     }
                 );
             };
 
-            const record = await resetPassword.findOne( { where: {email} });
-
-            if (!record) {
+            const email = await verifyOtp(otp);
+            if (!email) {
                 return res.status(400).json(
                     {
-                        message: 'Token Reset Tidak Valid'
+                        message: 'OTP Salah Atau Sudah Kadaluarsa!'
                     }
                 );
             };
-
-            if (new Date() > record.exprires_at) {
-                await resetPassword.destroy({ where: {email} });
-                return res.status(400).json(
-                    {
-                        message: 'Kode OTP Telah Kadaluarsa, Silakan Minta OTP Baru!'
-                    }
-                );
-            }
-
-            const otpHash = hashValue(otp);
-
-            if(otpHash !== record.otp_hash) {
-                return res.status(400).json(
-                    {
-                        message: 'Kode OTP Salah, Silakan Periksa Kembali!'
-                    }
-                );
-            };
-
-            const newResetToken = generateResetToken();
-            const newResetTokenHash = hashValue(newResetToken);
-            const newExpiresTokenReset = new Date(Date.now() + resetTokenExpiresMinutes * 60 * 1000);
-
-            record.reset_token_hash = newResetTokenHash;
-            record.expires_at = newExpiresTokenReset;
-            await record.save();
+            await redis.set(`otp_verified:${email}`, 'Verified', 'EX', 300);
 
             return res.status(200).json(
                 {
                     message: 'Kode OTP Valid, Silahkan Membuat Ulang Password Baru',
-                    reset_token: newResetToken
                 }
-            );
-
-        } catch (error) {
-            console.log(error);
+            )
+        } catch (err) {
+            console.log(err);
             return res.status(500).json(
                 {
-                    message: 'Terjadi Kesalahan Saat Verifikasi OTP',
-                    err: error
+                    message: 'Internal Server Error',
+                    err: err
                 }
             );
             
@@ -148,58 +94,49 @@ const forgotPasswordController = {
 
     resetPassword: async (req, res) => {
         try {
-            const { email, reset_token, new_password } = req.body;
-            if(!email || !reset_token || !new_password) {
+            const { new_password } = req.body;
+            if(!new_password) {
                 return res.status(400).json(
                     {
-                        message: 'Data Yang Di Isi Tidak Lengkap!'
+                        message: 'Password Wajib Di Isi!'
                     }
                 );
             };
+            const keys= await redis.keys('otp_verified:*');
 
-            const resetRecord = await resetPassword.findOne( { where: {email} });
-            if (!resetRecord) {
+            if (keys.length === 0) {
                 return res.status(400).json(
                     {
-                        message: 'Token Reset Tidak Valid!'
+                        message: 'Akses Di Tolak, OTP Belum Terverifikasi!'
                     }
                 );
             };
-
-            const tokenHashed = hashValue(reset_token);
-
-            if (tokenHashed !== resetRecord.reset_token_hash) {
-                return res.status(400).json(
-                    {
-                        message: 'Reset Token Tidak Valid'
-                    }
-                );
-            };
+        
+            const email = keys[0].replace('otp_verified:', '');
 
             const hashPassword = await bcrypt.hash(new_password, 10);
-
             await Users.update(
                 {
-                    password_user: hashPassword
+                    password_users: hashPassword
                 },
                 {
                     where: {email}
                 }
             );
+            await redis.del(`otp_verified:${email}`);
 
-            await resetPassword.destroy({ where: {email} });
-            
-            res.status(200).json(
+            await sendNotifPasswordChangedEmail(email)
+
+            return res.status(200).json(
                 {
                     message: 'Password Berhasil Diubah, Silahkan Login Kembali'
                 }
-            )
-
+            );
         } catch (error) {
             console.log(error);
             res.status(500).json(
                 {
-                    message: 'Terjadi Kesalahan Saat Merubah Password',
+                    message: 'Internal Server Error',
                     err: error
                 }
             );
