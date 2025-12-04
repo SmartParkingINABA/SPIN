@@ -108,7 +108,7 @@ const forgotPasswordController = {
                 return res.status(400).json(
                     {
                         message: 'Password harus mengandung huruf besar, huruf kecil, angka, simbol'
-                    }
+                    }    
                 )
             }
 
