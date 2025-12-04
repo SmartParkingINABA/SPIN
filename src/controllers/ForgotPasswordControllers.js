@@ -3,6 +3,7 @@ import { Users } from '../models/Index.js'
 import { sendOtpToEmail, sendNotifPasswordChangedEmail } from '../utils/SendMail.js'
 import { generateOtp, verifyOtp } from '../utils/OtpService.js'
 import redis from '../configs/RedisConfig.js';
+import passwordValidator from '../utils/PasswordValidator.js';
 
 
 const forgotPasswordController = {
@@ -102,6 +103,15 @@ const forgotPasswordController = {
                     }
                 );
             };
+
+            if (!passwordValidator(new_password)) {
+                return res.status(400).json(
+                    {
+                        message: 'Password harus mengandung huruf besar, huruf kecil, angka, simbol'
+                    }
+                )
+            }
+
             const keys= await redis.keys('otp_verified:*');
 
             if (keys.length === 0) {

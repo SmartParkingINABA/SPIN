@@ -2,6 +2,7 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { Role, Users, adminProfile, petugasProfile, pengendaraProfile } from '../models/Index.js'
 import { createUserSession } from '../utils/SessionService.js';
+import passwordValidator from '../utils/PasswordValidator.js';
 
 
 const AuthController = {
@@ -15,6 +16,14 @@ const AuthController = {
                         message: 'Email, Password, Dan Role Harus Di Isi Secara Lengkap!'
                     }
                 );
+            };
+
+            if (!passwordValidator(password_users)) {
+                return res.status(400).json(
+                    {
+                        message: 'Password harus mengandung huruf besar, huruf kecil, angka, simbol'
+                    }
+                )
             };
 
             const alreadyExistUser = await Users.findOne( { where: {email} } );
@@ -157,7 +166,6 @@ const AuthController = {
             }
             res.status(200).json(
                 {
-                    status: 'OK!',
                     message: `Selamat datang ${user.role.nama_role}, ${displayName}`,
                     redirect: redirectTo,
                     token,
