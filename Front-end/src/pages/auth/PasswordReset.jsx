@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function PasswordReset() {
   return (
     <div className="bg-[#1E1633] font-ubuntu h-screen w-full flex justify-center items-center">
@@ -9,9 +11,12 @@ export default function PasswordReset() {
           Your password has been successfully reset, click confirm to set a new
           password
         </p>
-        <button className="w-full bg-transparent border border-[#ffec78] text-[#ffec78] text-[23px] font-bold py-2.5 mt-30 rounded-xl cursor-pointer transition duration-300 ease-in-out hover:border-transparent hover:bg-[#ffec78] hover:text-[#1E1633]">
+        <Link
+          to="/auth/new-password"
+          className="block text-center w-full bg-transparent border border-[#ffec78] text-[#ffec78] text-[23px] font-bold py-2.5 mt-30 rounded-xl cursor-pointer transition duration-300 ease-in-out hover:border-transparent hover:bg-[#ffec78] hover:text-[#1E1633]"
+        >
           Confirm
-        </button>
+        </Link>
       </div>
     </div>
   );

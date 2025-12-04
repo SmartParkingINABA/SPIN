@@ -1,20 +1,21 @@
 import { useEffect, useRef, useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 
-export default function Dropdown() {
+export default function Dropdown({ value, onChange, clearError }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState("Select option");
   const dropdownRef = useRef(null);
+  const selectedValue = value || "Select option";
 
   // Toggle dropdown
   const handleToggle = (e) => {
     e.preventDefault();
+    clearError();
     setIsOpen((prev) => !prev);
   };
 
   // Pilih opsi
   const handleSelect = (value) => {
-    setSelected(value);
+    onChange(value);
     setIsOpen(false);
   };
 
@@ -35,14 +36,14 @@ export default function Dropdown() {
     <div className="flex flex-col" ref={dropdownRef}>
       <button
         id="selectBtn"
-        className="bg-[#ffec78] flex justify-between items-center rounded-xl py-3 px-5 my-2 cursor-pointer group"
+        className="bg-[#ffec78] flex justify-between items-center rounded-xl py-3 px-5 mt-2 cursor-pointer group"
         onClick={handleToggle}
       >
         <span
           id="selectedText"
           className="text-[#1e1633] font-semibold transition duration-300 ease-in-out group-hover:text-[rgba(30,22,51,0.7)]"
         >
-          {selected}
+          {selectedValue}
         </span>
         <IoMdArrowDropdown
           className={`w-6 h-fit transform transition-transform duration-300 ${
@@ -54,7 +55,7 @@ export default function Dropdown() {
       {isOpen && (
         <ul
           id="dropdownList"
-          className={`bg-[#ffec78] rounded-xl py-3 px-5 mt-2`}
+          className={`bg-[#ffec78] rounded-xl py-3 px-5 mt-4`}
         >
           {["Admin", "Petugas", "Pengendara"].map((item) => (
             <li

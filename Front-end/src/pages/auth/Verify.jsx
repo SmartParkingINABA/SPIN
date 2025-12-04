@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import forgotPasswordIcon from "../../assets/images/public/Enter-OTP-cuate.svg";
 
 export default function Verify() {
@@ -39,9 +40,12 @@ export default function Verify() {
             />
           </div>
 
-          <button className="w-full bg-transparent border border-[#ffec78] text-[#ffec78] text-[23px] font-bold py-2.5 mt-8 rounded-xl cursor-pointer transition duration-300 ease-in-out hover:border-transparent hover:bg-[#ffec78] hover:text-[#1E1633]">
+          <Link
+            to="/auth/password-reset"
+            className="block text-center w-full bg-transparent border border-[#ffec78] text-[#ffec78] text-[23px] font-bold py-2.5 mt-8 rounded-xl cursor-pointer transition duration-300 ease-in-out hover:border-transparent hover:bg-[#ffec78] hover:text-[#1E1633]"
+          >
             Verify
-          </button>
+          </Link>
         </form>
         <p className="text-center font-semibold text-[#FEF8FD] mt-4">
           Resend OTP <span>( 00 : 59 )</span>
