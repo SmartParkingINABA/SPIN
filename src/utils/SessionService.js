@@ -26,7 +26,7 @@ const deleteSession = async (userId, sessionId) => {
 
 const revokeAllSession = async (userId) => {
     const key = await redis.keys(`session:${userId}:*`);
-    if (!key && key.length) {
+    if (key && key.length) {
         await redis.del(key);
     }
 };
