@@ -9,7 +9,7 @@ const generateOtp = async (email) => {
 
 const verifyOtp = async (otpInput) => {
     const email = await redis.get(`otp:${otpInput}`);
-    return email ?? null;
+    return email;
 
 };
 
