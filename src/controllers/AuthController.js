@@ -5,6 +5,16 @@ import { createUserSession } from '../utils/SessionService.js';
 import passwordValidator from '../utils/PasswordValidator.js';
 
 
+const cookieName = 'sessionId';
+const cookieOptions = (req) => (
+    {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        samesite: 'strict',
+        maxAge: 1000 * 60 * 60 * 6,
+    }
+)
+
 const AuthController = {
     register: async (req, res) => {
         try {
@@ -88,7 +98,7 @@ const AuthController = {
             console.error('Register Error!', error);
             return res.status(500).json( 
                 { 
-                    message: 'Terjadi Kesalahan Pada Server!'
+                    message: 'Internal Server Error!'
                 } 
             );
             
@@ -148,10 +158,11 @@ const AuthController = {
             );
 
             const sessionId = await createUserSession(user.id_users, token);
+            const cookieValue = `${user.id_users}:${sessionId}`;
             
-            
-            const role = user.role.nama_role.toLowerCase();
+            re.cookie(cookieName, cookieValue, cookieOptions(req));
 
+            const role = user.role.nama_role.toLowerCase();
             let displayName = 'User';
             if (role === 'admin') {
                 displayName = user.adminProfile?.nama_admin || 'Admin';
@@ -160,11 +171,10 @@ const AuthController = {
             } else if (role === 'pengendara') {
                 displayName = user.pengendaraProfile?.nama || 'Pengendara';
             }
+
             res.status(200).json(
                 {
                     message: `Selamat datang ${user.role.nama_role}, ${displayName}`,
-                    token,
-                    sessionId,
                     user: {
                         id: user.id_users,
                         email: user.email,
@@ -177,7 +187,7 @@ const AuthController = {
             console.error('Login Error!', error);
             res.status(500).json(
                 {
-                    message: 'Terjadi Kesalahan Pada Server!'
+                    message: 'Internal Server Error!'
                 }
             );
             
