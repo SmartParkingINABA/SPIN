@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { Users,  Role, adminProfile, petugasProfile, pengendaraProfile } from '../models/Index.js';
+import redis from '../configs/RedisConfig.js';
 
 
 const authenticationRoleBasedUser = (roles = []) => {
@@ -10,17 +11,48 @@ const authenticationRoleBasedUser = (roles = []) => {
     return async (req, res, next) => {
         try {
 
+            let token = null;
             const authHeader = req.headers.authorization;
 
-            if (!authHeader || !authHeader.startsWith('Bearer ')) {
+            if (authHeader?.startsWith('Bearer ')) {
+                token = authHeader.split(' ')[1];
+                const payload = jwt.verify(token, process.env.JWT_SECRET_KEY);
+                req.user = payload;
+                return next();
+            };
+
+            if (!req.cookies?.sessionId) {
                 return res.status(401).json(
                     {
-                        message: 'Token tidak ditemukan atau format token salah'
+                        message: 'Session Cookie Tidak Ditemukan!'
                     }
-                );
+                )
             }
-            const token = authHeader.split(' ')[1];
-            const verifiedToken = jwt.verify(token, process.env.JWT_SECRET_KEY);
+
+            const raw = req.cookies.sessionId;
+            const [userIdStr, sessionId] = raw.split(':');
+            const userId = Number(userIdStr);
+
+            if (!userId || !sessionId) {
+                return res.status(401).json(
+                    {
+                        message: 'Session Cookie Tidak Valid!'
+                    }
+                )
+            };
+
+            const sessionKey = `session:${userId}:${sessionId}`;
+            const tokenFromRedis = await redis.get(sessionKey);
+
+            if (!tokenFromRedis) {
+                return res.status(401).json(
+                    {
+                        message: 'Session Tidak Ditemukan atau Telah Berakhir!'
+                    }
+                )
+            };
+
+            const verifiedToken = jwt.verify(tokenFromRedis, process.env.JWT_SECRET_KEY);
             
             const user = await Users.findByPk(verifiedToken.id, 
                 {
@@ -36,13 +68,13 @@ const authenticationRoleBasedUser = (roles = []) => {
             if (!user) {
                 return res.status(404).json(
                     {
-                        message: 'User Tidak Ditemukan, Harap Login Ulang!'
+                        message: 'User Tidak Ditemukan!'
                     }
                 );
             }
             const roleName = user.role?.nama_role?.toLowerCase()
             
-            if (roles.length && (!roleName || !roles.includes(roleName))) {
+            if (roles.length && !roles.includes(roleName)) {
                 return res.status(403).json(
                     {
                         message: 'Akses ditolak, Role Tidak Sesuai!'
