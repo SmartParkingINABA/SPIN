@@ -151,23 +151,18 @@ const AuthController = {
             
             
             const role = user.role.nama_role.toLowerCase();
-            let displayName = 'User';
-            let redirectTo = '/';
 
+            let displayName = 'User';
             if (role === 'admin') {
                 displayName = user.adminProfile?.nama_admin || 'Admin';
-                redirectTo = '/admin/dashboard';
             } else if (role === 'petugas') {
                 displayName = user.petugasProfile?.nama_petugas || 'Petugas';
-                redirectTo = '/petugas/dashboard';
             } else if (role === 'pengendara') {
                 displayName = user.pengendaraProfile?.nama || 'Pengendara';
-                redirectTo = '/pengendara/dashboard';
             }
             res.status(200).json(
                 {
                     message: `Selamat datang ${user.role.nama_role}, ${displayName}`,
-                    redirect: redirectTo,
                     token,
                     sessionId,
                     user: {
