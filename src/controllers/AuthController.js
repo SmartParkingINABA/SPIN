@@ -10,10 +10,10 @@ const cookieOptions = (req) => (
     {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        samesite: 'strict',
+        sameSite: 'strict',
         maxAge: 1000 * 60 * 60 * 6,
     }
-)
+);
 
 const AuthController = {
     register: async (req, res) => {
@@ -55,7 +55,7 @@ const AuthController = {
                 } 
             );
 
-            const idRole = parseInt(role_id);
+            const idRole = Number(role_id);
 
             if (idRole === 1) {
                 await adminProfile.create (
@@ -160,7 +160,7 @@ const AuthController = {
             const sessionId = await createUserSession(user.id_users, token);
             const cookieValue = `${user.id_users}:${sessionId}`;
             
-            re.cookie(cookieName, cookieValue, cookieOptions(req));
+            res.cookie(cookieName, cookieValue, cookieOptions(req));
 
             const role = user.role.nama_role.toLowerCase();
             let displayName = 'User';
