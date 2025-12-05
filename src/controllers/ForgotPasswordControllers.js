@@ -4,7 +4,15 @@ import { sendOtpToEmail, sendNotifPasswordChangedEmail } from '../utils/SendMail
 import { generateOtp, verifyOtp } from '../utils/OtpService.js'
 import redis from '../configs/RedisConfig.js';
 import passwordValidator from '../utils/PasswordValidator.js';
+import { v4 as uuidv4 } from 'uuid';
 
+const otpCookieName = 'otpSession';
+const otpCookieOptions = {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'strict',
+    maxAge: 5 * 60 * 1000 
+};
 
 const forgotPasswordController = {
     requestOtp: async (req, res) => {
@@ -73,7 +81,11 @@ const forgotPasswordController = {
                     }
                 );
             };
-            await redis.set(`otp_verified:${email}`, 'Verified', 'EX', 300);
+
+            const otpSessionId = uuidv4();
+            await redis.set(`otp_session:${otpSessionId}`, email, 'EX', 60 * 5);
+            await redis.del(`otp:${otp}`);
+            res.cookie(otpCookieName, otpSessionId, otpCookieOptions);
 
             return res.status(200).json(
                 {
@@ -84,7 +96,7 @@ const forgotPasswordController = {
             console.log(err);
             return res.status(500).json(
                 {
-                    message: 'Internal Server Error',
+                    message: 'Internal Server Error!',
                     err: err
                 }
             );
@@ -110,19 +122,23 @@ const forgotPasswordController = {
                         message: 'Password harus mengandung huruf besar, huruf kecil, angka, simbol'
                     }    
                 )
-            }
+            };
 
-            const keys= await redis.keys('otp_verified:*');
-
-            if (keys.length === 0) {
-                return res.status(400).json(
-                    {
-                        message: 'Akses Di Tolak, OTP Belum Terverifikasi!'
-                    }
-                );
+            const otpSessionId = req.cookies?.[otpCookieName];
+            if (!otpSessionId) {
+                return res.status(400).json({
+                    message: 'Akses Di Tolak, OTP Belum Terverifikasi!'
+                })
             };
         
-            const email = keys[0].replace('otp_verified:', '');
+            const email = await redis.get(`otp_session:${otpSessionId}`);
+            if (!email) {
+                return res.status(400).json(
+                    {
+                        message: 'Akses Di Tolak, OTP Belum Terverifikasi Atau Sudah Expired!'
+                    }
+                )
+            }
 
             const hashPassword = await bcrypt.hash(new_password, 10);
             await Users.update(
@@ -133,7 +149,7 @@ const forgotPasswordController = {
                     where: {email}
                 }
             );
-            await redis.del(`otp_verified:${email}`);
+            await redis.del(`otp_session:${otpSessionId}`);
 
             await sendNotifPasswordChangedEmail(email)
 
