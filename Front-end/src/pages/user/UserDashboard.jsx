@@ -9,14 +9,14 @@ import { GoDotFill } from "react-icons/go";
 
 export default function UserDashboard() {
   return (
-    <section className="bg-[#130F40] px-5 py-7 mt-16 h-[calc(100vh-64px)] overflow-y-auto">
+    <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
       <h1 className="text-[#FEF8FD] text-2xl font-bold">
         Dashboard Pengendara
       </h1>
       <p className="text-[#93A3B6] font-medium mt-1">
-        Ringkasan aktivitas parkir anda
+        Selamat datang, <span>Ahmad Ridwan</span>
       </p>
-      <div className="grid grid-cols-4 gap-x-5 mt-3 mb-6">
+      <div className="grid grid-cols-4 gap-x-5 my-6">
         <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] flex items-center justify-between px-13 py-7 rounded-md">
           <div className="text-center">
             <p className="text-[#93A3B6]">Total Kendaraan</p>
@@ -102,7 +102,7 @@ export default function UserDashboard() {
           </p>
         </div>
       </div>
-      <div className="bg-[#1E1633] border border-[rgba(255,236,120,0.5)] rounded-md px-6 py-4 mt-4">
+      <div className="bg-[#1E1633] border border-[rgba(255,236,120,0.5)] rounded-md px-6 py-4 mt-6">
         <p className="text-[#FEF8FD] text-[18px] font-medium ml-2">
           Status Parkir Terakhir
         </p>
@@ -122,7 +122,7 @@ export default function UserDashboard() {
           </div>
         </div>
       </div>
-      <div className="bg-[#1E1633] border border-[rgba(255,236,120,0.5)] rounded-md px-6 py-4 mt-4">
+      <div className="bg-[#1E1633] border border-[rgba(255,236,120,0.5)] rounded-md px-6 py-4 mt-6">
         <p className="text-[#FEF8FD] text-[18px] font-medium ml-2">
           Notifikasi Terbaru
         </p>

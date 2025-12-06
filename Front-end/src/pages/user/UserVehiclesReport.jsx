@@ -20,7 +20,7 @@ export default function UserVehiclesReport() {
 
   return (
     <>
-      <section className="bg-[#130F40] px-5 py-7 mt-16  h-[calc(100vh-64px)] overflow-y-auto">
+      <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-[#FEF8FD] text-2xl font-bold">

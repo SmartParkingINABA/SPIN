@@ -4,11 +4,10 @@ import UserSidebar from "../components/user/UserSidebar";
 
 export default function UserLayout() {
   return (
-    <main className="flex font-ubuntu box-border">
+    <main className="flex font-ubuntu">
+      <UserHeader />
       <UserSidebar />
-      <div className="w-[83%] ml-auto">
-        <UserHeader />
-
+      <div className="w-[83%] mt-[60px] ml-auto">
         {/* Content */}
         <Outlet />
       </div>

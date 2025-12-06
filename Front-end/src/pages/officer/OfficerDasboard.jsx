@@ -1,240 +1,108 @@
-import OfficerHeader from "../../components/officer/OfficerHeader.jsx";
-import OfficeSidebar from "../../components/officer/OfficerSidebar.jsx";
+import { Link } from "react-router-dom";
+import { IoQrCode } from "react-icons/io5";
+import { FaArrowDown, FaArrowUp } from "react-icons/fa6";
+import { MdAccessTime } from "react-icons/md";
+import { GoDotFill } from "react-icons/go";
 
-import { FaArrowDownLong, FaArrowUp, FaRegClock } from "react-icons/fa6";
-
-export default function OfficerDashboard() {
+export default function UserDashboard() {
   return (
-    <main className="flex font-ubuntu box-border">
-      <OfficeSidebar />
-      <div className="w-[83%] ml-auto bg-[#130F40] min-h-screen">
-        <OfficerHeader />
-        <section className="px-5 py-7 mt-14">
-          <div className="grid grid-cols-3 gap-x-5 mt-3 mb-6">
-            <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] px-6 py-4 rounded-md">
-              <div className="flex justify-between items-center mb-5">
-                <p className="font-medium text-[#FEF8FD]">Kendaraan Masuk</p>
-                <FaArrowDownLong className="text-green-500" />
-              </div>
-              <p className="text-green-500 text-2xl">48</p>
-              <p className="text-[#93A3B6]">Hari ini</p>
-            </div>
-            <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] px-6 py-4 rounded-md">
-              <div className="flex justify-between items-center mb-5">
-                <p className="font-medium text-[#FEF8FD]">Kendaraan Keluar</p>
-                <FaArrowUp className="text-red-500" />
-              </div>
-              <p className="text-red-500 text-2xl">48</p>
-              <p className="text-[#93A3B6]">Hari ini</p>
-            </div>
-            <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] px-6 py-4 rounded-md">
-              <div className="flex justify-between items-center mb-5">
-                <p className="font-medium text-[#FEF8FD]">Sedang Parkir</p>
-                <FaRegClock className="text-blue-500" />
-              </div>
-              <p className="text-blue-500 text-2xl">48</p>
-              <p className="text-[#93A3B6]">Hari ini</p>
-            </div>
-          </div>
-          <div className="bg-[#1E1633] border border-[rgba(255,236,120,0.5)] rounded-md px-6 py-4">
-            <p className="text-[#FEF8FD] text-[18px] font-medium ml-2">
-              Aktifitas Terakhir
-            </p>
-            <div className="mt-2 px-6 py-4 rounded-md bg-[#130F40] flex items-center justify-between">
-              <div className="flex items-center gap-x-3">
-                <p className="text-green-500 text-4xl">•</p>
-                <div className="">
-                  <p className="text-[#FEF8FD] text-[14px] font-medium">
-                    B 1234 ABC - <span>Masuk</span>
-                  </p>
-                  <p className="text-[#93A3B6] text-[12px] font-medium">
-                    Rizky Pratama
-                  </p>
-                </div>
-              </div>
-              <p className="text-[#FFEC78] bg-[#4B4141] text-[14px] px-3 py-1 rounded-sm font-medium">
-                10:45 WIB
-              </p>
-            </div>
-            <div className="mt-2 px-6 py-4 rounded-md bg-[#130F40] flex items-center justify-between">
-              <div className="flex items-center gap-x-3">
-                <p className="text-blue-500 text-4xl">•</p>
-                <div className="">
-                  <p className="text-[#FEF8FD] text-[14px] font-medium">
-                    B 1234 ABC - <span>Masuk</span>
-                  </p>
-                  <p className="text-[#93A3B6] text-[12px] font-medium">
-                    Rizky Pratama
-                  </p>
-                </div>
-              </div>
-              <p className="text-[#FFEC78] bg-[#4B4141] text-[14px] px-3 py-1 rounded-sm font-medium">
-                10:45 WIB
-              </p>
-            </div>
-            <div className="mt-2 px-6 py-4 rounded-md bg-[#130F40] flex items-center justify-between">
-              <div className="flex items-center gap-x-3">
-                <p className="text-green-500 text-4xl">•</p>
-                <div className="">
-                  <p className="text-[#FEF8FD] text-[14px] font-medium">
-                    B 1234 ABC - <span>Masuk</span>
-                  </p>
-                  <p className="text-[#93A3B6] text-[12px] font-medium">
-                    Rizky Pratama
-                  </p>
-                </div>
-              </div>
-              <p className="text-[#FFEC78] bg-[#4B4141] text-[14px] px-3 py-1 rounded-sm font-medium">
-                10:45 WIB
-              </p>
-            </div>
-            <div className="mt-2 px-6 py-4 rounded-md bg-[#130F40] flex items-center justify-between">
-              <div className="flex items-center gap-x-3">
-                <p className="text-blue-500 text-4xl">•</p>
-                <div className="">
-                  <p className="text-[#FEF8FD] text-[14px] font-medium">
-                    B 1234 ABC - <span>Masuk</span>
-                  </p>
-                  <p className="text-[#93A3B6] text-[12px] font-medium">
-                    Rizky Pratama
-                  </p>
-                </div>
-              </div>
-              <p className="text-[#FFEC78] bg-[#4B4141] text-[14px] px-3 py-1 rounded-sm font-medium">
-                10:45 WIB
-              </p>
-            </div>
-            <div className="mt-2 px-6 py-4 rounded-md bg-[#130F40] flex items-center justify-between">
-              <div className="flex items-center gap-x-3">
-                <p className="text-green-500 text-4xl">•</p>
-                <div className="">
-                  <p className="text-[#FEF8FD] text-[14px] font-medium">
-                    B 1234 ABC - <span>Masuk</span>
-                  </p>
-                  <p className="text-[#93A3B6] text-[12px] font-medium">
-                    Rizky Pratama
-                  </p>
-                </div>
-              </div>
-              <p className="text-[#FFEC78] bg-[#4B4141] text-[14px] px-3 py-1 rounded-sm font-medium">
-                10:45 WIB
-              </p>
-            </div>
-            <div className="mt-2 px-6 py-4 rounded-md bg-[#130F40] flex items-center justify-between">
-              <div className="flex items-center gap-x-3">
-                <p className="text-blue-500 text-4xl">•</p>
-                <div className="">
-                  <p className="text-[#FEF8FD] text-[14px] font-medium">
-                    B 1234 ABC - <span>Masuk</span>
-                  </p>
-                  <p className="text-[#93A3B6] text-[12px] font-medium">
-                    Rizky Pratama
-                  </p>
-                </div>
-              </div>
-              <p className="text-[#FFEC78] bg-[#4B4141] text-[14px] px-3 py-1 rounded-sm font-medium">
-                10:45 WIB
-              </p>
-            </div>
-            <div className="mt-2 px-6 py-4 rounded-md bg-[#130F40] flex items-center justify-between">
-              <div className="flex items-center gap-x-3">
-                <p className="text-green-500 text-4xl">•</p>
-                <div className="">
-                  <p className="text-[#FEF8FD] text-[14px] font-medium">
-                    B 1234 ABC - <span>Masuk</span>
-                  </p>
-                  <p className="text-[#93A3B6] text-[12px] font-medium">
-                    Rizky Pratama
-                  </p>
-                </div>
-              </div>
-              <p className="text-[#FFEC78] bg-[#4B4141] text-[14px] px-3 py-1 rounded-sm font-medium">
-                10:45 WIB
-              </p>
-            </div>
-            <div className="mt-2 px-6 py-4 rounded-md bg-[#130F40] flex items-center justify-between">
-              <div className="flex items-center gap-x-3">
-                <p className="text-blue-500 text-4xl">•</p>
-                <div className="">
-                  <p className="text-[#FEF8FD] text-[14px] font-medium">
-                    B 1234 ABC - <span>Masuk</span>
-                  </p>
-                  <p className="text-[#93A3B6] text-[12px] font-medium">
-                    Rizky Pratama
-                  </p>
-                </div>
-              </div>
-              <p className="text-[#FFEC78] bg-[#4B4141] text-[14px] px-3 py-1 rounded-sm font-medium">
-                10:45 WIB
-              </p>
-            </div>
-            <div className="mt-2 px-6 py-4 rounded-md bg-[#130F40] flex items-center justify-between">
-              <div className="flex items-center gap-x-3">
-                <p className="text-green-500 text-4xl">•</p>
-                <div className="">
-                  <p className="text-[#FEF8FD] text-[14px] font-medium">
-                    B 1234 ABC - <span>Masuk</span>
-                  </p>
-                  <p className="text-[#93A3B6] text-[12px] font-medium">
-                    Rizky Pratama
-                  </p>
-                </div>
-              </div>
-              <p className="text-[#FFEC78] bg-[#4B4141] text-[14px] px-3 py-1 rounded-sm font-medium">
-                10:45 WIB
-              </p>
-            </div>
-            <div className="mt-2 px-6 py-4 rounded-md bg-[#130F40] flex items-center justify-between">
-              <div className="flex items-center gap-x-3">
-                <p className="text-blue-500 text-4xl">•</p>
-                <div className="">
-                  <p className="text-[#FEF8FD] text-[14px] font-medium">
-                    B 1234 ABC - <span>Masuk</span>
-                  </p>
-                  <p className="text-[#93A3B6] text-[12px] font-medium">
-                    Rizky Pratama
-                  </p>
-                </div>
-              </div>
-              <p className="text-[#FFEC78] bg-[#4B4141] text-[14px] px-3 py-1 rounded-sm font-medium">
-                10:45 WIB
-              </p>
-            </div>
-            <div className="mt-2 px-6 py-4 rounded-md bg-[#130F40] flex items-center justify-between">
-              <div className="flex items-center gap-x-3">
-                <p className="text-green-500 text-4xl">•</p>
-                <div className="">
-                  <p className="text-[#FEF8FD] text-[14px] font-medium">
-                    B 1234 ABC - <span>Masuk</span>
-                  </p>
-                  <p className="text-[#93A3B6] text-[12px] font-medium">
-                    Rizky Pratama
-                  </p>
-                </div>
-              </div>
-              <p className="text-[#FFEC78] bg-[#4B4141] text-[14px] px-3 py-1 rounded-sm font-medium">
-                10:45 WIB
-              </p>
-            </div>
-            <div className="mt-2 px-6 py-4 rounded-md bg-[#130F40] flex items-center justify-between">
-              <div className="flex items-center gap-x-3">
-                <p className="text-blue-500 text-4xl">•</p>
-                <div className="">
-                  <p className="text-[#FEF8FD] text-[14px] font-medium">
-                    B 1234 ABC - <span>Masuk</span>
-                  </p>
-                  <p className="text-[#93A3B6] text-[12px] font-medium">
-                    Rizky Pratama
-                  </p>
-                </div>
-              </div>
-              <p className="text-[#FFEC78] bg-[#4B4141] text-[14px] px-3 py-1 rounded-sm font-medium">
-                10:45 WIB
-              </p>
-            </div>
-          </div>
-        </section>
+    <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
+      <div className="flex items-center justify-between mb-6">
+        <div>
+          <h1 className="text-[#FEF8FD] text-2xl font-bold">
+            Dashboard Petugas
+          </h1>
+          <p className="text-[#93A3B6] font-medium mt-1">
+            Selamat datang, <span>Nama Petugas</span>
+          </p>
+        </div>
+        <Link
+          to={""}
+          className="bg-[#FFEC78] flex items-center gap-x-2 px-4 py-2.5 rounded-sm transition duration-300 ease-in-out border border-transparent hover:border-[#FFEC78] hover:bg-transparent group"
+        >
+          <IoQrCode className="text-[#130F40] w-5 h-fit group-hover:text-[#FFEC78] transition duration-300 ease-in-out" />
+          <p className="text-[#130F40] font-medium group-hover:text-[#FFEC78] transition duration-300 ease-in-out">
+            Mulai Scan
+          </p>
+        </Link>
       </div>
-    </main>
+      <div className="grid grid-cols-3 gap-x-6 mb-6">
+        <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] flex flex-col gap-y-8 px-6 py-4 rounded-md">
+          <div className="flex items-center justify-between w-full">
+            <p className="text-[#93A3B6] font-medium">Kendaraan Masuk</p>
+            <FaArrowDown className="text-green-500 w-4 h-fit" />
+          </div>
+          <div>
+            <p className="text-green-500 font-semibold">24</p>
+            <p className="text-[#93A3B6] text-[14px]">Hari ini</p>
+          </div>
+        </div>
+        <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] flex flex-col gap-y-8 px-6 py-4 rounded-md">
+          <div className="flex items-center justify-between w-full">
+            <p className="text-[#93A3B6] font-medium">Sedang Parkir</p>
+            <MdAccessTime className="text-yellow-500 w-4 h-fit" />
+          </div>
+          <div>
+            <p className="text-yellow-500 font-semibold">19</p>
+            <p className="text-[#93A3B6] text-[14px]">Hari ini</p>
+          </div>
+        </div>
+        <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] flex flex-col gap-y-8 px-6 py-4 rounded-md">
+          <div className="flex items-center justify-between w-full">
+            <p className="text-[#93A3B6] font-medium">Kendaraan Keluar</p>
+            <FaArrowUp className="text-red-500 w-4 h-fit" />
+          </div>
+          <div>
+            <p className="text-red-500 font-semibold">5</p>
+            <p className="text-[#93A3B6] text-[14px]">Hari ini</p>
+          </div>
+        </div>
+      </div>
+      <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] rounded-md px-6 py-4">
+        <p className="text-[#FEF8FD] text-[18px] font-medium">
+          Aktivitas Terakhir
+        </p>
+        <div className="flex items-center justify-between mt-3.5">
+          <div className="flex items-center gap-x-3">
+            <GoDotFill className="text-green-500 w-4 h-fit" />
+            <div>
+              <p className="text-[#FEF8FD] font-medium">B 1234 ABC - Masuk</p>
+              <p className="text-[#93A3B6] text-[14px]">Rizky Pratama</p>
+            </div>
+          </div>
+          <p className="text-[#93A3B6]">10:45 WIB</p>
+        </div>
+        <div className="flex items-center justify-between mt-3.5">
+          <div className="flex items-center gap-x-3">
+            <GoDotFill className="text-green-500 w-4 h-fit" />
+            <div>
+              <p className="text-[#FEF8FD] font-medium">B 1234 ABC - Masuk</p>
+              <p className="text-[#93A3B6] text-[14px]">Rizky Pratama</p>
+            </div>
+          </div>
+          <p className="text-[#93A3B6]">10:45 WIB</p>
+        </div>
+        <div className="flex items-center justify-between mt-3.5">
+          <div className="flex items-center gap-x-3">
+            <GoDotFill className="text-red-500 w-4 h-fit" />
+            <div>
+              <p className="text-[#FEF8FD] font-medium">B 1234 ABC - Keluar</p>
+              <p className="text-[#93A3B6] text-[14px]">Rizky Pratama</p>
+            </div>
+          </div>
+          <p className="text-[#93A3B6]">10:45 WIB</p>
+        </div>
+        <div className="flex items-center justify-between mt-3.5">
+          <div className="flex items-center gap-x-3">
+            <GoDotFill className="text-red-500 w-4 h-fit" />
+            <div>
+              <p className="text-[#FEF8FD] font-medium">B 1234 ABC - Keluar</p>
+              <p className="text-[#93A3B6] text-[14px]">Rizky Pratama</p>
+            </div>
+          </div>
+          <p className="text-[#93A3B6]">10:45 WIB</p>
+        </div>
+      </div>
+    </section>
   );
 }

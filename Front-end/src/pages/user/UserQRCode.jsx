@@ -5,7 +5,7 @@ import { FaDownload, FaPrint } from "react-icons/fa6";
 
 export default function UserQRCode() {
   return (
-    <section className="bg-[#130F40] px-5 py-7 mt-16 h-[calc(100vh-64px)] overflow-y-auto">
+    <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
       <h1 className="text-[#FEF8FD] text-2xl font-bold">QR Code Saya</h1>
       <p className="text-[#93A3B6] font-medium mt-1">
         QR Code untuk kendaraan anda

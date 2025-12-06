@@ -24,6 +24,15 @@ import UserVehiclesReport from "./pages/user/UserVehiclesReport";
 import UserDashboard from "./pages/user/UserDashboard";
 import UserQRCode from "./pages/user/UserQRCode";
 
+// Officer
+import OfficerLayout from "./layouts/OfficerLayout";
+import OfficerDashboard from "./pages/officer/OfficerDasboard";
+import OfficerVehiclesReport from "./pages/officer/OfficerVehiclesReport";
+import OfficerScanQR from "./pages/officer/OfficerScanQR";
+import OfficerParkingHistory from "./pages/officer/OfficerParkingHistory";
+import OfficerNotifikasi from "./pages/officer/OfficerNotifikasi";
+import OfficerProfile from "./pages/officer/OfficerProfile";
+
 function App() {
   return (
     <Routes>
@@ -58,6 +67,14 @@ function App() {
       {/* ADMIN DASBOARD*/}
 
       {/* OFFICER DASBOARD */}
+      <Route path="/officer" element={<OfficerLayout />}>
+        <Route index element={<OfficerDashboard />} />
+        <Route path="report-data" element={<OfficerVehiclesReport />} />
+        <Route path="scan-qr-code" element={<OfficerScanQR />} />
+        <Route path="parking-history" element={<OfficerParkingHistory />} />
+        <Route path="notifikasi" element={<OfficerNotifikasi />} />
+        <Route path="officer-profile" element={<OfficerProfile />} />
+      </Route>
     </Routes>
   );
 }

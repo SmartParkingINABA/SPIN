@@ -1,15 +1,13 @@
 import { NavLink } from "react-router-dom";
 
-import UserFooter from "./UserFooter";
-
 import { HiOutlineHome } from "react-icons/hi2";
 import { FaCarSide, FaBell } from "react-icons/fa6";
 import { IoQrCode, IoSettingsSharp } from "react-icons/io5";
 import { RxCountdownTimer } from "react-icons/rx";
-
+import SidebarFooter from "../SidebarFooter";
 export default function UserSidebar() {
   return (
-    <aside className="border border-[rgba(255,236,120,0.5)] border-l-0 bg-[#1E1633] fixed bottom-0 left-0 z-40 w-[17%] h-screen flex flex-col">
+    <aside className="border border-[rgba(255,236,120,0.5)] border-l-0 border-t-0 bg-[#1E1633] fixed top-[60px] left-0 z-40 w-[17%] h-[calc(100vh-60px)] flex flex-col">
       <div className="flex flex-col items-center py-4">
         <div>
           <h1 className="text-[#FFEC78] font-bold text-2xl">SPIN</h1>
@@ -153,13 +151,13 @@ export default function UserSidebar() {
                       isActive ? "text-[#FFEC78]" : "text-[#FEF8FD]"
                     }`}
                   />
-                  Akun Profile
+                  Profil Pengguna
                 </p>
               </li>
             )}
           </NavLink>
         </ul>
-        <UserFooter />
+        <SidebarFooter />
       </div>
     </aside>
   );
