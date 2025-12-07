@@ -1,4 +1,4 @@
-import { deleteSession } from "../utils/SessionService.js";
+import { deleteSession } from "../utils/Session.js";
 
 const cookieName = 'sessionId';
 
