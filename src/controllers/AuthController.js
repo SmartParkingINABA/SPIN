@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { Role, Users, adminProfile, petugasProfile, pengendaraProfile } from '../models/Index.js'
-import { createUserSession } from '../utils/SessionService.js';
+import { createUserSession } from '../utils/Session.js';
 import passwordValidator from '../utils/PasswordValidator.js';
 
 
