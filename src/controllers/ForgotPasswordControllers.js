@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt'
 import { Users } from '../models/Index.js'
 import { sendOtpToEmail, sendNotifPasswordChangedEmail } from '../utils/SendMail.js'
-import { generateOtp, verifyOtp } from '../utils/OtpService.js'
+import { generateOtp, verifyOtp } from '../utils/Otp.js'
 import redis from '../configs/RedisConfig.js';
 import passwordValidator from '../utils/PasswordValidator.js';
 import { v4 as uuidv4 } from 'uuid';
