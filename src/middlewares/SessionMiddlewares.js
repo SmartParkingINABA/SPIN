@@ -1,4 +1,4 @@
-import { sessionValid } from "../utils/SessionService.js";
+import { sessionValid } from "../utils/Session.js";
 
 const verifySession = async (req, res, next) => {
     try {
