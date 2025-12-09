@@ -22,7 +22,7 @@ const verifySession = async (req, res, next) => {
                 }
             )
         };
-        const valid = await sessionValid(user.id_users, sessionId);
+        const valid = await sessionValid(userId, sessionId);
         if (!valid) {
             return res.status(401).json(
                 {
