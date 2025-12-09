@@ -10,7 +10,8 @@ const statusPetugas = async (req, res, next) => {
                     message: 'Akses Di Tolak!, Hanya Petugas Yang Di Izinkan'
                 }
             );
-        }
+        };
+
         const key = `petugas:presence:${user.id_users}`;
         const status = await redis.get(key);
 
@@ -20,7 +21,10 @@ const statusPetugas = async (req, res, next) => {
                     message: 'Petugas Tidak Aktif'
                 }
             );
-        }
+        };
+
+        await redis.expire(key, 60);
+
         req.status = JSON.parse(status);
         next();
     } catch (err) {
