@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken'
 import { Role, Users, adminProfile, petugasProfile, pengendaraProfile } from '../models/Index.js'
 import { createUserSession } from '../utils/Session.js';
 import passwordValidator from '../utils/PasswordValidator.js';
+import redis from '../configs/RedisConfig.js';
 
 
 const cookieName = 'sessionId';
@@ -161,6 +162,17 @@ const AuthController = {
             const cookieValue = `${user.id_users}:${sessionId}`;
             
             res.cookie(cookieName, cookieValue, cookieOptions(req));
+
+            await redis.set(
+                `petugas:presence:${user.id_users}`,
+                JSON.stringify(
+                    {
+                        lastSeen: Date.now()
+                    }
+                ),
+                'EX',
+                60
+            );
 
             const role = user.role.nama_role.toLowerCase();
             let displayName = 'User';
