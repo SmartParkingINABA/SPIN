@@ -1,7 +1,4 @@
-import { DataTypes } from "sequelize";
-import sequelize from "../configs/DBConfig.js";
-
-const roleModel = () => {
+const roleModel = (sequelize, DataTypes) => {
     const Role = sequelize.define('Role', {
         id_role: {
             type: DataTypes.INTEGER,

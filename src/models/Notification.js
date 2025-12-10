@@ -1,7 +1,4 @@
-import { DataTypes } from "sequelize";
-import sequelize from "../configs/DBConfig.js";
-
-const notificationModel = () => {
+const notificationModel = (sequelize, DataTypes) => {
     const Notification = sequelize.define('Notification', {
         id_notifikasi : {
             type: DataTypes.INTEGER,

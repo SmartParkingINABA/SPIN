@@ -1,7 +1,4 @@
-import { DataTypes } from "sequelize";
-import sequelize from "../configs/DBConfig.js";
-
-const pengendaraProfileModel = () => {
+const pengendaraProfileModel = (sequelize, DataTypes) => {
     const pengendaraProfile = sequelize.define('pengendaraProfile', {
         id_pengendara : {
             type: DataTypes.INTEGER,

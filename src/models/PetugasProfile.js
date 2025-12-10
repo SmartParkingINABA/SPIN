@@ -1,7 +1,4 @@
-import { DataTypes } from 'sequelize'
-import sequelize from '../configs/DBConfig.js'
-
-const petugasProfileModel = () => {
+const petugasProfileModel = (sequelize, DataTypes) => {
     const petugasProfile = sequelize.define('petugasProfile', {
         id_petugas : {
             type: DataTypes.INTEGER,
