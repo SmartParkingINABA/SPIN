@@ -22,6 +22,11 @@ const dashboardAdminServices = {
 
         const dates = generateLastNDates(7);
 
+        const parkirRows = await sequelize.query(
+            `SELECT DATE(waktu_masuk) AS tanggal, COUNT(*) AS total FROM kendaraan_masuk WHERE 
+            waktu_masuk >= DATE_SUB(CURDATE(), INTERVAL 6 DAY) GROUP BY DATE(waktu_masuk)`,
+        );
+
         const masukRows = await sequelize.query(
             `SELECT DATE(waktu_masuk) AS tanggal, COUNT(*) AS total FROM kendaraan_masuk WHERE waktu_masuk >= 
             DATE_SUB(CURDATE(), INTERVAL 6 DAY) GROUP BY DATE(waktu_masuk)`,
@@ -50,6 +55,7 @@ const dashboardAdminServices = {
         const chartMasuk = mergeCounts(dates, masukRows);
         const chartKeluar = mergeCounts(dates, keluarRows);
         const chartDurasi = mergeCounts(dates, durasiRows, 'tanggal', 'total');
+        const chartParkir = mergeCounts(dates, parkirRows);
 
         const aktivitas = await sequelize.query(
             `(SELECT km.kendaraan_id, k.no_plat, km.waktu_masuk AS waktu, 'masuk' AS jenis, pp.nama_pengendara FROM
@@ -81,9 +87,10 @@ const dashboardAdminServices = {
             },
             chart: {
                 dates,
+                parkirPerTujuhHari: chartParkir,
                 masuk: chartMasuk,
                 keluar: chartKeluar,
-                durasi: chartDurasi
+                durasiParkirRatarata: chartDurasi
             },
             aktivitasTerbaru: aktivitas,
             pengendaraBaru: newPengendara
