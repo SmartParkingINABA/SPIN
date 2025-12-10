@@ -5,12 +5,13 @@ import verifySession from '../middlewares/SessionMiddlewares.js';
 import dashboardAdminControllers from '../controllers/AdminDashBoardControllers.js';
 import logoutController from '../controllers/LogOutControllers.js';
 import profileController from '../controllers/ProfileController.js';
+import statusPetugas from '../middlewares/PetugasStatusMiddlewares.js';
 
 
 const authRoutes = express.Router();
 //Auth Login & Register
 authRoutes.post('/register', AuthController.register);
-authRoutes.post('/login', AuthController.login);
+authRoutes.post('/login', AuthController.login, statusPetugas);
 
 //Profile 
 authRoutes.get(
@@ -39,6 +40,8 @@ authRoutes.get(
 authRoutes.get(
     '/petugas/dashboard',
     authenticationRoleBasedUser(['petugas']),
+    verifySession,
+    statusPetugas,
     (req, res) => {
         res.status(200).json({
             message: `Selamat Datang Di Dashboard Petugas, ${req.user.petugasProfile?.nama_petugas || req.user.email}`,
