@@ -4,7 +4,7 @@ const statusPetugas = async (req, res, next) => {
     try {
         const user = req.user;
 
-        if (!user || user.role.nama_role.toLowerCase() !== 'petugas') {
+        if (!user || user.role?.nama_role?.toLowerCase() !== 'petugas') {
             return res.status(403).json(
                 {
                     message: 'Akses Di Tolak!, Hanya Petugas Yang Di Izinkan'
@@ -13,19 +13,17 @@ const statusPetugas = async (req, res, next) => {
         };
 
         const key = `petugas:presence:${user.id_users}`;
-        const status = await redis.get(key);
 
-        if(!status) {
-            return res.status(401).json(
+        await redis.set(
+            key,
+            JSON.stringify(
                 {
-                    message: 'Petugas Tidak Aktif'
+                    lastSeen: Date.now()
                 }
-            );
-        };
-
-        await redis.expire(key, 60);
-
-        req.status = JSON.parse(status);
+            ),
+            'EX',
+            60
+        );
         next();
     } catch (err) {
         console.error(err);
