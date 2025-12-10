@@ -41,7 +41,6 @@ authRoutes.get(
     '/petugas/dashboard',
     authenticationRoleBasedUser(['petugas']),
     verifySession,
-    statusPetugas,
     (req, res) => {
         res.status(200).json({
             message: `Selamat Datang Di Dashboard Petugas, ${req.user.petugasProfile?.nama_petugas || req.user.email}`,
