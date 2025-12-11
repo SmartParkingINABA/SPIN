@@ -9,15 +9,5 @@ const redis = new Redis ({
     password: process.env.REDIS_PW,
 });
 
-redis.on('connect', () => {
-    console.log('Redis Connected successs!');
-    
-});
-
-redis.on('error', (err) => {
-    console.log('Redis failed to connected', err);
-    
-});
-
 
 export default redis;
