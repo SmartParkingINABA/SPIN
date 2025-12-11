@@ -186,7 +186,7 @@ const AuthController = {
 
             res.status(200).json(
                 {
-                    message: `Selamat datang ${user.role.nama_role}, ${displayName}`,
+                    message: `Selamat Datang ${user.role.nama_role}, ${displayName}`,
                     user: {
                         id: user.id_users,
                         email: user.email,
