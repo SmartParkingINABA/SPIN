@@ -52,15 +52,9 @@ class menuPetugasParkirService {
                     nama: p.petugasProfile?.nama_petugas || '-',
                     email: p.email,
                     no_telp: p.petugasProfile?.no_telp || '-',
-                    shift: p.petugasProfile?.shift || '-',
-                    shift_label: p.petugasProfile?.lokasi_kerja? `Area ${p.petugasProfile.lokasi_kerja}` : '-',
-
-                    area: p.petugasProfile?.lokasi_kerja || '-',
-                    area_label: p.petugasProfile?.lokasi_kerja? `Area ${p.petugasProfile.lokasi_kerja}` : '-',
-
-                    status_akun: p.status,
-                    status_label: p.status === 'Aktif' ? 'Aktif' : 'Non-Aktif',
-
+                    shift: p.petugasProfile?.shift? `Shift ${p.petugasProfile.shift}` : '-',
+                    area: p.petugasProfile?.lokasi_kerja? `Area ${p.petugasProfile.lokasi_kerja}` : '-',
+                    status: p.status === 'Aktif' ? 'Aktif' : 'Non-Aktif',
                     lastSeen: statusPetugas?.lastSeen || null,
                 }
             );
