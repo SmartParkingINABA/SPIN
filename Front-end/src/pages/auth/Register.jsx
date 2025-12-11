@@ -4,6 +4,7 @@ import Dropdown from "../../components/auth/Dropdown.jsx";
 import { IoMdMail } from "react-icons/io";
 import { FaLock } from "react-icons/fa6";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
@@ -99,7 +100,7 @@ export default function Register() {
           >
             Enter your email
           </label>
-          <div className="flex items-center gap-x-4 bg-[#ffec78] py-3 px-5 mt-2 rounded-xl">
+          <div className="flex items-center gap-x-4 bg-[#F5E79E] py-3 px-5 mt-2 rounded-md">
             <IoMdMail className="w-7 h-fit" />
             <input
               id="email"
@@ -124,7 +125,7 @@ export default function Register() {
           >
             Enter your password
           </label>
-          <div className="flex items-center gap-x-4 bg-[#ffec78] px-5 py-3 mt-2 rounded-xl">
+          <div className="flex items-center gap-x-4 bg-[#F5E79E] px-5 py-3 mt-2 rounded-md">
             <FaLock className="w-7 h-fit" />
             <input
               id="password"
@@ -161,7 +162,7 @@ export default function Register() {
           >
             Re-Enter your password
           </label>
-          <div className="flex items-center gap-x-4 bg-[#ffec78] px-5 py-3 mt-2 rounded-xl">
+          <div className="flex items-center gap-x-4 bg-[#F5E79E] px-5 py-3 mt-2 rounded-md">
             <FaLock className="w-7 h-fit" />
             <input
               id="confirm-password"
@@ -213,12 +214,12 @@ export default function Register() {
             </p>
           )}
 
-          <button
+          <Link
             type="submit"
-            className="w-full bg-transparent border border-[#ffec78] text-[#ffec78] text-[23px] font-bold py-2.5 mt-8 rounded-xl cursor-pointer transition duration-300 ease-in-out hover:border-transparent hover:bg-[#ffec78] hover:text-[#1E1633]"
+            className="block text-center w-full bg-[#FFDB58] text-[#130F40] text-[23px] font-bold py-2.5 mt-8 rounded-md transition opacity-100 hover:opacity-80"
           >
             Register
-          </button>
+          </Link>
         </form>
       </div>
     </div>

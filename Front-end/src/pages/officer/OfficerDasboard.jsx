@@ -17,13 +17,11 @@ export default function UserDashboard() {
           </p>
         </div>
         <Link
-          to={""}
-          className="bg-[#FFEC78] flex items-center gap-x-2 px-4 py-2.5 rounded-sm transition duration-300 ease-in-out border border-transparent hover:border-[#FFEC78] hover:bg-transparent group"
+          to={"/officer/scan-qr-code"}
+          className="bg-[#FFDB58] flex items-center gap-x-2 px-4 py-2.5 rounded-sm transition opacity-100 hover:opacity-80"
         >
-          <IoQrCode className="text-[#130F40] w-5 h-fit group-hover:text-[#FFEC78] transition duration-300 ease-in-out" />
-          <p className="text-[#130F40] font-medium group-hover:text-[#FFEC78] transition duration-300 ease-in-out">
-            Mulai Scan
-          </p>
+          <IoQrCode className="text-[#130F40] w-5 h-fit" />
+          <p className="text-[#130F40] font-medium">Mulai Scan</p>
         </Link>
       </div>
       <div className="grid grid-cols-3 gap-x-6 mb-6">
@@ -50,10 +48,10 @@ export default function UserDashboard() {
         <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] flex flex-col gap-y-8 px-6 py-4 rounded-md">
           <div className="flex items-center justify-between w-full">
             <p className="text-[#93A3B6] font-medium">Kendaraan Keluar</p>
-            <FaArrowUp className="text-red-500 w-4 h-fit" />
+            <FaArrowUp className="text-blue-500 w-4 h-fit" />
           </div>
           <div>
-            <p className="text-red-500 font-semibold">5</p>
+            <p className="text-blue-500 font-semibold">5</p>
             <p className="text-[#93A3B6] text-[14px]">Hari ini</p>
           </div>
         </div>
@@ -84,7 +82,7 @@ export default function UserDashboard() {
         </div>
         <div className="flex items-center justify-between mt-3.5">
           <div className="flex items-center gap-x-3">
-            <GoDotFill className="text-red-500 w-4 h-fit" />
+            <GoDotFill className="text-blue-500 w-4 h-fit" />
             <div>
               <p className="text-[#FEF8FD] font-medium">B 1234 ABC - Keluar</p>
               <p className="text-[#93A3B6] text-[14px]">Rizky Pratama</p>
@@ -94,7 +92,7 @@ export default function UserDashboard() {
         </div>
         <div className="flex items-center justify-between mt-3.5">
           <div className="flex items-center gap-x-3">
-            <GoDotFill className="text-red-500 w-4 h-fit" />
+            <GoDotFill className="text-blue-500 w-4 h-fit" />
             <div>
               <p className="text-[#FEF8FD] font-medium">B 1234 ABC - Keluar</p>
               <p className="text-[#93A3B6] text-[14px]">Rizky Pratama</p>

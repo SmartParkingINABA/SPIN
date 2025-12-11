@@ -27,10 +27,10 @@ export default function About() {
               kenyamanan parkir di lingkungan Universitas INABA.
             </p>
             <div className="grid grid-cols-2 w-3/4 gap-x-5 mt-20">
-              <button className="bg-[#ffec78] text-[#130F40] font-semibold py-3 rounded-md border border-transparent transition duration-300 ease-in-out hover:text-[#ffec78] hover:bg-transparent hover:border-[#ffec78] cursor-pointer">
+              <button className="bg-[#FFDB58] text-[#130F40] font-semibold py-3 rounded-md border border-transparent transition duration-300 ease-in-out hover:text-[#FFDB58] hover:bg-transparent hover:border-[#FFDB58] cursor-pointer">
                 Pelajari Lebih Lanjut
               </button>
-              <button className="bg-transparent text-[#ffec78] font-semibold py-3  rounded-md border border-[#ffec78] transition duration-300 ease-in-out hover:text-[#130F40] hover:bg-[#ffec78] hover:border-transparent cursor-pointer">
+              <button className="bg-transparent text-[#FFDB58] font-semibold py-3  rounded-md border border-[#FFDB58] transition duration-300 ease-in-out hover:text-[#130F40] hover:bg-[#FFDB58] hover:border-transparent cursor-pointer">
                 Hubungi Kami
               </button>
             </div>
@@ -55,7 +55,7 @@ export default function About() {
               laporan/riwayat parkir kendaraan.
             </p>
             <div className="flex gap-x-5 mt-20">
-              <button className="bg-[#ffec78] text-[#130F40] font-semibold py-3 px-4 rounded-md border border-transparent transition duration-300 ease-in-out hover:text-[#ffec78] hover:bg-transparent hover:border-[#ffec78] cursor-pointer flex items-center gap-x-3">
+              <button className="bg-[#FFDB58] text-[#130F40] font-semibold py-3 px-4 rounded-md border border-transparent transition duration-300 ease-in-out hover:text-[#FFDB58] hover:bg-transparent hover:border-[#FFDB58] cursor-pointer flex items-center gap-x-3">
                 Pelajari fitur <FaArrowRightLong className="h-fit" />
               </button>
             </div>
@@ -285,10 +285,10 @@ export default function About() {
             Tertarik menggunakan semua fitur ini untuk kampus Anda?
           </p>
           <div className="grid grid-cols-2 gap-x-5 mt-5 w-3/4 mx-auto">
-            <button className="bg-[#ffec78] text-[#130F40] font-semibold py-3 rounded-md border border-transparent transition duration-300 ease-in-out hover:text-[#ffec78] hover:bg-transparent hover:border-[#ffec78] cursor-pointer">
+            <button className="bg-[#FFDB58] text-[#130F40] font-semibold py-3 rounded-md border border-transparent transition duration-300 ease-in-out hover:text-[#FFDB58] hover:bg-transparent hover:border-[#FFDB58] cursor-pointer">
               Hubungi Kami
             </button>
-            <button className="bg-transparent text-[#ffec78] font-semibold py-3 rounded-md border border-[#ffec78] transition duration-300 ease-in-out hover:text-[#130F40] hover:bg-[#ffec78] hover:border-transparent cursor-pointer">
+            <button className="bg-transparent text-[#FFDB58] font-semibold py-3 rounded-md border border-[#FFDB58] transition duration-300 ease-in-out hover:text-[#130F40] hover:bg-[#FFDB58] hover:border-transparent cursor-pointer">
               Coba Sekarang
             </button>
           </div>
@@ -481,10 +481,10 @@ export default function About() {
             Siap menggunakan SPIN untuk kampus Anda?
           </p>
           <div className="grid grid-cols-2 gap-x-5 mt-5 w-3/4 mx-auto">
-            <button className="bg-[#ffec78] text-[#130F40] font-semibold py-3 rounded-md border border-transparent transition duration-300 ease-in-out hover:text-[#ffec78] hover:bg-transparent hover:border-[#ffec78] cursor-pointer">
+            <button className="bg-[#FFDB58] text-[#130F40] font-semibold py-3 rounded-md border border-transparent transition duration-300 ease-in-out hover:text-[#FFDB58] hover:bg-transparent hover:border-[#FFDB58] cursor-pointer">
               Hubungi Kami
             </button>
-            <button className="bg-transparent text-[#ffec78] font-semibold py-3 rounded-md border border-[#ffec78] transition duration-300 ease-in-out hover:text-[#130F40] hover:bg-[#ffec78] hover:border-transparent cursor-pointer">
+            <button className="bg-transparent text-[#FFDB58] font-semibold py-3 rounded-md border border-[#FFDB58] transition duration-300 ease-in-out hover:text-[#130F40] hover:bg-[#FFDB58] hover:border-transparent cursor-pointer">
               Login
             </button>
           </div>

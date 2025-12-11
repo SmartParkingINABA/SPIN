@@ -16,25 +16,25 @@ export default function Verify() {
           <div className="grid grid-cols-4 gap-x-10">
             <input
               type="text"
-              className="bg-[#ffec78] text-2xl text-center font-semibold rounded-md py-3 px-5 outline-0"
+              className="bg-[#F5E79E] text-2xl text-center font-semibold rounded-md py-3 px-5 outline-0"
               minLength={1}
               maxLength={1}
             />
             <input
               type="text"
-              className="bg-[#ffec78] text-2xl text-center font-semibold rounded-md py-3 px-5 outline-0"
+              className="bg-[#F5E79E] text-2xl text-center font-semibold rounded-md py-3 px-5 outline-0"
               minLength={1}
               maxLength={1}
             />
             <input
               type="text"
-              className="bg-[#ffec78] text-2xl text-center font-semibold rounded-md py-3 px-5 outline-0"
+              className="bg-[#F5E79E] text-2xl text-center font-semibold rounded-md py-3 px-5 outline-0"
               minLength={1}
               maxLength={1}
             />
             <input
               type="text"
-              className="bg-[#ffec78] text-2xl text-center font-semibold rounded-md py-3 px-5 outline-0"
+              className="bg-[#F5E79E] text-2xl text-center font-semibold rounded-md py-3 px-5 outline-0"
               minLength={1}
               maxLength={1}
             />
@@ -42,7 +42,7 @@ export default function Verify() {
 
           <Link
             to="/auth/password-reset"
-            className="block text-center w-full bg-transparent border border-[#ffec78] text-[#ffec78] text-[23px] font-bold py-2.5 mt-8 rounded-xl cursor-pointer transition duration-300 ease-in-out hover:border-transparent hover:bg-[#ffec78] hover:text-[#1E1633]"
+            className="block text-center w-full bg-[#FFDB58] text-[#130F40] text-[23px] font-bold py-2.5 mt-8 rounded-md transition opacity-100 hover:opacity-80"
           >
             Verify
           </Link>

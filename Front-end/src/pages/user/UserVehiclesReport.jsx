@@ -6,6 +6,7 @@ import BarIcon from "../../assets/images/user/barIcon.svg?react";
 import { FaCarSide, FaMotorcycle, FaPlus, FaTrashCan } from "react-icons/fa6";
 import { BiSolidEdit } from "react-icons/bi";
 import { IoQrCode } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 export default function UserVehiclesReport() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -30,13 +31,13 @@ export default function UserVehiclesReport() {
               Kelola kendaraan yang terdaftar
             </p>
           </div>
-          <button
+          <Link
             onClick={handleOpenModal}
-            className="bg-[#FFEC78] flex items-center gap-x-2.5 rounded-md px-3 py-2 cursor-pointer transition duration-300 ease-in-out active:opacity-85"
+            className="bg-[#FFDB58] flex items-center gap-x-2.5 rounded-md px-3 py-2 transition opacity-100 hover:opacity-80"
           >
             <FaPlus className="w-6 h-fit" />
-            <p className="text-[#1E1633] font-semibold">Tambah Kendaraan</p>
-          </button>
+            <p className="text-[#1E1633] font-medium">Tambah Kendaraan</p>
+          </Link>
         </div>
         <div className="grid grid-cols-2 gap-x-5 mt-7">
           <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] rounded-md p-8">

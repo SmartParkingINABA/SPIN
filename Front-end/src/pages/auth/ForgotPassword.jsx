@@ -48,7 +48,7 @@ export default function ForgotPassword() {
           >
             E-mail Address
           </label>
-          <div className="flex items-center gap-x-4 bg-[#ffec78] py-3 px-5 mt-2 rounded-xl">
+          <div className="flex items-center gap-x-4 bg-[#F5E79E] py-3 px-5 mt-2 rounded-md">
             <IoMdMail className="w-7 h-fit" />
             <input
               id="email"
@@ -71,7 +71,7 @@ export default function ForgotPassword() {
           <Link
             to="/auth/verify"
             type="submit"
-            className="block text-center w-full bg-transparent border border-[#ffec78] text-[#ffec78] text-[23px] font-bold py-2.5 mt-6 rounded-xl cursor-pointer transition duration-300 ease-in-out hover:border-transparent hover:bg-[#ffec78] hover:text-[#1E1633]"
+            className="block text-center w-full bg-[#FFDB58] text-[#130F40] text-[23px] font-bold py-2.5 mt-6 rounded-md transition opacity-100 hover:opacity-80"
           >
             Get OTP
           </Link>

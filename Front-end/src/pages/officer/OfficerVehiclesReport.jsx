@@ -15,7 +15,7 @@ export default function OfficerVehiclesReport() {
       <div className="mt-6 border border-[rgba(255,236,120,0.5)] bg-[#1E1633] px-6 py-4 rounded-md">
         <div className="flex items-center justify-between mb-6">
           <p className="text-[#FEF8FD] font-semibold">Kendaraan Aktif (6)</p>
-          <div className="flex items-center gap-x-2 bg-[#FFEC78] py-2 px-3 rounded-sm">
+          <div className="flex items-center gap-x-2 bg-[#F5E79E] py-2 px-3 rounded-sm">
             <IoIosSearch className="w-5 h-fit cursor-pointer" />
             <input
               type="text"
@@ -35,7 +35,7 @@ export default function OfficerVehiclesReport() {
                   Plat Nomor
                 </th>
                 <th className="text-[#FFEC78] p-2 text-[14px] text-start">
-                  Nama Mahasiswa
+                  Nama Pengendara
                 </th>
                 <th className="text-[#FFEC78] p-2 text-[14px] text-start">
                   Jenis Kendaraan
@@ -69,7 +69,7 @@ export default function OfficerVehiclesReport() {
                   <td className="p-2 text-[14px] text-[#D3CBD1] text-start font-medium">
                     <span
                       className={`${
-                        vehicle === "Mobil" ? "bg-[#FFEC78]" : "bg-[#D3CBD1]"
+                        vehicle === "Mobil" ? "bg-[#F5E79E]" : "bg-[#D3CBD1]"
                       } text-[#130F40] py-1 px-2 rounded-sm`}
                     >
                       {vehicle}

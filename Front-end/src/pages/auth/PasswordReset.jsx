@@ -13,7 +13,7 @@ export default function PasswordReset() {
         </p>
         <Link
           to="/auth/new-password"
-          className="block text-center w-full bg-transparent border border-[#ffec78] text-[#ffec78] text-[23px] font-bold py-2.5 mt-30 rounded-xl cursor-pointer transition duration-300 ease-in-out hover:border-transparent hover:bg-[#ffec78] hover:text-[#1E1633]"
+          className="block text-center w-full bg-[#FFDB58] text-[#130F40] text-[23px] font-bold py-2.5 mt-30 rounded-md transition opacity-100 hover:opacity-80"
         >
           Confirm
         </Link>
