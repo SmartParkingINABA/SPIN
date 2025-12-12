@@ -163,17 +163,6 @@ const AuthController = {
             
             res.cookie(cookieName, cookieValue, cookieOptions(req));
 
-            await redis.set(
-                `petugas:presence:${user.id_users}`,
-                JSON.stringify(
-                    {
-                        lastSeen: Date.now()
-                    }
-                ),
-                'EX',
-                60
-            );
-
             const role = user.role.nama_role.toLowerCase();
             let displayName = 'User';
             if (role === 'admin') {
