@@ -5,13 +5,13 @@ import verifySession from '../middlewares/SessionMiddlewares.js';
 import dashboardAdminControllers from '../controllers/AdminDashBoardControllers.js';
 import logoutController from '../controllers/LogOutControllers.js';
 import profileController from '../controllers/ProfileController.js';
-import statusPetugas from '../middlewares/PetugasStatusMiddlewares.js';
+
 
 
 const authRoutes = express.Router();
 //Auth Login & Register
 authRoutes.post('/register', AuthController.register);
-authRoutes.post('/login', AuthController.login, statusPetugas);
+authRoutes.post('/login', AuthController.login);
 
 //Profile 
 authRoutes.get(
