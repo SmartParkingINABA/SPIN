@@ -1,4 +1,4 @@
-import UserDropdown from "../../components/user/UserDropdown";
+import UserDropdown from "../../components/user/UserDropdownHistory";
 
 import { IoQrCode } from "react-icons/io5";
 import { FaDownload, FaPrint } from "react-icons/fa6";
@@ -30,22 +30,22 @@ export default function UserQRCode() {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-x-6 mt-20">
-            <Link className="bg-[#FFDB58] rounded-md border-0 py-2.5 transition opacity-100 hover:opacity-80">
+            <button className="bg-[#FFDB58] rounded-md border-0 py-2.5 transition cursor-pointer opacity-100 hover:opacity-80">
               <div className="flex items-center gap-x-2.5 mx-auto w-fit">
                 <FaDownload className="h-fit w-5" />
                 <span className="font-medium text-[#1E1633]">
                   Download QR Code
                 </span>
               </div>
-            </Link>
-            <Link className="bg-[#FFDB58] rounded-md border-0 py-2.5 transition opacity-100 hover:opacity-80">
+            </button>
+            <button className="bg-[#FFDB58] rounded-md border-0 py-2.5 transition cursor-pointer opacity-100 hover:opacity-80">
               <div className="flex items-center gap-x-2.5 mx-auto w-fit">
                 <FaPrint className="h-fit w-5" />
                 <span className="font-medium text-[#1E1633]">
                   Cetak QR Code
                 </span>
               </div>
-            </Link>
+            </button>
           </div>
         </div>
         <div className="w-[30%]">

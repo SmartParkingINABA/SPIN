@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { FaCheck } from "react-icons/fa6";
 
-export default function UserDropdown({ selectedOption }) {
+export default function UserDropdownHistory({ selectedOption }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState(selectedOption);
   const dropdownRef = useRef(null);
