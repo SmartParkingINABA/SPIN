@@ -17,7 +17,7 @@ const dashboardAdminServices = {
         );
         const kendaraanAktif = aktifRows[0]?.total || 0;
 
-        const petugasKeys = await redis.keys('petugas:presence:*');
+        const petugasKeys = await redis.keys('petugas:status:*');
         const petugasAktif = petugasKeys.length;
 
         const dates = generateLastNDates(7);
