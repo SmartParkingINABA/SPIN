@@ -2,6 +2,7 @@ import redis from "../configs/RedisConfig.js";
 import { Users, petugasProfile } from "../models/Index.js";
 import bcrypt from "bcrypt";
 import passwordValidator from "../utils/PasswordValidator.js";
+import statusService from "./Status.js";
 
 
 class menuPetugasParkirService {
@@ -39,13 +40,10 @@ class menuPetugasParkirService {
 
         const daftar = [];
         for (const p of data) {
-            const key = `petugas:presence:${p.id_users}`;
-            const onlineData = await redis.get(key);
+            const statusPetugas = await statusService.getStatus(p.id_users)
 
-            const isOnline = Boolean(onlineData);
+            const isOnline = !!statusPetugas;
             if (isOnline) petugasOnline++;
-
-            const statusPetugas = onlineData ? JSON.parse(onlineData) : null;
             daftar.push(
                 {
                     id: p.id_users,
@@ -54,7 +52,7 @@ class menuPetugasParkirService {
                     no_telp: p.petugasProfile?.no_telp || '-',
                     shift: p.petugasProfile?.shift? `Shift ${p.petugasProfile.shift}` : '-',
                     area: p.petugasProfile?.lokasi_kerja? `Area ${p.petugasProfile.lokasi_kerja}` : '-',
-                    status: p.status === 'Aktif' ? 'Aktif' : 'Non-Aktif',
+                    status: p.status,
                     lastSeen: statusPetugas?.lastSeen || null,
                 }
             );
