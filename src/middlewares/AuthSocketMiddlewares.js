@@ -1,20 +1,34 @@
-import jwt from 'jsonwebtoken';
+import { getSessionUser } from "../utils/Session.js";
+import cookie from 'cookie'
 
-const authSocket = async (socket, next) => {
+const authSocketMiddlewares = async (socket, next) => {
     try {
-        const token = socket.handshake.auth?.token;
+        const rawCookie = socket.request.headers.cookie;
         
-        if (!token) {
-            return next(new Error('Token Tidak Ditemukan!'));
+        if (!rawCookie) {
+            return next(new Error('Cookie Tidak Ditemukan!'));
         };
         
-        const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
-        socket.user = decoded;
-        
+        const cookies = cookie.parse(rawCookie);
+        const sessionCookies = cookies.sessionId;
+
+        if (!sessionCookies) {
+            return next(new Error('Session Cookie Tidak Ada!'));
+        };
+
+        const [userIdStr, sessionId] = sessionCookies.split(':');
+        const userId = parseInt(userIdStr, 10);
+
+        const session = await getSessionUser(userId, sessionId);
+        if(!session) {
+            return next(new Error('Session Invalid Atau Expire!'));
+        };
+
+        socket.user = { id: userId };
         next();
     } catch (err) {
         next(new Error('Token Tidak Valid Atau Expire'));
     }
 };
 
-export default authSocket;
+export default authSocketMiddlewares;
