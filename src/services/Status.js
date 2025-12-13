@@ -28,7 +28,7 @@ class statusService {
             key,
             JSON.stringify(
                 {
-                    offline: 'Offline',
+                    status: 'Offline',
                     socketId,
                     lastSeen: new Date().toISOString()
                 }
