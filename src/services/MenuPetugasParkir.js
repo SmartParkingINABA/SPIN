@@ -107,7 +107,6 @@ class menuPetugasParkirService {
         await profile.update(
             {
                 nama_petugas,
-                email,
                 no_telp,
                 shift,
                 lokasi_kerja
