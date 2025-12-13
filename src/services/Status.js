@@ -2,7 +2,7 @@ import redis from "../configs/RedisConfig.js";
 
 class statusService {
     static statusPrefix = 'petugas:status:';
-    static ttlSeconds = 10800;
+    static ttlSeconds = 120;
 
     static async setOnlineStatus(userId, socketId) {
         const key = `${this.statusPrefix}${userId}`;
