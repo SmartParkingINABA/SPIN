@@ -16,8 +16,8 @@ const sessionValid = async (userId, sessionId) => {
 
 const getSessionUser = async (userId, sessionId) => {
     const key = `session:${userId}:${sessionId}`;
-    const data = await redis.set(key);
-    return data ? JSON.parse(data) : null;
+    const token = await redis.get(key);
+    return token;
 };
 
 const getSessionToken = async (userId, sessionId) => {
