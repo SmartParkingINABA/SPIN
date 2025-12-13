@@ -14,10 +14,16 @@ const sessionValid = async (userId, sessionId) => {
     return !!token;
 };
 
+const getSessionUser = async (userId, sessionId) => {
+    const key = `session:${userId}:${sessionId}`;
+    const data = await redis.set(key);
+    return data ? JSON.parse(data) : null;
+};
+
 const getSessionToken = async (userId, sessionId) => {
     const key = `session:${userId}:${sessionId}`;
     return await redis.get(key);
-}
+};
 
 const deleteSession = async (userId, sessionId) => {
     const key = (`session:${userId}:${sessionId}`);
@@ -32,4 +38,4 @@ const revokeAllSession = async (userId) => {
 };
 
 
-export { createUserSession, sessionValid, deleteSession, revokeAllSession, getSessionToken };
+export { createUserSession, sessionValid, deleteSession, revokeAllSession, getSessionToken, getSessionUser };
