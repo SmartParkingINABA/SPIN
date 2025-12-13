@@ -24,7 +24,6 @@
     "nodemailer": "^7.0.10",
     "sequelize": "^6.37.7",
     "socket.io": "^4.8.1",
-    "socket.io-client": "^4.8.1",
     "uuid": "^13.0.0"
   },
   "devDependencies": {
