@@ -6,7 +6,7 @@ import redis from './configs/RedisConfig.js';
 import http from 'http';
 import { Server } from 'socket.io';
 import petugasSocketStatus from './utils/SocketPetugasStatus.js';
-import authSocket from './middlewares/AuthSocketMiddlewares.js';
+import authSocketMiddlewares from './middlewares/AuthSocketMiddlewares.js';
 
 const PORT = process.env.PORT || 3500;
 
@@ -23,7 +23,7 @@ const PORT = process.env.PORT || 3500;
             }
         });
 
-        io.use(authSocket);
+        io.use(authSocketMiddlewares);
         petugasSocketStatus(io)
 
         server.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
