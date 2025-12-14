@@ -1,7 +1,8 @@
 import { IoWarningOutline } from "react-icons/io5";
-import { IoIosCheckmarkCircleOutline } from "react-icons/io";
+import { IoIosCheckmarkCircleOutline, IoMdCheckmark } from "react-icons/io";
 import { CgDanger } from "react-icons/cg";
-import { FaRegCheckCircle } from "react-icons/fa";
+import { FaRegCheckCircle, FaRegTrashAlt } from "react-icons/fa";
+import { BiCheckDouble } from "react-icons/bi";
 
 export default function OfficerNotifikasi() {
   return (
@@ -12,9 +13,17 @@ export default function OfficerNotifikasi() {
           2 Baru
         </span>
       </h1>
-      <p className="text-[#93A3B6] font-medium mt-1">
-        Peringatan dan pesan penting dari sistem
-      </p>
+      <div className="mt-1 flex items-center justify-between">
+        <p className="text-[#93A3B6] font-medium">
+          Peringatan dan pesan penting dari sistem
+        </p>
+        <button className="flex items-center gap-x-2 border border-transparent bg-[#93A3B6] py-1 px-1.5 rounded-sm cursor-pointer transition opacity-100 hover:opacity-80">
+          <BiCheckDouble className="h-fit w-5 text-[#130F40]" />
+          <p className="text-[#130F40] text-[14px]">
+            Tandai Semua Telah Dibaca
+          </p>
+        </button>
+      </div>
       <div className="mt-6 flex flex-col gap-y-3.5">
         <div className="bg-[#F5E79E] px-6 py-4 rounded-md flex flex-col gap-y-6">
           <div className="flex items-start justify-between">
@@ -31,10 +40,16 @@ export default function OfficerNotifikasi() {
               Baru
             </p>
           </div>
-          <p className="text-[14px] text-[#130F40]">
-            Kapasitas parkir motor mencapai 85%. Harap siapkan alternatif area
-            parkir.
-          </p>
+          <div className="flex items-center justify-between">
+            <p className="text-[14px] text-[#130F40]">
+              Kapasitas parkir motor mencapai 85%. Harap siapkan alternatif area
+              parkir.
+            </p>
+            <button className="flex items-center gap-x-1.5 cursor-pointer">
+              <IoMdCheckmark className="h-fit w-4.5 text-[#808080]" />
+              <p className="text-[14px] text-[#808080]">Tandai Telah Dibaca</p>
+            </button>
+          </div>
         </div>
         <div className="bg-red-100 px-6 py-4 rounded-md flex flex-col gap-y-6">
           <div className="flex items-start justify-between">
@@ -51,9 +66,15 @@ export default function OfficerNotifikasi() {
               Baru
             </p>
           </div>
-          <p className="text-[14px] text-[#130F40]">
-            QR Code dengan ID QR-2024-999 tidak ditemukan dalam sistem.
-          </p>
+          <div className="flex items-center justify-between">
+            <p className="text-[14px] text-[#130F40]">
+              QR Code dengan ID QR-2024-999 tidak ditemukan dalam sistem.
+            </p>
+            <button className="flex items-center gap-x-1.5 cursor-pointer">
+              <IoMdCheckmark className="h-fit w-4.5 text-[#808080]" />
+              <p className="text-[14px] text-[#808080]">Tandai Telah Dibaca</p>
+            </button>
+          </div>
         </div>
         <div className="bg-blue-100 px-6 py-4 rounded-md flex flex-col gap-y-6">
           <div className="flex items-start justify-between">
