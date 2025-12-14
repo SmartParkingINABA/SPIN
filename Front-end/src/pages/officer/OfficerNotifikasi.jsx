@@ -1,7 +1,6 @@
 import { IoWarningOutline } from "react-icons/io5";
 import { IoIosCheckmarkCircleOutline, IoMdCheckmark } from "react-icons/io";
 import { CgDanger } from "react-icons/cg";
-import { FaRegCheckCircle, FaRegTrashAlt } from "react-icons/fa";
 import { BiCheckDouble } from "react-icons/bi";
 
 export default function OfficerNotifikasi() {
