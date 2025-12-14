@@ -114,7 +114,7 @@ export default function NewPassword() {
           <div className="flex items-center gap-x-4 bg-[#F5E79E] px-5 py-3 mt-2 rounded-md">
             <FaLock className="w-7 h-fit" />
             <input
-              id="password"
+              id="confirm-password"
               type={showConfirmPassword ? "text" : "password"}
               value={confirmPassword}
               placeholder="• • • • • • • •"
