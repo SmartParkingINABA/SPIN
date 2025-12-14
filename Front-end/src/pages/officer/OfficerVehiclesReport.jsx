@@ -57,28 +57,28 @@ export default function OfficerVehiclesReport() {
                     i !== rows.length - 1 ? "border-b-2 border-[#D3CBD1]" : ""
                   }`}
                 >
-                  <td className="p-2 text-[14px] text-[#D3CBD1] text-start font-medium">
+                  <td className="p-2 text-[14px] text-[#D3CBD1] font-medium">
                     {i + 1}
                   </td>
-                  <td className="p-2 text-[14px] text-[#D3CBD1] text-start font-medium">
+                  <td className="p-2 text-[14px] text-[#D3CBD1] font-medium">
                     A 8993 AB
                   </td>
-                  <td className="p-2 text-[14px] text-[#D3CBD1] text-start font-medium">
+                  <td className="p-2 text-[14px] text-[#D3CBD1] font-medium">
                     Yono Bakrie
                   </td>
-                  <td className="p-2 text-[14px] text-[#D3CBD1] text-start font-medium">
+                  <td className="p-2 text-[14px] text-[#D3CBD1] font-medium">
                     <span
                       className={`${
-                        vehicle === "Mobil" ? "bg-[#F5E79E]" : "bg-[#D3CBD1]"
-                      } text-[#130F40] py-1 px-2 rounded-sm`}
+                        vehicle === "Mobil" ? "bg-[#FFEC78]" : "bg-[#D3CBD1]"
+                      } text-[#4B4141] py-1 px-2 rounded-sm`}
                     >
                       {vehicle}
                     </span>
                   </td>
-                  <td className="p-2 text-[14px] text-[#D3CBD1] text-start font-medium">
+                  <td className="p-2 text-[14px] text-[#D3CBD1] font-medium">
                     12:00 WIB
                   </td>
-                  <td className="p-2 text-[14px] text-[#D3CBD1] text-start font-medium">
+                  <td className="p-2 text-[14px] text-[#D3CBD1] font-medium">
                     1 hari 24 jam
                   </td>
                 </tr>

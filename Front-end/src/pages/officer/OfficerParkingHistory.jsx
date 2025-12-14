@@ -64,29 +64,29 @@ export default function OfficerParkingHistory() {
                     i !== rows.length - 1 ? "border-b-2 border-[#D3CBD1]" : ""
                   }`}
                 >
-                  <td className="p-2 text-[14px] text-[#D3CBD1] text-start font-medium">
+                  <td className="p-2 text-[14px] text-[#D3CBD1] font-medium">
                     {i + 1}
                   </td>
-                  <td className="p-2 text-[14px] text-[#D3CBD1] text-start font-medium">
+                  <td className="p-2 text-[14px] text-[#D3CBD1] font-medium">
                     18 Nov 2025
                   </td>
-                  <td className="p-2 text-[14px] text-[#D3CBD1] text-start font-medium">
+                  <td className="p-2 text-[14px] text-[#D3CBD1] font-medium">
                     A 8993 AB
                   </td>
-                  <td className="p-2 text-[14px] text-[#D3CBD1] text-start font-medium">
+                  <td className="p-2 text-[14px] text-[#D3CBD1] font-medium">
                     Yono Bakrie
                   </td>
-                  <td className="p-2 text-[14px] text-[#D3CBD1] text-start font-medium">
+                  <td className="p-2 text-[14px] text-[#D3CBD1] font-medium">
                     10:00 WIB
                   </td>
-                  <td className="p-2 text-[14px] text-[#D3CBD1] text-start font-medium">
+                  <td className="p-2 text-[14px] text-[#D3CBD1] font-medium">
                     12:00 WIB
                   </td>
-                  <td className="p-2 text-[14px] text-[#D3CBD1] text-start font-medium">
+                  <td className="p-2 text-[14px] text-[#D3CBD1] font-medium">
                     1 hari 24 jam
                   </td>
-                  <td className="p-2 text-[14px] text-green-600 text-start font-medium">
-                    <span className="bg-green-50 border border-green-500 rounded-sm px-1 py-0.5">
+                  <td className="p-2 text-[14px] text-[#FFEC78] font-medium">
+                    <span className="bg-[#4B4141] rounded-sm px-1 py-0.5">
                       Selesai
                     </span>
                   </td>

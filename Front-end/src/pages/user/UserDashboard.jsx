@@ -86,11 +86,8 @@ export default function UserDashboard() {
               <FaMotorcycle className="text-[#FFEC78] w-6 h-fit" />
             </div>
             <div className="">
-              <p className="text-[#FEF8FD] text-[14px] font-medium flex items-center gap-x-2.5">
+              <p className="text-[#FEF8FD] text-[14px] font-medium">
                 D 1234 XYZ
-                <span className="text-[10px] text-[#1E1633] bg-[#FFEC78] font-medium px-2 rounded-sm">
-                  keluar
-                </span>
               </p>
               <p className="text-[#93A3B6] text-[12px] font-medium">
                 Honda Beat • Motor
@@ -112,8 +109,11 @@ export default function UserDashboard() {
               <FaRegCircleCheck className="text-[#FFEC78] w-6 h-fit" />
             </div>
             <div className="">
-              <p className="text-[#FEF8FD] text-[14px] font-medium">
-                D 1234 XYZ <span></span>
+              <p className="text-[#FEF8FD] text-[14px] font-medium flex items-center gap-x-2.5">
+                D 1234 XYZ
+                <span className="text-[10px] text-[#1E1633] bg-[#FFEC78] font-medium px-2 rounded-sm">
+                  keluar
+                </span>
               </p>
               <p className="text-[#93A3B6] text-[12px] font-medium">
                 09 November 2025 • 16:00

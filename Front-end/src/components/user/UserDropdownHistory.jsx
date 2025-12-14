@@ -58,18 +58,16 @@ export default function UserDropdownHistory({ selectedOption }) {
             : "opacity-0 -translate-y-2 pointer-events-none"
         }`}
       >
-        {["D 1234 XYZ - Toyota Avanza", "D 5678 ABC - Hondat Beat mberrrr"].map(
-          (item) => (
-            <li
-              key={item}
-              onClick={() => handleSelect(item)}
-              className="text-[#FEF8FD] font-semibold border border-[rgba(255,236,120,0.5)] rounded-sm p-3 cursor-pointer transition duration-300 ease-in-out hover:bg-[#FFEC78] hover:text-[#1E1633] hover:border-transparent flex items-center justify-between group"
-            >
-              {item}
-              <FaCheck className="w-5 h-fit transition duration-300 opacity-0 group-hover:opacity-100" />
-            </li>
-          )
-        )}
+        {["Semua Status", "Selesai", "Sedang Parkir"].map((item) => (
+          <li
+            key={item}
+            onClick={() => handleSelect(item)}
+            className="text-[#FEF8FD] font-semibold border border-[rgba(255,236,120,0.5)] rounded-sm p-3 cursor-pointer transition duration-300 ease-in-out hover:bg-[#FFEC78] hover:text-[#1E1633] hover:border-transparent flex items-center justify-between group"
+          >
+            {item}
+            <FaCheck className="w-5 h-fit transition duration-300 opacity-0 group-hover:opacity-100" />
+          </li>
+        ))}
       </ul>
     </div>
   );
