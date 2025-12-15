@@ -198,7 +198,7 @@ export default function UserProfile() {
               <form className="w-1/2 mt-3.5" noValidate>
                 <div className="mb-2.5">
                   <label
-                    htmlFor="currentlyPassword"
+                    htmlFor="currently-password"
                     className="flex items-center gap-x-2.5"
                   >
                     <CiLock className="h-fit w-3.5 text-[#93A3B6]" />
@@ -208,7 +208,7 @@ export default function UserProfile() {
                   </label>
                   <div className="flex items-center gap-x-4 bg-[#F5E79E] px-3 py-1 mt-1 rounded-md">
                     <input
-                      id="password"
+                      id="currently-password"
                       type={showPassword ? "text" : "password"}
                       placeholder="• • • • • • • •"
                       className="w-full outline-0"
@@ -228,7 +228,7 @@ export default function UserProfile() {
                 </div>
                 <div className="mb-2.5">
                   <label
-                    htmlFor="currentlyPassword"
+                    htmlFor="new-password"
                     className="flex items-center gap-x-2.5"
                   >
                     <CiLock className="h-fit w-3.5 text-[#93A3B6]" />
@@ -236,7 +236,7 @@ export default function UserProfile() {
                   </label>
                   <div className="flex items-center gap-x-4 bg-[#F5E79E] px-3 py-1 mt-1 rounded-md">
                     <input
-                      id="password"
+                      id="new-password"
                       type={showNewPassword ? "text" : "password"}
                       placeholder="• • • • • • • •"
                       className="w-full outline-0"
@@ -256,7 +256,7 @@ export default function UserProfile() {
                 </div>
                 <div className="">
                   <label
-                    htmlFor="currentlyPassword"
+                    htmlFor="confirm-password"
                     className="flex items-center gap-x-2.5"
                   >
                     <CiLock className="h-fit w-3.5 text-[#93A3B6]" />
@@ -266,7 +266,7 @@ export default function UserProfile() {
                   </label>
                   <div className="flex items-center gap-x-4 bg-[#F5E79E] px-3 py-1 mt-1 rounded-md">
                     <input
-                      id="password"
+                      id="confirm-password"
                       type={showConfirmPassword ? "text" : "password"}
                       placeholder="• • • • • • • •"
                       className="w-full outline-0"
