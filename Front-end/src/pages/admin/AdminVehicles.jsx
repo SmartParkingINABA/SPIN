@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { BiSolidEdit } from "react-icons/bi";
 import { FaPlus, FaRegEye, FaTrashCan } from "react-icons/fa6";
-import { FiUsers } from "react-icons/fi";
-import AdminEditOfficer from "../../components/admin/AdminEditOfficer";
+import { LuCar } from "react-icons/lu";
 import AdminDropdownKind from "../../components/admin/AdminDropdownKind";
 import AdminDropdownStatus from "../../components/admin/AdminDropdownStatus";
 import AdminAddVehicle from "../../components/admin/AdminAddVehicle";
@@ -100,7 +99,7 @@ export default function AdminVehicles() {
             <div className="bg-[#130F40] border border-[rgba(255,236,120,0.5)] px-6 py-4 rounded-sm flex items-center justify-between">
               <div className="flex items-center gap-x-3.5">
                 <div className="bg-blue-100 rounded-sm p-2.5">
-                  <FiUsers className="text-blue-600 w-6.5 h-fit" />
+                  <LuCar className="text-blue-600 w-6.5 h-fit" />
                 </div>
                 <div className="">
                   <div className="flex items-center gap-x-2">
@@ -142,7 +141,7 @@ export default function AdminVehicles() {
             <div className="bg-[#130F40] border border-[rgba(255,236,120,0.5)] px-6 py-4 rounded-sm flex items-center justify-between">
               <div className="flex items-center gap-x-3.5">
                 <div className="bg-blue-100 rounded-sm p-2.5">
-                  <FiUsers className="text-blue-600 w-6.5 h-fit" />
+                  <LuCar className="text-blue-600 w-6.5 h-fit" />
                 </div>
                 <div className="">
                   <div className="flex items-center gap-x-2">
@@ -184,7 +183,7 @@ export default function AdminVehicles() {
             <div className="bg-[#130F40] border border-[rgba(255,236,120,0.5)] px-6 py-4 rounded-sm flex items-center justify-between">
               <div className="flex items-center gap-x-3.5">
                 <div className="bg-blue-100 rounded-sm p-2.5">
-                  <FiUsers className="text-blue-600 w-6.5 h-fit" />
+                  <LuCar className="text-blue-600 w-6.5 h-fit" />
                 </div>
                 <div className="">
                   <div className="flex items-center gap-x-2">
@@ -226,7 +225,7 @@ export default function AdminVehicles() {
             <div className="bg-[#130F40] border border-[rgba(255,236,120,0.5)] px-6 py-4 rounded-sm flex items-center justify-between">
               <div className="flex items-center gap-x-3.5">
                 <div className="bg-blue-100 rounded-sm p-2.5">
-                  <FiUsers className="text-blue-600 w-6.5 h-fit" />
+                  <LuCar className="text-blue-600 w-6.5 h-fit" />
                 </div>
                 <div className="">
                   <div className="flex items-center gap-x-2">
@@ -268,7 +267,7 @@ export default function AdminVehicles() {
             <div className="bg-[#130F40] border border-[rgba(255,236,120,0.5)] px-6 py-4 rounded-sm flex items-center justify-between">
               <div className="flex items-center gap-x-3.5">
                 <div className="bg-blue-100 rounded-sm p-2.5">
-                  <FiUsers className="text-blue-600 w-6.5 h-fit" />
+                  <LuCar className="text-blue-600 w-6.5 h-fit" />
                 </div>
                 <div className="">
                   <div className="flex items-center gap-x-2">
