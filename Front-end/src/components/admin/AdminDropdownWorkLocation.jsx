@@ -52,7 +52,7 @@ export default function AdminDropdownWorkLocation({ selectedOption }) {
 
       <ul
         id="dropdownList"
-        className={`flex flex-col gap-y-2 border border-[rgba(255,236,120,0.5)] bg-[#130F40] rounded-sm mt-3 absolute top-full left-0 w-full transition-all duration-300 ease-out ${
+        className={`flex flex-col gap-y-2 p-1.5 border border-[rgba(255,236,120,0.5)] bg-[#130F40] rounded-sm mt-3 absolute top-full left-0 w-full transition-all duration-300 ease-out ${
           isOpen
             ? "opacity-100 translate-y-0"
             : "opacity-0 -translate-y-2 pointer-events-none"

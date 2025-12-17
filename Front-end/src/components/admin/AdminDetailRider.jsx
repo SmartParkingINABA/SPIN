@@ -13,7 +13,7 @@ export default function AdminDetailRider({ onClose }) {
             onClick={onClose}
           />
         </div>
-        <div className="h-72 w-full overflow-y-auto pr-5 pb-5">
+        <div className="h-80 w-full overflow-y-auto pr-5 pb-5">
           <div className="grid grid-cols-2 gap-x-3 bg-[#1E1633] rounded-sm py-2 px-4 mb-6">
             <div className="flex flex-col gap-y-3">
               <div>
