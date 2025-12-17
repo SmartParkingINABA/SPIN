@@ -3,7 +3,7 @@ import { MdOutlineDateRange } from "react-icons/md";
 
 export default function UserFormNewVehicle({ onClose }) {
   return (
-    <div className="font-ubuntu flex justify-center items-center h-screen w-full bg-transparent fixed inset-0 z-50">
+    <div className="font-ubuntu flex justify-center items-center h-screen w-full bg-[rgba(0,0,0,0.54)] fixed inset-0 z-50">
       <div className="border border-[rgba(255,236,120,0.5)] bg-[#130F40] rounded-md p-5 pt-6 w-2/5">
         <div className="flex items-center justify-between mb-6.5">
           <h1 className="text-[#FEF8FD] text-[18px] font-semibold">

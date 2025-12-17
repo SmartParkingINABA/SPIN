@@ -6,7 +6,6 @@ import BarIcon from "../../assets/images/user/barIcon.svg?react";
 import { FaCarSide, FaMotorcycle, FaPlus, FaTrashCan } from "react-icons/fa6";
 import { BiSolidEdit } from "react-icons/bi";
 import { IoQrCode } from "react-icons/io5";
-import { Link } from "react-router-dom";
 
 export default function UserVehiclesReport() {
   const [isModalOpen, setIsModalOpen] = useState(false);

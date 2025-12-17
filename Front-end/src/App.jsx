@@ -36,7 +36,7 @@ import OfficerProfile from "./pages/officer/OfficerProfile";
 // admin
 import AdminLayout from "./layouts/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
-import AdminParkingOfficer from "./pages/admin/AdminParkingOfficer";
+import AdminParkingAttendant from "./pages/admin/AdminParkingAttendant";
 import AdminRider from "./pages/admin/AdminRider";
 import AdminVehicles from "./pages/admin/AdminVehicles";
 import AdminIncomingVehicle from "./pages/admin/AdminIncomingVehicle";
@@ -80,7 +80,7 @@ function App() {
       {/* ADMIN DASBOARD*/}
       <Route path="/admin" element={<AdminLayout />}>
         <Route index element={<AdminDashboard />} />
-        <Route path="parking-attendant" element={<AdminParkingOfficer />} />
+        <Route path="parking-attendant" element={<AdminParkingAttendant />} />
         <Route path="rider" element={<AdminRider />} />
         <Route path="vehicles" element={<AdminVehicles />} />
         <Route path="incoming-vehicle" element={<AdminIncomingVehicle />} />
