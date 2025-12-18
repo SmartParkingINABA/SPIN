@@ -50,7 +50,7 @@ export default function AdminIncomingVehicle() {
               className="bg-[#F5E79E] h-10 px-3 rounded-sm outline-0 w-full"
               placeholder="Masukan no plat kendaraan..."
             />
-            <button className="h-10 px-3 bg-[#FFDB58] text-[#130F40] rounded-sm opacity-100 hover:opacity-80 transition">
+            <button className="h-10 px-3 bg-[#FFDB58] text-[#130F40] rounded-sm opacity-100 hover:opacity-80 transition cursor-pointer">
               <IoSearch className="h-fit w-5 text-[#130F40]" />
             </button>
           </div>
@@ -60,7 +60,7 @@ export default function AdminIncomingVehicle() {
             Kendaraan Sedang Parkir
           </p>
           <div className="flex flex-col gap-y-3.5">
-            <div className="border border-[rgba(255,236,120,0.5)] px-6 py-4 rounded-sm bg-[#130F40] flex items-center justify-between">
+            <div className="border border-[rgba(255,236,120,0.5)] px-5 py-2.5 rounded-sm bg-[#130F40] flex items-center justify-between">
               <div className="flex items-center gap-x-3">
                 <div className="bg-blue-100 rounded-sm p-2.5">
                   <LuCar className="text-blue-600 w-6.5 h-fit" />
@@ -79,7 +79,7 @@ export default function AdminIncomingVehicle() {
                 Parkir
               </p>
             </div>
-            <div className="border border-[rgba(255,236,120,0.5)] px-6 py-4 rounded-sm bg-[#130F40] flex items-center justify-between">
+            <div className="border border-[rgba(255,236,120,0.5)] px-5 py-2.5 rounded-sm bg-[#130F40] flex items-center justify-between">
               <div className="flex items-center gap-x-3">
                 <div className="bg-blue-100 rounded-sm p-2.5">
                   <LuCar className="text-blue-600 w-6.5 h-fit" />
@@ -98,7 +98,7 @@ export default function AdminIncomingVehicle() {
                 Parkir
               </p>
             </div>
-            <div className="border border-[rgba(255,236,120,0.5)] px-6 py-4 rounded-sm bg-[#130F40] flex items-center justify-between">
+            <div className="border border-[rgba(255,236,120,0.5)] px-5 py-2.5 rounded-sm bg-[#130F40] flex items-center justify-between">
               <div className="flex items-center gap-x-3">
                 <div className="bg-blue-100 rounded-sm p-2.5">
                   <LuCar className="text-blue-600 w-6.5 h-fit" />

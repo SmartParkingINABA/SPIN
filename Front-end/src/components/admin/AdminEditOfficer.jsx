@@ -31,17 +31,6 @@ export default function AdminEditOfficer({ onClose }) {
             />
           </div>
           <div className="flex flex-col gap-y-1 mb-2">
-            <label htmlFor="email" className="text-[#FEF8FD] font-medium">
-              Email
-            </label>
-            <input
-              id="email"
-              type="text"
-              placeholder="petugas@mail.com"
-              className="bg-[#F5E79E] outline-0 py-2 px-3 rounded-sm"
-            />
-          </div>
-          <div className="flex flex-col gap-y-1 mb-2">
             <label
               htmlFor="phone-number"
               className="text-[#FEF8FD] font-medium"

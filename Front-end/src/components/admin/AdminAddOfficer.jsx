@@ -1,8 +1,12 @@
 import { IoClose } from "react-icons/io5";
 import AdminDropdownShift from "./AdminDropdownShift";
 import AdminDropdownWorkLocation from "./AdminDropdownWorkLocation";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
+import { useState } from "react";
 
 export default function AdminAddOfficer({ onClose }) {
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
     <div className="font-ubuntu flex justify-center items-center h-screen w-full fixed inset-0 z-50 bg-[rgba(0,0,0,0.54)]">
       <div className="border border-[rgba(255,236,120,0.5)] bg-[#130F40] rounded-md p-5 pt-6 w-1/3">
@@ -40,6 +44,30 @@ export default function AdminAddOfficer({ onClose }) {
               placeholder="petugas@mail.com"
               className="bg-[#F5E79E] outline-0 py-2 px-3 rounded-sm"
             />
+          </div>
+          <div className="flex flex-col gap-y-1 mb-2">
+            <label htmlFor="password" className="text-[#FEF8FD] font-medium">
+              Password
+            </label>
+            <div className="flex items-center gap-x-4 bg-[#F5E79E] py-2 px-3 rounded-sm">
+              <input
+                id="password"
+                type={showPassword ? "text" : "password"}
+                placeholder="Masukan password"
+                className="bg-transparent outline-0 w-full"
+              />
+              {showPassword ? (
+                <FaRegEyeSlash
+                  className="w-5.5 h-fit cursor-pointer"
+                  onClick={() => setShowPassword(false)}
+                />
+              ) : (
+                <FaRegEye
+                  className="w-5.5 h-fit cursor-pointer"
+                  onClick={() => setShowPassword(true)}
+                />
+              )}
+            </div>
           </div>
           <div className="flex flex-col gap-y-1 mb-2">
             <label
