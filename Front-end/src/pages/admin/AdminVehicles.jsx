@@ -13,30 +13,6 @@ export default function AdminVehicles() {
   const [isModalOpenEdit, setIsModalOpenEdit] = useState(false);
   const [isModalOpenDetail, setIsModalOpenDetail] = useState(false);
 
-  const handleOpenModalAdd = () => {
-    setIsModalOpenAdd(true);
-  };
-
-  const handleCloseModalAdd = () => {
-    setIsModalOpenAdd(false);
-  };
-
-  const handleOpenModalDetail = () => {
-    setIsModalOpenDetail(true);
-  };
-
-  const handleCloseModalDetail = () => {
-    setIsModalOpenDetail(false);
-  };
-
-  const handleOpenModalEdit = () => {
-    setIsModalOpenEdit(true);
-  };
-
-  const handleCloseModalEdit = () => {
-    setIsModalOpenEdit(false);
-  };
-
   return (
     <>
       <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
@@ -51,7 +27,7 @@ export default function AdminVehicles() {
           </div>
           <button
             className="bg-[#FFDB58] flex items-center gap-x-2.5 rounded-md px-3 py-2 cursor-pointer transition opacity-100 hover:opacity-80"
-            onClick={handleOpenModalAdd}
+            onClick={() => setIsModalOpenAdd(true)}
           >
             <FaPlus className="h-fit w-5" />
             <p className="text-[#130F40] font-medium">Tambah Kendaraan</p>
@@ -122,14 +98,14 @@ export default function AdminVehicles() {
               <div className="flex gap-x-3">
                 <button
                   className="bg-[#FEF8FD] font-medium text-[14px] rounded-sm px-2 py-1 cursor-pointer opacity-100 hover:opacity-80 transition flex items-center gap-x-1.5"
-                  onClickCapture={handleOpenModalDetail}
+                  onClickCapture={() => setIsModalOpenDetail(true)}
                 >
                   <FaRegEye className="h-fit w-4 text-[#130F40]" />
                   <p className="font-medium text-[#130F40]">Detail</p>
                 </button>
                 <button
                   className="bg-[#FEF8FD] font-medium rounded-sm px-2 py-1 opacity-100 hover:opacity-80 transition cursor-pointer"
-                  onClick={handleOpenModalEdit}
+                  onClick={() => setIsModalOpenEdit(true)}
                 >
                   <BiSolidEdit className="w-5 h-fit text-[#130F40]" />
                 </button>
@@ -164,14 +140,14 @@ export default function AdminVehicles() {
               <div className="flex gap-x-3">
                 <button
                   className="bg-[#FEF8FD] font-medium text-[14px] rounded-sm px-2 py-1 cursor-pointer opacity-100 hover:opacity-80 transition flex items-center gap-x-1.5"
-                  onClickCapture={handleOpenModalDetail}
+                  onClickCapture={() => setIsModalOpenDetail(true)}
                 >
                   <FaRegEye className="h-fit w-4 text-[#130F40]" />
                   <p className="font-medium text-[#130F40]">Detail</p>
                 </button>
                 <button
                   className="bg-[#FEF8FD] font-medium rounded-sm px-2 py-1 opacity-100 hover:opacity-80 transition cursor-pointer"
-                  onClick={handleOpenModalEdit}
+                  onClick={() => setIsModalOpenEdit(true)}
                 >
                   <BiSolidEdit className="w-5 h-fit text-[#130F40]" />
                 </button>
@@ -206,14 +182,14 @@ export default function AdminVehicles() {
               <div className="flex gap-x-3">
                 <button
                   className="bg-[#FEF8FD] font-medium text-[14px] rounded-sm px-2 py-1 cursor-pointer opacity-100 hover:opacity-80 transition flex items-center gap-x-1.5"
-                  onClickCapture={handleOpenModalDetail}
+                  onClickCapture={() => setIsModalOpenDetail(true)}
                 >
                   <FaRegEye className="h-fit w-4 text-[#130F40]" />
                   <p className="font-medium text-[#130F40]">Detail</p>
                 </button>
                 <button
                   className="bg-[#FEF8FD] font-medium rounded-sm px-2 py-1 opacity-100 hover:opacity-80 transition cursor-pointer"
-                  onClick={handleOpenModalEdit}
+                  onClick={() => setIsModalOpenEdit(true)}
                 >
                   <BiSolidEdit className="w-5 h-fit text-[#130F40]" />
                 </button>
@@ -248,14 +224,14 @@ export default function AdminVehicles() {
               <div className="flex gap-x-3">
                 <button
                   className="bg-[#FEF8FD] font-medium text-[14px] rounded-sm px-2 py-1 cursor-pointer opacity-100 hover:opacity-80 transition flex items-center gap-x-1.5"
-                  onClickCapture={handleOpenModalDetail}
+                  onClickCapture={() => setIsModalOpenDetail(true)}
                 >
                   <FaRegEye className="h-fit w-4 text-[#130F40]" />
                   <p className="font-medium text-[#130F40]">Detail</p>
                 </button>
                 <button
                   className="bg-[#FEF8FD] font-medium rounded-sm px-2 py-1 opacity-100 hover:opacity-80 transition cursor-pointer"
-                  onClick={handleOpenModalEdit}
+                  onClick={() => setIsModalOpenEdit(true)}
                 >
                   <BiSolidEdit className="w-5 h-fit text-[#130F40]" />
                 </button>
@@ -290,14 +266,14 @@ export default function AdminVehicles() {
               <div className="flex gap-x-3">
                 <button
                   className="bg-[#FEF8FD] font-medium text-[14px] rounded-sm px-2 py-1 cursor-pointer opacity-100 hover:opacity-80 transition flex items-center gap-x-1.5"
-                  onClickCapture={handleOpenModalDetail}
+                  onClickCapture={() => setIsModalOpenDetail(true)}
                 >
                   <FaRegEye className="h-fit w-4 text-[#130F40]" />
                   <p className="font-medium text-[#130F40]">Detail</p>
                 </button>
                 <button
                   className="bg-[#FEF8FD] font-medium rounded-sm px-2 py-1 opacity-100 hover:opacity-80 transition cursor-pointer"
-                  onClick={handleOpenModalEdit}
+                  onClick={() => setIsModalOpenEdit(true)}
                 >
                   <BiSolidEdit className="w-5 h-fit text-[#130F40]" />
                 </button>
@@ -309,11 +285,15 @@ export default function AdminVehicles() {
           </div>
         </div>
       </section>
-      {isModalOpenAdd && <AdminAddVehicle onClose={handleCloseModalAdd} />}
-      {isModalOpenDetail && (
-        <AdminDetailVehicle onClose={handleCloseModalDetail} />
+      {isModalOpenAdd && (
+        <AdminAddVehicle onClose={() => setIsModalOpenAdd(false)} />
       )}
-      {isModalOpenEdit && <AdminEditVehicle onClose={handleCloseModalEdit} />}
+      {isModalOpenDetail && (
+        <AdminDetailVehicle onClose={() => setIsModalOpenDetail(false)} />
+      )}
+      {isModalOpenEdit && (
+        <AdminEditVehicle onClose={() => setIsModalOpenEdit(false)} />
+      )}
     </>
   );
 }

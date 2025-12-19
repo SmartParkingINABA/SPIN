@@ -9,13 +9,6 @@ import { MdDoNotDisturb } from "react-icons/md";
 export default function AdminRider() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
   return (
     <>
       <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
@@ -69,7 +62,7 @@ export default function AdminRider() {
               <div className="flex gap-x-3">
                 <button
                   className="bg-[#FEF8FD] font-medium text-[14px] rounded-sm px-2 py-1 cursor-pointer opacity-100 hover:opacity-80 transition flex items-center gap-x-1.5"
-                  onClick={handleOpenModal}
+                  onClick={() => setIsModalOpen(true)}
                 >
                   <FaRegEye className="h-fit w-4 text-[#130F40]" />
                   <p className="font-medium text-[#130F40]">Detail</p>
@@ -113,7 +106,7 @@ export default function AdminRider() {
               <div className="flex gap-x-3">
                 <button
                   className="bg-[#FEF8FD] font-medium text-[14px] rounded-sm px-2 py-1 cursor-pointer opacity-100 hover:opacity-80 transition flex items-center gap-x-1.5"
-                  onClick={handleOpenModal}
+                  onClick={() => setIsModalOpen(true)}
                 >
                   <FaRegEye className="h-fit w-4 text-[#130F40]" />
                   <p className="font-medium text-[#130F40]">Detail</p>
@@ -157,7 +150,7 @@ export default function AdminRider() {
               <div className="flex gap-x-3">
                 <button
                   className="bg-[#FEF8FD] font-medium text-[14px] rounded-sm px-2 py-1 cursor-pointer opacity-100 hover:opacity-80 transition flex items-center gap-x-1.5"
-                  onClick={handleOpenModal}
+                  onClick={() => setIsModalOpen(true)}
                 >
                   <FaRegEye className="h-fit w-4 text-[#130F40]" />
                   <p className="font-medium text-[#130F40]">Detail</p>
@@ -171,7 +164,9 @@ export default function AdminRider() {
           </div>
         </div>
       </section>
-      {isModalOpen && <AdminDetailRider onClose={handleCloseModal} />}
+      {isModalOpen && (
+        <AdminDetailRider onClose={() => setIsModalOpen(false)} />
+      )}
     </>
   );
 }

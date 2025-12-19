@@ -26,22 +26,6 @@ export default function AdminParkingAttendant() {
     setIsActiveThree(!isActiveThree);
   };
 
-  const handleOpenModalAdd = () => {
-    setIsModalOpenAdd(true);
-  };
-
-  const handleCloseModalAdd = () => {
-    setIsModalOpenAdd(false);
-  };
-
-  const handleOpenModalEdit = () => {
-    setIsModalOpenEdit(true);
-  };
-
-  const handleCloseModalEdit = () => {
-    setIsModalOpenEdit(false);
-  };
-
   return (
     <>
       <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
@@ -56,7 +40,7 @@ export default function AdminParkingAttendant() {
           </div>
           <button
             className="bg-[#FFDB58] flex items-center gap-x-2.5 rounded-md px-3 py-2 cursor-pointer transition opacity-100 hover:opacity-80"
-            onClick={handleOpenModalAdd}
+            onClick={() => setIsModalOpenAdd(true)}
           >
             <FaPlus className="h-fit w-5" />
             <p className="text-[#130F40] font-medium">Tambah Petugas</p>
@@ -127,7 +111,7 @@ export default function AdminParkingAttendant() {
                 </button>
                 <button
                   className="bg-[#FEF8FD] font-medium rounded-sm px-2 py-1 opacity-100 hover:opacity-80 transition cursor-pointer"
-                  onClick={handleOpenModalEdit}
+                  onClick={() => setIsModalOpenEdit(true)}
                 >
                   <BiSolidEdit className="w-5 h-fit text-[#130F40]" />
                 </button>
@@ -184,7 +168,7 @@ export default function AdminParkingAttendant() {
                 </button>
                 <button
                   className="bg-[#FEF8FD] font-medium rounded-sm px-2 py-1 opacity-100 hover:opacity-80 transition cursor-pointer"
-                  onClick={handleOpenModalEdit}
+                  onClick={() => setIsModalOpenEdit(true)}
                 >
                   <BiSolidEdit className="w-5 h-fit text-[#130F40]" />
                 </button>
@@ -241,7 +225,7 @@ export default function AdminParkingAttendant() {
                 </button>
                 <button
                   className="bg-[#FEF8FD] font-medium rounded-sm px-2 py-1 opacity-100 hover:opacity-80 transition cursor-pointer"
-                  onClick={handleOpenModalEdit}
+                  onClick={() => setIsModalOpenEdit(true)}
                 >
                   <BiSolidEdit className="w-5 h-fit text-[#130F40]" />
                 </button>
@@ -253,8 +237,12 @@ export default function AdminParkingAttendant() {
           </div>
         </div>
       </section>
-      {isModalOpenAdd && <AdminAddOfficer onClose={handleCloseModalAdd} />}
-      {isModalOpenEdit && <AdminEditOfficer onClose={handleCloseModalEdit} />}
+      {isModalOpenAdd && (
+        <AdminAddOfficer onClose={() => setIsModalOpenAdd(false)} />
+      )}
+      {isModalOpenEdit && (
+        <AdminEditOfficer onClose={() => setIsModalOpenEdit(false)} />
+      )}
     </>
   );
 }
