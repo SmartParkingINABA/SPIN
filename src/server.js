@@ -5,8 +5,9 @@ import sequelize from './configs/DBConfig.js';
 import redis from './configs/RedisConfig.js';
 import http from 'http';
 import { Server } from 'socket.io';
-import petugasSocketStatus from './utils/SocketPetugasStatus.js';
-import authSocketMiddlewares from './middlewares/AuthSocketMiddlewares.js';
+import petugasSocketStatus from './socket/petugas/SocketPetugasStatus.js';
+import authSocketMiddlewares from './middlewares/authentication/AuthSocketMiddlewares.js';
+import startCleanupJobs from './jobs/cleanupPetugasOnline.js';
 
 const PORT = process.env.PORT || 3500;
 
@@ -24,7 +25,8 @@ const PORT = process.env.PORT || 3500;
         });
 
         io.use(authSocketMiddlewares);
-        petugasSocketStatus(io)
+        petugasSocketStatus(io);
+        startCleanupJobs();
 
         server.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
 
@@ -32,7 +34,8 @@ const PORT = process.env.PORT || 3500;
             console.log('Redis Connected successs!');
         });
     } catch (err) {
-        console.error('Failed connect to database!');
-        console.error('Redis failed to connected', err);
+        console.error('Server Failed To Start');
+        console.error(err);
+        process.exit(1);
     }
 })();
