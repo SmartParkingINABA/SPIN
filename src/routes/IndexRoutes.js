@@ -1,7 +1,7 @@
 import express from 'express'
-import authRoutes from './AuthRoutes.js'
-import forgotPasswordRoutes from './ForgotPasswordRoutes.js';
-import adminRoutes from './AdminRoutes.js';
+import authRoutes from './authentication/AuthRoutes.js'
+import forgotPasswordRoutes from './authentication/ForgotPasswordRoutes.js';
+import adminRoutes from './admin/AdminRoutes.js';
 
 const indexRoutes = express.Router();
 
