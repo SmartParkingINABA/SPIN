@@ -3,6 +3,7 @@ import authenticationRoleBasedUser from '../../middlewares/authentication/AuthMi
 import verifySession from '../../middlewares/cache/SessionMiddlewares.js'
 import dashboardAdminControllers from '../../controllers/admin/dashboardMainOverview.js'
 import menuPetugasParkirController from '../../controllers/admin/MenuPetugasParkirControllers.js'
+import menuPengendaraController from '../../controllers/admin/menuPengendara.js'
 
 
 const adminRoutes = express.Router();
@@ -47,6 +48,27 @@ adminRoutes.delete(
     authenticationRoleBasedUser(['admin']),
     verifySession,
     menuPetugasParkirController.deletePetugasParkir
+);
+
+adminRoutes.get(
+    '/dashboard/pengendara',
+    authenticationRoleBasedUser(['admin']),
+    verifySession,
+    menuPengendaraController.getList
+);
+
+adminRoutes.get(
+    '/dashboard/pengendara/:id',
+    authenticationRoleBasedUser(['admin']),
+    verifySession,
+    menuPengendaraController.getDetail
+);
+
+adminRoutes.patch(
+    '/dashboard/pengendara/status/:id',
+    authenticationRoleBasedUser(['admin']),
+    verifySession,
+    menuPengendaraController.updateStatus
 )
 
 export default adminRoutes;
