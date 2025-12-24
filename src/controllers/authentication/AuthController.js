@@ -76,7 +76,7 @@ const authController = {
             console.error('Login Error!', error);
             res.status(500).json(
                 {
-                    message: 'Internal Server Error!'
+                    message: error.message
                 }
             );
             
