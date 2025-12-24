@@ -58,7 +58,7 @@ adminRoutes.get(
 );
 
 adminRoutes.get(
-    '/dashboard/pengendara/:id',
+    '/dashboard/pengendara/detail/:id',
     authenticationRoleBasedUser(['admin']),
     verifySession,
     menuPengendaraController.getDetail
