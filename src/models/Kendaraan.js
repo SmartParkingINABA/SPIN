@@ -42,7 +42,8 @@ const kendaraanModel = (sequelize, DataTypes) => {
     },
     {
         tableName: 'kendaraan',
-        timestamps: false
+        timestamps: true,
+        underscored: true
     });
     return Kendaraan;
 
