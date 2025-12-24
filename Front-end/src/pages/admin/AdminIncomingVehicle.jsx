@@ -27,23 +27,7 @@ export default function AdminIncomingVehicle() {
       </div>
       <div className="mt-6 grid grid-cols-2 gap-x-6">
         <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] flex flex-col px-6 py-4 rounded-md">
-          <p className="text-[#FEF8FD] font-medium mb-3.5">
-            Check-in Kendaraan
-          </p>
-          <button className="bg-[#FFDB58] rounded-sm px-3 h-10 cursor-pointer transition opacity-100 hover:opacity-80">
-            <div className="flex items-center gap-x-2.5 mx-auto w-fit">
-              <IoQrCode className="h-fit w-4.5 text-[#130F40]" />
-              <p className="text-[#130F40] font-medium">Scan QR Code</p>
-            </div>
-          </button>
-          <p className="text-[#93A3B6] font-medium text-[12px] text-center mt-1.5">
-            Fitur scan QR akan tersedia di update mendatang
-          </p>
-          <div className="flex items-center gap-x-3 mt-3.5">
-            <div className="flex-1 h-px bg-[#93A3B6]"></div>
-            <p className="text-[14px] text-[#93A3B6]">ATAU</p>
-            <div className="flex-1 h-px bg-[#93A3B6]"></div>
-          </div>
+          <p className="text-[#FEF8FD] font-medium">Check-in Kendaraan</p>
           <div className="flex gap-x-3 mt-3.5">
             <input
               type="text"

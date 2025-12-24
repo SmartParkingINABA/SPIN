@@ -77,17 +77,17 @@ export default function UserFormNewVehicle({ onClose }) {
               />
             </div>
           </div>
-          <div className="flex flex-col gap-y-1 relative">
-            <label htmlFor="noPlat" className="text-[#FEF8FD] font-medium">
-              Masa Berlaku
-            </label>
-            <input
-              type="text"
-              placeholder="DD/MM/YYYY"
-              className="bg-[#F5E79E] outline-0 py-2 px-3 rounded-sm"
-            />
-            <MdOutlineDateRange className="w-5 h-fit absolute top-[38px] left-35 text-[#48515b]" />
-          </div>
+          <label>
+            <span className="text-[#FEF8FD] font-medium">Masa Berlaku</span>T
+            <div className="bg-[#F5E79E] py-2 px-3 mt-1 rounded-sm flex items-center gap-x-3">
+              <input
+                type="text"
+                placeholder="DD/MM/YYYY"
+                className="bg-transparent outline-0 w-30"
+              />
+              <MdOutlineDateRange className="w-5 h-fit text-[#48515b]" />
+            </div>
+          </label>
           <div className="grid grid-cols-2 gap-x-4 mt-8">
             <button className="border-0 bg-[#FFDB58] py-2 rounded-sm font-medium cursor-pointer transition opacity-100 hover:opacity-80">
               Batal

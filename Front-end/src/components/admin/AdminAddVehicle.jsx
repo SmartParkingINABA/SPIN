@@ -42,12 +42,26 @@ export default function AdminAddVehicle({ onClose }) {
             />
           </div>
           <div className="flex flex-col gap-y-1 mb-2">
-            <p className="text-[#FEF8FD] font-medium">Jenis Kendaraan</p>
-            <AdminDropdownVehicle selectedOption={"Pilih jenis"} />
+            <label htmlFor="type" className="text-[#FEF8FD] font-medium">
+              Jenis Kendaraan
+            </label>
+            <input
+              id="type"
+              type="text"
+              placeholder="Motor / Mobil"
+              className="bg-[#F5E79E] outline-0 py-2 px-3 rounded-sm"
+            />
           </div>
           <div className="flex flex-col gap-y-1 mb-2">
-            <p className="text-[#FEF8FD] font-medium">Pemilik</p>
-            <AdminDropdownUserName selectedOption={"Nama pemilik"} />
+            <label htmlFor="full-name" className="text-[#FEF8FD] font-medium">
+              Nama Lengkap
+            </label>
+            <input
+              id="full-name"
+              type="text"
+              placeholder="John Doe"
+              className="bg-[#F5E79E] outline-0 py-2 px-3 rounded-sm"
+            />
           </div>
           <button className="mt-8 border-0 bg-[#FFDB58] py-2 rounded-sm font-medium cursor-pointer transition opacity-100 hover:opacity-80 w-full">
             Simpan
