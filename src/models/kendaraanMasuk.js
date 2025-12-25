@@ -16,10 +16,15 @@ const kendaraanMasukModel = (sequelize, DataTypes) => {
         waktu_masuk : {
             type: DataTypes.DATE,
             defaultValue: DataTypes.NOW
+        }, 
+        status_parkir: {
+            type: DataTypes.ENUM('Sedang Parkir', 'Selesai'),
+            defaultValue: 'Sedang Parkir'
         }
     },{
         tableName: 'kendaraan_masuk',
-        timestamps: false
+        timestamps: false,
+        underscored: true
     });
     return kendaraanMasuk;
 };
