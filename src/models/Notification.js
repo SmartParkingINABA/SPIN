@@ -28,7 +28,8 @@ const notificationModel = (sequelize, DataTypes) => {
         }
     }, {
         tableName: 'notifikasi',
-        timestamps: false
+        timestamps: false,
+        underscored: true
     });
     return Notification;
 };
