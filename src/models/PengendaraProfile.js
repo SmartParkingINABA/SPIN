@@ -18,6 +18,9 @@ const pengendaraProfileModel = (sequelize, DataTypes) => {
         },
         no_telp : {
             type: DataTypes.STRING(20)
+        },
+        foto_profil: {
+            type: DataTypes.STRING(255)
         }
     },
     {

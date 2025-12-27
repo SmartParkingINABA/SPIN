@@ -45,7 +45,7 @@ petugasProfile.hasMany(kendaraanKeluar, { foreignKey: 'petugas_id', as: 'kendara
 kendaraanKeluar.belongsTo(petugasProfile, { foreignKey: 'petugas_id', as: 'petugas'});
 
 kendaraan.hasMany(kendaraanMasuk, { foreignKey: 'kendaraan_id', as: 'riwayatMasuk'});
-kendaraanMasuk.belongsTo(kendaraan, { foreignKey: 'kendaraan_id', as: 'kendaraanMasuk'});
+kendaraanMasuk.belongsTo(kendaraan, { foreignKey: 'kendaraan_id', as: 'kendaraan'});
 
 kendaraan.hasMany(kendaraanKeluar, { foreignKey: 'kendaraan_id', as: 'riwayatKeluar'});
 kendaraanKeluar.belongsTo(kendaraan, { foreignKey: 'kendaraan_id', as: 'kendaraanKeluar'});

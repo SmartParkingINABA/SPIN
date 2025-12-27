@@ -3,6 +3,11 @@ import authenticationRoleBasedUser from '../../middlewares/authentication/AuthMi
 import verifySession from '../../middlewares/cache/SessionMiddlewares.js';
 import menuDataKendaraanController from '../../controllers/pengendara/menuDataKendaraan.js';
 import menuQrCodeSaya from '../../controllers/pengendara/menuQrCodeSaya.js';
+import menuPengaturanAkun from '../../controllers/pengendara/menuPengaturanAkun.js';
+import uploadPhotoProfile from '../../middlewares/upload/uploadPhotoProfile.js';
+
+
+
 
 const dashboardPengendara = express.Router();
 
@@ -67,6 +72,38 @@ dashboardPengendara.get(
 )
 
 
+// Menu Pengaturan akun
+
+dashboardPengendara.get(
+    '/dashboard/pengaturan-profil',
+    authenticationRoleBasedUser(['pengendara']),
+    verifySession,
+    menuPengaturanAkun.getProfile
+)
+
+dashboardPengendara.put(
+    '/dashboard/pengaturan-profil/update',
+    authenticationRoleBasedUser(['pengendara']),
+    verifySession,
+    menuPengaturanAkun.updateProfile
+)
+
+
+dashboardPengendara.put(
+    '/dashboard/pengaturan-profil/upload/photo',
+    authenticationRoleBasedUser(['pengendara']),
+    verifySession,
+    uploadPhotoProfile.single('foto_profil'),
+    menuPengaturanAkun.uploadPhoto
+)
+
+
+dashboardPengendara.put(
+    '/dashboard/pengaturan-profil/change-password',
+    authenticationRoleBasedUser(['pengendara']),
+    verifySession,
+    menuPengaturanAkun.changePassword
+)
 
 export default dashboardPengendara;
 

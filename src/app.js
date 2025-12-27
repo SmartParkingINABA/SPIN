@@ -2,6 +2,7 @@ import cors from 'cors'
 import express from 'express'
 import cookieParser from 'cookie-parser';
 import indexRoutes from './routes/IndexRoutes.js';
+import path from 'path';
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(cookieParser());
 
 
 app.use('/api', indexRoutes);
+app.use('/uploads', express.static(path.resolve('public/uploads')));
 
 app.use((err, req, res, next) => {
     console.error('Global Erro: ', err);
