@@ -14,8 +14,8 @@ class menuDataKendaraanController {
     async create(req, res, next) {
         try {
             const userId = req.user.id_users;
-            const data = await menuDataKendaraanService.createKendaraan(userId, req.body);
-            res.status(201).json(data)
+            await menuDataKendaraanService.createKendaraan(userId, req.body);
+            res.status(201).json({ message: 'Data Kendaraan Berhasil Ditambahkan' })
         } catch (err) {
             next(err)
         }
@@ -25,7 +25,7 @@ class menuDataKendaraanController {
         try {
             const userId = req.user.id_users;
             await menuDataKendaraanService.updateKendaraan(userId, req.params.id, req.body);
-            res.json({ message: 'Kendaraan Berhasil Diperbarui' });
+            res.status(200).json({ message: 'Kendaraan Berhasil Diperbarui' });
         } catch (error) {
             next(err);
         }
@@ -35,7 +35,7 @@ class menuDataKendaraanController {
         try {
             const userId = req.user.id_users;
             await menuDataKendaraanService.deleteKendaraan(userId, req.params.id);
-            res.json({ message: 'Kendaraan Berhasil Dihapus' });
+            res.status(200).json({ message: 'Kendaraan Berhasil Dihapus' });
         } catch (err) {
             next(err)
         }
