@@ -10,7 +10,7 @@ const dashboardPetugas = express.Router();
 
 //Menu Scan QR Code
 
-dashboardPetugas.post(
+dashboardPetugas.get(
     '/dashboard/scan-qr',
     authenticationRoleBasedUser(['petugas']),
     verifySession,
