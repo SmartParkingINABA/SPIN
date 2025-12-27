@@ -1,13 +1,15 @@
 const formatDateDDMMYYYY = (date) => {
-    if (!date) {
-        return '-';
-    }
+    if (!date) return '-';
 
-    const tanggal = new Date(date);
-    if (isNaN(tanggal.getTime())) return '-';
+    const data = new Date(date);
+    if(isNaN(data.getTime())) return '-';
 
-    return `${String(tanggal.getDate()).padStart(2, '0')}/${String(tanggal.getMonth() + 1).padStart(2, '0')
-    }/${tanggal.getFullYear()}`;
+    return new Intl.DateTimeFormat('id-ID', {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric',
+        timeZone: 'Asia/Jakarta'
+    }).format(data)
 };
 
 export default formatDateDDMMYYYY;

@@ -3,15 +3,22 @@ const formatDateTimeFormatter = (date = new Date()) => {
 
     if (isNaN(dateTime.getTime())) return '-';
 
-    const tanggal = String(dateTime.getDate()).padStart(2, '0');
-    const bulan = String(dateTime.getMonth() + 1).padStart(2, '0');
-    const tahun = dateTime.getFullYear();
+    const tanggal = new Intl.DateTimeFormat('id-ID', {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric',
+        timeZone: 'Asia/Jakarta'
+    }).format(dateTime);
+    
+    const waktu = new Intl.DateTimeFormat('id-ID', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false,
+        timeZone: 'Asia/Jakarta'
+    }).format(date)
 
-    const jam = String(dateTime.getHours()).padStart(2, '0');
-    const menit = String(dateTime.getMinutes()).padStart(2, '0');
-    const detik = String(dateTime.getSeconds()).padStart(2, '0');
-
-    return `${tanggal}/${bulan}/${tahun} pukul ${jam}:${menit}:${detik}`;
+    return `${tanggal} pukul ${waktu}`;
 };
 
 export default formatDateTimeFormatter;
