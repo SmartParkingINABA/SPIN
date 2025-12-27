@@ -1,6 +1,8 @@
 import kendaraanRepo from "../../repositories/pengendara/menuDataKendaraan.js";
 import pengendaraProfile from "../../repositories/pengendara/pengendaraProfile.js";
 import generateQrCode from "../../utils/generateQr.js";
+import parseDateToSql from "../../utils/parseDateToSQL.js";
+
 
 class menuDataKendaraanService {
     async getMyKendaraan(userId) {
@@ -16,6 +18,8 @@ class menuDataKendaraanService {
 
     async createKendaraan(userId, payload) {
         const pengendara = await pengendaraProfile.findByUserId(userId);
+        const formatDate = parseDateToSql(payload.masa_berlaku);
+
         if (!pengendara) {
             throw new Error('Profil Pengendara Tidak Ditemukan')
         }
@@ -33,7 +37,7 @@ class menuDataKendaraanService {
             warna: payload.warna,
             cc: payload.cc,
             tahun_keluaran: payload.tahun_keluaran,
-            masa_berlaku: payload.masa_berlaku,
+            masa_berlaku: formatDate,
             qr_code: generateQrCode(),
             status: 'Aktif'
             
