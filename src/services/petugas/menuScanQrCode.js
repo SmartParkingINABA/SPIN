@@ -22,7 +22,6 @@ class menuScanQrCodeService {
         const activeParkir = await kendaraanMasukRepo.findActive(kendaraan.id_kendaraan);
 
         return {
-            kendaraan_id: kendaraan.id_kendaraan,
             status: kendaraan.pemilik.status,
             qr_code: kendaraan.qr_code,
             no_plat: kendaraan.no_plat,
