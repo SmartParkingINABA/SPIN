@@ -44,28 +44,21 @@ dashboardPengendara.delete(
 //Menu QR Code Saya
 
 dashboardPengendara.get(
-    '/dashboard/qr-code-saya/vehicles',
-    authenticationRoleBasedUser(['pengendara']),
-    verifySession,
-    menuQrCodeSaya.listDropDown
-)
-
-dashboardPengendara.get(
-    '/dashboard/qr-code-saya/preview/:id',
+    '/dashboard/qr-code-saya/preview',
     authenticationRoleBasedUser(['pengendara']),
     verifySession,
     menuQrCodeSaya.preview
 )
 
 dashboardPengendara.get(
-    '/dashboard/qr-code-saya/download/:id',
+    '/dashboard/qr-code-saya/download',
     authenticationRoleBasedUser(['pengendara']),
     verifySession,
     menuQrCodeSaya.download
 )
 
 dashboardPengendara.get(
-    '/dashboard/qr-code-saya/print/:id',
+    '/dashboard/qr-code-saya/print',
     authenticationRoleBasedUser(['pengendara']),
     verifySession,
     menuQrCodeSaya.printPDF
