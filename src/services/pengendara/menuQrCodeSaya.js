@@ -4,64 +4,68 @@ import generateQrImage from "../../utils/generateQrImage.js";
 import generateQrPdf from "../../utils/generateQrPdf.js";
 
 class qrCodeService {
-    async getDropdownKendaraan(userId) {
-        const pengendara = await pengendaraProfile.findByUserId(userId);
-        if (!pengendara) {
-            throw new Error('Profil Pengendara Tidak Ditemukan')
-        }
-        return qrCode.findActiveByPengendara(pengendara.id_pengendara);
-    }
 
-    async getQrPreview(userId, kendaraanId) {
-        const pengendara = await pengendaraProfile.findByUserId(userId);
+    async previewQR(userId, kendaraanId = null ) {
+        const pengendara  = await pengendaraProfile.findByUserId(userId);
 
         if (!pengendara) {
             throw new Error('Profil Pengendara Tidak Ditemukan');
         }
-        const kendaraan = await qrCode.findByIdPengendara(kendaraanId, pengendara.id_pengendara);
 
-        if (!kendaraan) {
-            throw new Error(' Data Kendaraan Tidak Ditemukan Atau Tidak Aktif');
+        const kendaraanList = await qrCode.findActiveByPengendara(pengendara.id_pengendara);
+
+        if (!kendaraanList.length) {
+            return { kendaraan_list: [], selected: null }
         }
 
-        const qrImageBase64 = await generateQrImage(kendaraan.qr_code);
+        let selected = null;
 
-        return {
-            kendaraan: {
+        if (kendaraanId) {
+            const kendaraan = kendaraanList.find(
+                k => k.id_kendaraan == kendaraanId
+            );
+
+            if (!kendaraan) {
+                throw new Error('Data Kendaraan Tidak Ditemukan')
+            }
+            const qrImageBase64 = await generateQrImage(kendaraan.qr_code);
+
+            selected = {
+                id: kendaraan.id_kendaraan,
                 no_plat: kendaraan.no_plat,
                 merk: kendaraan.merk,
-                jenis: kendaraan.jenis
-            },
-            qr_image: qrImageBase64
+                qr_image: qrImageBase64
+            };
+        }
+
+        return {
+            kendaraan_list: kendaraanList.map(k => ({
+                id: k.id_kendaraan,
+                no_plat: k.no_plat,
+                merk: k.merk
+            })),
+            selected
         };
     }
 
-    async getQrDownload(userId, kendaraanId) {
+    async downloadQRPng(userId, kendaraanId) {
         const pengendara = await pengendaraProfile.findByUserId(userId);
-
-        if (!pengendara) {
-            throw new Error('Profil Pengendara Tidak Ditemukan')
-        };
-
         const kendaraan = await qrCode.findByIdPengendara(kendaraanId, pengendara.id_pengendara);
 
         if (!kendaraan) {
-            throw new Error('Data Kendaraan Tidak Ditemukan Atau Tidak Aktif')
-        };
+            throw new Error('Data Kendaraan Tidak Ditemukan')
+        }
+
         return generateQrImage(kendaraan.qr_code, {raw: true});
     }
 
-    async getQrPdf(userId, kendaraanId) {
+    async printQRPdf(userId, kendaraanId) {
         const pengendara = await pengendaraProfile.findByUserId(userId);
-        if (!pengendara) {
-            throw new Error('Profil Pengendara Tidak Ditemukan')
-        };
-
         const kendaraan = await qrCode.findByIdPengendara(kendaraanId, pengendara.id_pengendara);
 
         if (!kendaraan) {
-            throw new Error('Data Kendaraan Tidak Ditemukan Atau Tidak Aktif')
-        };
+            throw new Error('Data Kendaraan Tidak Ditemukan')
+        }
 
         return generateQrPdf({
             qrData: kendaraan.qr_code,
