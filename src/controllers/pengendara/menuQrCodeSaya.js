@@ -1,21 +1,12 @@
 import menuQrCodeSaya from "../../services/pengendara/menuQrCodeSaya.js";
 
 class qrCodeController {
-    async listDropDown(req, res, next) {
-        try {
-            const userId = req.user.id_users;
-            const data = await menuQrCodeSaya.getDropdownKendaraan(userId);
-            res.json(data);
-        } catch (err) {
-            next(err)
-        }
-    }
 
     async preview(req, res, next) {
         try {
             const userId = req.user.id_users;
-            const kendaraanId = req.params.id;
-            const result = await menuQrCodeSaya.getQrPreview(userId, kendaraanId);
+            const kendaraanId = req.query.kendaraan_id || null;
+            const result = await menuQrCodeSaya.previewQR(userId, kendaraanId);
             res.json(result);
         } catch (err) {
             throw new Error('')
@@ -25,8 +16,13 @@ class qrCodeController {
     async download(req, res, next) {
         try {
             const userId = req.user.id_users;
-            const kendaraanId = req.params.id;
-            const qrBuffer = await menuQrCodeSaya.getQrDownload(userId, kendaraanId);
+            const kendaraanId = req.query.kendaraan_id;
+
+            if (!kendaraanId) {
+                throw new Error('Kendaraan Id Tidak Ditemukan')
+            }
+
+            const qrBuffer = await menuQrCodeSaya.downloadQRPng(userId, kendaraanId);
             res.setHeader('Content-type', 'img/png');
             res.setHeader('Content-Disposition', 'attachment; filename="QR-Code-SPIN.png"');
             res.send(qrBuffer)
@@ -38,8 +34,13 @@ class qrCodeController {
     async printPDF(req, res, next) {
         try {
             const userId = req.user.id_users;
-            const kendaraanId = req.params.id;
-            const pdfDoc = await menuQrCodeSaya.getQrPdf(userId, kendaraanId);
+            const kendaraanId = req.query.kendaraan_id;
+
+            if (!kendaraanId) {
+                throw new Error('Kendaraan Id Tidak Ditemukan')
+            }
+
+            const pdfDoc = await menuQrCodeSaya.printQRPdf(userId, kendaraanId);
             res.setHeader('Content-Type', 'application/pdf');
             res.setHeader('Content-Disposition', 'attachment; filename="QR-Code-SPIN.pdf"');
             pdfDoc.pipe(res)
