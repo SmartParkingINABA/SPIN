@@ -24,8 +24,7 @@ class kendaraanRepo {
         return kendaraan.findByPk(id,{
             attributes: [
                 'id_kendaraan',
-                'no_plat',
-                'status'
+                'no_plat'
             ],
             include: [
                 {
