@@ -35,16 +35,16 @@ import OfficerProfile from "./pages/officer/OfficerProfile";
 
 // admin
 import AdminLayout from "./layouts/AdminLayout";
-import AdminDashboard from "./pages/admin/AdminDashboard";
-import AdminParkingAttendant from "./pages/admin/AdminParkingAttendant";
-import AdminRider from "./pages/admin/AdminRider";
-import AdminVehicles from "./pages/admin/AdminVehicles";
-import AdminIncomingVehicle from "./pages/admin/AdminIncomingVehicle";
-import AdminVehicleOut from "./pages/admin/AdminVehicleOut";
-import AdminActiveParking from "./pages/admin/AdminActiveParking";
-import AdminNotification from "./pages/admin/AdminNotification";
-import AdminReport from "./pages/admin/AdminReport";
-import AdminAccountSettings from "./pages/admin/AdminAccountSettings";
+import Dashboard from "./pages/admin/dasboard/Dasboard";
+import Officer from "./pages/admin/officers/Officer";
+import Rider from "./pages/admin/riders/Rider";
+import Vehicles from "./pages/admin/vehicles/Vehicles";
+import IncomingVehicle from "./pages/admin/incoming-vehicle/IncomingVehicle";
+import VehicleOut from "./pages/admin/vehicle-out/VehicleOut";
+import ActiveParking from "./pages/admin/active-parking/ActiveParking";
+import Notification from "./pages/admin/notification/Notification";
+import Report from "./pages/admin/reports/Reports";
+import Setting from "./pages/admin/setting/Setting";
 
 function App() {
   return (
@@ -79,16 +79,16 @@ function App() {
 
       {/* ADMIN DASBOARD*/}
       <Route path="/admin" element={<AdminLayout />}>
-        <Route index element={<AdminDashboard />} />
-        <Route path="parking-attendant" element={<AdminParkingAttendant />} />
-        <Route path="rider" element={<AdminRider />} />
-        <Route path="vehicles" element={<AdminVehicles />} />
-        <Route path="incoming-vehicle" element={<AdminIncomingVehicle />} />
-        <Route path="vehicle-out" element={<AdminVehicleOut />} />
-        <Route path="active-parking" element={<AdminActiveParking />} />
-        <Route path="notification" element={<AdminNotification />} />
-        <Route path="report" element={<AdminReport />} />
-        <Route path="account-settings" element={<AdminAccountSettings />} />
+        <Route index element={<Dashboard />} />
+        <Route path="parking-attendant" element={<Officer />} />
+        <Route path="rider" element={<Rider />} />
+        <Route path="vehicles" element={<Vehicles />} />
+        <Route path="incoming-vehicle" element={<IncomingVehicle />} />
+        <Route path="vehicle-out" element={<VehicleOut />} />
+        <Route path="active-parking" element={<ActiveParking />} />
+        <Route path="notification" element={<Notification />} />
+        <Route path="report" element={<Report />} />
+        <Route path="account-settings" element={<Setting />} />
       </Route>
 
       {/* OFFICER DASBOARD */}

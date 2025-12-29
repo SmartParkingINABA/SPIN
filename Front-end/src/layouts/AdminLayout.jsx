@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
-import AdminHeader from "../components/admin/AdminHeader";
-import AdminSidebar from "../components/admin/AdminSidebar";
+import Header from "../components/admin/header/Header";
+import Sidebar from "../components/admin/sidebar/Sidebar";
 
 export default function AdminLayout() {
   return (
     <main className="flex font-ubuntu w-full">
-      <AdminHeader />
-      <AdminSidebar />
+      <Header />
+      <Sidebar />
       <div className="w-[83%] mt-[60px] ml-auto">
         {/* Content */}
         <Outlet />
