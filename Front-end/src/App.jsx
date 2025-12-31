@@ -1,50 +1,50 @@
 import { Route, Routes } from "react-router-dom";
 
 // AUTH
-import Login from "./pages/auth/Login";
-import Register from "./pages/auth/Register";
-import ForgotPassword from "./pages/auth/ForgotPassword";
-import NewPassword from "./pages/auth/NewPassword";
-import Verify from "./pages/auth/Verify";
-import PasswordReset from "./pages/auth/PasswordReset";
+import Login from "./features/auth/Login";
+import Register from "./features/auth/Register";
+import ForgotPassword from "./features/auth/ForgotPassword";
+import NewPassword from "./features/auth/NewPassword";
+import Verify from "./features/auth/Verify";
+import PasswordReset from "./features/auth/PasswordReset";
 
 // PUBLIC
 import PublicLayout from "./layouts/PublicLayout";
-import Home from "./pages/public/Home";
-import Regulation from "./pages/public/Regulation";
-import About from "./pages/public/About";
-import Enter from "./pages/public/Enter";
+import Home from "./features/public/Home";
+import Regulation from "./features/public/Regulation";
+import About from "./features/public/About";
+import Enter from "./features/public/Enter";
 
 // USER
 import UserLayout from "./layouts/UserLayout";
-import UserProfile from "./pages/user/UserProfile";
-import UserNotifikasi from "./pages/user/UserNotifikasi";
-import UserParkingHistory from "./pages/user/UserParkingHistory";
-import UserVehiclesReport from "./pages/user/UserVehiclesReport";
-import UserDashboard from "./pages/user/UserDashboard";
-import UserQRCode from "./pages/user/UserQRCode";
+import UserProfile from "./features/user/profile/Profile";
+import UserNotification from "./features/user/notification/Notification";
+import UserParkingHistory from "./features/user/parking-history/ParkingHistory";
+import UserVehiclesReport from "./features/user/vehicles-report/VehiclesReport";
+import UserDashboard from "./features/user/dashboard/Dashboard";
+import UserQRCode from "./features/user/qr-code/QRCode";
 
 // Officer
 import OfficerLayout from "./layouts/OfficerLayout";
-import OfficerDashboard from "./pages/officer/OfficerDasboard";
-import OfficerVehiclesReport from "./pages/officer/OfficerVehiclesReport";
-import OfficerScanQR from "./pages/officer/OfficerScanQR";
-import OfficerParkingHistory from "./pages/officer/OfficerParkingHistory";
-import OfficerNotifikasi from "./pages/officer/OfficerNotifikasi";
-import OfficerProfile from "./pages/officer/OfficerProfile";
+import OfficerDashboard from "./features/officer/OfficerDasboard";
+import OfficerVehiclesReport from "./features/officer/OfficerVehiclesReport";
+import OfficerScanQR from "./features/officer/OfficerScanQR";
+import OfficerParkingHistory from "./features/officer/OfficerParkingHistory";
+import OfficerNotifikasi from "./features/officer/OfficerNotifikasi";
+import OfficerProfile from "./features/officer/OfficerProfile";
 
 // admin
 import AdminLayout from "./layouts/AdminLayout";
-import Dashboard from "./pages/admin/dasboard/Dasboard";
-import Officer from "./pages/admin/officers/Officer";
-import Rider from "./pages/admin/riders/Rider";
-import Vehicles from "./pages/admin/vehicles/Vehicles";
-import IncomingVehicle from "./pages/admin/incoming-vehicle/IncomingVehicle";
-import VehicleOut from "./pages/admin/vehicle-out/VehicleOut";
-import ActiveParking from "./pages/admin/active-parking/ActiveParking";
-import Notification from "./pages/admin/notification/Notification";
-import Report from "./pages/admin/reports/Reports";
-import Setting from "./pages/admin/setting/Setting";
+import Dashboard from "./features/admin/dasboard/Dasboard";
+import Officer from "./features/admin/officers/Officer";
+import Rider from "./features/admin/riders/Rider";
+import Vehicles from "./features/admin/vehicles/Vehicles";
+import IncomingVehicle from "./features/admin/incoming-vehicle/IncomingVehicle";
+import VehicleOut from "./features/admin/vehicle-out/VehicleOut";
+import ActiveParking from "./features/admin/active-parking/ActiveParking";
+import Notification from "./features/admin/notification/Notification";
+import Report from "./features/admin/reports/Reports";
+import Setting from "./features/admin/setting/Setting";
 
 function App() {
   return (
@@ -73,7 +73,7 @@ function App() {
         <Route path="report-data" element={<UserVehiclesReport />} />
         <Route path="my-qr-code" element={<UserQRCode />} />
         <Route path="parking-history" element={<UserParkingHistory />} />
-        <Route path="notifikasi" element={<UserNotifikasi />} />
+        <Route path="notifikasi" element={<UserNotification />} />
         <Route path="user-profile" element={<UserProfile />} />
       </Route>
 

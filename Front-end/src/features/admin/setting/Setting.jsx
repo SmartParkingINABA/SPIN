@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Header from "./components/Header";
-import BoxWrapper from "../../../components/admin/ui/BoxWrapper";
+import BoxWrapper from "../../../components/ui/BoxWrapper";
 import EditProfile from "./components/Form/EditProfile";
 import EditPassword from "./components/Form/EditPassword";
 import Message from "./components/Message";

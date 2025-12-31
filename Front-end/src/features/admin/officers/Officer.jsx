@@ -4,7 +4,7 @@ import AddForm from "./components/Form/AddForm";
 import Header from "./components/Header";
 import StatsGrid from "./components/Stats/StatsGrid";
 import Grid from "./components/OfficerList/Grid";
-import BoxWrapper from "../../../components/admin/ui/BoxWrapper";
+import BoxWrapper from "../../../components/ui/BoxWrapper";
 
 export default function Officer() {
   const [isModalOpenAdd, setIsModalOpenAdd] = useState(false);

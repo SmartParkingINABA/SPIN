@@ -6,6 +6,7 @@ import Detail from "./components/VehicleList/Card/Detail/Detail";
 import StatsGrid from "./components/Stats/StatsGrid";
 import Filter from "./components/Filter";
 import Grid from "./components/VehicleList/Grid";
+import BoxWrapper from "../../../components/ui/BoxWrapper";
 
 export default function Vehicles() {
   const [openModalAdd, setOpenModalAdd] = useState(false);
@@ -46,13 +47,14 @@ export default function Vehicles() {
         <Header openModalAdd={() => setOpenModalAdd(true)} />
         <StatsGrid />
         <Filter />
-        <div className="mt-6 border border-[rgba(255,236,120,0.5)] bg-[#1E1633] px-6 py-4 rounded-md">
-          <p className="text-[#FEF8FD] font-medium">Daftar Kendaraan</p>
-          <Grid
-            vehicles={vehicles}
-            openModalDetail={() => setOpenModalDetail(true)}
-            openModalEdit={() => setOpenModalEdit(true)}
-          />
+        <div className="mt-6">
+          <BoxWrapper title="Daftar Kendaraan">
+            <Grid
+              vehicles={vehicles}
+              openModalDetail={() => setOpenModalDetail(true)}
+              openModalEdit={() => setOpenModalEdit(true)}
+            />
+          </BoxWrapper>
         </div>
       </section>
       {openModalAdd && <AddForm onClose={() => setOpenModalAdd(false)} />}

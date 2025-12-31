@@ -1,6 +1,6 @@
 import Header from "./components/Header";
 import StatsGrid from "./components/Stats/StatsGrid";
-import BoxWrapper from "../../../components/admin/ui/BoxWrapper";
+import BoxWrapper from "../../../components/ui/BoxWrapper";
 import Search from "./components/Search";
 import Grid from "./components/Card/Grid";
 import { useState } from "react";

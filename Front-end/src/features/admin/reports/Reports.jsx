@@ -7,7 +7,7 @@ import Header from "./components/Header";
 import Filter from "./components/Filter";
 import ReportTabs from "./components/ReportTabs";
 import StatsGrid from "./components/ParkingReports/Stats/StatsGrid";
-import BoxWrapper from "../../../components/admin/ui/BoxWrapper";
+import BoxWrapper from "../../../components/ui/BoxWrapper";
 import IncomingVehicle from "./components/ParkingReports/IncomingVehicle";
 import VehicleOut from "./components/ParkingReports/VehicleOut";
 import Grid from "./components/DriverReports/Card/Grid";

@@ -1,16 +1,16 @@
 import InOutChart from "./components/Charts/InOutChart";
 import DailyChart from "./components/Charts/DailyChart";
 import DurationChart from "./components/Charts/DurationChart";
-import DashboardHeader from "./components/DashboardHeader";
+import Header from "./components/Header";
 import StatsGrid from "./components/Stats/StatsGrid";
 import ActivityList from "./components/Activity/ActivityList";
 import NewRiderList from "./components/Riders/NewRiderList";
-import BoxWrapper from "../../../components/admin/ui/BoxWrapper";
+import BoxWrapper from "../../../components/ui/BoxWrapper";
 
 export default function Dasboard() {
   return (
     <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
-      <DashboardHeader />
+      <Header />
       <StatsGrid />
       <div className="mt-6 grid grid-cols-2 gap-x-6">
         <BoxWrapper title="Parkir Per Hari (7 Hari Terakhir)">

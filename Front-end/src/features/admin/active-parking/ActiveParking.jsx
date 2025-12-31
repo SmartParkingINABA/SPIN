@@ -2,7 +2,7 @@ import { useState } from "react";
 import Header from "./components/Header";
 import StatsGrid from "./components/Stats/StatsGrid";
 import Filter from "./components/Filter";
-import BoxWrapper from "../../../components/admin/ui/BoxWrapper";
+import BoxWrapper from "../../../components/ui/BoxWrapper";
 import Grid from "./components/VehicleList/Card/Grid";
 
 export default function ActiveParking() {

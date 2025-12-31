@@ -1,5 +1,5 @@
 import { useState } from "react";
-import BoxWrapper from "../../../components/admin/ui/BoxWrapper";
+import BoxWrapper from "../../../components/ui/BoxWrapper";
 import Header from "./components/Header";
 import StatsGrid from "./components/Stats/StatsGrid";
 import Search from "./components/Search";

@@ -2,7 +2,7 @@ import { useState } from "react";
 import Header from "./components/Header";
 import StatsGrid from "./components/Stats/StatsGrid";
 import NotificationTabs from "./components/NotificationTabs";
-import BoxWrapper from "../../../components/admin/ui/BoxWrapper";
+import BoxWrapper from "../../../components/ui/BoxWrapper";
 import QuickTemplates from "./components/Send/QuickTemplates";
 import Form from "./components/Send/Form";
 import Card from "./components/History/Card";

@@ -3,7 +3,7 @@ import Detail from "./components/RiderList/Card/Detail/Detail";
 import Header from "./components/Header";
 import Search from "./components/Search";
 import Grid from "./components/RiderList/Grid";
-import BoxWrapper from "../../../components/admin/ui/BoxWrapper";
+import BoxWrapper from "../../../components/ui/BoxWrapper";
 
 export default function Rider() {
   const [isModalOpen, setIsModalOpen] = useState(false);
