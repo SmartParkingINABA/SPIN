@@ -106,6 +106,7 @@ class menuScanQrCodeService {
             await kendaraanMasukRepo.finish(active.id_kendaraan_masuk, transaction);
 
             await kendaraanKeluarRepo.create({
+                kendaraan_masuk_id: active.id_kendaraan_masuk,
                 kendaraan_id: kendaraanId,
                 petugas_id: petugasId
             }, transaction);
