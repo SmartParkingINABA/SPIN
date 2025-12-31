@@ -66,7 +66,7 @@ class authService {
                     { model: Role, as: 'role', attributes: ['nama_role'] },
                     { model: adminProfile, as: 'adminProfile', attributes: ['nama_admin', 'no_telp'], required: false },
                     { model: petugasProfile, as: 'petugasProfile', attributes: ['nama_petugas', 'no_telp', 'shift', 'lokasi_kerja'], required: false  },
-                    { model: pengendaraProfile, as: 'pengendaraProfile', attributes: ['nama_pengendara', 'alamat', 'no_telp'], required: false }
+                    { model: pengendaraProfile, as: 'pengendaraProfile', attributes: ['id_pengendara', 'nama_pengendara', 'alamat', 'no_telp'], required: false }
                 ]
             }
         );
