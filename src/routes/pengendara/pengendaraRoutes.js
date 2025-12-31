@@ -5,6 +5,7 @@ import menuDataKendaraanController from '../../controllers/pengendara/menuDataKe
 import menuQrCodeSaya from '../../controllers/pengendara/menuQrCodeSaya.js';
 import menuPengaturanAkun from '../../controllers/pengendara/menuPengaturanAkun.js';
 import uploadPhotoProfile from '../../middlewares/upload/uploadPhotoProfile.js';
+import menuRiwayatParkir from '../../controllers/pengendara/menuRiwayatParkir.js';
 
 
 
@@ -63,6 +64,26 @@ dashboardPengendara.get(
     verifySession,
     menuQrCodeSaya.printPDF
 )
+
+
+// Menu Riwayat Parkir
+
+dashboardPengendara.get(
+    '/dashboard/riwayat-parkir',
+    authenticationRoleBasedUser(['pengendara']),
+    verifySession,
+    menuRiwayatParkir.getRiwayat
+)
+
+dashboardPengendara.get(
+    '/dashboard/riwayat-parkir/export',
+    authenticationRoleBasedUser(['pengendara']),
+    verifySession,
+    menuRiwayatParkir.exportCsv
+)
+
+
+
 
 
 // Menu Pengaturan akun
