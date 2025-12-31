@@ -16,6 +16,10 @@ const kendaraanKeluarModel = (sequelize, DataTypes) => {
         waktu_keluar: {
             type: DataTypes.DATE,
             defaultValue: DataTypes.NOW
+        },
+        kendaraan_masuk_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false
         }
     }, {
         tableName: 'kendaraan_keluar',
