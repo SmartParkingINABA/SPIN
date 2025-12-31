@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fast-csv/format": "^5.0.5",
     "axios": "^1.13.2",
     "axios-cookiejar-support": "^6.0.5",
     "bcrypt": "^6.0.0",
