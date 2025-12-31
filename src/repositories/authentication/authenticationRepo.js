@@ -7,7 +7,7 @@ const authRepo = {
                 { model: Role, as: 'role', attributes: ['nama_role'] },
                 { model: adminProfile, as: 'adminProfile', attributes: ['nama_admin', 'no_telp'], required: false },
                 { model: petugasProfile, as: 'petugasProfile', attributes: ['id_petugas', 'nama_petugas', 'shift'], required: false },
-                { model: pengendaraProfile, as: 'pengendaraProfile', attributes: ['nama_pengendara', 'alamat'], required: false }
+                { model: pengendaraProfile, as: 'pengendaraProfile', attributes: ['id_pengendara', 'nama_pengendara', 'alamat'], required: false }
             ]
         });
     }
