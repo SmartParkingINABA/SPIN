@@ -6,7 +6,7 @@ import menuQrCodeSaya from '../../controllers/pengendara/menuQrCodeSaya.js';
 import menuPengaturanAkun from '../../controllers/pengendara/menuPengaturanAkun.js';
 import uploadPhotoProfile from '../../middlewares/upload/uploadPhotoProfile.js';
 import menuRiwayatParkir from '../../controllers/pengendara/menuRiwayatParkir.js';
-
+import menuNotifikasi from '../../controllers/pengendara/menuNotifikasi.js';
 
 
 
@@ -83,6 +83,27 @@ dashboardPengendara.get(
 )
 
 
+// Menu Notifikasi
+
+dashboardPengendara.get(
+    '/dashboard/notifikasi',
+    authenticationRoleBasedUser(['pengendara']),
+    verifySession,
+    menuNotifikasi.getAll
+)
+
+dashboardPengendara.patch(
+    '/dashboard/:id/baca',
+    authenticationRoleBasedUser(['pengendara']),
+    verifySession,
+    menuNotifikasi.markAsRead
+)
+
+dashboardPengendara.patch(
+    '/dashboard/notifikasi/baca-semua',
+    authenticationRoleBasedUser(['pengendara']),
+    menuNotifikasi.markAllAsRead
+)
 
 
 
@@ -118,6 +139,8 @@ dashboardPengendara.put(
     verifySession,
     menuPengaturanAkun.changePassword
 )
+
+
 
 export default dashboardPengendara;
 
