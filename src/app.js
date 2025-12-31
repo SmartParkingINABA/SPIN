@@ -21,7 +21,7 @@ app.use('/api', indexRoutes);
 app.use('/uploads', express.static(path.resolve('public/uploads')));
 
 app.use((err, req, res, next) => {
-    console.error('Global Erro: ', err);
+    console.error('Global Error: ', err);
     res.status(err.status || 500).json(
         {
             message: 'Internal Server Error!'
