@@ -8,6 +8,8 @@ import { Server } from 'socket.io';
 import petugasSocketStatus from './socket/petugas/SocketPetugasStatus.js';
 import authSocketMiddlewares from './middlewares/authentication/AuthSocketMiddlewares.js';
 import startCleanupJobs from './jobs/cleanupPetugasOnline.js';
+import pengendaraSocket from './socket/pengendara/pengendaraSocket.js';
+import { setSocketIo } from './socket/emitter/notifikasiEmitter.js';
 
 const PORT = process.env.PORT || 3500;
 
@@ -26,6 +28,8 @@ const PORT = process.env.PORT || 3500;
 
         io.use(authSocketMiddlewares);
         petugasSocketStatus(io);
+        setSocketIo(io);
+        pengendaraSocket(io);
         startCleanupJobs();
 
         server.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));

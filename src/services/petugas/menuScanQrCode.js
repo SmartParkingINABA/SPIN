@@ -1,10 +1,11 @@
+import sequelize from "../../configs/DBConfig.js";
 import kendaraanRepo from "../../repositories/petugas/kendaraanRepo.js";
 import kendaraanMasukRepo from "../../repositories/petugas/kendaraanMasukRepo.js";
 import kendaraanKeluarRepo from "../../repositories/petugas/kendaraanKeluarRepo.js";
 import notifikasiRepo from "../../repositories/petugas/notifikasiRepo.js";
 import formatDateDDMMYYYY from "../../utils/dateFormatter.js";
 import formatDateTimeFormatter from "../../utils/dateTimeFormatter.js";
-import sequelize from "../../configs/DBConfig.js";
+import { emitNotifikasiPengendara } from "../../socket/emitter/notifikasiEmitter.js";
 
 
 class menuScanQrCodeService {
@@ -68,6 +69,16 @@ class menuScanQrCodeService {
 
             await transaction.commit();
 
+            emitNotifikasiPengendara(kendaraan.pemilik.id_pengendara, {
+                judul: 'Kendaraan Masuk',
+                pesan: 'Kendaraan Anda Berhasil Masuk Ke Area Parkir',
+                jenis: 'Masuk',
+                waktu: formatDateTimeFormatter(),
+                kendaraan: {
+                    no_plat: kendaraan.no_plat
+                }
+            });
+
             return {
                 judul: 'Kendaraan Telah Berhasil Dicatat MASUK',
                 waktu: formatDateTimeFormatter(),
@@ -120,6 +131,17 @@ class menuScanQrCodeService {
             }, transaction);
 
             await transaction.commit();
+
+            emitNotifikasiPengendara(kendaraan.pemilik.id_pengendara, {
+                judul: 'Kendaraan Keluar',
+                pesan: 'Kendaraan Anda Berhasil Keluar Ke Area Parkir',
+                jenis: 'Keluar',
+                waktu: formatDateTimeFormatter(),
+                kendaraan: {
+                    no_plat: kendaraan.no_plat
+                }
+            });
+
             return {
                 judul: 'Kendaraan Telah Berhasil Dicatat KELUAR',
                 waktu: formatDateTimeFormatter(),
