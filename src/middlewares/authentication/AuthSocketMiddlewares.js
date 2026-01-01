@@ -1,10 +1,11 @@
 import { getSessionUser } from "../../cache/Session.js";
 import cookie from 'cookie'
+import { Users } from "../../models/Index.js";
 
 const authSocketMiddlewares = async (socket, next) => {
     try {
         const rawCookie = socket.request.headers.cookie;
-        console.log('Raw Cookie: ', socket.request.headers.cookie);
+        console.log('Raw Cookie: ', rawCookie);
         
         if (!rawCookie) {
             return next(new Error('Cookie Tidak Ditemukan!'));
@@ -20,21 +21,37 @@ const authSocketMiddlewares = async (socket, next) => {
         const decodeSession = decodeURIComponent(cookies.sessionId)
         const [userIdStr, sessionId] = decodeSession.split(':');
 
-        if (!userIdStr || !sessionId) {
+        const userId = Number(userIdStr);
+        if (!userId || !sessionId) {
             return next(new Error('Format Session Cookie Salah!'))
         }
 
-        const userId = Number(userIdStr);
 
         const session = await getSessionUser(userId, sessionId);
         if(!session) {
             return next(new Error('Session Invalid Atau Expire!'));
         };
 
-        socket.user = { id: userId };
+        const user = await Users.findByPk(userId, {
+            include: ['pengendaraProfile', 'petugasProfile', 'role']
+        });
+
+        if (!user) {
+            return next(new Error('User Tidak Ditemukan'))
+        }
+
+        socket.user = { 
+            id: user.id_users,
+            role: user.role?.nama_role,
+            pengendaraProfile: user.pengendaraProfile || null,
+            petugasProfile: user.petugasProfile || null
+        };
+
+        console.log('Socket User: ', {role: socket.user.role});
+        
         next();
     } catch (err) {
-        console.log('Auth Socket Middleware Error', err);
+        console.error('Auth Socket Middleware Error', err);
         next(new Error('Internal Server Error!'));
         next(err)
     }
