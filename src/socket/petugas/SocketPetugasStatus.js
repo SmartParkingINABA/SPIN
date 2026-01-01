@@ -3,25 +3,27 @@ import statusCache from "../../cache/Status.js";
 
 const petugasSocketStatus = (io) => {
     io.on('connection', async (socket) => {
-        const userId = socket.user.id;
-        console.log('Socket Connected: ', socket.id);
-        console.log('Socket User: ', socket.user);
+
+        if (socket.user?.role !== 'Petugas') return;
+
+        const petugasId = socket.user.petugasProfile.id_petugas;
+
+        console.log('Petugas Socket Connected: ', socket.id);
+        console.log(`Petugas ${petugasId} Online`);
         
-        statusCache.setOnline(userId, socket.id);
+        await statusCache.setOnline(petugasId, socket.id);
         
         io.to('admin').emit('petugas:online:update');
 
-        console.log(`Petugas ${userId} Online`);
-        
         socket.on('heartbeat', () => {
-            statusCache.heartbeat(userId)
+            statusCache.heartbeat(petugasId)
         });
 
         socket.on('disconnect', async () => {
-            await statusCache.removeSocket(userId, socket.id);
+            await statusCache.removeSocket(petugasId, socket.id);
 
             io.to('admin').emit('petugas:online:update')
-            console.log(`Petugas ${userId} Offline`);
+            console.log(`Petugas ${petugasId} Offline`);
             
             
         });
