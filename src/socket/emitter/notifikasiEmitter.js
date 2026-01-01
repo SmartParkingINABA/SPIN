@@ -10,6 +10,10 @@ const emitNotifikasiPengendara = (pengendaraId, payload) => {
     ioInstance
     .to(`pengendara:${pengendaraId}`)
     .emit('notifikasi:new', payload);
+    console.log('Notifikasi Baru: ');
+    console.log(JSON.stringify(payload, null, 2));
+    
+    
 };
 
 export {
