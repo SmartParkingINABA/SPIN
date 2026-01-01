@@ -38,6 +38,7 @@ class menuScanQrCodeService {
 
     async konfirmasiMasukByQR(qrCode, petugasId) {
         const transaction = await sequelize.transaction();
+        let payload;
         try {
             const kendaraan = await kendaraanRepo.findByQrCode(qrCode);
 
@@ -69,15 +70,18 @@ class menuScanQrCodeService {
 
             await transaction.commit();
 
-            emitNotifikasiPengendara(kendaraan.pemilik.id_pengendara, {
-                judul: 'Kendaraan Masuk',
-                pesan: 'Kendaraan Anda Berhasil Masuk Ke Area Parkir',
-                jenis: 'Masuk',
-                waktu: formatDateTimeFormatter(),
-                kendaraan: {
-                    no_plat: kendaraan.no_plat
+            payload = {
+                pengendaraId: kendaraan.pemilik.id_pengendara,
+                data: {
+                    judul: 'Kendaraan Masuk',
+                    pesan: 'Kendaraan Anda telah masuk area parkir',
+                    jenis: 'Masuk',
+                    waktu: formatDateTimeFormatter(),
+                    kendaraan: {
+                        no_plat: kendaraan.no_plat
+                    }
                 }
-            });
+            }
 
             return {
                 judul: 'Kendaraan Telah Berhasil Dicatat MASUK',
@@ -91,13 +95,22 @@ class menuScanQrCodeService {
             }
 
         } catch (error) {
-            await transaction.rollback();
+            if (!transaction.finished) {
+                await transaction.rollback();
+
+            }
             throw error;
+        } finally {
+            if (payload?.pengendaraId) {
+                console.log(`[SOCKET EMIT] Pengendara ${payload.pengendaraId}`);
+                emitNotifikasiPengendara(payload.pengendaraId, payload.data);
+            }
         }
     }
 
     async konfirmasiKeluarByQR(qrCode, petugasId) {
         const transaction = await sequelize.transaction();
+        let payload;
 
         try {
             const kendaraan = await kendaraanRepo.findByQrCode(qrCode, transaction);
@@ -132,15 +145,18 @@ class menuScanQrCodeService {
 
             await transaction.commit();
 
-            emitNotifikasiPengendara(kendaraan.pemilik.id_pengendara, {
-                judul: 'Kendaraan Keluar',
-                pesan: 'Kendaraan Anda Berhasil Keluar Ke Area Parkir',
-                jenis: 'Keluar',
-                waktu: formatDateTimeFormatter(),
-                kendaraan: {
-                    no_plat: kendaraan.no_plat
+            payload = {
+                pengendaraId: kendaraan.pemilik.id_pengendara,
+                data: {
+                    judul: 'Kendaraan Keluar',
+                    pesan: 'Kendaraan Anda telah keluar area parkir',
+                    jenis: 'Keluar',
+                    waktu: formatDateTimeFormatter(),
+                    kendaraan: {
+                        no_plat: kendaraan.no_plat
+                    }
                 }
-            });
+            }
 
             return {
                 judul: 'Kendaraan Telah Berhasil Dicatat KELUAR',
@@ -152,11 +168,16 @@ class menuScanQrCodeService {
                     alamat: kendaraan.pemilik?.alamat || '-'
                 },
             }
-
-
         } catch (error) {
-            await transaction.rollback();
+            if (!transaction.finished) {
+                await transaction.rollback();
+            }
             throw error;
+        } finally {
+            if (payload?.pengendaraId) {
+                console.log(`[SOCKET EMIT] Pengendara ${payload.pengendaraId}`);
+                emitNotifikasiPengendara(payload.pengendaraId, payload.data);
+            }
         }
     }
 };
