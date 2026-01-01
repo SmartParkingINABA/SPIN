@@ -28,8 +28,8 @@ const PORT = process.env.PORT || 3500;
 
         io.use(authSocketMiddlewares);
         petugasSocketStatus(io);
-        setSocketIo(io);
         pengendaraSocket(io);
+        setSocketIo(io);
         startCleanupJobs();
 
         server.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
