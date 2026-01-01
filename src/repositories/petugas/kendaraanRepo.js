@@ -15,7 +15,7 @@ class kendaraanRepo {
             include: [{
                 model: pengendaraProfile,
                 as: 'pemilik',
-                attributes: ['nama_pengendara', 'alamat', 'no_telp'],
+                attributes: ['id_pengendara', 'nama_pengendara', 'alamat', 'no_telp'],
             }]
         });
     }
@@ -30,7 +30,7 @@ class kendaraanRepo {
                 {
                     model: pengendaraProfile,
                     as: 'pemilik',
-                    attributes: ['nama_pengendara', 'alamat', 'no_telp']
+                    attributes: ['id_pengendara', 'nama_pengendara', 'alamat', 'no_telp']
                 }
             ]
         });
