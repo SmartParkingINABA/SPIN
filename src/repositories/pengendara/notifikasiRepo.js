@@ -1,4 +1,4 @@
-import { Op } from "sequelize";
+import { Op, Sequelize } from "sequelize";
 import { notification, kendaraan } from "../../models/Index.js";
 
 class notifikasiRepo {
