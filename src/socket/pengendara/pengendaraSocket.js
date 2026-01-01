@@ -11,8 +11,6 @@ const pengendaraSocket = (io) => {
 
         console.log(`Pengendara ${pengendaraId} join ${room}`);
         console.log(`[Socket JOIN] Pengendara ${pengendaraId} join ${room}`);
-        
-        
     });
 }
 
