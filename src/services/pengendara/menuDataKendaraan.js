@@ -7,7 +7,6 @@ import parseDateToSql from "../../utils/parseDateToSQL.js";
 class menuDataKendaraanService {
     async getMyKendaraan(userId) {
         const pengendara = await pengendaraProfile.findByUserId(userId);
-        console.log('Pengendara Result: ', pengendara);
         
         if (!pengendara) {
             throw new Error('Gagal Mengambil Data Kendaraan')
