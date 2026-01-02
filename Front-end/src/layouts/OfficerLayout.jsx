@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
-import OfficerHeader from "../components/officer/OfficerHeader";
-import OfficerSidebar from "../components/officer/OfficerSidebar";
+import Header from "../components/officer/header/Header";
+import Sidebar from "../components/officer/sidebar/Sidebar";
 
 export default function OfficerLayout() {
   return (
     <main className="flex font-ubuntu w-full">
-      <OfficerHeader />
-      <OfficerSidebar />
+      <Header />
+      <Sidebar />
       <div className="w-[83%] mt-[60px] ml-auto">
         {/* Content */}
         <Outlet />

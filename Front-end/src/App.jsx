@@ -26,12 +26,12 @@ import UserQRCode from "./features/user/qr-code/QRCode";
 
 // Officer
 import OfficerLayout from "./layouts/OfficerLayout";
-import OfficerDashboard from "./features/officer/OfficerDasboard";
-import OfficerVehiclesReport from "./features/officer/OfficerVehiclesReport";
-import OfficerScanQR from "./features/officer/OfficerScanQR";
-import OfficerParkingHistory from "./features/officer/OfficerParkingHistory";
-import OfficerNotifikasi from "./features/officer/OfficerNotifikasi";
-import OfficerProfile from "./features/officer/OfficerProfile";
+import OfficerDashboard from "./features/officer/dashboard/Dashboard";
+import OfficerVehiclesReport from "./features/officer/vehicles-report/VehiclesReport";
+import OfficerScanQR from "./features/officer/scan-qr/ScanQR";
+import OfficerParkingHistory from "./features/officer/parking-history/ParkingHistory";
+import OfficerNotifikasi from "./features/officer/notification/Notifikasi";
+import OfficerProfile from "./features/officer/profile/Profile";
 
 // admin
 import AdminLayout from "./layouts/AdminLayout";

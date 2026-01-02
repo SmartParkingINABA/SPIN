@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
-import ShiftDropdown from "../../../../../components/admin/ShiftDropdown";
-import WorkLocationDropdown from "../../../../../components/admin/WorkLocationDropdown";
+import ShiftDropdown from "./ShiftDropdown";
+import WorkLocationDropdown from "./WorkLocationDropdown";
 
 export default function AddForm({ onClose }) {
   const [showPassword, setShowPassword] = useState(false);

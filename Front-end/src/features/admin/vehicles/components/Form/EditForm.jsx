@@ -1,6 +1,6 @@
 import { IoClose } from "react-icons/io5";
 import VehicleDropdown from "../../../../../components/admin/VehicleDropdown";
-import UsersDropdown from "../../../../../components/admin/UsersDropdown";
+import UsersDropdown from "./UsersDropdown";
 
 export default function EditForm({ onClose }) {
   return (

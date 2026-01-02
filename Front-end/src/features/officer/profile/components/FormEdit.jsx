@@ -3,7 +3,7 @@ import { IoIosStar, IoIosInformationCircleOutline } from "react-icons/io";
 import { CiEdit } from "react-icons/ci";
 import { LuSave } from "react-icons/lu";
 
-export default function OfficerFormEdit({ onClose }) {
+export default function FormEdit({ onClose }) {
   return (
     <div className="font-ubuntu flex justify-center items-center h-screen w-full fixed inset-0 z-50 bg-[rgba(0,0,0,0.54)]">
       <div className="border border-[rgba(255,236,120,0.5)] bg-[#130F40] rounded-md p-5 pt-6 w-2/5">
@@ -71,20 +71,12 @@ export default function OfficerFormEdit({ onClose }) {
               Data shift kerja dan lokasi kerja hanya dapat diubah oleh admin.
             </p>
           </div>
-          <div className="grid grid-cols-2 gap-x-4 mt-8">
-            <button className="border-0 bg-[#FFDB58] py-2 rounded-sm font-medium cursor-pointer transition opacity-100 hover:opacity-80">
-              <div className="w-fit mx-auto flex items-center gap-x-2">
-                <IoClose className="h-fit w-5" />
-                Batal
-              </div>
-            </button>
-            <button className="border-0 bg-[#FFDB58] py-2 rounded-sm font-medium cursor-pointer transition opacity-100 hover:opacity-80">
-              <div className="w-fit mx-auto flex items-center gap-x-2">
-                <LuSave className="h-fit w-5" />
-                Simpan
-              </div>
-            </button>
-          </div>
+          <button className="mt-8 w-full border-0 bg-[#FFDB58] py-2 rounded-sm font-medium cursor-pointer transition opacity-100 hover:opacity-80">
+            <div className="w-fit mx-auto flex items-center gap-x-2">
+              <LuSave className="h-fit w-5" />
+              Simpan
+            </div>
+          </button>
         </form>
       </div>
     </div>

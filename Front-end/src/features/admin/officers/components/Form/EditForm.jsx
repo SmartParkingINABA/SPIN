@@ -1,6 +1,6 @@
 import { IoClose } from "react-icons/io5";
-import ShiftDropdown from "../../../../../components/admin/ShiftDropdown";
-import WorkLocationDropdown from "../../../../../components/admin/WorkLocationDropdown";
+import ShiftDropdown from "./ShiftDropdown";
+import WorkLocationDropdown from "./WorkLocationDropdown";
 
 export default function EditForm({ onClose }) {
   return (
