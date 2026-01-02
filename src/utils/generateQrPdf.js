@@ -43,7 +43,7 @@ const generateQrPdf = async ({qrData, kendaraan}) => {
     doc
     .fontSize(10)
     .fillColor('black')
-    .text('Gunakan QR Code SPIN Ini Untuk Akses Masuk Dan Keluar Area Parkir Kendaraan.',
+    .text('Gunakan QR Code SPIN ini untuk akses masuk dan keluar area parkir.',
         {align: 'center'}
     );
 
