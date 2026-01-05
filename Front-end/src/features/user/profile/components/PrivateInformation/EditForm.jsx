@@ -46,13 +46,16 @@ export default function EditForm({
           id="email"
           disabled={!isEditing}
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          readOnly
           className={`mt-1 w-full outline-0 rounded-sm px-3 py-1 ${
             isEditing
-              ? "bg-[#F5E79E] cursor-text text-[#130F40]"
+              ? "bg-[#F5E79E] cursor-text text-[rgba(19,15,64,0.5)]"
               : "bg-transparent cursor-context-menu text-[#93A3B6]"
           }`}
         />
+        <p className="text-[#93A3B6] text-[12px] mt-0.5">
+          Email tidak dapat diubah
+        </p>
       </div>
       <div className="mb-2.5">
         <label htmlFor="phoneNumber" className="flex items-center gap-x-2.5">

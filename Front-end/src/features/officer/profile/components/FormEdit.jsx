@@ -58,9 +58,13 @@ export default function FormEdit({ onClose }) {
             <input
               type="text"
               id="email"
-              placeholder="johndie@mail.com"
-              className="bg-[#F5E79E] outline-0 py-2 px-3 rounded-sm"
+              value="johndie@mail.com"
+              readOnly
+              className="bg-[#F5E79E] text-[rgba(19,15,64,0.5)] outline-0 py-2 px-3 rounded-sm"
             />
+            <p className="text-[#93A3B6] text-[12px]">
+              Email tidak dapat diubah
+            </p>
           </div>
           <div className="bg-blue-100 rounded-sm p-3 mt-6">
             <div className="flex items-center gap-x-1.5">

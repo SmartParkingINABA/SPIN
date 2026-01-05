@@ -34,7 +34,7 @@ export default function EditProfile({
           id="email"
           value="johndoe@mail.com"
           readOnly
-          className="mt-1 w-full outline-0 rounded-sm py-2 px-3 bg-[#F5E79E] cursor-text text-[rgba(19,15,64,0.5)]"
+          className="mt-1 w-full outline-0 rounded-sm py-2 px-3 bg-[#F5E79E] text-[rgba(19,15,64,0.5)]"
         />
         <p className="text-[#93A3B6] text-[12px] mt-0.5">
           Email tidak dapat diubah

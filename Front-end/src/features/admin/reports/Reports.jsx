@@ -13,7 +13,7 @@ import VehicleOut from "./components/ParkingReports/VehicleOut";
 import Grid from "./components/DriverReports/Card/Grid";
 import OfficerGrid from "./components/OfficerReports/Card/OfficerGrid";
 
-export default function Report() {
+export default function Reports() {
   const [createMode, setCreateMode] = useState("laporan parkir");
   const rows = Array.from({ length: 10 });
 

@@ -8,14 +8,20 @@ export default function VehicleDropdown({ selectedOption }) {
   const [selected, setSelected] = useState(selectedOption);
   const dropdownRef = useRef(null);
 
+  useEffect(() => {
+    setSelected(selectedOption);
+  }, [selectedOption]);
+
   // Toggle dropdown
   const handleToggle = (e) => {
     e.preventDefault();
+    e.stopPropagation();
     setIsOpen((prev) => !prev);
   };
 
   // Pilih opsi
-  const handleSelect = (value) => {
+  const handleSelect = (e, value) => {
+    e.stopPropagation();
     setSelected(value);
     setIsOpen(false);
   };
@@ -61,11 +67,15 @@ export default function VehicleDropdown({ selectedOption }) {
         {["Semua Jenis", "Motor", "Mobil"].map((item) => (
           <li
             key={item}
-            onClick={() => handleSelect(item)}
+            onClick={(e) => handleSelect(e, item)}
             className="text-[#ddd] font-medium rounded-sm py-1.5 px-3 cursor-pointer transition duration-300 ease-in-out hover:bg-[#FFEC78] hover:text-[#1E1633] hover:border-transparent flex items-center justify-between group"
           >
             {item}
-            <FaCheck className="w-4 h-fit transition duration-300 opacity-0 group-hover:opacity-100" />
+            <FaCheck
+              className={`w-4 h-fit transition duration-300 ${
+                selected === item ? "opacity-100" : "opacity-0"
+              }`}
+            />
           </li>
         ))}
       </ul>

@@ -65,7 +65,11 @@ export default function ParkingStatusDropdown({ selectedOption }) {
             className="text-[#ddd] font-medium rounded-sm py-1.5 px-3 cursor-pointer transition duration-300 ease-in-out hover:bg-[#FFEC78] hover:text-[#1E1633] hover:border-transparent flex items-center justify-between group"
           >
             {item}
-            <FaCheck className="w-4 h-fit transition duration-300 opacity-0 group-hover:opacity-100" />
+            <FaCheck
+              className={`w-4 h-fit transition duration-300 group-hover:opacity-100 ${
+                selected === item ? "opacity-100" : "opacity-0"
+              }`}
+            />
           </li>
         ))}
       </ul>

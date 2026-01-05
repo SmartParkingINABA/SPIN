@@ -1,35 +1,28 @@
-import { useState } from "react";
 import forgotPasswordIcon from "../../assets/images/public/Forgot-password-cuate.svg";
-
 import { IoMdMail } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useFormValidation } from "../../hooks/useFormValidation";
+import { validateEmail } from "../../utils/Validators";
+import FormInput from "../../components/FormInput";
 
 export default function ForgotPassword() {
-  const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState("");
-
-  function validateEmail(value) {
-    const regex = /\S+@\S+\.\S+/;
-    return regex.test(value);
-  }
+  const navigate = useNavigate();
+  const { values, errors, handleChange, validateAll } = useFormValidation(
+    {
+      email: "",
+    },
+    {
+      email: validateEmail,
+    }
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!validateAll()) return;
 
-    // reset error
-    setEmailError("");
-
-    // validasi email
-    if (!email) {
-      setEmailError("Email tidak boleh kosong");
-      return;
-    }
-    if (!validateEmail(email)) {
-      setEmailError("Format email tidak valid");
-      return;
-    }
+    // login success
+    navigate("/auth/verify");
   };
-
   return (
     <div className="bg-[#1E1633] font-ubuntu h-screen w-full flex justify-center items-center">
       <div className="w-1/4">
@@ -42,39 +35,22 @@ export default function ForgotPassword() {
           account
         </p>
         <form onSubmit={handleSubmit} noValidate>
-          <label
-            htmlFor="email"
-            className="text-[#FEF8FD] font-bold text-[15px] ml-2.5"
-          >
-            E-mail Address
-          </label>
-          <div className="flex items-center gap-x-4 bg-[#F5E79E] py-3 px-5 mt-2 rounded-md">
-            <IoMdMail className="w-7 h-fit" />
-            <input
-              id="email"
-              type="email"
-              value={email}
-              placeholder="johndoe@gmail.com"
-              className="w-full outline-0 bg-transparent"
-              onChange={(e) => {
-                setEmail(e.target.value);
-                setEmailError("");
-              }}
-            />
-          </div>
-          {emailError && (
-            <p className="mt-1.5 ml-2.5 text-red-500 font-bold text-[10px]">
-              {emailError}
-            </p>
-          )}
+          <FormInput
+            label="E-mail Address"
+            type="email"
+            value={values.email}
+            icon={IoMdMail}
+            placeholder="johndoe@mail.com"
+            error={errors.email}
+            onChange={(e) => handleChange("email", e.target.value)}
+          />
 
-          <Link
-            to="/auth/verify"
+          <button
             type="submit"
             className="block text-center w-full bg-[#FFDB58] text-[#130F40] text-[23px] font-bold py-2.5 mt-6 rounded-md transition opacity-100 hover:opacity-80"
           >
             Get OTP
-          </Link>
+          </button>
         </form>
       </div>
     </div>

@@ -1,87 +1,50 @@
 import { useState } from "react";
 import Dropdown from "../../components/auth/Dropdown.jsx";
-
 import { IoMdMail } from "react-icons/io";
 import { FaLock } from "react-icons/fa6";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useFormValidation } from "../../hooks/useFormValidation.js";
+import {
+  validateConfirmPassword,
+  validateEmail,
+  validatePassword,
+} from "../../utils/Validators.js";
+import FormInput from "../../components/FormInput.jsx";
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [userType, setUserType] = useState("");
-
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const [confirmPasswordError, setConfirmPasswordError] = useState("");
   const [dropdownError, setDropdownError] = useState("");
 
-  function validateEmail(value) {
-    const regex = /\S+@\S+\.\S+/;
-    return regex.test(value);
-  }
+  const navigate = useNavigate();
 
-  function validatePassword(value) {
-    if (!/\d/.test(value)) {
-      return "Password harus mengandung angka";
+  const { values, errors, handleChange, validateAll } = useFormValidation(
+    {
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
+    {
+      email: validateEmail,
+      password: validatePassword,
+      confirmPassword: validateConfirmPassword,
     }
-
-    if (value.length < 6) {
-      return "Panjang password minimal 6 karakter";
-    }
-
-    return "";
-  }
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // reset error
-    setEmailError("");
-    setPasswordError("");
-    setConfirmPasswordError("");
+    const isFormValid = validateAll();
 
-    // validasi email
-    if (!email) {
-      setEmailError("Email tidak boleh kosong");
-      return;
-    }
-    if (!validateEmail(email)) {
-      setEmailError("Format email tidak valid");
-      return;
-    }
-
-    // validasi password
-    if (!password) {
-      setPasswordError("Password tidak boleh kosong");
-      return;
-    }
-
-    const pwdErrMsg = validatePassword(password);
-    if (pwdErrMsg) {
-      setPasswordError(pwdErrMsg);
-      return;
-    }
-
-    // validasi re-enter password
-    if (!confirmPassword) {
-      setConfirmPasswordError("Mohon ulangi password");
-      return;
-    }
-
-    if (confirmPassword !== password) {
-      setConfirmPasswordError("Passord tidak sama");
-      return;
-    }
-
-    // validasi dropdown
     if (!userType) {
-      setDropdownError("Pilih salah satu tipe user");
+      setDropdownError("User type wajib dipilih");
     }
+
+    if (!isFormValid || !userType) return;
+
+    navigate("/auth/login");
   };
 
   return (
@@ -94,51 +57,24 @@ export default function Register() {
           let’s keep it quick, just 3 steps and you’re in
         </p>
         <form onSubmit={handleSubmit} noValidate>
-          <label
-            htmlFor="email"
-            className="text-[#FEF8FD] font-bold text-[15px] ml-2.5"
+          <FormInput
+            label="Enter your email"
+            type="email"
+            value={values.email}
+            icon={IoMdMail}
+            placeholder="johndoe@mail.com"
+            error={errors.email}
+            onChange={(e) => handleChange("email", e.target.value)}
+          />
+          <FormInput
+            label="Password"
+            type={showPassword ? "text" : "password"}
+            value={values.password}
+            icon={FaLock}
+            placeholder="••••••••"
+            error={errors.password}
+            onChange={(e) => handleChange("password", e.target.value)}
           >
-            Enter your email
-          </label>
-          <div className="flex items-center gap-x-4 bg-[#F5E79E] py-3 px-5 mt-2 rounded-md">
-            <IoMdMail className="w-7 h-fit" />
-            <input
-              id="email"
-              type="email"
-              className="w-full outline-0 bg-transparent"
-              value={email}
-              placeholder="johndoe@gmail.com"
-              onChange={(e) => {
-                setEmail(e.target.value);
-                setEmailError("");
-              }}
-            />
-          </div>
-          {emailError && (
-            <p className="mt-1.5 ml-2.5 text-red-500 font-bold text-[10px]">
-              {emailError}
-            </p>
-          )}
-          <label
-            htmlFor="password"
-            className="text-[#FEF8FD] font-bold text-[15px] ml-2.5 block mt-3"
-          >
-            Enter your password
-          </label>
-          <div className="flex items-center gap-x-4 bg-[#F5E79E] px-5 py-3 mt-2 rounded-md">
-            <FaLock className="w-7 h-fit" />
-            <input
-              id="password"
-              type={showPassword ? "text" : "password"}
-              className="w-full outline-0 bg-transparent"
-              placeholder="• • • • • • • •"
-              value={password}
-              minLength={6}
-              onChange={(e) => {
-                setPassword(e.target.value);
-                setPasswordError("");
-              }}
-            />
             {showPassword ? (
               <FaRegEyeSlash
                 className="w-7 h-fit cursor-pointer"
@@ -150,32 +86,16 @@ export default function Register() {
                 onClick={() => setShowPassword(true)}
               />
             )}
-          </div>
-          {passwordError && (
-            <p className="mt-1.5 ml-2.5 text-red-500 font-semibold text-[10px]">
-              {passwordError}
-            </p>
-          )}
-          <label
-            htmlFor="confirm-password"
-            className="text-[#FEF8FD] font-bold text-[15px] ml-2.5 block mt-3"
+          </FormInput>
+          <FormInput
+            label="Konfirmasi Password"
+            type={showConfirmPassword ? "text" : "password"}
+            value={values.confirmPassword}
+            icon={FaLock}
+            placeholder="••••••••"
+            error={errors.confirmPassword}
+            onChange={(e) => handleChange("confirmPassword", e.target.value)}
           >
-            Re-Enter your password
-          </label>
-          <div className="flex items-center gap-x-4 bg-[#F5E79E] px-5 py-3 mt-2 rounded-md">
-            <FaLock className="w-7 h-fit" />
-            <input
-              id="confirm-password"
-              type={showConfirmPassword ? "text" : "password"}
-              className="w-full outline-0 bg-transparent"
-              placeholder="• • • • • • • •"
-              value={confirmPassword}
-              minLength={6}
-              onChange={(e) => {
-                setConfirmPassword(e.target.value);
-                setConfirmPasswordError("");
-              }}
-            />
             {showConfirmPassword ? (
               <FaRegEyeSlash
                 className="w-7 h-fit cursor-pointer"
@@ -187,18 +107,12 @@ export default function Register() {
                 onClick={() => setShowConfirmPassword(true)}
               />
             )}
-          </div>
-          {confirmPasswordError && (
-            <p className="mt-1.5 ml-2.5 text-red-500 font-semibold text-[10px]">
-              {confirmPasswordError}
-            </p>
-          )}
-
+          </FormInput>
           <label
             htmlFor=""
             className="text-[#FEF8FD] font-bold text-[15px] ml-2.5 block mt-3"
           >
-            Select user type
+            Pilih tipe pengguna
           </label>
           <Dropdown
             value={userType}
@@ -214,12 +128,12 @@ export default function Register() {
             </p>
           )}
 
-          <Link
+          <button
             type="submit"
             className="block text-center w-full bg-[#FFDB58] text-[#130F40] text-[23px] font-bold py-2.5 mt-8 rounded-md transition opacity-100 hover:opacity-80"
           >
             Register
-          </Link>
+          </button>
         </form>
       </div>
     </div>

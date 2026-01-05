@@ -54,7 +54,7 @@ export const adminMenu = [
   },
   {
     label: "Laporan",
-    path: "/admin/report",
+    path: "/admin/reports",
     icon: TbReportAnalytics,
   },
   {

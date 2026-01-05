@@ -1,7 +1,34 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
 import forgotPasswordIcon from "../../assets/images/public/Enter-OTP-cuate.svg";
+import OTPInput from "../../components/auth/OTPInput";
+import ResendOTP from "../../components/auth/ResendOTP";
+import { useNavigate } from "react-router-dom";
 
 export default function Verify() {
+  const navigate = useNavigate();
+  const [otp, setOtp] = useState(["", "", "", ""]);
+  const [error, setError] = useState("");
+
+  const handleSubmit = () => {
+    const code = otp.join("");
+
+    if (code.length < 4) {
+      setError("Kode OTP harus 4 digit");
+      return;
+    }
+
+    setError("");
+    console.log("OTP", code);
+
+    navigate("/auth/password-reset");
+  };
+
+  const handleResend = () => {
+    console.log("Resend OTP...");
+    setOtp(["", "", "", ""]);
+    setError("");
+  };
+
   return (
     <div className="bg-[#1E1633] font-ubuntu h-screen w-full flex justify-center items-center">
       <div className="w-1/4">
@@ -12,44 +39,14 @@ export default function Verify() {
         <p className="text-center text-[#FEF8FD] font-semibold leading-6 mt-5 mb-4">
           An 4 digit OTP has been sent to your email account
         </p>
-        <form>
-          <div className="grid grid-cols-4 gap-x-10">
-            <input
-              type="text"
-              className="bg-[#F5E79E] text-2xl text-center font-semibold rounded-md py-3 px-5 outline-0"
-              minLength={1}
-              maxLength={1}
-            />
-            <input
-              type="text"
-              className="bg-[#F5E79E] text-2xl text-center font-semibold rounded-md py-3 px-5 outline-0"
-              minLength={1}
-              maxLength={1}
-            />
-            <input
-              type="text"
-              className="bg-[#F5E79E] text-2xl text-center font-semibold rounded-md py-3 px-5 outline-0"
-              minLength={1}
-              maxLength={1}
-            />
-            <input
-              type="text"
-              className="bg-[#F5E79E] text-2xl text-center font-semibold rounded-md py-3 px-5 outline-0"
-              minLength={1}
-              maxLength={1}
-            />
-          </div>
-
-          <Link
-            to="/auth/password-reset"
-            className="block text-center w-full bg-[#FFDB58] text-[#130F40] text-[23px] font-bold py-2.5 mt-8 rounded-md transition opacity-100 hover:opacity-80"
-          >
-            Verify
-          </Link>
-        </form>
-        <p className="text-center font-semibold text-[#FEF8FD] mt-4">
-          Resend OTP <span>( 00 : 59 )</span>
-        </p>
+        <OTPInput value={otp} onChange={setOtp} error={error} />
+        <button
+          onClick={handleSubmit}
+          className="block text-center w-full bg-[#FFDB58] text-[#130F40] text-[23px] font-bold py-2.5 mt-8 rounded-md cursor-pointer transition opacity-100 hover:opacity-80"
+        >
+          Verify
+        </button>
+        <ResendOTP onResend={handleResend} />
       </div>
     </div>
   );

@@ -1,60 +1,40 @@
 import resetPasswordIcon from "../../assets/images/public/My-password-pana.svg";
-
 import { FaLock } from "react-icons/fa6";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useFormValidation } from "../../hooks/useFormValidation";
+import {
+  validateConfirmPassword,
+  validatePassword,
+} from "../../utils/Validators";
+import FormInput from "../../components/FormInput";
 
 export default function NewPassword() {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-
-  const [passwordError, setPasswordError] = useState("");
-  const [confirmPasswordError, setConfirmPasswordError] = useState("");
-
-  function validatePassword(value) {
-    if (!/\d/.test(value)) {
-      return "Password harus mengandung angka";
+  const { values, errors, handleChange, validateAll } = useFormValidation(
+    {
+      password: "",
+      confirmPassword: "",
+    },
+    {
+      password: validatePassword,
+      confirmPassword: validateConfirmPassword,
     }
+  );
 
-    if (value.length < 6) {
-      return "Panjang password minimal 6 karakter";
-    }
-
-    return "";
-  }
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // reset error
-    setPasswordError("");
-    setConfirmPasswordError("");
+    if (!validateAll()) return;
 
-    // validasi password
-    if (!password) {
-      setPasswordError("Password tidak boleh kosong");
-      return;
-    }
+    navigate("/auth/login");
 
-    const pwdErrMsg = validatePassword(password);
-    if (pwdErrMsg) {
-      setPasswordError(pwdErrMsg);
-      return;
-    }
-
-    // validasi re-enter password
-    if (!confirmPassword) {
-      setConfirmPasswordError("Mohon ulangi password");
-      return;
-    }
-
-    if (confirmPassword !== password) {
-      setConfirmPasswordError("Passord tidak sama");
-      return;
-    }
+    // 🔥 submit ke API
+    console.log("Password baru:", values.password);
   };
 
   return (
@@ -68,26 +48,15 @@ export default function NewPassword() {
           Create new password. Ensure it differs from previous ones for security
         </p>
         <form onSubmit={handleSubmit} noValidate>
-          <label
-            htmlFor="password"
-            className="text-[#FEF8FD] font-bold text-[15px] ml-2.5"
+          <FormInput
+            label="Password"
+            type={showPassword ? "text" : "password"}
+            value={values.password}
+            icon={FaLock}
+            placeholder="••••••••"
+            error={errors.password}
+            onChange={(e) => handleChange("password", e.target.value)}
           >
-            Password
-          </label>
-          <div className="flex items-center gap-x-4 bg-[#F5E79E] px-5 py-3 mt-2 rounded-md">
-            <FaLock className="w-7 h-fit" />
-            <input
-              id="password"
-              type={showPassword ? "text" : "password"}
-              value={password}
-              minLength={6}
-              placeholder="• • • • • • • •"
-              className="w-full outline-0 bg-transparent"
-              onChange={(e) => {
-                setPassword(e.target.value);
-                setPasswordError("");
-              }}
-            />
             {showPassword ? (
               <FaRegEyeSlash
                 className="w-7 h-fit cursor-pointer"
@@ -99,31 +68,16 @@ export default function NewPassword() {
                 onClick={() => setShowPassword(true)}
               />
             )}
-          </div>
-          {passwordError && (
-            <p className="mt-1.5 ml-2.5 text-red-500 font-semibold text-[10px]">
-              {passwordError}
-            </p>
-          )}
-          <label
-            htmlFor="confirm-password"
-            className="text-[#FEF8FD] font-bold text-[15px] ml-2.5 block mt-3"
+          </FormInput>
+          <FormInput
+            label="Confirm password"
+            type={showConfirmPassword ? "text" : "password"}
+            value={values.confirmPassword}
+            error={errors.confirmPassword}
+            icon={FaLock}
+            placeholder="••••••••"
+            onChange={(e) => handleChange("confirmPassword", e.target.value)}
           >
-            Confirm password
-          </label>
-          <div className="flex items-center gap-x-4 bg-[#F5E79E] px-5 py-3 mt-2 rounded-md">
-            <FaLock className="w-7 h-fit" />
-            <input
-              id="confirm-password"
-              type={showConfirmPassword ? "text" : "password"}
-              value={confirmPassword}
-              placeholder="• • • • • • • •"
-              className="w-full outline-0"
-              onChange={(e) => {
-                setConfirmPassword(e.target.value);
-                setConfirmPasswordError("");
-              }}
-            />
             {showConfirmPassword ? (
               <FaRegEyeSlash
                 className="w-7 h-fit cursor-pointer"
@@ -135,18 +89,13 @@ export default function NewPassword() {
                 onClick={() => setShowConfirmPassword(true)}
               />
             )}
-          </div>
-          {confirmPasswordError && (
-            <p className="mt-1.5 ml-2.5 text-red-500 font-semibold text-[10px]">
-              {confirmPasswordError}
-            </p>
-          )}
-          <Link
+          </FormInput>
+          <button
             type="submit"
             className="block text-center w-full bg-[#FFDB58] text-[#130F40] text-[23px] font-bold py-2.5 mt-8 rounded-md transition opacity-100 hover:opacity-80"
           >
             Update Password
-          </Link>
+          </button>
         </form>
       </div>
     </div>
