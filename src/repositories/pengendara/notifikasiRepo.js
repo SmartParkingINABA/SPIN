@@ -74,6 +74,34 @@ class notifikasiRepo {
             }
         );
     }
+
+    async countUnreadNotifikasi(pengendaraId) {
+        return notification.count({
+            where: {status_baca: 'Belum'},
+            include: [
+                {
+                    model: kendaraan,
+                    as: 'kendaraan',
+                    where: {pengendara_id: pengendaraId}
+                }
+            ]
+        })
+    }
+
+    async findNotifikasiTerbaru(pengendaraId, limit = 5) {
+        return notification.findAll({
+            include: [
+                {
+                    model: kendaraan,
+                    as: 'kendaraan',
+                    where: {pengendara_id: pengendaraId},
+                    attributes: ['no_plat']
+                }
+            ],
+            order: [['waktu_dibuat', 'DESC']],
+            limit
+        });
+    }
 };
 
 export default new notifikasiRepo();

@@ -7,10 +7,21 @@ import menuPengaturanAkun from '../../controllers/pengendara/menuPengaturanAkun.
 import uploadPhotoProfile from '../../middlewares/upload/uploadPhotoProfile.js';
 import menuRiwayatParkir from '../../controllers/pengendara/menuRiwayatParkir.js';
 import menuNotifikasi from '../../controllers/pengendara/menuNotifikasi.js';
-
+import mainOverviewController from '../../controllers/pengendara/menuMainOverview.js';
 
 
 const dashboardPengendara = express.Router();
+
+
+// Menu Main Overview
+
+dashboardPengendara.get(
+    '/dashboard/main-overview',
+    authenticationRoleBasedUser(['pengendara']),
+    verifySession,
+    mainOverviewController.mainOverview
+)
+
 
 //Menu Data Kendaraan
 

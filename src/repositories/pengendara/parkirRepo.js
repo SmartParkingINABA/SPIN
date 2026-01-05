@@ -1,3 +1,4 @@
+import { Sequelize } from "sequelize";
 import { kendaraanMasuk, kendaraanKeluar, kendaraan } from "../../models/Index.js";
 
 class parkirRepo {
@@ -69,6 +70,62 @@ class parkirRepo {
                 where: { pengendara_id: pengendaraId }
             }]
         });
+    }
+
+
+    async totalDurasiParkir(pengendaraId) {
+        const result = await kendaraanMasuk.findOne({
+            attributes: [
+                [
+                    Sequelize.fn('SUM',
+                        Sequelize.literal(`
+                            TIMESTAMPDIFF(
+                            MINUTE,
+                            kendaraanMasuk.waktu_masuk,
+                            IFNULL(kendaraanKeluar.waktu_keluar, NOW()))`
+                        )
+                    ),
+                    'total_durasi'
+                ]
+            ],
+            include: [
+                {
+                    model: kendaraan,
+                    as: 'kendaraan',
+                    where: { pengendara_id: pengendaraId },
+                    attributes: []
+                },
+                {
+                    model: kendaraanKeluar,
+                    as: 'kendaraanKeluar',
+                    required: false,
+                    attributes: []
+                }
+            ],
+            raw: true
+        });
+        return Number(result?.total_durasi || 0);
+    }
+
+    async findParkirTerakhir(pengendaraId, limit = 5) {
+        return kendaraanMasuk.findAll({
+            include: [
+                {
+                    model: kendaraan,
+                    as: 'kendaraan',
+                    where: {pengendara_id: pengendaraId},
+                    attributes: ['no_plat']
+                },
+                {
+                    model: kendaraanKeluar,
+                    as: 'kendaraanKeluar',
+                    required: false,
+                    attributes: ['waktu_keluar']
+                }
+            ],
+            order: [['waktu_masuk', 'DESC']],
+            limit
+        })
     }
 };
 
