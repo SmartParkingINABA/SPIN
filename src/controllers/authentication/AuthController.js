@@ -72,11 +72,24 @@ const authController = {
                     }
             });
 
+            
         } catch (error) {
+            if (error.message === 'Password Wrong!') {
+                return res.status(400).json({
+                    message: 'Password salah!'
+                })
+            };
+            
+            if (error.message === 'User Not Found!') {
+                return res.status(404).json({
+                    message: 'Username tidak ditemukan!'
+                })
+            }
+
             console.error('Login Error!', error);
             res.status(500).json(
                 {
-                    message: error.message
+                    message: 'Internal Server Error!'
                 }
             );
             
