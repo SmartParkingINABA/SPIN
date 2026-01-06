@@ -21,4 +21,20 @@ const formatDateTimeFormatter = (date = new Date()) => {
     return `${tanggal} pukul ${waktu}`;
 };
 
-export default formatDateTimeFormatter;
+const formatTimeFormatter = (date = new Date()) => {
+    const dateTime = new Date(date);
+
+    if (isNaN(dateTime.getTime())) return '-';
+
+    const waktu = new Intl.DateTimeFormat('id-ID', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+        timeZone: 'Asia/Jakarta'
+    }).format(date)
+
+    return `${waktu} WIB`;
+
+}
+
+export { formatDateTimeFormatter, formatTimeFormatter };
