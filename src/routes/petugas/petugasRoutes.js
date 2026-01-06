@@ -3,6 +3,7 @@ import authenticationRoleBasedUser from '../../middlewares/authentication/AuthMi
 import verifySession from '../../middlewares/cache/SessionMiddlewares.js';
 import menuScanQRCode from '../../controllers/petugas/menuScanQRCode.js';
 import menuKendaraanParkir from '../../controllers/petugas/menuKendaraanParkir.js';
+import menuRiwayatParkir from '../../controllers/petugas/menuRiwayatParkir.js';
 
 
 
@@ -40,6 +41,16 @@ dashboardPetugas.get(
     authenticationRoleBasedUser(['petugas']),
     verifySession,
     menuKendaraanParkir.list
+)
+
+
+// Menu Riwayat Parkir
+
+dashboardPetugas.get(
+    '/dashboard/riwayat-parkir',
+    authenticationRoleBasedUser(['petugas']),
+    verifySession,
+    menuRiwayatParkir.getRiwayatParkir
 )
 
 export default dashboardPetugas;
