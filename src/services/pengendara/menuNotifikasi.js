@@ -1,5 +1,5 @@
 import notifikasiRepo from "../../repositories/pengendara/notifikasiRepo.js";
-import formatDateTimeFormatter from "../../utils/dateTimeFormatter.js";
+import { formatDateTimeFormatter } from "../../utils/dateTimeFormatter.js";
 
 class notifikasiService {
     async getAll({pengendaraId, page, limit}) {
