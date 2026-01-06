@@ -4,7 +4,7 @@ import kendaraanMasukRepo from "../../repositories/petugas/kendaraanMasukRepo.js
 import kendaraanKeluarRepo from "../../repositories/petugas/kendaraanKeluarRepo.js";
 import notifikasiRepo from "../../repositories/petugas/notifikasiRepo.js";
 import formatDateDDMMYYYY from "../../utils/dateFormatter.js";
-import formatDateTimeFormatter from "../../utils/dateTimeFormatter.js";
+import { formatDateTimeFormatter } from "../../utils/dateTimeFormatter.js";
 import { emitNotifikasiPengendara } from "../../socket/emitter/notifikasiEmitter.js";
 
 
