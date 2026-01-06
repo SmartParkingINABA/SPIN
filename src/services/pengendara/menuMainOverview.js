@@ -2,7 +2,7 @@ import kendaraanRepo from "../../repositories/pengendara/kendaraanRepo.js";
 import parkirRepo from "../../repositories/pengendara/parkirRepo.js";
 import notifikasiRepo from "../../repositories/pengendara/notifikasiRepo.js";
 import { diffMinutes, formatDuration } from "../../utils/dateDuration.js";
-import formatDateTimeFormatter from "../../utils/dateTimeFormatter.js";
+import { formatDateTimeFormatter } from "../../utils/dateTimeFormatter.js";
 
 class mainOverviewService {
     async getMainOverview(pengendaraId) {
