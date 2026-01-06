@@ -2,6 +2,7 @@ import express from 'express';
 import authenticationRoleBasedUser from '../../middlewares/authentication/AuthMiddlewares.js';
 import verifySession from '../../middlewares/cache/SessionMiddlewares.js';
 import menuScanQRCode from '../../controllers/petugas/menuScanQRCode.js';
+import menuKendaraanParkir from '../../controllers/petugas/menuKendaraanParkir.js';
 
 
 
@@ -29,6 +30,16 @@ dashboardPetugas.post(
     authenticationRoleBasedUser(['petugas']),
     verifySession,
     menuScanQRCode.keluar
+)
+
+
+// Menu kendaraan parkir
+
+dashboardPetugas.get(
+    '/dashboard/kendaraan-parkir',
+    authenticationRoleBasedUser(['petugas']),
+    verifySession,
+    menuKendaraanParkir.list
 )
 
 export default dashboardPetugas;
