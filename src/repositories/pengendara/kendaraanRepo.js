@@ -40,7 +40,7 @@ class kendaraanRepo {
                 pengendara_id: pengendaraId,
                 status: 'Aktif'
             },
-            attributes: ['id_kendaraan', 'no_plat', 'jenis', 'merk'],
+            attributes: ['id_kendaraan', 'no_plat', 'jenis', 'merk', 'status'],
             include: [
                 {
                     model: kendaraanMasuk,
