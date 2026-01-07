@@ -50,6 +50,7 @@ export default function NewPassword() {
         <form onSubmit={handleSubmit} noValidate>
           <FormInput
             label="Password"
+            htmlFor="password"
             type={showPassword ? "text" : "password"}
             value={values.password}
             icon={FaLock}
@@ -71,6 +72,7 @@ export default function NewPassword() {
           </FormInput>
           <FormInput
             label="Confirm password"
+            htmlFor="confirmPassword"
             type={showConfirmPassword ? "text" : "password"}
             value={values.confirmPassword}
             error={errors.confirmPassword}

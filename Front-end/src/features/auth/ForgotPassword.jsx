@@ -37,6 +37,7 @@ export default function ForgotPassword() {
         <form onSubmit={handleSubmit} noValidate>
           <FormInput
             label="E-mail Address"
+            htmlFor="email"
             type="email"
             value={values.email}
             icon={IoMdMail}

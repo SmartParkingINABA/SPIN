@@ -2,10 +2,27 @@ import { useEffect, useRef, useState } from "react";
 import { FaCheck } from "react-icons/fa6";
 import { IoMdArrowDropdown } from "react-icons/io";
 
+const OPTIONS = [
+  {
+    label: "Admin",
+    value: 1,
+  },
+  {
+    label: "Petugas",
+    value: 2,
+  },
+  {
+    label: "Pengendara",
+    value: 3,
+  },
+];
+
 export default function Dropdown({ value, onChange, clearError }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
-  const selectedValue = value || "Pilih opsi";
+
+  const selectedOption = OPTIONS.find((opt) => opt.value === value);
+  const selectedLabel = selectedOption?.label || "Pilih opsi";
 
   // Toggle dropdown
   const handleToggle = (e) => {
@@ -15,8 +32,8 @@ export default function Dropdown({ value, onChange, clearError }) {
   };
 
   // Pilih opsi
-  const handleSelect = (value) => {
-    onChange(value);
+  const handleSelect = (option) => {
+    onChange(option.value);
     setIsOpen(false);
   };
 
@@ -41,7 +58,7 @@ export default function Dropdown({ value, onChange, clearError }) {
         onClick={handleToggle}
       >
         <span id="selectedText" className="text-[#1e1633] font-medium">
-          {selectedValue}
+          {selectedLabel}
         </span>
         <IoMdArrowDropdown
           className={`w-7 h-fit transform transition-transform duration-300 ${
@@ -58,16 +75,16 @@ export default function Dropdown({ value, onChange, clearError }) {
             : "opacity-0 -translate-y-2 pointer-events-none"
         }`}
       >
-        {["Admin", "Petugas", "Pengendara"].map((item) => (
+        {OPTIONS.map((option) => (
           <li
-            key={item}
-            onClick={() => handleSelect(item)}
+            key={option.value}
+            onClick={() => handleSelect(option)}
             className="py-1 text-[#1E1633] font-medium cursor-pointer transition duration-300 ease-in-out hover:text-[rgba(30,22,51,0.7)] flex items-center justify-between group"
           >
-            {item}
+            {option.label}
             <FaCheck
               className={`w-4 h-fit transition duration-300 opacity-0 group-hover:opacity-100 ${
-                selectedValue === item ? "opacity-100" : "opacity-0"
+                value === option.value ? "opacity-100" : "opacity-0"
               }`}
             />
           </li>

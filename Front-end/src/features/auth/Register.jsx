@@ -11,12 +11,16 @@ import {
   validatePassword,
 } from "../../utils/Validators.js";
 import FormInput from "../../components/FormInput.jsx";
+import api from "../../services/api.js";
+import toast from "react-hot-toast";
+import LoadingSpinner from "../../components/ui/LoadingSpinner.jsx";
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [userType, setUserType] = useState("");
+  const [userType, setUserType] = useState(null);
   const [dropdownError, setDropdownError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -33,7 +37,7 @@ export default function Register() {
     }
   );
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const isFormValid = validateAll();
@@ -42,9 +46,31 @@ export default function Register() {
       setDropdownError("User type wajib dipilih");
     }
 
-    if (!isFormValid || !userType) return;
+    if (!isFormValid || !userType) {
+      toast.error("Lengkapi semua field!");
+      return;
+    }
 
-    navigate("/auth/login");
+    try {
+      setLoading(true);
+
+      await api.post("/auth/register", {
+        email: values.email,
+        password_users: values.password,
+        role_id: userType,
+      });
+
+      toast.success("Registrasi berhasil!");
+      navigate("/auth/login");
+    } catch (err) {
+      if (!err.response) {
+        toast.error("Tidak bisa terhubung ke server!");
+      } else {
+        toast.error(err.response?.data?.message || "Registrasi gagal");
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -60,6 +86,7 @@ export default function Register() {
           <FormInput
             label="Enter your email"
             type="email"
+            htmlFor="email"
             value={values.email}
             icon={IoMdMail}
             placeholder="johndoe@mail.com"
@@ -68,6 +95,7 @@ export default function Register() {
           />
           <FormInput
             label="Password"
+            htmlFor="password"
             type={showPassword ? "text" : "password"}
             value={values.password}
             icon={FaLock}
@@ -88,7 +116,8 @@ export default function Register() {
             )}
           </FormInput>
           <FormInput
-            label="Konfirmasi Password"
+            label="Confirm password"
+            htmlFor="confirmPassword"
             type={showConfirmPassword ? "text" : "password"}
             value={values.confirmPassword}
             icon={FaLock}
@@ -116,10 +145,7 @@ export default function Register() {
           </label>
           <Dropdown
             value={userType}
-            onChange={(val) => {
-              setUserType(val);
-              setDropdownError("");
-            }}
+            onChange={setUserType}
             clearError={() => setDropdownError("")}
           />
           {dropdownError && (
@@ -130,9 +156,14 @@ export default function Register() {
 
           <button
             type="submit"
-            className="block text-center w-full bg-[#FFDB58] text-[#130F40] text-[23px] font-bold py-2.5 mt-8 rounded-md transition opacity-100 hover:opacity-80"
+            disabled={loading}
+            className={`flex items-center justify-center w-full bg-[#FFDB58] text-[#130F40] text-[23px] font-bold h-13 mt-8 rounded-md transition hover:opacity-80 ${
+              loading
+                ? "opacity-80 cursor-not-allowed"
+                : "cursor-pointer opacity-100"
+            }`}
           >
-            Register
+            {loading ? <LoadingSpinner size={25} color="#1e1633" /> : "Sign up"}
           </button>
         </form>
       </div>
