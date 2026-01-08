@@ -7,7 +7,7 @@ class menuDataKendaraanController {
             const data = await menuDataKendaraanService.getMyKendaraan(userId);
             res.json(data)
         } catch (err) {
-            next(err)
+            res.status(400).json({ message: err.message });
         }
     }
 
@@ -17,7 +17,7 @@ class menuDataKendaraanController {
             await menuDataKendaraanService.createKendaraan(userId, req.body);
             res.status(201).json({ message: 'Data Kendaraan Berhasil Ditambahkan' })
         } catch (err) {
-            next(err)
+            res.status(400).json({ message: err.message });
         }
     }
 
@@ -27,7 +27,7 @@ class menuDataKendaraanController {
             await menuDataKendaraanService.updateKendaraan(userId, req.params.id, req.body);
             res.status(200).json({ message: 'Kendaraan Berhasil Diperbarui' });
         } catch (error) {
-            next(err);
+            res.status(400).json({ message: error.message });
         }
     }
 
@@ -37,7 +37,7 @@ class menuDataKendaraanController {
             await menuDataKendaraanService.deleteKendaraan(userId, req.params.id);
             res.status(200).json({ message: 'Kendaraan Berhasil Dihapus' });
         } catch (err) {
-            next(err)
+            res.status(400).json({ message: err.message });
         }
     }
 }
