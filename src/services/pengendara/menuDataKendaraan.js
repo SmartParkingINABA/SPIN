@@ -2,6 +2,7 @@ import kendaraanRepo from "../../repositories/pengendara/menuDataKendaraan.js";
 import pengendaraProfile from "../../repositories/pengendara/pengendaraProfile.js";
 import generateQrCode from "../../utils/generateQr.js";
 import parseDateToSql from "../../utils/parseDateToSQL.js";
+import { formatDateFormatter } from "../../utils/dateTimeFormatter.js";
 
 
 class menuDataKendaraanService {
@@ -12,7 +13,14 @@ class menuDataKendaraanService {
             throw new Error('Gagal Mengambil Data Kendaraan')
         }
 
-        return kendaraanRepo.findAllByPengendara(pengendara.id_pengendara);
+        const kendaraanList = await kendaraanRepo.findAllByPengendara(pengendara.id_pengendara);
+
+        return kendaraanList.map(k => {
+            const item = k.get ? k.get({ plain: true }) : k;
+
+            item.masa_berlaku = formatDateFormatter(item.masa_berlaku) ?? item.masa_berlaku;
+            return item;
+        })
     }
 
     async createKendaraan(userId, payload) {
