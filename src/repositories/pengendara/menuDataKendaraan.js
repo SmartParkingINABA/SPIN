@@ -14,6 +14,7 @@ class kendaraanRepo {
     findAllByPengendara(pengendara_id) {
         return kendaraan.findAll({
             where: {pengendara_id},
+            attributes: { exclude: ['qr_code', 'createdAt', 'updatedAt'] },
             order: [['created_at', 'DESC']]
         });
     }
