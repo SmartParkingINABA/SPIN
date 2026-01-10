@@ -16,3 +16,9 @@ export const validateConfirmPassword = (confirm, values) => {
   if (values.password !== confirm) return "Password tidak sama";
   return "";
 };
+
+export const validateOtp = (otp) => {
+  if (!otp) return "Kode OTP wajib diisi!";
+  if (!/^\d{4}$/.test(otp)) return "Kode OTP harus 4 digit angka!";
+  return "";
+};

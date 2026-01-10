@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function PasswordReset() {
+export default function ConfirmReset() {
   return (
     <div className="bg-[#1E1633] font-ubuntu h-screen w-full flex justify-center items-center">
       <div className="w-1/4">
@@ -12,7 +12,7 @@ export default function PasswordReset() {
           password
         </p>
         <Link
-          to="/auth/new-password"
+          to="/auth/forgot/reset-password"
           className="block text-center w-full bg-[#FFDB58] text-[#130F40] text-[23px] font-bold py-2.5 mt-30 rounded-md transition opacity-100 hover:opacity-80"
         >
           Confirm

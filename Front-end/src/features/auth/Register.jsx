@@ -11,9 +11,9 @@ import {
   validatePassword,
 } from "../../utils/Validators.js";
 import FormInput from "../../components/FormInput.jsx";
-import api from "../../services/api.js";
 import toast from "react-hot-toast";
 import LoadingSpinner from "../../components/ui/LoadingSpinner.jsx";
+import { register } from "../../services/auth.Service.js";
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
@@ -46,19 +46,12 @@ export default function Register() {
       setDropdownError("User type wajib dipilih");
     }
 
-    if (!isFormValid || !userType) {
-      toast.error("Lengkapi semua field!");
-      return;
-    }
+    if (!isFormValid || !userType) return;
 
     try {
       setLoading(true);
 
-      await api.post("/auth/register", {
-        email: values.email,
-        password_users: values.password,
-        role_id: userType,
-      });
+      await register(values.email, values.password, userType);
 
       toast.success("Registrasi berhasil!");
       navigate("/auth/login");

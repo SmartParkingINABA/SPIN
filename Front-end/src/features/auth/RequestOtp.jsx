@@ -4,9 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { useFormValidation } from "../../hooks/useFormValidation";
 import { validateEmail } from "../../utils/Validators";
 import FormInput from "../../components/FormInput";
+import toast from "react-hot-toast";
+import { useState } from "react";
+import { requestOtp } from "../../services/auth.Service";
+import LoadingSpinner from "../../components/ui/LoadingSpinner";
 
-export default function ForgotPassword() {
+export default function RequestOtp() {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const { values, errors, handleChange, validateAll } = useFormValidation(
     {
       email: "",
@@ -16,12 +21,32 @@ export default function ForgotPassword() {
     }
   );
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateAll()) return;
 
-    // login success
-    navigate("/auth/verify");
+    try {
+      setLoading(true);
+
+      await requestOtp(values.email);
+
+      toast.success(
+        "Kode OTP telah dikirim ke email Anda. Silakan cek inbox atau folder spam."
+      );
+
+      navigate("/auth/forgot/verify-otp");
+    } catch (err) {
+      if (!err.response) {
+        toast.error("Tidak bisa terhubung ke server!");
+      } else {
+        toast.error(
+          err.response?.data?.message ||
+            "Gagal mendapatkan kode OTP. Silahkan coba lagi!"
+        );
+      }
+    } finally {
+      setLoading(false);
+    }
   };
   return (
     <div className="bg-[#1E1633] font-ubuntu h-screen w-full flex justify-center items-center">
@@ -48,9 +73,14 @@ export default function ForgotPassword() {
 
           <button
             type="submit"
-            className="block text-center w-full bg-[#FFDB58] text-[#130F40] text-[23px] font-bold py-2.5 mt-6 rounded-md transition opacity-100 hover:opacity-80"
+            disabled={loading}
+            className={`mt-8 flex items-center justify-center w-full bg-[#FFDB58] text-[#130F40] text-[23px] font-bold h-13 rounded-md transition hover:opacity-80 ${
+              loading
+                ? "opacity-80 cursor-not-allowed"
+                : "cursor-pointer opacity-100"
+            }`}
           >
-            Get OTP
+            {loading ? <LoadingSpinner size={25} color="#1e1633" /> : "Get OTP"}
           </button>
         </form>
       </div>

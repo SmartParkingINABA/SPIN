@@ -7,9 +7,9 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { useFormValidation } from "../../hooks/useFormValidation";
 import { validateEmail, validatePassword } from "../../utils/Validators";
 import FormInput from "../../components/FormInput";
-import api from "../../services/api";
 import toast from "react-hot-toast";
 import LoadingSpinner from "../../components/ui/LoadingSpinner";
+import { login } from "../../services/auth.Service";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -35,17 +35,7 @@ export default function Login() {
     try {
       setLoading(true);
 
-      await api.post("/auth/login", {
-        email: values.email,
-        password_users: values.password,
-      });
-
-      // simpan user ke state global (zustand/redux) (opsional)
-      // const res = await api.post("/auth/login", {
-      //   email: values.email,
-      //   password_users: values.password,
-      // });
-      // contoh: setUser(res.data.user)
+      await login(values.email, values.password);
 
       toast.success("Login berhasil!");
       navigate("/user");
@@ -101,7 +91,7 @@ export default function Login() {
             )}
           </FormInput>
           <Link
-            to="/auth/forgot-password"
+            to="/auth/forgot/request-otp"
             className="block text-[#93A3B6] font-bold text-right my-4.5 mr-5"
           >
             Forgot Password ?

@@ -2,18 +2,22 @@ import resetPasswordIcon from "../../assets/images/public/My-password-pana.svg";
 import { FaLock } from "react-icons/fa6";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useFormValidation } from "../../hooks/useFormValidation";
 import {
   validateConfirmPassword,
   validatePassword,
 } from "../../utils/Validators";
 import FormInput from "../../components/FormInput";
+import { resetPassword } from "../../services/auth.Service";
+import toast from "react-hot-toast";
+import LoadingSpinner from "../../components/ui/LoadingSpinner";
 
-export default function NewPassword() {
+export default function ResetPassword() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const { values, errors, handleChange, validateAll } = useFormValidation(
     {
@@ -26,15 +30,23 @@ export default function NewPassword() {
     }
   );
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!validateAll()) return;
 
-    navigate("/auth/login");
+    try {
+      setLoading(true);
 
-    // 🔥 submit ke API
-    console.log("Password baru:", values.password);
+      await resetPassword(values.password);
+
+      toast.success("Password berhasil diperbarui!");
+      navigate("/auth/login");
+    } catch (err) {
+      toast.error(err.response?.data?.message || "Gagal memperbarui password");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -94,9 +106,14 @@ export default function NewPassword() {
           </FormInput>
           <button
             type="submit"
-            className="block text-center w-full bg-[#FFDB58] text-[#130F40] text-[23px] font-bold py-2.5 mt-8 rounded-md transition opacity-100 hover:opacity-80"
+            disabled={loading}
+            className={`flex items-center justify-center w-full bg-[#FFDB58] text-[#130F40] text-[23px] font-bold h-13 mt-8 rounded-md transition hover:opacity-80 ${
+              loading
+                ? "opacity-80 cursor-not-allowed"
+                : "cursor-pointer opacity-100"
+            }`}
           >
-            Update Password
+            {loading ? <LoadingSpinner size={25} color="#1e1633" /> : "Sign up"}
           </button>
         </form>
       </div>
