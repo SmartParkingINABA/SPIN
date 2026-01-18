@@ -1,11 +1,15 @@
 {
   "name": "back-end",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "description": "SPIN Backend API",
+  "main": "src/server.js",
   "type": "module",
   "scripts": {
+    "start": "node ./src/server.js",
     "dev": "nodemon ./src/server.js"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "keywords": [],
   "author": "",
