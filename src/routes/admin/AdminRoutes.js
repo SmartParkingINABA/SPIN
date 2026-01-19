@@ -4,16 +4,20 @@ import verifySession from '../../middlewares/cache/SessionMiddlewares.js'
 import dashboardAdminControllers from '../../controllers/admin/dashboardMainOverview.js'
 import menuPetugasParkirController from '../../controllers/admin/MenuPetugasParkirControllers.js'
 import menuPengendaraController from '../../controllers/admin/menuPengendara.js'
+import menuNotifikasi from '../../controllers/admin/menuNotifikasi.js'
 
 
 const adminRoutes = express.Router();
 
+// Menu main overview
 adminRoutes.get(
     '/dashboard/overview',
     authenticationRoleBasedUser(['admin']),
     verifySession,
     dashboardAdminControllers.getOverview
 );
+
+// Menu petugas parkir
 
 adminRoutes.get(
     '/dashboard/petugas-parkir',
@@ -50,6 +54,8 @@ adminRoutes.delete(
     menuPetugasParkirController.deletePetugasParkir
 );
 
+// Menu pengendara
+
 adminRoutes.get(
     '/dashboard/pengendara',
     authenticationRoleBasedUser(['admin']),
@@ -69,6 +75,23 @@ adminRoutes.patch(
     authenticationRoleBasedUser(['admin']),
     verifySession,
     menuPengendaraController.updateStatus
+);
+
+
+// Menu notifikasi
+
+adminRoutes.get(
+    '/dashboard/notifikasi/stats',
+    authenticationRoleBasedUser(['admin']),
+    verifySession,
+    menuNotifikasi.getDashboardStats
+)
+
+adminRoutes.post(
+    '/dashboard/notifikasi',
+    authenticationRoleBasedUser(['admin']),
+    verifySession,
+    menuNotifikasi.createNotifikasi
 )
 
 export default adminRoutes;
