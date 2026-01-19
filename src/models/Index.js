@@ -10,7 +10,8 @@ import kendaraanModel from './Kendaraan.js'
 import kendaraanMasukModel from './kendaraanMasuk.js'
 import kendaraanKeluarModel from './kendaraanKeluar.js'
 import notificationModel from './Notification.js'
-
+import notifikasiAdminModel from './notifikasiAdmin.js'
+import notifikasiUserModel from './notifikasiUser.js'
 
 const Role = roleModel(sequelize, DataTypes);
 const Users = userModel(sequelize, DataTypes);
@@ -21,6 +22,8 @@ const kendaraan = kendaraanModel(sequelize, DataTypes);
 const kendaraanMasuk = kendaraanMasukModel(sequelize, DataTypes);
 const kendaraanKeluar = kendaraanKeluarModel(sequelize, DataTypes);
 const notification = notificationModel(sequelize, DataTypes);
+const notificationAdmin = notifikasiAdminModel(sequelize, DataTypes);
+const notificationUser = notifikasiUserModel(sequelize, DataTypes);
 
 
 Role.hasMany(Users, { foreignKey: 'role_id', as: 'users' });
@@ -56,6 +59,15 @@ kendaraanKeluar.belongsTo(kendaraan, { foreignKey: 'kendaraan_id', as: 'kendaraa
 kendaraan.hasMany(notification, { foreignKey: 'kendaraan_id', as: 'notifikasi'});
 notification.belongsTo(kendaraan, { foreignKey: 'kendaraan_id', as: 'kendaraan'});
 
+Users.hasMany(notificationAdmin, { foreignKey: 'admin_id', as: 'notifikasiDibuat' });
+notificationAdmin.belongsTo(Users, { foreignKey: 'admin_id', as: 'admin' });
+
+notificationAdmin.hasMany(notificationUser, { foreignKey: 'notifikasi_admin_id', as: 'penerima' });
+notificationUser.belongsTo(notificationAdmin, { foreignKey: 'notifikasi_admin_id', as: 'notifikasi' });
+
+Users.hasMany(notificationUser, { foreignKey: 'user_id', as: 'notifikasiUser' });
+notificationUser.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+
 export {
     Role,
     Users,
@@ -65,6 +77,8 @@ export {
     kendaraan,
     kendaraanMasuk,
     kendaraanKeluar,
-    notification
+    notification,
+    notificationAdmin,
+    notificationUser
 };
 
