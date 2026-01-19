@@ -8,9 +8,10 @@ import petugasSocketStatus from './socket/petugas/SocketPetugasStatus.js';
 import authSocketMiddlewares from './middlewares/authentication/AuthSocketMiddlewares.js';
 import startCleanupJobs from './jobs/cleanupPetugasOnline.js';
 import pengendaraSocket from './socket/pengendara/pengendaraSocket.js';
+import adminSocket from './socket/admin/adminSocket.js';
 import { setSocketIo } from './socket/emitter/notifikasiEmitter.js';
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 
 if (process.env.NODE_ENV !== 'production') {
     dotenv.config();
@@ -30,6 +31,7 @@ if (process.env.NODE_ENV !== 'production') {
         });
 
         io.use(authSocketMiddlewares);
+        adminSocket(io)
         petugasSocketStatus(io);
         pengendaraSocket(io);
         setSocketIo(io);
