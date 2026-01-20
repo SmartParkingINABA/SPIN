@@ -1,5 +1,4 @@
 import dotenv from 'dotenv'
-dotenv.config();
 import app from './app.js'
 import sequelize from './configs/DBConfig.js';
 import redis from './configs/RedisConfig.js';
@@ -26,7 +25,7 @@ if (process.env.NODE_ENV !== 'production') {
         const server = http.createServer(app);
         const io = new Server(server, {
             cors: {
-                origin: process.env.CLIENT_SIDE_URL,
+                origin: true,
                 credentials: true
             }
         });
@@ -45,7 +44,7 @@ if (process.env.NODE_ENV !== 'production') {
         });
 
         redis.on('error', () => {
-            console.log('Redis connection failed: ', err);
+            console.log('Redis connection failed');
             
         })
 
