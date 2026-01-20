@@ -13,7 +13,7 @@ const __dirname = dirname(__filename)
 app.set('trust proxy', 1);
 
 app.use(cors({
-    origin: process.env.CLIENT_SIDE_URL,
+    origin: true,
     credentials: true,
 }));
 
