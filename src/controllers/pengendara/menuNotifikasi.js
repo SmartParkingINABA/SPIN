@@ -4,8 +4,9 @@ class notifikasiController {
     async getAll(req, res, next) {
         try {
             const pengendaraId = req.user?.pengendaraProfile?.id_pengendara;
+            const userId = req.user?.id_users;
 
-            if (!pengendaraId) {
+            if (!pengendaraId || !userId) {
                 return res.status(400).json({
                     message: 'Pengendara tidak valid'
                 });
@@ -13,8 +14,9 @@ class notifikasiController {
 
             const {page = 1, limit = 10} = req.query;
 
-            const data = await menuNotifikasi.getAll({
+            const data = await menuNotifikasi.getAllCombined({
                 pengendaraId,
+                userId,
                 page: Number(page),
                 limit: Number(limit)
             });
@@ -31,7 +33,9 @@ class notifikasiController {
     async markAsRead(req, res, next) {
         try {
             const pengendaraId = req.user?.pengendaraProfile?.id_pengendara;
-            const {id} = req.params
+            const userId = req.user?.id_users;
+            const {id} = req.params;
+            const {type} = req.query;
 
             if (!pengendaraId) {
                 return res.status(403).json({
@@ -40,8 +44,10 @@ class notifikasiController {
             }
 
             await menuNotifikasi.markAsRead({
+                type,
                 notifikasiId: id,
-                pengendaraId
+                pengendaraId,
+                userId
             });
 
             return res.status(200).json({
@@ -56,6 +62,8 @@ class notifikasiController {
     async markAllAsRead(req, res, next) {
         try {
             const pengendaraId = req.user?.pengendaraProfile?.id_pengendara;
+            const userId = req.user?.id_users;
+            const {type} = req.query;
 
             if (!pengendaraId) {
                 return res.status(403).json({
@@ -63,7 +71,13 @@ class notifikasiController {
                 });
             }
 
-            await menuNotifikasi.markAllAsRead(pengendaraId);
+            await menuNotifikasi.markAllAsRead(
+                {
+                    type,
+                    pengendaraId,
+                    userId
+                }
+            );
 
             return res.status(200).json({
                 message: 'Semua notifikasi ditandai sudah dibaca'

@@ -1,5 +1,5 @@
 import { Op, Sequelize } from "sequelize";
-import { notification, kendaraan } from "../../models/Index.js";
+import { notification, kendaraan, notificationAdmin, notificationUser } from "../../models/Index.js";
 
 class notifikasiRepo {
     async findByPengendara({pengendaraId, limit, offset}) {
@@ -41,7 +41,7 @@ class notifikasiRepo {
     }
 
     async findOneOwned(notifikasiId, pengendaraId) {
-            return notification.findOne({
+        return notification.findOne({
             where: { id_notifikasi: notifikasiId },
             include: [{
                 model: kendaraan,
@@ -50,6 +50,16 @@ class notifikasiRepo {
             }]
         });
     }
+    
+    async findAdminOwned({notifikasiUserId, userId}) {
+        return notificationUser.findOne({
+            where: { 
+                id_notifikasi_user: notifikasiUserId,
+                user_id: userId
+            }
+        })
+    }
+
 
     async markAsRead(notifikasiId) {
         return notification.update(
@@ -57,6 +67,22 @@ class notifikasiRepo {
             { where: { id_notifikasi: notifikasiId } }
         );
     }
+
+
+    async markNotifAdminAsRead(notifikasiUserId) {
+        return notificationUser.update(
+            {
+                status_baca: 'Sudah',
+                waktu_dibaca: new Date()
+            },
+            {
+                where: {
+                    id_notifikasi_user: notifikasiUserId
+                }
+            }
+        );
+    }
+
 
     async markAllAsRead(pengendaraId) {
         return notification.update(
@@ -74,6 +100,24 @@ class notifikasiRepo {
             }
         );
     }
+
+
+    async markAllNotifAdminAsRead(userId) {
+        return notificationUser.update(
+            {
+                status_baca: 'Sudah',
+                waktu_dibaca: new Date()
+            },
+            {
+                where: {
+                    user_id: userId,
+                    status_baca: 'Belum'
+                }
+            }
+        )
+    }
+
+
 
     async countUnreadNotifikasi(pengendaraId) {
         return notification.count({
@@ -102,6 +146,41 @@ class notifikasiRepo {
             limit
         });
     }
+
+    async findAdminByUser({userId, limit, offset}) {
+        const rows = await notificationUser.findAll({
+            where: {
+                user_id: userId
+            },
+            include: [{
+                model: notificationAdmin,
+                as: 'notifikasi'
+            }],
+            order: [[
+                { model: notificationAdmin, as: 'notifikasi'},
+                'waktu_dibuat', 
+                'DESC'
+            ]],
+            limit,
+            offset
+        });
+
+        const count = await notificationUser.count({
+            where: {
+                user_id: userId
+            }
+        });
+
+        const unread = await notificationUser.count({
+            where: {
+                user_id: userId,
+                status_baca: 'Belum'
+            }
+        });
+
+        return { rows, count, unread };
+    }
+
 };
 
 export default new notifikasiRepo();

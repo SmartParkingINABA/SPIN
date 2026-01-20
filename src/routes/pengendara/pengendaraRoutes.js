@@ -104,14 +104,14 @@ dashboardPengendara.get(
 )
 
 dashboardPengendara.patch(
-    '/dashboard/:id/baca',
+    '/dashboard/:id/read',
     authenticationRoleBasedUser(['pengendara']),
     verifySession,
     menuNotifikasi.markAsRead
 )
 
 dashboardPengendara.patch(
-    '/dashboard/notifikasi/baca-semua',
+    '/dashboard/notifikasi/read-all',
     authenticationRoleBasedUser(['pengendara']),
     menuNotifikasi.markAllAsRead
 )
