@@ -1,4 +1,5 @@
 import dotenv from 'dotenv'
+dotenv.config();
 import app from './app.js'
 import sequelize from './configs/DBConfig.js';
 import redis from './configs/RedisConfig.js';
@@ -42,6 +43,12 @@ if (process.env.NODE_ENV !== 'production') {
         redis.on('connect', () => {
             console.log('Redis Connected successs!');
         });
+
+        redis.on('error', () => {
+            console.log('Redis connection failed: ', err);
+            
+        })
+
     } catch (err) {
         console.error('Server Failed To Start');
         console.error(err);
