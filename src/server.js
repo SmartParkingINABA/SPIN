@@ -1,4 +1,5 @@
 import dotenv from 'dotenv'
+dotenv.config({ path: './environments/.env'})
 import app from './app.js'
 import sequelize from './configs/DBConfig.js';
 import redis from './configs/RedisConfig.js';
@@ -14,7 +15,6 @@ import { setSocketIo } from './socket/emitter/notifikasiEmitter.js';
 const PORT = process.env.PORT || 3000;
 
 if (process.env.NODE_ENV !== 'production') {
-    dotenv.config();
 }
 
 (async () => {
