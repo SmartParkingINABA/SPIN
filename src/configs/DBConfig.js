@@ -12,9 +12,14 @@ const sequelize = new Sequelize(
         timezone: '+07:00',
         
         dialectOptions: {
-            timezone: 'local'
+            timezone: 'local',
+            ssl: {
+                require: true,
+                rejectUnauthorized: false
+            }
         }
     }
+    
 );
 
 
