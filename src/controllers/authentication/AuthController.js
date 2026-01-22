@@ -26,6 +26,9 @@ const authController = {
                     }
                 );
         } catch (err) {
+            console.error('Register Controller ERROR');
+            console.error(err);
+
             if (err.message === 'Email Exist!') {
                 return res.status(400).json(
                     {
@@ -47,6 +50,8 @@ const authController = {
                     message: 'Internal Server Error!'
                 }
             );
+
+            
         }
     },
 
@@ -74,6 +79,9 @@ const authController = {
 
             
         } catch (error) {
+            console.error('LOGIN CONTROLLER ERROR');
+            console.error(error);
+
             if (error.message === 'Password Wrong!') {
                 return res.status(400).json({
                     message: 'Password salah!'
