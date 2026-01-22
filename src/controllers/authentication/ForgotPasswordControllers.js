@@ -49,8 +49,10 @@ const forgotPasswordController = {
                     message: 'Kode OTP Berhasil Di Kirim Ke Email Anda'
                 }
             )
-        } catch (err) {
-            console.log(err);
+        } catch (error) {
+            console.log(error);
+            console.error('REQUEST OTP ERROR');
+            console.error(error);
             return res.status(500).json(
                 {
                     message: 'Internal Server Error',
@@ -92,8 +94,10 @@ const forgotPasswordController = {
                     message: 'Kode OTP Valid, Silahkan Membuat Ulang Password Baru',
                 }
             )
-        } catch (err) {
-            console.log(err);
+        } catch (error) {
+            console.log(error);
+            console.error('VERIFY OTP ERROR');
+            console.error(errror);
             return res.status(500).json(
                 {
                     message: 'Internal Server Error!',
@@ -134,7 +138,7 @@ const forgotPasswordController = {
             if (!email) {
                 return res.status(400).json(
                     {
-                        message: 'Akses Di Tolak, OTP Belum Terverifikasi Atau Sudah Expired!'
+                        message: 'OTP Expired!'
                     }
                 )
             }
@@ -159,10 +163,11 @@ const forgotPasswordController = {
             );
         } catch (error) {
             console.log(error);
+            console.error('RESET PASSWORD ERROR');
+            console.error(error);
             res.status(500).json(
                 {
                     message: 'Internal Server Error',
-                    err: error
                 }
             );
             
