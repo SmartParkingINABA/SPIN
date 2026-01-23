@@ -51,7 +51,7 @@ class notifikasiController {
             });
 
             return res.status(200).json({
-                message: 'Notifikasi ditandai sudah dibaca'
+                message: 'Notifikasi sudah dibaca'
             });
 
         } catch (error) {
@@ -80,7 +80,7 @@ class notifikasiController {
             );
 
             return res.status(200).json({
-                message: 'Semua notifikasi ditandai sudah dibaca'
+                message: 'Semua notifikasi sudah dibaca'
             })
 
         } catch (error) {
