@@ -128,7 +128,7 @@ dashboardPengendara.get(
 )
 
 dashboardPengendara.put(
-    '/dashboard/pengaturan-profil/update',
+    '/dashboard/pengaturan-profil/profile',
     authenticationRoleBasedUser(['pengendara']),
     verifySession,
     menuPengaturanAkun.updateProfile
