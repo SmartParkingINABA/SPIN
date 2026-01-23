@@ -4,6 +4,7 @@ import verifySession from '../../middlewares/cache/SessionMiddlewares.js';
 import menuScanQRCode from '../../controllers/petugas/menuScanQRCode.js';
 import menuKendaraanParkir from '../../controllers/petugas/menuKendaraanParkir.js';
 import menuRiwayatParkir from '../../controllers/petugas/menuRiwayatParkir.js';
+import menuNotifikasi from '../../controllers/petugas/menuNotifikasi.js';
 
 
 
@@ -51,6 +52,29 @@ dashboardPetugas.get(
     authenticationRoleBasedUser(['petugas']),
     verifySession,
     menuRiwayatParkir.getRiwayatParkir
+)
+
+// Menu Notifikasi 
+
+dashboardPetugas.get(
+    '/dashboard/notifikasi',
+    authenticationRoleBasedUser(['petugas']),
+    verifySession,
+    menuNotifikasi.getAll
+)
+
+dashboardPetugas.put(
+    '/dashboard/:id/read',
+    authenticationRoleBasedUser(['petugas']),
+    verifySession,
+    menuNotifikasi.markAsRead
+)
+
+dashboardPetugas.put(
+    '/dashboard/notifikasi/read-all',
+    authenticationRoleBasedUser(['petugas']),
+    verifySession,
+    menuNotifikasi.markAllAsRead   
 )
 
 export default dashboardPetugas;
