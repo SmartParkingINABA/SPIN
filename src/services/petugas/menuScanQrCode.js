@@ -31,7 +31,7 @@ class menuScanQrCodeService {
             merk: kendaraan.merk || '-',
             jenis: kendaraan.jenis || '-',
             terdaftar_sejak: formatDateDDMMYYYY(kendaraan.createdAt),
-            status_parkir: activeParkir ? 'Sedang Parkir' : 'Di Luar Parkir'
+            status_parkir: activeParkir ? 'Sedang Parkir' : 'Di Luar Area Parkir'
         };
         
     }
