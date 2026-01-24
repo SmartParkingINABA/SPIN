@@ -16,8 +16,7 @@ const dashboardMainOverviewRepo = {
 
     async countKendaraanAktifParkir() {
         const [rows] = await sequelize.query(
-            `SELECT COUNT(*) AS total FROM kendaraan_masuk km LEFT JOIN kendaraan_keluar kk ON km.kendaraan_id
-            = kk.kendaraan_id WHERE kk.kendaraan_id IS NULL`
+            `SELECT COUNT(*) AS total FROM kendaraan_masuk WHERE status_parkir = 'Sedang Parkir'`
         );
         return rows[0]?.total || 0;
     },
@@ -54,9 +53,10 @@ const dashboardMainOverviewRepo = {
 
     async durasiParkirRataRata() {
         return sequelize.query(
-        `SELECT DATE(waktu_keluar) AS tanggal, AVG(TIMESTAMPDIFF(MINUTE, km.waktu_masuk, kk.waktu_keluar))
-            AS total FROM kendaraan_masuk km JOIN kendaraan_keluar kk ON km.kendaraan_id = kk.kendaraan_id WHERE kk.waktu_keluar >=
-            DATE_SUB(CURDATE(), INTERVAL 6 DAY) GROUP BY DATE(waktu_keluar)`,
+            `SELECT DATE(kk.waktu_keluar) AS tanggal, AVG(TIMESTAMPDIFF(MINUTE, km.waktu_masuk, kk.waktu_keluar)) AS total FROM kendaraan_masuk km 
+            JOIN kendaraan_keluar kk ON km.kendaraan_id = kk.kendaraan_id 
+            WHERE kk.waktu_keluar >= DATE_SUB(CURDATE(), INTERVAL 6 DAY) 
+            GROUP BY DATE(kk.waktu_keluar)`,
             {
                 type: sequelize.QueryTypes.SELECT
             }
