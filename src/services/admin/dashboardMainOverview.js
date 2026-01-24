@@ -1,6 +1,7 @@
 import dashboardMainOverviewRepo from "../../repositories/admin/dashboardMainOverview.js";
 import statusCache from "../../cache/Status.js";
 import { generateLastNDates, mergeCounts } from "../../utils/DateHelper.js";
+import { formatDateTimeFormatter } from "../../utils/dateTimeFormatter.js";
 
 const dashboardMainOverviewServices = {
     async getOverview() {
@@ -32,6 +33,12 @@ const dashboardMainOverviewServices = {
             ]
         );
 
+        
+        const aktivitas = aktivitasTerbaru.map(activity => ({
+            ...activity,
+            waktu: formatDateTimeFormatter(activity.waktu)
+        }));
+
         return {
             statistik: {
                 totalKendaraan,
@@ -48,7 +55,7 @@ const dashboardMainOverviewServices = {
                 durasi: mergeCounts(dates, durasiParkirRataRata)
             },
 
-            aktivitas: aktivitasTerbaru,
+            aktivitas: aktivitas,
             pengendaraBaru: pengendaraBaruTerdaftar
         };
     }
