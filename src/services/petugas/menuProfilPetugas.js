@@ -31,7 +31,7 @@ class menuProfilPetugasService {
                 kendaraan_keluar: kendaraanKeluar
             },
             informasi_kerja: {
-                shift: profile.petugasProfile.shift,
+                shift: profile.petugasProfile.shift? `${profile.petugasProfile.shift}` : '-',
                 lokasi_kerja: profile.petugasProfile.lokasi_kerja? `Gerbang Utama - Area ${profile.petugasProfile.lokasi_kerja}` : '-'
             }
         }
