@@ -5,7 +5,7 @@ import menuScanQRCode from '../../controllers/petugas/menuScanQRCode.js';
 import menuKendaraanParkir from '../../controllers/petugas/menuKendaraanParkir.js';
 import menuRiwayatParkir from '../../controllers/petugas/menuRiwayatParkir.js';
 import menuNotifikasi from '../../controllers/petugas/menuNotifikasi.js';
-
+import menuProfilPetugas from '../../controllers/petugas/menuProfilPetugas.js';
 
 
 
@@ -75,6 +75,22 @@ dashboardPetugas.put(
     authenticationRoleBasedUser(['petugas']),
     verifySession,
     menuNotifikasi.markAllAsRead   
+)
+
+// Menu Profil petugas
+
+dashboardPetugas.get(
+    '/dashboard/profil',
+    authenticationRoleBasedUser(['petugas']),
+    verifySession,
+    menuProfilPetugas.getProfilPetugas
+)
+
+dashboardPetugas.put(
+    '/dashboard/profil',
+    authenticationRoleBasedUser(['petugas']),
+    verifySession,
+    menuProfilPetugas.updateProfilPetugas
 )
 
 export default dashboardPetugas;
