@@ -34,21 +34,21 @@ adminRoutes.post(
 );
 
 adminRoutes.put(
-    '/dashboard/petugas-parkir/edit/:id',
+    '/dashboard/petugas-parkir/:id/edit',
     authenticationRoleBasedUser(['admin']),
     verifySession,
     menuPetugasParkirController.editPetugasParkir
 );
 
 adminRoutes.patch(
-    '/dashboard/petugas-parkir/status/:id',
+    '/dashboard/petugas-parkir/:id/status',
     authenticationRoleBasedUser(['admin']),
     verifySession,
     menuPetugasParkirController.updateStatusPetugasParkir
 );
 
 adminRoutes.delete(
-    '/dashboard/petugas-parkir/delete/:id',
+    '/dashboard/petugas-parkir/:id/delete',
     authenticationRoleBasedUser(['admin']),
     verifySession,
     menuPetugasParkirController.deletePetugasParkir
@@ -64,14 +64,14 @@ adminRoutes.get(
 );
 
 adminRoutes.get(
-    '/dashboard/pengendara/detail/:id',
+    '/dashboard/pengendara/:id/detail',
     authenticationRoleBasedUser(['admin']),
     verifySession,
     menuPengendaraController.getDetail
 );
 
 adminRoutes.patch(
-    '/dashboard/pengendara/status/:id',
+    '/dashboard/pengendara/:id/status',
     authenticationRoleBasedUser(['admin']),
     verifySession,
     menuPengendaraController.updateStatus
