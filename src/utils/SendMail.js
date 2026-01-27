@@ -42,7 +42,7 @@ const sendOtpToEmail = (email, otp) => {
             <!-- Content -->
             <tr>
               <td style="padding:16px;color:#111827;font-size:14px;line-height:1.6;">
-                <p>Hi 👋,</p>
+                <p>Hi 👋</p>
 
                 <p>
                   Kami menerima permintaan untuk mengganti password akun Anda.
@@ -105,7 +105,7 @@ const sendNotifPasswordChangedEmail = (email) => {
           <!-- Content -->
           <tr>
             <td style="padding:20px;color:#111827;font-size:14px;line-height:1.7;">
-              <p>Hi 👋,</p>
+              <p>Hi 👋</p>
 
               <p>
                 Password akun Anda telah <strong>berhasil diubah</strong>.
