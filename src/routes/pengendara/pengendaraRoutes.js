@@ -40,14 +40,14 @@ dashboardPengendara.post(
 )
 
 dashboardPengendara.put(
-    '/dashboard/data-kendaraan/edit/:id',
+    '/dashboard/data-kendaraan/:id/edit',
     authenticationRoleBasedUser(['pengendara']),
     verifySession,
     menuDataKendaraanController.update
 )
 
 dashboardPengendara.delete(
-    '/dashboard/data-kendaraan/delete/:id',
+    '/dashboard/data-kendaraan/:id/delete',
     authenticationRoleBasedUser(['pengendara']),
     verifySession,
     menuDataKendaraanController.remove
