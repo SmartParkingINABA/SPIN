@@ -42,7 +42,18 @@ const pengendaraRepo = {
         return Users.findOne({
             where: { id_users: userId, role_id: 3},
             include: [
-                { model: pengendaraProfile, as: 'pengendaraProfile', attributes: ['nama_pengendara', 'no_telp', 'alamat'] }
+                { 
+                    model: pengendaraProfile, 
+                    as: 'pengendaraProfile', 
+                    attributes: ['id_pengendara', 'nama_pengendara', 'no_telp', 'alamat'],
+                    include: [
+                        {
+                            model: kendaraan,
+                            as: 'kendaraans',
+                            attributes: ['id_kendaraan', 'no_plat', 'merk', 'jenis']
+                        }
+                    ]
+                }
             ]
         });
     },
@@ -50,7 +61,10 @@ const pengendaraRepo = {
     async findRiwayatParkir(userId) {
         const masuk = await kendaraanMasuk.findAll({
             include: [
-                { model: 'kendaraan', as: 'kendaraanMasuk', attributes: ['no_plat'],
+                { 
+                    model: kendaraan, 
+                    as: 'kendaraan', 
+                    attributes: ['no_plat', 'id_kendaraan'],
                     include: [
                         {
                             model: pengendaraProfile,
@@ -59,7 +73,6 @@ const pengendaraRepo = {
                             attributes: []
                         }
                     ]
-
                 }
             ],
             order: [['waktu_masuk', 'DESC']],
@@ -70,8 +83,8 @@ const pengendaraRepo = {
             include: [
                 {
                     model: kendaraan,
-                    as: 'kendaraanKeluar',
-                    attributes: ['no_plat'],
+                    as: 'kendaraanKeluars',
+                    attributes: ['no_plat', 'id_kendaraan'],
                     include: [
                         {
                             model: pengendaraProfile,
