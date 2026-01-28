@@ -6,6 +6,7 @@ import menuPetugasParkirController from '../../controllers/admin/MenuPetugasPark
 import menuPengendaraController from '../../controllers/admin/menuPengendara.js'
 import menuNotifikasi from '../../controllers/admin/menuNotifikasi.js'
 import menuLaporan from '../../controllers/admin/menuLaporan.js'
+import menuPengaturanAkun from '../../controllers/admin/menuPengaturanAkun.js'
 
 
 const adminRoutes = express.Router();
@@ -166,6 +167,30 @@ adminRoutes.get(
     menuLaporan.exportLaporanPetugasExcel
 )
 
+
+// Menu pengaturan akun 
+
+
+adminRoutes.get(
+    '/dashboard/pengaturan-akun',
+    authenticationRoleBasedUser(['admin']),
+    verifySession,
+    menuPengaturanAkun.getProfile
+)
+
+adminRoutes.put(
+    '/dashboard/pengaturan-akun/profil',
+    authenticationRoleBasedUser(['admin']),
+    verifySession,
+    menuPengaturanAkun.updateProfile
+)
+
+adminRoutes.put(
+    '/dashboard/pengaturan-akun/change-password',
+    authenticationRoleBasedUser(['admin']),
+    verifySession,
+    menuPengaturanAkun.changePassword
+)
 
 
 export default adminRoutes;
