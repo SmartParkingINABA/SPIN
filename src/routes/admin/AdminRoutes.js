@@ -5,6 +5,7 @@ import dashboardAdminControllers from '../../controllers/admin/dashboardMainOver
 import menuPetugasParkirController from '../../controllers/admin/MenuPetugasParkirControllers.js'
 import menuPengendaraController from '../../controllers/admin/menuPengendara.js'
 import menuNotifikasi from '../../controllers/admin/menuNotifikasi.js'
+import menuLaporan from '../../controllers/admin/menuLaporan.js'
 
 
 const adminRoutes = express.Router();
@@ -93,5 +94,78 @@ adminRoutes.post(
     verifySession,
     menuNotifikasi.createNotifikasi
 )
+
+// Menu Laporan
+
+//Laporan parkir
+
+adminRoutes.get(
+    '/dashboard/laporan-parkir',
+    authenticationRoleBasedUser(['admin']),
+    verifySession,
+    menuLaporan.getLaporanParkir
+)
+
+adminRoutes.get(
+    '/dashboard/laporan-parkir/export/pdf',
+    authenticationRoleBasedUser(['admin']),
+    verifySession,
+    menuLaporan.exportLaporanParkirPDF
+)
+
+adminRoutes.get(
+    '/dashboard/laporan-parkir/export/excel',
+    authenticationRoleBasedUser(['admin']),
+    verifySession,
+    menuLaporan.exportLaporanParkirExcel
+)
+
+// Laporan pengendara
+
+adminRoutes.get(
+    '/dashboard/laporan-pengendara',
+    authenticationRoleBasedUser(['admin']),
+    verifySession,
+    menuLaporan.getLaporanPengendara
+)
+
+adminRoutes.get(
+    '/dashboard/laporan-pengendara/export/pdf',
+    authenticationRoleBasedUser(['admin']),
+    verifySession,
+    menuLaporan.exportLaporanPengendaraPDF
+)
+
+adminRoutes.get(
+    '/dashboard/laporan-pengendara/export/excel',
+    authenticationRoleBasedUser(['admin']),
+    verifySession,
+    menuLaporan.exportLaporanPengendaraExcel
+)
+
+// Laporan petugas
+
+adminRoutes.get(
+    '/dashboard/laporan-petugas',
+    authenticationRoleBasedUser(['admin']),
+    verifySession,
+    menuLaporan.getLaporanPetugas
+)
+
+adminRoutes.get(
+    '/dashboard/laporan-petugas/export/pdf',
+    authenticationRoleBasedUser(['admin']),
+    verifySession,
+    menuLaporan.exportLaporanPetugasPDF
+)
+
+adminRoutes.get(
+    '/dashboard/laporan-petugas/export/excel',
+    authenticationRoleBasedUser(['admin']),
+    verifySession,
+    menuLaporan.exportLaporanPetugasExcel
+)
+
+
 
 export default adminRoutes;
