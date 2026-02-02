@@ -9,13 +9,12 @@ const generateOtp = async (email) => {
 
 const verifyOtp = async (otpInput) => {
     const email = await redis.get(`otp:${otpInput}`);
+    if (!email)return null;
+
+    await redis.del(`otp:${otpInput}`);
     return email;
 
 };
 
-const deleteOtp = async (otpInput) => {
-    await redis.del(`otp:${otpInput}`);
-    
-};
 
-export { generateOtp, verifyOtp, deleteOtp };
+export { generateOtp, verifyOtp };
