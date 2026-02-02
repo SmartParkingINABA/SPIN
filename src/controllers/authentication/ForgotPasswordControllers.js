@@ -6,11 +6,11 @@ import redis from '../../configs/RedisConfig.js';
 import passwordValidator from '../../utils/PasswordValidator.js';
 import { v4 as uuidv4 } from 'uuid';
 
-const otpCookieName = 'otpSession';
-const otpCookieOptions = {
+const OTP_COOKIE_NAME = 'otpSession';
+const OTP_COOKIE_OPTIONS = {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
-    sameSite: 'strict',
+    sameSite: false,
     maxAge: 5 * 60 * 1000 
 };
 
@@ -22,7 +22,7 @@ const forgotPasswordController = {
             if (!email) {
                 return res.status(400).json( 
                     {
-                        message: 'Masukkan Email Terlebih Dahulu!'
+                        message: 'Masukkan email terlebih dahulu!'
                     }
                 );
 
@@ -36,7 +36,7 @@ const forgotPasswordController = {
             if (!user) {
                 return res.status(200).json(
                     {
-                        message: 'Jika Email Sudah Terdaftar, Kode OTP Telah Dikirim'
+                        message: 'Jika email sudah terdaftar, kode OTP telah dikirim'
                     }
                 );
             }
@@ -46,13 +46,11 @@ const forgotPasswordController = {
             await sendOtpToEmail(email, otp);
             return res.status(200).json(
                 {
-                    message: 'Kode OTP Berhasil Di Kirim Ke Email Anda'
+                    message: 'Kode OTP berhasil di kirim ke email anda'
                 }
             )
         } catch (error) {
-            console.log(error);
-            console.error('REQUEST OTP ERROR');
-            console.error(error);
+            console.error('REQUEST OTP ERROR', error);
             return res.status(500).json(
                 {
                     message: 'Internal Server Error',
@@ -70,7 +68,7 @@ const forgotPasswordController = {
             if (!otp) {
                 return res.status(400).json(
                     {
-                        message: 'Kode OTP Wajib Di Isi!'
+                        message: 'Kode OTP wajib di isi!'
                     }
                 );
             };
@@ -79,15 +77,14 @@ const forgotPasswordController = {
             if (!email) {
                 return res.status(400).json(
                     {
-                        message: 'OTP Salah Atau Sudah Kadaluarsa!'
+                        message: 'OTP salah atau sudah expire!'
                     }
                 );
             };
 
             const otpSessionId = uuidv4();
             await redis.set(`otp_session:${otpSessionId}`, email, 'EX', 60 * 5);
-            await redis.del(`otp:${otp}`);
-            res.cookie(otpCookieName, otpSessionId, otpCookieOptions);
+            res.cookie(OTP_COOKIE_NAME, otpSessionId, OTP_COOKIE_OPTIONS);
 
             return res.status(200).json(
                 {
@@ -97,7 +94,7 @@ const forgotPasswordController = {
         } catch (error) {
             console.log(error);
             console.error('VERIFY OTP ERROR');
-            console.error(errror);
+            console.error(error);
             return res.status(500).json(
                 {
                     message: 'Internal Server Error!',
@@ -114,7 +111,7 @@ const forgotPasswordController = {
             if(!new_password) {
                 return res.status(400).json(
                     {
-                        message: 'Password Wajib Di Isi!'
+                        message: 'Password wajib di isi!'
                     }
                 );
             };
@@ -127,7 +124,7 @@ const forgotPasswordController = {
                 )
             };
 
-            const otpSessionId = req.cookies?.[otpCookieName];
+            const otpSessionId = req.cookies?.[OTP_COOKIE_NAME];
             if (!otpSessionId) {
                 return res.status(400).json({
                     message: 'Akses Di Tolak, OTP Belum Terverifikasi!'
@@ -138,7 +135,7 @@ const forgotPasswordController = {
             if (!email) {
                 return res.status(400).json(
                     {
-                        message: 'OTP Expired!'
+                        message: 'Session OTP expire!'
                     }
                 )
             }
@@ -153,18 +150,17 @@ const forgotPasswordController = {
                 }
             );
             await redis.del(`otp_session:${otpSessionId}`);
+            res.clearCookie(OTP_COOKIE_NAME);
 
             await sendNotifPasswordChangedEmail(email)
 
             return res.status(200).json(
                 {
-                    message: 'Password Berhasil Diubah, Silahkan Login Kembali'
+                    message: 'Password berhasil diubah, silahkan login kembali'
                 }
             );
         } catch (error) {
-            console.log(error);
-            console.error('RESET PASSWORD ERROR');
-            console.error(error);
+            console.error('RESET PASSWORD ERROR', error);
             res.status(500).json(
                 {
                     message: 'Internal Server Error',
