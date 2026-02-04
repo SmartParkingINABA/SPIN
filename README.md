@@ -1,12 +1,12 @@
 # Hi 👋
 
-### Apa itu SPIN ?
+### Tentang SPIN
 
 <img width="200" height="200" alt="Logo SPIN" src="https://github.com/user-attachments/assets/2dc24c8e-dd14-4bfe-b972-0b499cec1308" />
 
 ### 🚀 SPIN — Smart Parking INABA
 
-SPIN ( Smart Parking INABA ) adalah aplikasi sistem manajemen parkir berbasis web yang dirancang untuk mendukung proses parkir kendaraan di lingkungan kampus secara digital. Sistem ini mendukung alur masuk-keluar kendaraan menggunakan QR Code, monitoring kendaraan secara real-time, dashboard admin, dashboard
+SPIN adalah aplikasi sistem manajemen parkir berbasis web yang dirancang untuk mendukung proses parkir kendaraan di lingkungan kampus secara digital. Sistem ini mendukung alur masuk-keluar kendaraan menggunakan QR Code, monitoring kendaraan secara real-time, dashboard admin, dashboard
 petugas, dashboard pengendara, serta manajemen data parkir yang terintegrasi.
 
 
