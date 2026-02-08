@@ -72,7 +72,7 @@ export default function VehicleDropdown({ selectedOption }) {
           >
             {item}
             <FaCheck
-              className={`w-4 h-fit transition duration-300 ${
+              className={`w-4 h-fit transition duration-300 group-hover:opacity-100 ${
                 selected === item ? "opacity-100" : "opacity-0"
               }`}
             />

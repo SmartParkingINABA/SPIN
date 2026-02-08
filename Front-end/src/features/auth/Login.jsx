@@ -108,6 +108,12 @@ export default function Login() {
             {loading ? <LoadingSpinner size={25} color="#1e1633" /> : "Login"}
           </button>
         </form>
+        <p className="text-sm mt-5 text-center text-[#FEF8FD]">
+          Don't have an account?{" "}
+          <Link to="/auth/register" className="font-bold text-blue-500">
+            Register
+          </Link>
+        </p>
       </div>
     </div>
   );

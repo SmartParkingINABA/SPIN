@@ -27,7 +27,7 @@ export default function ResetPassword() {
     {
       password: validatePassword,
       confirmPassword: validateConfirmPassword,
-    }
+    },
   );
 
   const handleSubmit = async (e) => {

@@ -3,7 +3,7 @@ import Dropdown from "../../components/auth/Dropdown.jsx";
 import { IoMdMail } from "react-icons/io";
 import { FaLock } from "react-icons/fa6";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useFormValidation } from "../../hooks/useFormValidation.js";
 import {
   validateConfirmPassword,
@@ -159,6 +159,12 @@ export default function Register() {
             {loading ? <LoadingSpinner size={25} color="#1e1633" /> : "Sign up"}
           </button>
         </form>
+        <p className="text-sm mt-5 text-center text-[#FEF8FD]">
+          Have an account?{" "}
+          <Link to="/auth/login" className="font-bold text-blue-500">
+            Login
+          </Link>
+        </p>
       </div>
     </div>
   );
