@@ -10,8 +10,7 @@ const pengendaraProfileModel = (sequelize, DataTypes) => {
             allowNull: false
         },
         nama_pengendara : {
-            type: DataTypes.STRING(100),
-            allowNull: true
+            type: DataTypes.STRING(100)
         },
         alamat : {
             type: DataTypes.TEXT
