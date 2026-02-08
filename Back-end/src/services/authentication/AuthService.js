@@ -55,8 +55,8 @@ class authService {
                 await pengendaraProfile.create(
                     {
                         user_id: newUser.id_users,
-                        nama_pengendara: nama || '-',
-                        alamat: alamat || '-',
+                        nama_pengendara: nama || null,
+                        alamat: alamat || null,
                     }
                 );
             }
