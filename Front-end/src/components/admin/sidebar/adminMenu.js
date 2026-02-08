@@ -28,26 +28,6 @@ export const adminMenu = [
     icon: HiOutlineUserCircle,
   },
   {
-    label: "Kendaraan",
-    path: "/admin/vehicles",
-    icon: LuCar,
-  },
-  {
-    label: "Kendaraan Masuk",
-    path: "/admin/incoming-vehicle",
-    icon: LuArrowRightToLine,
-  },
-  {
-    label: "Kendaraan Keluar",
-    path: "/admin/vehicle-out",
-    icon: LuArrowLeftToLine,
-  },
-  {
-    label: "Parkir Aktif",
-    path: "/admin/active-parking",
-    icon: LuCircleParking,
-  },
-  {
     label: "Notifikasi",
     path: "/admin/notification",
     icon: IoMdNotificationsOutline,
