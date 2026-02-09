@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
 import { IoMdMail } from "react-icons/io";
 import { FaLock } from "react-icons/fa6";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
@@ -10,6 +9,12 @@ import FormInput from "../../components/FormInput";
 import toast from "react-hot-toast";
 import LoadingSpinner from "../../components/ui/LoadingSpinner";
 import { login } from "../../services/auth.Service";
+
+const roleRedirectMap = {
+  admin: "/admin",
+  petugas: "/petugas",
+  pengendara: "/pengendara",
+};
 
 export default function Login() {
   const navigate = useNavigate();
@@ -24,7 +29,7 @@ export default function Login() {
     {
       email: validateEmail,
       password: validatePassword,
-    }
+    },
   );
 
   const handleSubmit = async (e) => {
@@ -35,10 +40,16 @@ export default function Login() {
     try {
       setLoading(true);
 
-      await login(values.email, values.password);
+      const res = await login(values.email, values.password);
 
-      toast.success("Login berhasil!");
-      navigate("/user");
+      const role = res.user.role.toLowerCase();
+      console.log(role);
+
+      const redirectPath = roleRedirectMap[role] || "/";
+
+      toast.success(res.message || "Kamu berhasil login!");
+
+      navigate(redirectPath);
     } catch (err) {
       if (!err.response) {
         toast.error("Tidak bisa terhubung ke server!");

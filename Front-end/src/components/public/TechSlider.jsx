@@ -11,6 +11,7 @@ import redisLogo from "../../assets/images/public/redis.svg";
 import expressLogo from "../../assets/images/public/express.svg";
 import javaScriptLogo from "../../assets/images/public/javaScript.svg";
 import socketIoLogo from "../../assets/images/public/socket.io.svg";
+import awsLogo from "../../assets/images/public/aws.svg";
 
 export default function TechSlider() {
   const logos = [
@@ -23,6 +24,7 @@ export default function TechSlider() {
     { src: sequelizeLogo, alt: "Sequelize ORM", name: "Sequelize" },
     { src: redisLogo, alt: "Redis", name: "Redis" },
     { src: socketIoLogo, alt: "Socket.io", name: "Socket.io" },
+    { src: awsLogo, alt: "AWS", name: "AWS" },
   ];
 
   return (

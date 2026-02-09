@@ -7,33 +7,33 @@ import { RxCountdownTimer } from "react-icons/rx";
 export const adminMenu = [
   {
     label: "Dashboard",
-    path: "/officer",
+    path: "/petugas",
     icon: HiOutlineHome,
     exact: true,
   },
   {
     label: "Scan QR Code",
-    path: "/officer/scan-qr-code",
+    path: "/petugas/scan-qr-code",
     icon: IoQrCode,
   },
   {
     label: "Data Kendaraan",
-    path: "/officer/report-data",
+    path: "/petugas/data-kendaraan",
     icon: FaCarSide,
   },
   {
     label: "Riwayat Parkir",
-    path: "/officer/parking-history",
+    path: "/petugas/riwayat-parkir",
     icon: RxCountdownTimer,
   },
   {
     label: "Notifikasi",
-    path: "/officer/notifikasi",
+    path: "/petugas/notifikasi",
     icon: FaBell,
   },
   {
     label: "Profil Petugas",
-    path: "/officer/officer-profile",
+    path: "/petugas/profil-petugas",
     icon: IoSettingsSharp,
   },
 ];

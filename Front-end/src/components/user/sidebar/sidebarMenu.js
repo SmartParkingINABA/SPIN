@@ -6,33 +6,33 @@ import { RxCountdownTimer } from "react-icons/rx";
 export const sidebarMenu = [
   {
     label: "Dashboard",
-    path: "/user",
+    path: "/pengendara",
     icon: HiOutlineHome,
     exact: true,
   },
   {
     label: "Data Kendaraan",
-    path: "/user/report-data",
+    path: "/pengendara/data-kendaraan",
     icon: FaCarSide,
   },
   {
     label: "QR Code Saya",
-    path: "/user/my-qr-code",
+    path: "/pengendara/qr-code-saya",
     icon: IoQrCode,
   },
   {
     label: "Riwayat Parkir",
-    path: "/user/parking-history",
+    path: "/pengendara/riwayat-parkir",
     icon: RxCountdownTimer,
   },
   {
     label: "Notifikasi",
-    path: "/user/notifikasi",
+    path: "/pengendara/notifikasi",
     icon: FaBell,
   },
   {
     label: "Profil Pengguna",
-    path: "/user/user-profile",
+    path: "/pengendara/profil-pengendara",
     icon: IoSettingsSharp,
   },
 ];

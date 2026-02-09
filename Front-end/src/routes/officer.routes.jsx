@@ -6,18 +6,20 @@ import OfficerScanQR from "../features/officer/scan-qr/ScanQR";
 import OfficerParkingHistory from "../features/officer/parking-history/ParkingHistory";
 import OfficerNotifikasi from "../features/officer/notification/Notifikasi";
 import OfficerProfile from "../features/officer/profile/Profile";
+import OfficerNotFound from "../features/not-found/OfficerNotFound";
 
 export default function OfficerRoutes() {
   return (
     <Routes>
       <Route element={<OfficerLayout />}>
         <Route index element={<OfficerDashboard />} />
-        <Route path="report-data" element={<OfficerVehiclesReport />} />
+        <Route path="data-kendaraan" element={<OfficerVehiclesReport />} />
         <Route path="scan-qr-code" element={<OfficerScanQR />} />
-        <Route path="parking-history" element={<OfficerParkingHistory />} />
+        <Route path="riwayat-parkir" element={<OfficerParkingHistory />} />
         <Route path="notifikasi" element={<OfficerNotifikasi />} />
-        <Route path="officer-profile" element={<OfficerProfile />} />
+        <Route path="profil-petugas" element={<OfficerProfile />} />
       </Route>
+      <Route path="*" element={<OfficerNotFound />} />
     </Routes>
   );
 }

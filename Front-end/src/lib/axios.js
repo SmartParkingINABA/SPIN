@@ -18,18 +18,18 @@ api.interceptors.request.use(
   (config) => {
     console.log(
       `[API REQUEST] ${config.method?.toUpperCase()} ${config.url}`,
-      config.data
+      config.data,
     );
     return config;
   },
-  (error) => Promise.reject(error)
+  (error) => Promise.reject(error),
 );
 
 api.interceptors.response.use(
   (response) => {
     console.log(
       `[API RESPONSE] ${response.status} ${response.config.url}`,
-      response.data
+      response.data,
     );
     return response;
   },
@@ -40,7 +40,7 @@ api.interceptors.response.use(
       data: error.response?.data,
     });
     return Promise.reject(error);
-  }
+  },
 );
 
 export default api;

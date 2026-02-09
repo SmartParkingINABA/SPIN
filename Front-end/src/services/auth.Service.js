@@ -6,6 +6,8 @@ export const login = async (email, password) => {
     password_users: password,
   });
 
+  console.log(response);
+
   return response.data;
 };
 
@@ -21,11 +23,13 @@ export const register = async (email, password, roleId) => {
 
 export const requestOtp = async (email) => {
   const response = await api.post("/auth/forgot/request-otp", { email });
+
   return response.data;
 };
 
 export const verifyOtp = async (otp) => {
   const response = await api.post("/auth/forgot/verify-otp", { otp });
+
   return response.data;
 };
 

@@ -3,7 +3,7 @@ import inabaLogo from "../assets/images/public/logo_inaba.png";
 
 export default function PublicLayout() {
   const location = useLocation();
-  const hideHeader = location.pathname === "/enter";
+  const hideHeader = location.pathname === "/masuk";
 
   return (
     <main className="relative w-full font-ubuntu bg-[#130F40]">
@@ -31,7 +31,7 @@ export default function PublicLayout() {
               Beranda
             </NavLink>
             <NavLink
-              to="/regulation"
+              to="/peraturan"
               className={({ isActive }) =>
                 `${
                   isActive ? "border-b-[#FEF8FD]" : "border-b-transparent"
@@ -41,17 +41,17 @@ export default function PublicLayout() {
               Peraturan
             </NavLink>
             <NavLink
-              to="/about"
+              to="/tentang"
               className={({ isActive }) =>
                 `${
                   isActive ? "border-b-[#FEF8FD]" : "border-b-transparent"
                 } text-[#FEF8FD] font-semibold text-[20px] transition duration-300 ease-in-out border-b-2 hover:border-b-[#FEF8FD]`
               }
             >
-              About
+              Tentang
             </NavLink>
             <NavLink
-              to="/enter"
+              to="/masuk"
               className={({ isActive }) =>
                 `${
                   isActive ? "border-b-[#FEF8FD]" : "border-b-transparent"

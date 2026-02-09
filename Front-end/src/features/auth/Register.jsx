@@ -34,7 +34,7 @@ export default function Register() {
       email: validateEmail,
       password: validatePassword,
       confirmPassword: validateConfirmPassword,
-    }
+    },
   );
 
   const handleSubmit = async (e) => {
@@ -51,15 +51,20 @@ export default function Register() {
     try {
       setLoading(true);
 
-      await register(values.email, values.password, userType);
+      const res = await register(values.email, values.password, userType);
 
-      toast.success("Registrasi berhasil!");
+      toast.success(
+        res.message || "Kamu berhasil membuat akun. Silahkan login!",
+      );
       navigate("/auth/login");
     } catch (err) {
       if (!err.response) {
         toast.error("Tidak bisa terhubung ke server!");
       } else {
-        toast.error(err.response?.data?.message || "Registrasi gagal");
+        toast.error(
+          err.response?.data?.message ||
+            "Kamu gagal registrasi. Silahkan coba lagi!",
+        );
       }
     } finally {
       setLoading(false);

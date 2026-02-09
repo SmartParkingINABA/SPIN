@@ -11,8 +11,8 @@ export default function Header() {
         </p>
       </div>
       <Link
-        to={"/officer/scan-qr-code"}
-        className="bg-[#FFDB58] flex items-center gap-x-2 py-2 px-3 rounded-sm transition opacity-100 hover:opacity-80"
+        to={"/petugas/scan-qr-code"}
+        className="bg-[#FFDB58] inline-flex items-center gap-x-2 py-2 px-3 rounded-sm transition opacity-100 hover:opacity-80"
       >
         <IoQrCode className="text-[#130F40] w-5 h-fit" />
         <p className="text-[#130F40] font-medium">Mulai Scan</p>

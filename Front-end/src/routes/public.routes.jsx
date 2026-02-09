@@ -4,16 +4,18 @@ import About from "../features/public/About";
 import Regulation from "../features/public/Regulation";
 import Home from "../features/public/Home";
 import PublicLayout from "../layouts/PublicLayout";
+import PublicNotFound from "../features/not-found/PublicNotFound";
 
 export default function PublicRoutes() {
   return (
     <Routes>
       <Route element={<PublicLayout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/regulation" element={<Regulation />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/enter" element={<Enter />} />
+        <Route path="/peraturan" element={<Regulation />} />
+        <Route path="/tentang" element={<About />} />
+        <Route path="/masuk" element={<Enter />} />
       </Route>
+      <Route path="*" element={<PublicNotFound />} />
     </Routes>
   );
 }
