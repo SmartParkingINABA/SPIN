@@ -11,7 +11,7 @@ import OfficerNotFound from "../features/not-found/OfficerNotFound";
 export default function OfficerRoutes() {
   return (
     <Routes>
-      <Route element={<OfficerLayout />}>
+      <Route path="/" element={<OfficerLayout />}>
         <Route index element={<OfficerDashboard />} />
         <Route path="data-kendaraan" element={<OfficerVehiclesReport />} />
         <Route path="scan-qr-code" element={<OfficerScanQR />} />

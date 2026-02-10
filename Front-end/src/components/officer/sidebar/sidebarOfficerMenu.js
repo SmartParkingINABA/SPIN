@@ -1,13 +1,12 @@
 import { FaBell, FaCarSide } from "react-icons/fa6";
 import { HiOutlineHome } from "react-icons/hi2";
 import { IoQrCode, IoSettingsSharp } from "react-icons/io5";
-
 import { RxCountdownTimer } from "react-icons/rx";
 
-export const adminMenu = [
+export const sidebarOfficerMenu = [
   {
     label: "Dashboard",
-    path: "/petugas",
+    path: ".",
     icon: HiOutlineHome,
     exact: true,
   },

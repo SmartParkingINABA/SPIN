@@ -12,7 +12,7 @@ import UserNotFound from "../features/not-found/UserNotFound";
 export default function UserRoutes() {
   return (
     <Routes>
-      <Route element={<UserLayout />}>
+      <Route path="/" element={<UserLayout />}>
         <Route index element={<UserDashboard />} />
         <Route path="data-kendaraan" element={<UserVehiclesReport />} />
         <Route path="qr-code-saya" element={<UserQRCode />} />

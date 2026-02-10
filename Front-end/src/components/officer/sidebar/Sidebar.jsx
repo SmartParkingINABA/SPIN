@@ -1,12 +1,6 @@
-import { NavLink } from "react-router-dom";
-
-import { HiOutlineHome } from "react-icons/hi2";
-import { FaCarSide, FaBell } from "react-icons/fa6";
-import { IoQrCode, IoSettingsSharp } from "react-icons/io5";
-import { RxCountdownTimer } from "react-icons/rx";
+import { sidebarOfficerMenu } from "./sidebarOfficerMenu";
 import SidebarFooter from "../../SidebarFooter";
 import Header from "./Header";
-import { adminMenu } from "./adminMenu";
 import Item from "./Item";
 
 export default function Sidebar() {
@@ -15,7 +9,7 @@ export default function Sidebar() {
       <Header />
       <div className="border-t border-t-[rgba(255,236,120,0.5)] flex flex-col justify-between grow">
         <ul className="py-6 px-5 flex flex-col gap-y-1">
-          {adminMenu.map((item) => (
+          {sidebarOfficerMenu.map((item) => (
             <Item key={item.path} item={item} />
           ))}
         </ul>

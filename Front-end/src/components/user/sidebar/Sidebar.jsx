@@ -1,4 +1,4 @@
-import { sidebarMenu } from "./sidebarMenu";
+import { sidebarUserMenu } from "./sidebarUserMenu";
 import Header from "./Header";
 import Item from "./Item";
 import SidebarFooter from "../../SidebarFooter";
@@ -9,7 +9,7 @@ export default function Sidebar() {
       <Header />
       <div className="border-t border-t-[rgba(255,236,120,0.5)] flex flex-col justify-between grow">
         <ul className="py-6 px-5 flex flex-col gap-y-1">
-          {sidebarMenu.map((item) => (
+          {sidebarUserMenu.map((item) => (
             <Item key={item.path} item={item} />
           ))}
         </ul>

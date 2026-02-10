@@ -3,10 +3,10 @@ import { FaBell, FaCarSide } from "react-icons/fa6";
 import { HiOutlineHome } from "react-icons/hi2";
 import { RxCountdownTimer } from "react-icons/rx";
 
-export const sidebarMenu = [
+export const sidebarUserMenu = [
   {
     label: "Dashboard",
-    path: "/pengendara",
+    path: ".",
     icon: HiOutlineHome,
     exact: true,
   },

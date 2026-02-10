@@ -4,10 +4,10 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { LuUserCog } from "react-icons/lu";
 import { TbReportAnalytics } from "react-icons/tb";
 
-export const adminMenu = [
+export const sidebarAdminMenu = [
   {
     label: "Dashboard",
-    path: "/admin",
+    path: ".",
     icon: HiOutlineHome,
     exact: true,
   },

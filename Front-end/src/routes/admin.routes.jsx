@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import AdminLayout from "../layouts/AdminLayout";
 import Dashboard from "../features/admin/dasboard/Dasboard";
 import Officer from "../features/admin/officers/Officer";
@@ -11,7 +11,7 @@ import AdminNotFound from "../features/not-found/AdminNotFound";
 export default function AdminRoutes() {
   return (
     <Routes>
-      <Route element={<AdminLayout />}>
+      <Route path="/" element={<AdminLayout />}>
         <Route index element={<Dashboard />} />
         <Route path="petugas-parkir" element={<Officer />} />
         <Route path="pengendara" element={<Rider />} />
