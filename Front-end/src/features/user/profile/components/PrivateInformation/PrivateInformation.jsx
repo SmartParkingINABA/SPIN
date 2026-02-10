@@ -7,7 +7,6 @@ export default function PrivateInformation({
   fullName,
   setFullName,
   email,
-  setEmail,
   phoneNumber,
   setPhoneNumber,
   address,
@@ -23,7 +22,6 @@ export default function PrivateInformation({
         fullName={fullName}
         setFullName={setFullName}
         email={email}
-        setEmail={setEmail}
         phoneNumber={phoneNumber}
         setPhoneNumber={setPhoneNumber}
         address={address}

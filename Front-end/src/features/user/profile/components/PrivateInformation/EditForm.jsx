@@ -9,7 +9,6 @@ export default function EditForm({
   fullName,
   setFullName,
   email,
-  setEmail,
   phoneNumber,
   setPhoneNumber,
   address,

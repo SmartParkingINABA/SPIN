@@ -1,5 +1,3 @@
-import { RxLapTimer, RxTimer } from "react-icons/rx";
-import { LuRepeat2 } from "react-icons/lu";
 import Header from "./components/Header";
 import Dropdown from "./components/Dropdown/Dropdown";
 import StatsGrid from "./components/Stats/StatsGrid";

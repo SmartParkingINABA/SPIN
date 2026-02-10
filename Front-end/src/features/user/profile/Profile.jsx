@@ -13,7 +13,7 @@ export default function Profile() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const [fullName, setFullName] = useState("John Doe");
-  const [email, setEmail] = useState("johndoe@mail.com");
+  const [email] = useState("johndoe@mail.com");
   const [phoneNumber, setPhoneNumber] = useState("+18975650566");
   const [address, setAddress] = useState("jl. karapitan no. 12");
 
@@ -34,7 +34,6 @@ export default function Profile() {
               fullName={fullName}
               setFullName={setFullName}
               email={email}
-              setEmail={setEmail}
               phoneNumber={phoneNumber}
               setPhoneNumber={setPhoneNumber}
               address={address}

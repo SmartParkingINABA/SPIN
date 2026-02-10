@@ -6,7 +6,7 @@ import OfficerScanQR from "../features/officer/scan-qr/ScanQR";
 import OfficerParkingHistory from "../features/officer/parking-history/ParkingHistory";
 import OfficerNotifikasi from "../features/officer/notification/Notifikasi";
 import OfficerProfile from "../features/officer/profile/Profile";
-import OfficerNotFound from "../features/not-found/OfficerNotFound";
+import NotFoundPage from "../features/not-found/NotFoundPage";
 
 export default function OfficerRoutes() {
   return (
@@ -19,7 +19,15 @@ export default function OfficerRoutes() {
         <Route path="notifikasi" element={<OfficerNotifikasi />} />
         <Route path="profil-petugas" element={<OfficerProfile />} />
       </Route>
-      <Route path="*" element={<OfficerNotFound />} />
+      <Route
+        path="*"
+        element={
+          <NotFoundPage
+            title="404 Petugas"
+            message="Halaman petugas tidak ditemukan."
+          />
+        }
+      />
     </Routes>
   );
 }

@@ -4,7 +4,7 @@ import About from "../features/public/About";
 import Regulation from "../features/public/Regulation";
 import Home from "../features/public/Home";
 import PublicLayout from "../layouts/PublicLayout";
-import PublicNotFound from "../features/not-found/PublicNotFound";
+import NotFoundPage from "../features/not-found/NotFoundPage";
 
 export default function PublicRoutes() {
   return (
@@ -15,7 +15,7 @@ export default function PublicRoutes() {
         <Route path="/tentang" element={<About />} />
         <Route path="/masuk" element={<Enter />} />
       </Route>
-      <Route path="*" element={<PublicNotFound />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 }
