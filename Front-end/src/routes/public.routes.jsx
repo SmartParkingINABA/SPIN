@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Enter from "../features/public/Enter";
-import About from "../features/public/About";
+import About from "../features/public/about/About";
 import Regulation from "../features/public/Regulation";
 import Home from "../features/public/Home";
 import PublicLayout from "../layouts/PublicLayout";
