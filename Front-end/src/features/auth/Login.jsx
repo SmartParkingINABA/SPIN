@@ -9,6 +9,7 @@ import FormInput from "../../components/FormInput";
 import toast from "react-hot-toast";
 import LoadingSpinner from "../../components/ui/LoadingSpinner";
 import { login } from "../../services/auth.Service";
+import useAutoFocus from "../../hooks/useAutoFocus";
 
 const roleRedirectMap = {
   admin: "/admin",
@@ -61,6 +62,8 @@ export default function Login() {
     }
   };
 
+  const emailRef = useAutoFocus();
+
   return (
     <div className="bg-[#1E1633] font-ubuntu h-screen w-full flex justify-center items-center">
       <div className="w-1/4">
@@ -78,6 +81,7 @@ export default function Login() {
             placeholder="johndoe@mail.com"
             error={errors.email}
             onChange={(e) => handleChange("email", e.target.value)}
+            ref={emailRef}
           />
           <FormInput
             label="Password"

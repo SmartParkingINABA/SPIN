@@ -45,7 +45,7 @@ export default function VerifyOtp() {
       navigate("/auth/forgot/confirm-reset");
     } catch (err) {
       toast.error(
-        err.response?.data?.message || "OTP salah atau sudah kadaluarsa"
+        err.response?.data?.message || "OTP salah atau sudah kadaluarsa",
       );
     } finally {
       setLoading(false);

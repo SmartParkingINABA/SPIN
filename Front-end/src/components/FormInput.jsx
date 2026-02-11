@@ -8,6 +8,7 @@ export default function FormInput({
   icon,
   children,
   htmlFor,
+  ref,
 }) {
   const Icon = icon;
 
@@ -27,6 +28,7 @@ export default function FormInput({
           type={type}
           value={value}
           placeholder={placeholder}
+          ref={ref}
           className="w-full outline-0 bg-transparent"
           onChange={onChange}
           autoComplete="off"

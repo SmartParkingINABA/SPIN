@@ -12,6 +12,7 @@ import FormInput from "../../components/FormInput";
 import { resetPassword } from "../../services/auth.Service";
 import toast from "react-hot-toast";
 import LoadingSpinner from "../../components/ui/LoadingSpinner";
+import useAutoFocus from "../../hooks/useAutoFocus";
 
 export default function ResetPassword() {
   const navigate = useNavigate();
@@ -49,6 +50,8 @@ export default function ResetPassword() {
     }
   };
 
+  const passwordRef = useAutoFocus();
+
   return (
     <div className="bg-[#1E1633] font-ubuntu h-screen w-full flex justify-center items-center">
       <div className="w-1/4">
@@ -68,6 +71,7 @@ export default function ResetPassword() {
             icon={FaLock}
             placeholder="••••••••"
             error={errors.password}
+            ref={passwordRef}
             onChange={(e) => handleChange("password", e.target.value)}
           >
             {showPassword ? (

@@ -14,6 +14,7 @@ import FormInput from "../../components/FormInput.jsx";
 import toast from "react-hot-toast";
 import LoadingSpinner from "../../components/ui/LoadingSpinner.jsx";
 import { register } from "../../services/auth.Service.js";
+import useAutoFocus from "../../hooks/useAutoFocus.jsx";
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
@@ -71,6 +72,8 @@ export default function Register() {
     }
   };
 
+  const emailRef = useAutoFocus();
+
   return (
     <div className="bg-[#1E1633] font-ubuntu h-screen w-full flex justify-center items-center">
       <div className="w-1/4">
@@ -88,6 +91,7 @@ export default function Register() {
             value={values.email}
             icon={IoMdMail}
             placeholder="johndoe@mail.com"
+            ref={emailRef}
             error={errors.email}
             onChange={(e) => handleChange("email", e.target.value)}
           />

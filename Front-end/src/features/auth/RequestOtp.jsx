@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import { useState } from "react";
 import { requestOtp } from "../../services/auth.Service";
 import LoadingSpinner from "../../components/ui/LoadingSpinner";
+import useAutoFocus from "../../hooks/useAutoFocus";
 
 export default function RequestOtp() {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ export default function RequestOtp() {
     },
     {
       email: validateEmail,
-    }
+    },
   );
 
   const handleSubmit = async (e) => {
@@ -31,7 +32,7 @@ export default function RequestOtp() {
       await requestOtp(values.email);
 
       toast.success(
-        "Kode OTP telah dikirim ke email Anda. Silakan cek inbox atau folder spam."
+        "Kode OTP telah dikirim ke email Anda. Silakan cek inbox atau folder spam.",
       );
 
       navigate("/auth/forgot/verify-otp");
@@ -41,13 +42,16 @@ export default function RequestOtp() {
       } else {
         toast.error(
           err.response?.data?.message ||
-            "Gagal mendapatkan kode OTP. Silahkan coba lagi!"
+            "Gagal mendapatkan kode OTP. Silahkan coba lagi!",
         );
       }
     } finally {
       setLoading(false);
     }
   };
+
+  const emailRef = useAutoFocus();
+
   return (
     <div className="bg-[#1E1633] font-ubuntu h-screen w-full flex justify-center items-center">
       <div className="w-1/4">
@@ -67,6 +71,7 @@ export default function RequestOtp() {
             value={values.email}
             icon={IoMdMail}
             placeholder="johndoe@mail.com"
+            ref={emailRef}
             error={errors.email}
             onChange={(e) => handleChange("email", e.target.value)}
           />

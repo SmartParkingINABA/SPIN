@@ -1,7 +1,11 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export default function OTPInput({ length = 4, value, onChange, error }) {
   const inputsRef = useRef([]);
+
+  useEffect(() => {
+    inputsRef.current[0]?.focus();
+  }, []);
 
   const handleChange = (val, index) => {
     if (!/^\d?$/.test(val)) return;
@@ -11,13 +15,13 @@ export default function OTPInput({ length = 4, value, onChange, error }) {
     onChange(next);
 
     if (val && index < length - 1) {
-      inputsRef.current[index + 1].focus();
+      inputsRef.current[index + 1]?.focus();
     }
   };
 
   const handleKeyDown = (e, index) => {
     if (e.key === "Backspace" && !value[index] && index > 0) {
-      inputsRef.current[index - 1].focus();
+      inputsRef.current[index - 1]?.focus();
     }
   };
 
