@@ -10,7 +10,7 @@ const OTP_COOKIE_NAME = 'otpSession';
 const OTP_COOKIE_OPTIONS = {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
-    sameSite: false,
+    sameSite: 'lax',
     maxAge: 5 * 60 * 1000 
 };
 
