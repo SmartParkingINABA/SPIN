@@ -1,5 +1,5 @@
 import { FaArrowRightLong } from "react-icons/fa6";
-import aboutHeroCar from "../../../../assets/images/public/about-hero-car.svg";
+import aboutHeroCar from "../../../../assets/images/public/about-hero-car.webp";
 
 export default function WhatSpin() {
   return (
