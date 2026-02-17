@@ -1,4 +1,4 @@
-import aboutHero from "../../../../assets/images/public/about-hero.svg";
+import aboutHero from "../../../../assets/images/public/about-hero.webp";
 
 export default function AboutSpin() {
   return (
