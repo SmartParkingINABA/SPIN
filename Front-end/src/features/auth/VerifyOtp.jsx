@@ -39,9 +39,9 @@ export default function VerifyOtp() {
       setLoading(true);
       setError("");
 
-      await verifyOtp(code);
+      const res = await verifyOtp(code);
 
-      toast.success("OTP berhasil diverifikasi!");
+      toast.success(res.message || "OTP berhasil diverifikasi!");
       navigate("/auth/forgot/confirm-reset");
     } catch (err) {
       toast.error(

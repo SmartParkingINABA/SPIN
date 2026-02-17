@@ -6,8 +6,11 @@ export const validateEmail = (value) => {
 
 export const validatePassword = (value) => {
   if (!value) return "Password tidak boleh kosong";
-  if (value.length < 8) return "Panjang password minimal 8 karakter ";
+  if (value.length >= 8) return "Panjang password Max 8 karakter";
+  if (!/^[A-Z]/.test(value)) return "Password harus diawali huruf besar";
   if (!/\d/.test(value)) return "Password harus mengandung angka";
+  if (!/[!@$%&*?]/.test(value))
+    return "Password harus mengandung simbol (contoh: ! @ $ % & * ?)";
   return "";
 };
 

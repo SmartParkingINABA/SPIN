@@ -39,9 +39,11 @@ export default function ResetPassword() {
     try {
       setLoading(true);
 
-      await resetPassword(values.password);
+      const res = await resetPassword(values.password);
 
-      toast.success("Password berhasil diperbarui!");
+      toast.success(
+        res.message || "Password berhasil diperbarui! Silahkan login ulang.",
+      );
       navigate("/auth/login");
     } catch (err) {
       toast.error(err.response?.data?.message || "Gagal memperbarui password");

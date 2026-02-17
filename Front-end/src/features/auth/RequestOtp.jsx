@@ -29,10 +29,11 @@ export default function RequestOtp() {
     try {
       setLoading(true);
 
-      await requestOtp(values.email);
+      const res = await requestOtp(values.email);
 
       toast.success(
-        "Kode OTP telah dikirim ke email Anda. Silakan cek inbox atau folder spam.",
+        res.message ||
+          "Kode OTP telah dikirim ke email Anda. Silakan cek inbox atau folder spam.",
       );
 
       navigate("/auth/forgot/verify-otp");
