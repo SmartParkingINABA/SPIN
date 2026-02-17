@@ -1,5 +1,5 @@
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-import inabaLogo from "../assets/images/public/logo_inaba.png";
+import inabaLogo from "../assets/images/public/logo_inaba.webp";
 
 export default function PublicLayout() {
   const location = useLocation();
