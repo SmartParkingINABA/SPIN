@@ -1,10 +1,14 @@
+import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
-import Enter from "../features/public/Enter";
-import About from "../features/public/about/About";
-import Regulation from "../features/public/regulation/Regulation";
-import Home from "../features/public/Home";
 import PublicLayout from "../layouts/PublicLayout";
 import NotFoundPage from "../features/not-found/NotFoundPage";
+
+const Home = lazy(() => import("../features/public/Home"));
+const Regulation = lazy(
+  () => import("../features/public/regulation/Regulation"),
+);
+const About = lazy(() => import("../features/public/about/About"));
+const Enter = lazy(() => import("../features/public/Enter"));
 
 export default function PublicRoutes() {
   return (
