@@ -7,9 +7,7 @@ import { visualizer } from "rollup-plugin-visualizer";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [tailwindcss(), react(), svgr(), visualizer()],
-  base: "/",
   build: {
-    outDir: "dist",
     rollupOptions: {
       output: {
         manualChunks: {
@@ -17,8 +15,5 @@ export default defineConfig({
         },
       },
     },
-  },
-  server: {
-    historyApiFallback: true,
   },
 });
