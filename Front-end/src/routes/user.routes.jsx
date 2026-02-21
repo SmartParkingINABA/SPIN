@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import UserLayout from "../layouts/UserLayout";
+import Loader from "../components/Loader";
 
 const UserDashboard = lazy(
   () => import("../features/user/dashboard/Dashboard"),
@@ -20,7 +21,7 @@ const NotFoundPage = lazy(() => import("../features/not-found/NotFoundPage"));
 
 export default function UserRoutes() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<UserLayout />}>
           <Route index element={<UserDashboard />} />

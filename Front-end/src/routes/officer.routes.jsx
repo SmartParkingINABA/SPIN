@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import OfficerLayout from "../layouts/OfficerLayout";
 import NotFoundPage from "../features/not-found/NotFoundPage";
+import Loader from "../components/Loader";
 
 const OfficerDashboard = lazy(
   () => import("../features/officer/dashboard/Dashboard"),
@@ -22,7 +23,7 @@ const OfficerProfile = lazy(
 
 export default function OfficerRoutes() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<OfficerLayout />}>
           <Route index element={<OfficerDashboard />} />
