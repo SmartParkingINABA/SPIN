@@ -10,7 +10,7 @@ export default function Home() {
         alt=""
         className="absolute bottom-[10%] left-0 w-[8%]"
       />
-      <section className=" w-[82%] pt-[118px] h-screen ml-auto flex items-center relative z-1">
+      <section className=" w-[82%] pt-[118px] min-h-screen ml-auto flex items-center relative z-1">
         <div className="w-1/2">
           <h1 className="text-[#FFFFFF] text-5xl font-bold mb-3">
             Selamat Datang Di <span className="text-[#ffec78]">SPIN</span>
