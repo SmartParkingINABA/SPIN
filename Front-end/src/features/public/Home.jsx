@@ -8,7 +8,7 @@ export default function Home() {
       <img
         src={mainPatternLeft}
         alt=""
-        className="absolute bottom-[10%] left-0 w-[8%]"
+        className="absolute bottom-[10%] left-0 h-8% sm:h-[70%] w-[8%]"
       />
       <section className=" w-[82%] pt-[118px] overflow-hidden h-screen ml-auto flex items-center relative z-1">
         <div className="w-1/2">
