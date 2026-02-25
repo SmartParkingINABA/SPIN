@@ -9,7 +9,7 @@ export default function WorkInformation() {
         <IoTimeOutline className="h-fit w-6.5 text-[#93A3B6]" />
         <div>
           <p className="text-[#93A3B6] text-[14px]">Shift Kerja</p>
-          <p className="text-[#FEF8FD]">Pagi (07:00 - 15:00)</p>
+          <p className="text-[#FEF8FD]">Pagi</p>
         </div>
       </div>
       <div className="flex items-center gap-x-2">

@@ -1,4 +1,3 @@
-import { LuArrowRightFromLine } from "react-icons/lu";
 import { PiNotePencilThin } from "react-icons/pi";
 
 export default function ButtonCta({ setIsModalOpen }) {
@@ -12,10 +11,6 @@ export default function ButtonCta({ setIsModalOpen }) {
         >
           <PiNotePencilThin className="w-5 h-fit text-[#48515b]" />
           <p className="text-[#48515b]">Edit Profile</p>
-        </button>
-        <button className="w-full flex items-center gap-x-3 bg-red-500 rounded-sm py-1.5 px-3 cursor-pointer opacity-100 hover:opacity-80 transition">
-          <LuArrowRightFromLine className="w-5 h-fit text-[#FEF8FD]" />
-          <p className="text-[#FEF8FD]">Logout</p>
         </button>
       </div>
     </div>
