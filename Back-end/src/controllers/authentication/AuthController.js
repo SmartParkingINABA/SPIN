@@ -5,8 +5,8 @@ const cookieName = 'sessionId';
 const cookieOptions = (req) => (
     {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'lax',
+        secure: process.env.NODE_ENV,
+        sameSite: 'none',
         maxAge:  1000 * 60 * 60 * 6,
     }
 );
