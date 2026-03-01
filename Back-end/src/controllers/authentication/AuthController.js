@@ -5,9 +5,9 @@ const cookieName = 'sessionId';
 const cookieOptions = (req) => (
     {
         httpOnly: true,
-        secure: process.env.NODE_ENV,
+        secure: true,
         sameSite: 'none',
-        maxAge:  1000 * 60 * 60 * 6,
+        maxAge:  1000 * 60 * 60 * 6
     }
 );
 

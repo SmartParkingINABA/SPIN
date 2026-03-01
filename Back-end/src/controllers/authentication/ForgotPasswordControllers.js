@@ -9,9 +9,9 @@ import { v4 as uuidv4 } from 'uuid';
 const OTP_COOKIE_NAME = 'otpSession';
 const OTP_COOKIE_OPTIONS = {
     httpOnly: true,
-    secure: process.env.NODE_ENV,
+    secure: true,
     sameSite: 'none',
-    maxAge: 5 * 60 * 1000 
+    maxAge: 5 * 60 * 1000
 };
 
 const forgotPasswordController = {
