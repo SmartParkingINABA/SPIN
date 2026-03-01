@@ -66,8 +66,10 @@ const authController = {
                 cookieOptions(req)
             );
 
+            const displayName = getDisplayName(user, user.email)
+
             return res.status(200).json({
-                message: `Selamat Datang ${user.role.nama_role}, `,
+                message: `Selamat Datang ${user.role.nama_role}, ${displayName}`,
                     user: {
                         id: user.id_users,
                         email: user.email,
