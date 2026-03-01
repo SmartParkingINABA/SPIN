@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import forgotPasswordIcon from "../../assets/images/public/Enter-OTP-cuate.svg";
 import OTPInput from "../../components/auth/OTPInput";
 import ResendOTP from "../../components/auth/ResendOTP";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { validateOtp } from "../../utils/Validators.js";
-import { verifyOtp } from "../../services/auth.Service.js";
+import { requestOtp, verifyOtp } from "../../services/auth.Service.js";
 import toast from "react-hot-toast";
 import LoadingSpinner from "../../components/ui/LoadingSpinner.jsx";
 
@@ -14,6 +14,9 @@ export default function VerifyOtp() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [hasSubmitted, setHasSubmitted] = useState(false);
+
+  const location = useLocation();
+  const email = location.state?.email;
 
   useEffect(() => {
     if (!hasSubmitted) return;
@@ -52,11 +55,22 @@ export default function VerifyOtp() {
     }
   };
 
-  const handleResend = () => {
-    setOtp(["", "", "", ""]);
-    setError("");
-    setHasSubmitted(false);
-    toast.success("Kode OTP berhasil dikirim ulang!");
+  const handleResend = async () => {
+    try {
+      setLoading(true);
+
+      await requestOtp(email);
+
+      setOtp(["", "", "", ""]);
+      setError("");
+      setHasSubmitted(false);
+
+      toast.success("Kode OTP berhasil dikirim ulang!");
+    } catch (err) {
+      toast.error(err.response?.data?.message || "Gagal mengirim ulang OTP");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

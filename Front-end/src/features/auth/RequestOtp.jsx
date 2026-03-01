@@ -36,7 +36,9 @@ export default function RequestOtp() {
           "Kode OTP telah dikirim ke email Anda. Silakan cek inbox atau folder spam.",
       );
 
-      navigate("/auth/forgot/verify-otp");
+      navigate("/auth/forgot/verify-otp", {
+        state: { email: values.email },
+      });
     } catch (err) {
       if (!err.response) {
         toast.error("Tidak bisa terhubung ke server!");
