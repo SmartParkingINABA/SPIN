@@ -50,13 +50,6 @@ export default function VerifyOtp() {
       if (!err.response) {
         toast.error("Tidak bisa terhubung ke server!");
       } else {
-        // ✅ otpSession tidak ada / expired
-        if (err.response.status === 401 || err.response.status === 403) {
-          toast.error("Akses tidak valid. Silahkan ulangi proses.");
-          navigate("/auth/forgot/request-otp", { replace: true });
-          return;
-        }
-
         toast.error(
           err.response?.data?.message || "OTP salah atau sudah kadaluarsa",
         );
@@ -67,8 +60,6 @@ export default function VerifyOtp() {
   };
 
   const handleResend = async () => {
-    if (!email) return null;
-
     try {
       setLoading(true);
 
@@ -85,8 +76,6 @@ export default function VerifyOtp() {
       setLoading(false);
     }
   };
-
-  if (!email) return null;
 
   return (
     <div className="bg-[#1E1633] font-ubuntu h-screen w-full flex justify-center items-center">
