@@ -20,8 +20,6 @@ export default function ResetPassword() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const passwordRef = useAutoFocus();
-
   const location = useLocation();
   const email = location.state?.email;
 
@@ -69,6 +67,8 @@ export default function ResetPassword() {
       setLoading(false);
     }
   };
+
+  const passwordRef = useAutoFocus();
 
   if (!email) return null;
 
