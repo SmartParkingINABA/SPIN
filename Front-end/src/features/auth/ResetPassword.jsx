@@ -1,8 +1,8 @@
 import resetPasswordIcon from "../../assets/images/public/My-password-pana.svg";
 import { FaLock } from "react-icons/fa6";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useFormValidation } from "../../hooks/useFormValidation";
 import {
   validateConfirmPassword,
@@ -19,6 +19,16 @@ export default function ResetPassword() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const location = useLocation();
+  const email = location.state?.email;
+
+  useEffect(() => {
+    if (!email) {
+      toast.error("Akses tidak valid. Silakan ulangi proses.");
+      navigate("/auth/forgot/request-otp", { replace: true });
+    }
+  }, [email, navigate]);
 
   const { values, errors, handleChange, validateAll } = useFormValidation(
     {
@@ -59,6 +69,8 @@ export default function ResetPassword() {
   };
 
   const passwordRef = useAutoFocus();
+
+  if (!email) return <div>❤️❤️❤️</div>;
 
   return (
     <div className="bg-[#1E1633] font-ubuntu h-screen w-full flex justify-center items-center">

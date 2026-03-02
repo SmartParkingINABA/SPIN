@@ -4,7 +4,7 @@ export default function useAutoFocus() {
   const ref = useRef(null);
 
   useEffect(() => {
-    ref.current.focus();
+    ref.current?.focus();
   }, []);
   return ref;
 }
