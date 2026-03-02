@@ -9,6 +9,7 @@ const AdminRoutes = lazy(() => import("./routes/admin.routes"));
 const OfficerRoutes = lazy(() => import("./routes/officer.routes"));
 
 function App() {
+  // trigger deploy
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
