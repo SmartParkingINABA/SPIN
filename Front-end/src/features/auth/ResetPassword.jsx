@@ -46,7 +46,13 @@ export default function ResetPassword() {
       );
       navigate("/auth/login");
     } catch (err) {
-      toast.error(err.response?.data?.message || "Gagal memperbarui password");
+      if (!err.response) {
+        toast.error("Tidak bisa terhubung ke server!");
+      } else {
+        toast.error(
+          err.response?.data?.message || "Gagal memperbarui password",
+        );
+      }
     } finally {
       setLoading(false);
     }

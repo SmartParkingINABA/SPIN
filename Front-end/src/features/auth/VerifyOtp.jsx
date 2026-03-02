@@ -47,9 +47,13 @@ export default function VerifyOtp() {
       toast.success(res.message || "OTP berhasil diverifikasi!");
       navigate("/auth/forgot/confirm-reset");
     } catch (err) {
-      toast.error(
-        err.response?.data?.message || "OTP salah atau sudah kadaluarsa",
-      );
+      if (!err.response) {
+        toast.error("Tidak bisa terhubung ke server!");
+      } else {
+        toast.error(
+          err.response?.data?.message || "OTP salah atau sudah kadaluarsa",
+        );
+      }
     } finally {
       setLoading(false);
     }
