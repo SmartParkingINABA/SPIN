@@ -1,6 +1,22 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import toast from "react-hot-toast";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function ConfirmReset() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const email = location.state?.email;
+
+  useEffect(() => {
+    if (!email) {
+      toast.error("Akses tidak valid. Silahkan ulangi proses.");
+      navigate("/auth/forgot/request-otp", { replace: true });
+    }
+  }, [email, navigate]);
+
+  if (!email) return null;
+
   return (
     <div className="bg-[#1E1633] font-ubuntu h-screen w-full flex justify-center items-center">
       <div className="w-1/4">
@@ -13,6 +29,7 @@ export default function ConfirmReset() {
         </p>
         <Link
           to="/auth/forgot/reset-password"
+          state={{ email }}
           className="block text-center w-full bg-[#FFDB58] text-[#130F40] text-[23px] font-bold py-2.5 mt-30 rounded-md transition opacity-100 hover:opacity-80"
         >
           Confirm
