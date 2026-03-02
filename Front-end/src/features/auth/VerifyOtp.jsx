@@ -27,6 +27,13 @@ export default function VerifyOtp() {
     setError(validationError);
   }, [otp, hasSubmitted]);
 
+  useEffect(() => {
+    if (!email) {
+      toast.error("Email tidak ditemukan. Silakan ulangi.");
+      navigate("/auth/forgot/request-otp", { replace: true });
+    }
+  }, [email, navigate]);
+
   const handleSubmit = async () => {
     const code = otp.join("");
 
@@ -60,6 +67,8 @@ export default function VerifyOtp() {
   };
 
   const handleResend = async () => {
+    if (!email) return null;
+
     try {
       setLoading(true);
 
@@ -76,6 +85,8 @@ export default function VerifyOtp() {
       setLoading(false);
     }
   };
+
+  if (!email) return null;
 
   return (
     <div className="bg-[#1E1633] font-ubuntu h-screen w-full flex justify-center items-center">
