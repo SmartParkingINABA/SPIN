@@ -70,7 +70,7 @@ export default function ResetPassword() {
 
   const passwordRef = useAutoFocus();
 
-  if (!email) return <div>❤️❤️❤️</div>;
+  if (!email) return null;
 
   return (
     <div className="bg-[#1E1633] font-ubuntu h-screen w-full flex justify-center items-center">
