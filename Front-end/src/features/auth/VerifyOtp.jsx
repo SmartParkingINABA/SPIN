@@ -27,13 +27,6 @@ export default function VerifyOtp() {
     setError(validationError);
   }, [otp, hasSubmitted]);
 
-  useEffect(() => {
-    if (!email) {
-      toast.error("Email tidak ditemukan. Silakan ulangi.");
-      navigate("/auth/forgot/request-otp", { replace: true });
-    }
-  }, [email, navigate]);
-
   const handleSubmit = async () => {
     const code = otp.join("");
 
@@ -57,6 +50,13 @@ export default function VerifyOtp() {
       if (!err.response) {
         toast.error("Tidak bisa terhubung ke server!");
       } else {
+        // ✅ otpSession tidak ada / expired
+        if (err.response.status === 401 || err.response.status === 403) {
+          toast.error("Akses tidak valid. Silahkan ulangi proses.");
+          navigate("/auth/forgot/request-otp", { replace: true });
+          return;
+        }
+
         toast.error(
           err.response?.data?.message || "OTP salah atau sudah kadaluarsa",
         );

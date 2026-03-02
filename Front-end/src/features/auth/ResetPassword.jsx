@@ -25,7 +25,7 @@ export default function ResetPassword() {
 
   useEffect(() => {
     if (!email) {
-      toast.error("Akses tidak valid. Silakan ulangi proses.");
+      toast.error("Akses tidak valid. Silahkan ulangi proses.");
       navigate("/auth/forgot/request-otp", { replace: true });
     }
   }, [email, navigate]);
