@@ -48,7 +48,7 @@ export default function Login() {
 
       const redirectPath = roleRedirectMap[role] || "/";
 
-      toast.success(res.message || "Kamu berhasil login!");
+      toast.success(res.message + values.email || "Kamu berhasil login!");
 
       navigate(redirectPath);
     } catch (err) {
