@@ -7,7 +7,8 @@ import { formatDateTimeFormatter } from "../../utils/dateTimeFormatter.js";
 class mainOverviewService {
     async getMainOverview(pengendaraId) {
         const limitNotifikasi =  5;
-        const limitParkir = 5;        
+        const limitParkir = 5;
+        const displayName = "Selamat datang, ";
 
 
         const [
@@ -30,6 +31,7 @@ class mainOverviewService {
 
         return {
             summary: {
+                displayName: displayName,
                 total_kendaraan: totalKendaraan,
                 total_parkir: totalParkir,
                 total_durasi: formatDuration(totalDurasi),
