@@ -162,18 +162,21 @@ NODE_ENV=production
 CLIENT_SIDE_URL= xxxxxx
 PORT=4000
 DB_NAME= xxxxxx
-DB_HOST=xxxxxx
-DB_USER=xxxxxx
-DB_PW=xxxxxx
+DB_HOST= xxxxxx
+DB_USER= xxxxxx
+DB_PW= xxxxxx
 DB_DIALECT=mysql
-JWT_SECRET_KEY=xxxxxx  
-JWT_EXPIRES=xxxxxx
+JWT_SECRET_KEY= xxxxxx  
+JWT_EXPIRES= xxxxxx
 EMAIL_USER= xxxxxx
 EMAIL_PASSWORD= xxxxxx
-REDIS_HOST=xxxxxx
-REDIS_PORT=10945
+REDIS_HOST= xxxxxx
+REDIS_PORT= xxxxxx
 REDIS_USNM=default
-REDIS_PW=xxxxxx
+REDIS_PW= xxxxxx
+AWS_REGION= xxxxxx
+S3_BUCKET_NAME= xxxxxx
+
 
 ```
 
