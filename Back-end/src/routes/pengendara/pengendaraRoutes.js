@@ -4,6 +4,7 @@ import verifySession from '../../middlewares/cache/SessionMiddlewares.js';
 import menuDataKendaraanController from '../../controllers/pengendara/menuDataKendaraan.js';
 import menuQrCodeSaya from '../../controllers/pengendara/menuQrCodeSaya.js';
 import menuPengaturanAkun from '../../controllers/pengendara/menuPengaturanAkun.js';
+import { updateProfilePhoto } from '../../controllers/upload/fotoProfile.js';
 import uploadPhotoProfile from '../../middlewares/upload/uploadPhotoProfile.js';
 import menuRiwayatParkir from '../../controllers/pengendara/menuRiwayatParkir.js';
 import menuNotifikasi from '../../controllers/pengendara/menuNotifikasi.js';
@@ -139,8 +140,8 @@ dashboardPengendara.put(
     '/dashboard/pengaturan-profil/upload/photo',
     authenticationRoleBasedUser(['pengendara']),
     verifySession,
-    uploadPhotoProfile.single('foto_profil'),
-    menuPengaturanAkun.uploadPhoto
+    uploadPhotoProfile.single('photo'),
+    updateProfilePhoto
 )
 
 
