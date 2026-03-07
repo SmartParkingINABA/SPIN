@@ -1,5 +1,5 @@
 import { PutObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
-import s3Client from "../configs/storageS3.js";
+import s3Client from "../../configs/storageS3.JS";
 
 export const uploadPictureToS3 = async ({ key, buffer, mimetype }) => {
     const command = new PutObjectCommand({
