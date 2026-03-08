@@ -43,7 +43,9 @@ export default function Login() {
       setLoading(true);
 
       const res = await login(values.email, values.password);
-      setUser(res.user);
+      console.log(res);
+
+      // setUser(res.user);
 
       const role = res.user.role.toLowerCase();
       console.log(role);
