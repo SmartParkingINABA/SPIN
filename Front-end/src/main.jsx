@@ -8,9 +8,8 @@ import { AuthProvider } from "./context/AuthProvider.jsx";
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <AuthProvider>
-      <ToastProvider>
-        <App />
-      </ToastProvider>
+      <ToastProvider />
+      <App />
     </AuthProvider>
   </BrowserRouter>,
 );

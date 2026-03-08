@@ -6,7 +6,7 @@ import {
 } from "react-icons/fa6";
 import StatsCard from "./StatsCard";
 
-export default function StatsGrid() {
+export default function StatsGrid({ summary }) {
   return (
     <div className="grid grid-cols-4 gap-x-6">
       <StatsCard title="Total Kendaraan" value="2" icon={FaCarSide} />
