@@ -6,67 +6,68 @@ import NotificationGrid from "./components/NotificationCard/NotificationGrid";
 import BoxWrapper from "../../../components/ui/BoxWrapper";
 import { FaCarSide, FaMotorcycle } from "react-icons/fa6";
 import { useDashboard } from "../../../hooks/user/useDashboard";
+import { useState } from "react";
 
 export default function Dashboard() {
   const { loading, overview } = useDashboard();
   // eslint-disable-next-line no-unused-vars
-  // const [vehiclesActive, setVehiclesActive] = useState([
-  //   {
-  //     id: 1,
-  //     plate: "D 1234 XYZ",
-  //     category: "Motor",
-  //     type: "Honda Beat",
-  //     icon: FaMotorcycle,
-  //     isActive: true,
-  //   },
-  //   {
-  //     id: 2,
-  //     plate: "D 1234 XYZ",
-  //     category: "Mobil",
-  //     type: "Pajero Sport",
-  //     icon: FaCarSide,
-  //     isActive: true,
-  //   },
-  // ]);
+  const [vehiclesActive, setVehiclesActive] = useState([
+    {
+      id: 1,
+      plate: "D 1234 XYZ",
+      category: "Motor",
+      type: "Honda Beat",
+      icon: FaMotorcycle,
+      isActive: true,
+    },
+    {
+      id: 2,
+      plate: "D 1234 XYZ",
+      category: "Mobil",
+      type: "Pajero Sport",
+      icon: FaCarSide,
+      isActive: true,
+    },
+  ]);
 
-  // // eslint-disable-next-line no-unused-vars
-  // const [vehiclesStatus, setVehiclesStatus] = useState([
-  //   {
-  //     id: 1,
-  //     plate: "D 1234 XYZ",
-  //     date: "09 November 2025 • 16:00",
-  //     isExit: true,
-  //   },
-  //   {
-  //     id: 2,
-  //     plate: "D 1234 XYZ",
-  //     date: "09 November 2025 • 16:00",
-  //     isExit: false,
-  //   },
-  // ]);
+  // eslint-disable-next-line no-unused-vars
+  const [vehiclesStatus, setVehiclesStatus] = useState([
+    {
+      id: 1,
+      plate: "D 1234 XYZ",
+      date: "09 November 2025 • 16:00",
+      isExit: true,
+    },
+    {
+      id: 2,
+      plate: "D 1234 XYZ",
+      date: "09 November 2025 • 16:00",
+      isExit: false,
+    },
+  ]);
 
-  // // eslint-disable-next-line no-unused-vars
-  // const [notifications, setNotifications] = useState([
-  //   {
-  //     id: 1,
-  //     message: "Kendaraan D 1234 XYZ keluar area parkir",
-  //     time: "2 jam lalu",
-  //     isActive: true,
-  //   },
-  //   {
-  //     id: 2,
-  //     message: "Kendaraan D 5678 ABC masuk area parkir",
-  //     time: "2 jam lalu",
-  //     isActive: true,
-  //   },
-  //   {
-  //     id: 3,
-  //     message:
-  //       "QR Code berhasil dibuat untuk kendaraan dengan Nopol D 1234 XYZ",
-  //     time: "1 hari yang lalu",
-  //     isActive: false,
-  //   },
-  // ]);
+  // eslint-disable-next-line no-unused-vars
+  const [notifications, setNotifications] = useState([
+    {
+      id: 1,
+      message: "Kendaraan D 1234 XYZ keluar area parkir",
+      time: "2 jam lalu",
+      isActive: true,
+    },
+    {
+      id: 2,
+      message: "Kendaraan D 5678 ABC masuk area parkir",
+      time: "2 jam lalu",
+      isActive: true,
+    },
+    {
+      id: 3,
+      message:
+        "QR Code berhasil dibuat untuk kendaraan dengan Nopol D 1234 XYZ",
+      time: "1 hari yang lalu",
+      isActive: false,
+    },
+  ]);
 
   return (
     <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
