@@ -6,7 +6,7 @@ import NotificationGrid from "./components/NotificationCard/NotificationGrid";
 import BoxWrapper from "../../../components/ui/BoxWrapper";
 import { FaCarSide, FaMotorcycle } from "react-icons/fa6";
 import { useDashboard } from "../../../hooks/user/useDashboard";
-import { useAuth } from "../../../context/AuthContext";
+import { useAuth } from "../../../context/useAuth";
 
 export default function Dashboard() {
   const { loading, overview, error } = useDashboard();

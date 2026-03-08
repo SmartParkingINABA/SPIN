@@ -10,7 +10,7 @@ import toast from "react-hot-toast";
 import LoadingSpinner from "../../components/ui/LoadingSpinner";
 import { login } from "../../services/auth.Service";
 import useAutoFocus from "../../hooks/useAutoFocus";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../context/useAuth";
 
 const roleRedirectMap = {
   admin: "/admin",
