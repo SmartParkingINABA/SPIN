@@ -10,6 +10,7 @@ import toast from "react-hot-toast";
 import LoadingSpinner from "../../components/ui/LoadingSpinner";
 import { login } from "../../services/auth.Service";
 import useAutoFocus from "../../hooks/useAutoFocus";
+import { useAuth } from "../../context/AuthContext";
 
 const roleRedirectMap = {
   admin: "/admin",
@@ -21,7 +22,7 @@ export default function Login() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-
+  const { setUser } = useAuth();
   const { values, errors, handleChange, validateAll } = useFormValidation(
     {
       email: "",
@@ -42,6 +43,7 @@ export default function Login() {
       setLoading(true);
 
       const res = await login(values.email, values.password);
+      setUser(res.user);
 
       const role = res.user.role.toLowerCase();
       console.log(role);

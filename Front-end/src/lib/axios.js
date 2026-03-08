@@ -17,12 +17,15 @@ const api = axios.create({
 api.interceptors.request.use(
   (config) => {
     console.log(
-      `[API REQUEST] ${config.method?.toUpperCase()} ${config.url}`,
-      config.data,
+      `[API REQUEST] ${config.method?.toUpperCase()} ${config.baseURL}${config.url}`,
+      config.data || "",
     );
     return config;
   },
-  (error) => Promise.reject(error),
+  (error) => {
+    console.error("[REQUEST ERROR]", error);
+    return Promise.reject(error);
+  },
 );
 
 api.interceptors.response.use(
@@ -34,11 +37,18 @@ api.interceptors.response.use(
     return response;
   },
   (error) => {
-    console.error("[API ERROR]", {
-      url: error.config?.url,
-      status: error.response?.status,
-      data: error.response?.data,
-    });
+    if (error.response) {
+      console.error("[API ERROR RESPONSE]", {
+        url: error.config?.url,
+        status: error.response.status,
+        data: error.response.data,
+      });
+    } else if (error.request) {
+      console.error("[API NO RESPONSE]", error.request);
+    } else {
+      console.error("[API UNKNOWN ERROR]", error.message);
+    }
+
     return Promise.reject(error);
   },
 );

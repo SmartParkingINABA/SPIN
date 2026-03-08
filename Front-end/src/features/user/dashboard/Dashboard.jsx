@@ -6,88 +6,56 @@ import NotificationGrid from "./components/NotificationCard/NotificationGrid";
 import BoxWrapper from "../../../components/ui/BoxWrapper";
 import { FaCarSide, FaMotorcycle } from "react-icons/fa6";
 import { useDashboard } from "../../../hooks/user/useDashboard";
-import { useState } from "react";
+import { useAuth } from "../../../context/AuthContext";
 
 export default function Dashboard() {
-  const { loading, overview } = useDashboard();
-  // eslint-disable-next-line no-unused-vars
-  const [vehiclesActive, setVehiclesActive] = useState([
-    {
-      id: 1,
-      plate: "D 1234 XYZ",
-      category: "Motor",
-      type: "Honda Beat",
-      icon: FaMotorcycle,
-      isActive: true,
-    },
-    {
-      id: 2,
-      plate: "D 1234 XYZ",
-      category: "Mobil",
-      type: "Pajero Sport",
-      icon: FaCarSide,
-      isActive: true,
-    },
-  ]);
+  const { loading, overview, error } = useDashboard();
+  const { user } = useAuth();
 
-  // eslint-disable-next-line no-unused-vars
-  const [vehiclesStatus, setVehiclesStatus] = useState([
-    {
-      id: 1,
-      plate: "D 1234 XYZ",
-      date: "09 November 2025 • 16:00",
-      isExit: true,
-    },
-    {
-      id: 2,
-      plate: "D 1234 XYZ",
-      date: "09 November 2025 • 16:00",
-      isExit: false,
-    },
-  ]);
+  const summary = overview?.summary ?? {};
+  const vehiclesActive = overview?.kendaraan_aktif ?? [];
+  const vehiclesStatus = overview?.status_parkir_terakhir ?? [];
+  const notifications = overview?.notifikasi_terbaru ?? [];
 
-  // eslint-disable-next-line no-unused-vars
-  const [notifications, setNotifications] = useState([
-    {
-      id: 1,
-      message: "Kendaraan D 1234 XYZ keluar area parkir",
-      time: "2 jam lalu",
-      isActive: true,
-    },
-    {
-      id: 2,
-      message: "Kendaraan D 5678 ABC masuk area parkir",
-      time: "2 jam lalu",
-      isActive: true,
-    },
-    {
-      id: 3,
-      message:
-        "QR Code berhasil dibuat untuk kendaraan dengan Nopol D 1234 XYZ",
-      time: "1 hari yang lalu",
-      isActive: false,
-    },
-  ]);
+  if (loading) {
+    return <div className="text-black p-10">Loading dashboard...</div>;
+  }
+
+  if (error) {
+    return <div className="text-red-500 p-10">Failed to load dashboard</div>;
+  }
 
   return (
     <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
-      <Header />
+      <Header displayName={summary.displayName} user={user?.email} />
       <div className="mt-6">
-        <StatsGrid />
+        <StatsGrid summary={summary} />
       </div>
       <div className="mt-6">
         <BoxWrapper title="Kendaraan Aktif">
-          <VehicleGrid vehicles={vehiclesActive.filter((v) => v.isActive)} />
+          {vehiclesActive.length === 0 ? (
+            <p className="text-white">Belum ada kendaraan aktif</p>
+          ) : (
+            <VehicleGrid vehicles={vehiclesActive} />
+          )}
         </BoxWrapper>
       </div>
       <div className="mt-6">
         <BoxWrapper title="Status Parkir Terakhir">
-          <StatusGrid vehicles={vehiclesStatus.filter((v) => v.isExit)} />
+          {vehiclesStatus.length == 0 ? (
+            <p className="text-white">Belum ada riwayat parkir</p>
+          ) : (
+            <StatusGrid vehicles={vehiclesStatus} />
+          )}
         </BoxWrapper>
       </div>
       <div className="mt-6">
         <BoxWrapper title="Notifikasi Terbaru">
-          <NotificationGrid notifications={notifications} />
+          {notifications.length === 0 ? (
+            <p className="text-white">Tidak ada notifikasi</p>
+          ) : (
+            <NotificationGrid notifications={notifications} />
+          )}
         </BoxWrapper>
       </div>
     </section>
