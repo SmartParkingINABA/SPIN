@@ -6,11 +6,11 @@ import NotificationGrid from "./components/NotificationCard/NotificationGrid";
 import BoxWrapper from "../../../components/ui/BoxWrapper";
 import { FaCarSide, FaMotorcycle } from "react-icons/fa6";
 import { useDashboard } from "../../../hooks/user/useDashboard";
-// import { useAuth } from "../../../context/useAuth";
+import { useAuth } from "../../../context/useAuth";
 
 export default function Dashboard() {
   const { loading, overview, error } = useDashboard();
-  // const { user } = useAuth();
+  const { user } = useAuth();
 
   const summary = overview?.summary ?? {};
   const vehiclesActive = overview?.kendaraan_aktif ?? [];
@@ -27,7 +27,7 @@ export default function Dashboard() {
 
   return (
     <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
-      <Header displayName={summary.displayName} />
+      <Header displayName={summary.displayName} user={user?.email} />
       <div className="mt-6">
         <StatsGrid summary={summary} />
       </div>
