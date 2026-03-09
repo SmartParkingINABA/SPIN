@@ -18,7 +18,7 @@ export default function DashboardSkeleton() {
           <p className="h-3 w-[18%] bg-[#93A3B6] rounded-md"></p>
           <div className="flex flex-col gap-2 mt-3.5">
             {[...Array(2)].map((_, i) => (
-              <div className="h-10 rounded-md bg-[#130F40]" key={i}></div>
+              <div className="h-9 rounded-md bg-[#130F40]" key={i}></div>
             ))}
           </div>
         </div>
@@ -28,7 +28,7 @@ export default function DashboardSkeleton() {
           <p className="h-3 w-[18%] bg-[#93A3B6] rounded-md"></p>
           <div className="flex flex-col gap-2 mt-3.5">
             {[...Array(2)].map((_, i) => (
-              <div className="h-10 rounded-md bg-[#130F40]" key={i}></div>
+              <div className="h-9 rounded-md bg-[#130F40]" key={i}></div>
             ))}
           </div>
         </div>
@@ -38,7 +38,7 @@ export default function DashboardSkeleton() {
           <p className="h-3 w-[18%] bg-[#93A3B6] rounded-md"></p>
           <div className="flex flex-col gap-2 mt-3.5">
             {[...Array(2)].map((_, i) => (
-              <div className="h-10 rounded-md bg-[#130F40]" key={i}></div>
+              <div className="h-9 rounded-md bg-[#130F40]" key={i}></div>
             ))}
           </div>
         </div>
