@@ -4,7 +4,6 @@ import VehicleGrid from "./components/VehicleCard/VehicleGrid";
 import StatusGrid from "./components/StatusCard/StatusGrid";
 import NotificationGrid from "./components/NotificationCard/NotificationGrid";
 import BoxWrapper from "../../../components/ui/BoxWrapper";
-import { FaCarSide, FaMotorcycle } from "react-icons/fa6";
 import { useDashboard } from "../../../hooks/user/useDashboard";
 import { useAuth } from "../../../context/useAuth";
 
@@ -34,7 +33,9 @@ export default function Dashboard() {
       <div className="mt-6">
         <BoxWrapper title="Kendaraan Aktif">
           {vehiclesActive.length === 0 ? (
-            <p className="text-white">Belum ada kendaraan aktif</p>
+            <p className="text-[#93A3B6] text-[14px]">
+              Belum ada kendaraan aktif
+            </p>
           ) : (
             <VehicleGrid vehicles={vehiclesActive} />
           )}
@@ -43,7 +44,9 @@ export default function Dashboard() {
       <div className="mt-6">
         <BoxWrapper title="Status Parkir Terakhir">
           {vehiclesStatus.length == 0 ? (
-            <p className="text-white">Belum ada riwayat parkir</p>
+            <p className="text-[#93A3B6] text-[14px]">
+              Belum ada riwayat parkir
+            </p>
           ) : (
             <StatusGrid vehicles={vehiclesStatus} />
           )}
@@ -52,7 +55,7 @@ export default function Dashboard() {
       <div className="mt-6">
         <BoxWrapper title="Notifikasi Terbaru">
           {notifications.length === 0 ? (
-            <p className="text-white">Tidak ada notifikasi</p>
+            <p className="text-[#93A3B6] text-[14px]">Tidak ada notifikasi</p>
           ) : (
             <NotificationGrid notifications={notifications} />
           )}
