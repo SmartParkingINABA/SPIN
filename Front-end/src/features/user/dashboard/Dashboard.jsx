@@ -6,6 +6,7 @@ import NotificationGrid from "./components/NotificationCard/NotificationGrid";
 import BoxWrapper from "../../../components/ui/BoxWrapper";
 import { useDashboard } from "../../../hooks/user/useDashboard";
 import { useAuth } from "../../../context/useAuth";
+import DashboardSkeleton from "./DashboardSkeleton";
 
 export default function Dashboard() {
   const { loading, overview, error } = useDashboard();
@@ -16,53 +17,55 @@ export default function Dashboard() {
   const vehiclesStatus = overview?.status_parkir_terakhir || [];
   const notifications = overview?.notifikasi_terbaru || [];
 
-  if (loading) {
-    return <div className="text-black p-10">Loading dashboard...</div>;
-  }
-
   if (error) {
     return <div className="text-red-500 p-10">Failed to load dashboard</div>;
   }
 
   return (
-    <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
-      <Header displayName={summary.displayName} user={user?.email} />
-      <div className="mt-6">
-        <StatsGrid summary={summary} />
-      </div>
-      <div className="mt-6">
-        <BoxWrapper title="Kendaraan Aktif">
-          {vehiclesActive.length === 0 ? (
-            <p className="text-[#93A3B6] text-[14px] mt-1">
-              Belum ada kendaraan aktif
-            </p>
-          ) : (
-            <VehicleGrid vehicles={vehiclesActive} />
-          )}
-        </BoxWrapper>
-      </div>
-      <div className="mt-6">
-        <BoxWrapper title="Status Parkir Terakhir">
-          {vehiclesStatus.length == 0 ? (
-            <p className="text-[#93A3B6] text-[14px] mt-1">
-              Belum ada riwayat parkir
-            </p>
-          ) : (
-            <StatusGrid vehicles={vehiclesStatus} />
-          )}
-        </BoxWrapper>
-      </div>
-      <div className="mt-6">
-        <BoxWrapper title="Notifikasi Terbaru">
-          {notifications.length === 0 ? (
-            <p className="text-[#93A3B6] text-[14px] mt-1">
-              Tidak ada notifikasi
-            </p>
-          ) : (
-            <NotificationGrid notifications={notifications} />
-          )}
-        </BoxWrapper>
-      </div>
-    </section>
+    <>
+      {loading ? (
+        <DashboardSkeleton />
+      ) : (
+        <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
+          <Header displayName={summary.displayName} user={user?.email} />
+          <div className="mt-6">
+            <StatsGrid summary={summary} />
+          </div>
+          <div className="mt-6">
+            <BoxWrapper title="Kendaraan Aktif">
+              {vehiclesActive.length === 0 ? (
+                <p className="text-[#93A3B6] text-[14px] mt-1">
+                  Belum ada kendaraan aktif
+                </p>
+              ) : (
+                <VehicleGrid vehicles={vehiclesActive} />
+              )}
+            </BoxWrapper>
+          </div>
+          <div className="mt-6">
+            <BoxWrapper title="Status Parkir Terakhir">
+              {vehiclesStatus.length == 0 ? (
+                <p className="text-[#93A3B6] text-[14px] mt-1">
+                  Belum ada riwayat parkir
+                </p>
+              ) : (
+                <StatusGrid vehicles={vehiclesStatus} />
+              )}
+            </BoxWrapper>
+          </div>
+          <div className="mt-6">
+            <BoxWrapper title="Notifikasi Terbaru">
+              {notifications.length === 0 ? (
+                <p className="text-[#93A3B6] text-[14px] mt-1">
+                  Tidak ada notifikasi
+                </p>
+              ) : (
+                <NotificationGrid notifications={notifications} />
+              )}
+            </BoxWrapper>
+          </div>
+        </section>
+      )}
+    </>
   );
 }
