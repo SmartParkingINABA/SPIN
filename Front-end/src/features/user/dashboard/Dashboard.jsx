@@ -12,10 +12,10 @@ export default function Dashboard() {
   const { loading, overview, error } = useDashboard();
   const { user } = useAuth();
 
-  const summary = overview?.summary ?? {};
-  const vehiclesActive = overview?.kendaraan_aktif ?? [];
-  const vehiclesStatus = overview?.status_parkir_terakhir ?? [];
-  const notifications = overview?.notifikasi_terbaru ?? [];
+  const summary = overview?.summary || {};
+  const vehiclesActive = overview?.kendaraan_aktif || [];
+  const vehiclesStatus = overview?.status_parkir_terakhir || [];
+  const notifications = overview?.notifikasi_terbaru || [];
 
   if (loading) {
     return <div className="text-black p-10">Loading dashboard...</div>;
