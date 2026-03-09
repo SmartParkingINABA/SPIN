@@ -33,7 +33,7 @@ export default function Dashboard() {
       <div className="mt-6">
         <BoxWrapper title="Kendaraan Aktif">
           {vehiclesActive.length === 0 ? (
-            <p className="text-[#93A3B6] text-[14px] mt-2">
+            <p className="text-[#93A3B6] text-[14px] mt-1">
               Belum ada kendaraan aktif
             </p>
           ) : (
@@ -44,7 +44,7 @@ export default function Dashboard() {
       <div className="mt-6">
         <BoxWrapper title="Status Parkir Terakhir">
           {vehiclesStatus.length == 0 ? (
-            <p className="text-[#93A3B6] text-[14px] mt-2">
+            <p className="text-[#93A3B6] text-[14px] mt-1">
               Belum ada riwayat parkir
             </p>
           ) : (
@@ -55,7 +55,7 @@ export default function Dashboard() {
       <div className="mt-6">
         <BoxWrapper title="Notifikasi Terbaru">
           {notifications.length === 0 ? (
-            <p className="text-[#93A3B6] text-[14px] mt-2">
+            <p className="text-[#93A3B6] text-[14px] mt-1">
               Tidak ada notifikasi
             </p>
           ) : (
