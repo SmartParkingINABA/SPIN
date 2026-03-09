@@ -7,7 +7,7 @@ export default function Modal({ isOpen }) {
 
   const handleLogout = () => {
     logout();
-    navigate("/auth/login");
+    navigate("/auth/login", { replace: true });
   };
 
   return (
