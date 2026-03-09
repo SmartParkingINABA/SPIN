@@ -10,7 +10,7 @@ export default function Modal({ isOpen }) {
       }`}
     >
       <Link
-        to="/officer/officer-profile"
+        to="/petugas/profil-petugas"
         className="text-[#FFEC78] transition opacity-100 hover:opacity-80"
       >
         Profile

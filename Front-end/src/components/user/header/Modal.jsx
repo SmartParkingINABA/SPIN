@@ -10,7 +10,7 @@ export default function Modal({ isOpen }) {
       }`}
     >
       <Link
-        to="/user/user-profile"
+        to="/pengendara/profil-pengendara"
         className="text-[#FFEC78] transition opacity-100 hover:opacity-80"
       >
         Profile
