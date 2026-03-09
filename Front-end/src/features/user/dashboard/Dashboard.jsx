@@ -6,7 +6,7 @@ import NotificationGrid from "./components/NotificationCard/NotificationGrid";
 import BoxWrapper from "../../../components/ui/BoxWrapper";
 import { useDashboard } from "../../../hooks/user/useDashboard";
 import { useAuth } from "../../../context/useAuth";
-import DashboardSkeleton from "./components/nama/DashboardSkeleton";
+import DashboardSkeleton from "./components/DashboardSkeleton";
 
 export default function Dashboard() {
   const { loading, overview, error } = useDashboard();
