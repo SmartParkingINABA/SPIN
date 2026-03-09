@@ -6,7 +6,7 @@ import NotificationGrid from "./components/NotificationCard/NotificationGrid";
 import BoxWrapper from "../../../components/ui/BoxWrapper";
 import { useDashboard } from "../../../hooks/user/useDashboard";
 import { useAuth } from "../../../context/useAuth";
-import DashboardSkeleton from "./DashboardSkeleton";
+import DashboardSkeleton from "./components/nama/DashboardSkeleton";
 
 export default function Dashboard() {
   const { loading, overview, error } = useDashboard();
@@ -23,7 +23,7 @@ export default function Dashboard() {
 
   return (
     <>
-      {!loading ? (
+      {loading ? (
         <DashboardSkeleton />
       ) : (
         <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
