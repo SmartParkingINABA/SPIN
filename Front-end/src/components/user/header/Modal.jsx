@@ -1,6 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../../context/useAuth";
 
 export default function Modal({ isOpen }) {
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/auth/login");
+  };
+
   return (
     <div
       className={`absolute right-6 top-15 rounded-md border border-[rgba(255,236,120,0.5)] bg-[#1E1633] flex flex-col gap-y-2.5 p-3 ${
@@ -16,7 +25,10 @@ export default function Modal({ isOpen }) {
         Profile
       </Link>
       <hr className="h-0.5 bg-[rgba(255,236,120,0.5)]" />
-      <button className="text-[#FFEC78] transition opacity-100 hover:opacity-80">
+      <button
+        className="text-[#FFEC78] transition opacity-100 hover:opacity-80"
+        onClick={handleLogout}
+      >
         Logout
       </button>
     </div>
