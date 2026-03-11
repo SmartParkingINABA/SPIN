@@ -4,7 +4,7 @@ export default function VehicleGrid({ vehicles }) {
   return (
     <>
       {vehicles.map((vehicle) => (
-        <VehicleCard key={vehicle.id} vehicle={vehicle} />
+        <VehicleCard key={vehicle.id_kendaraan} vehicle={vehicle} />
       ))}
     </>
   );
