@@ -21,7 +21,7 @@ export default function StatsGrid({ summary }) {
       />
       <StatsCard
         title="Total Durasi"
-        value={`${summary.total_durasi} Jam`}
+        value={summary.total_durasi ? `${summary.total_durasi}` : "0 Jam"}
         icon={FaRegClock}
       />
       <StatsCard
