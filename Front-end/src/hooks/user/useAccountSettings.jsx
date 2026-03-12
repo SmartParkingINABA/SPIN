@@ -42,7 +42,7 @@ export const useGetAccountSettings = () => {
   const handleUpdatePhoto = async (file) => {
     try {
       const formData = new FormData();
-      formData.append("photo", file);
+      formData.append("foto_profil", file);
       await uploadPhoto(formData);
       handleDataProfile();
     } catch (err) {
