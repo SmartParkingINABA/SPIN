@@ -35,9 +35,9 @@ export default function PhotoProfile({ onUpload, userData }) {
         accept="image/*"
         className="hidden"
       />
-      {userData?.foto_profil ? (
+      {userData?.profile_picture ? (
         <img
-          src={userData.foto_profil}
+          src={userData.profile_picture}
           alt="Profile"
           className="w-13.5 rounded-full"
         />
