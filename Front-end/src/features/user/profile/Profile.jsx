@@ -1,21 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import PrivateInformation from "./components/PrivateInformation/PrivateInformation";
 import PhotoProfile from "./components/PhotoProfile/PhotoProfile";
 import Statistik from "./components/Statistik";
 import EditPassword from "./components/EditPassword";
 import ButtonCta from "./components/ButtonCta";
+import { useAccountSettings } from "../../../hooks/user/useAccountSettings";
 
 export default function Profile() {
+  const {
+    data,
+    loading,
+    error,
+    handleUpdateProfile,
+    handleUpdatePhoto,
+    handleChangePassword,
+  } = useAccountSettings();
+
   const [isEditing, setIsEditing] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const [fullName, setFullName] = useState("John Doe");
-  const [email] = useState("johndoe@mail.com");
-  const [phoneNumber, setPhoneNumber] = useState("+18975650566");
-  const [address, setAddress] = useState("jl. karapitan no. 12");
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [address, setAddress] = useState("");
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
   const handleSave = () => {
     // logic
