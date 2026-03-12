@@ -29,7 +29,7 @@ export const uploadPhoto = async (formData) => {
 
 export const changePassword = async (passwordData) => {
   const response = await api.put(
-    "/pengendara/dashboard/pengaturanprofil/changepassword",
+    "/pengendara/dashboard/pengaturan-profil/change-password",
     passwordData,
   );
 
