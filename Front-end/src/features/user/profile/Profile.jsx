@@ -30,9 +30,9 @@ export default function Profile() {
 
   useEffect(() => {
     if (data) {
-      setFullName(data.profil.nama_pengendara || "Masukan nama lengkap anda");
-      setPhoneNumber(data.profil.no_telp || "Masukan no telepon anda");
-      setAddress(data.profil.alamat || "Masukan alamat anda");
+      setFullName(data.profil.nama_pengendara || "");
+      setPhoneNumber(data.profil.no_telp || "");
+      setAddress(data.profil.alamat || "");
       setEmail(data.profil.email || "");
     }
     console.log(data);
