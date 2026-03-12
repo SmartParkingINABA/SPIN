@@ -5,6 +5,7 @@ import {
   uploadPhoto,
   changePassword,
 } from "../../services/user/accountSettings.Service";
+import toast from "react-hot-toast";
 
 export const useGetAccountSettings = () => {
   const [data, setData] = useState(null);
@@ -43,11 +44,20 @@ export const useGetAccountSettings = () => {
     try {
       const formData = new FormData();
       formData.append("foto_profil", file);
-      await uploadPhoto(formData);
-      handleDataProfile();
+      const response = await uploadPhoto(formData);
+      const newImageUrl = response.data.profile_picture;
+
+      setData((prevData) => ({
+        ...prevData,
+        profil: {
+          ...prevData.profil,
+          profile_picture: newImageUrl,
+        },
+      }));
+      toast.success(data.message || "Foto profil berhasil diperbarui!");
     } catch (err) {
-      console.error("Gagal upload foto:", err);
-      throw err;
+      console.error("Gagal upload:", err);
+      toast.error("Gagal memperbarui foto");
     }
   };
 
