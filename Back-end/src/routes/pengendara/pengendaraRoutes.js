@@ -140,7 +140,7 @@ dashboardPengendara.put(
     '/dashboard/pengaturan-profil/upload/photo',
     authenticationRoleBasedUser(['pengendara']),
     verifySession,
-    uploadPhotoProfile.single('photo'),
+    uploadPhotoProfile.single('foto_profil'),
     updateProfilePhoto
 )
 
