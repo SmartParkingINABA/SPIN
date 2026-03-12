@@ -17,7 +17,7 @@ export const updateProfile = async (profileData) => {
 
 export const uploadPhoto = async (formData) => {
   const response = await api.put(
-    "/pengendara/dashboard/pengaturanprofil/upload/photo",
+    "/pengendara/dashboard/pengaturan-profil/upload/photo",
     formData,
     {
       headers: { "Content-Type": "multipart/form-data" },
@@ -29,7 +29,7 @@ export const uploadPhoto = async (formData) => {
 
 export const changePassword = async (passwordData) => {
   const response = await api.put(
-    "/pengendara/dashboard/pengaturan-profil/changepassword",
+    "/pengendara/dashboard/pengaturanprofil/changepassword",
     passwordData,
   );
 
