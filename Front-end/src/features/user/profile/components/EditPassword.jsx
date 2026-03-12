@@ -72,6 +72,7 @@ export default function EditPassword({
               id="currently-password"
               type={showPassword ? "text" : "password"}
               value={values.oldPassword}
+              placeholder="******"
               onChange={(e) => handleChange("oldPassword", e.target.value)}
               className="w-full outline-0"
             />
@@ -98,6 +99,7 @@ export default function EditPassword({
               id="new-password"
               type={showNewPassword ? "text" : "password"}
               value={values.password}
+              placeholder="******"
               onChange={(e) => handleChange("password", e.target.value)}
               className="w-full outline-0"
             />
@@ -132,6 +134,7 @@ export default function EditPassword({
               id="confirm-password"
               type={showConfirmPassword ? "text" : "password"}
               value={values.confirmPassword}
+              placeholder="******"
               onChange={(e) => handleChange("confirmPassword", e.target.value)}
               className="w-full outline-0"
             />

@@ -17,6 +17,7 @@ export default function Profile() {
     handleUpdatePhoto,
     handleChangePassword,
   } = useGetAccountSettings();
+  const [isUpdating, setIsUpdating] = useState(false);
 
   const [isEditing, setIsEditing] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -40,6 +41,7 @@ export default function Profile() {
 
   const handleSaveProfile = async () => {
     try {
+      setIsUpdating(true);
       await handleUpdateProfile({
         nama_pengendara: fullName,
         no_telp: phoneNumber,
@@ -55,6 +57,8 @@ export default function Profile() {
           err.response?.data?.message || "Gagal memperbaharui profil.",
         );
       }
+    } finally {
+      setIsUpdating(false);
     }
   };
 
@@ -78,7 +82,7 @@ export default function Profile() {
               address={address}
               setAddress={setAddress}
               handleSave={handleSaveProfile}
-              loading={loading}
+              loading={isUpdating}
             />
             <div className="w-1/3 flex flex-col gap-6">
               <PhotoProfile
