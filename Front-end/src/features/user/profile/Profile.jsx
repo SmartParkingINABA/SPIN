@@ -5,7 +5,7 @@ import PhotoProfile from "./components/PhotoProfile/PhotoProfile";
 import Statistik from "./components/Statistik";
 import EditPassword from "./components/EditPassword";
 import ButtonCta from "./components/ButtonCta";
-import { useAccountSettings } from "../../../hooks/user/useAccountSettings";
+import { useGetAccountSettings } from "../../../hooks/user/useGetAccountSettings";
 
 export default function Profile() {
   const {
@@ -15,7 +15,7 @@ export default function Profile() {
     handleUpdateProfile,
     handleUpdatePhoto,
     handleChangePassword,
-  } = useAccountSettings();
+  } = useGetAccountSettings();
 
   const [isEditing, setIsEditing] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
