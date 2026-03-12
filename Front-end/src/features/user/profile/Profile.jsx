@@ -36,10 +36,7 @@ export default function Profile() {
       setEmail(data.profil.email || "");
     }
     console.log(data);
-    console.log(handleUpdateProfile);
-    console.log(handleUpdatePhoto);
-    console.log(data);
-  }, [data, handleUpdateProfile, handleUpdatePhoto, handleChangePassword]);
+  }, [data]);
 
   const handleSaveProfile = async () => {
     try {
@@ -51,7 +48,13 @@ export default function Profile() {
       setIsEditing(false);
       toast.success("Profil berhasil diperbaharui!");
     } catch (err) {
-      toast.error("Gagal memperbaharui profil.");
+      if (!err.response) {
+        toast.error("Tidak bisa terhubung ke server!");
+      } else {
+        toast.error(
+          err.response?.data?.message || "Gagal memperbaharui profil.",
+        );
+      }
     }
   };
 
@@ -77,8 +80,11 @@ export default function Profile() {
               handleSave={handleSaveProfile}
             />
             <div className="w-1/3 flex flex-col gap-6">
-              <PhotoProfile />
-              <Statistik />
+              <PhotoProfile
+                onUpload={handleUpdatePhoto}
+                userData={data.profil}
+              />
+              <Statistik statistik={data.statistik} />
             </div>
           </div>
           <div className="flex gap-6 items-start">
@@ -89,6 +95,7 @@ export default function Profile() {
               setShowNewPassword={setShowNewPassword}
               showConfirmPassword={showConfirmPassword}
               setShowConfirmPassword={setShowConfirmPassword}
+              onUpdatePassword={handleChangePassword}
             />
             <ButtonCta />
           </div>

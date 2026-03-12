@@ -1,5 +1,13 @@
+import { useState } from "react";
 import { CiLock } from "react-icons/ci";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
+import { useFormValidation } from "../../../../hooks/useFormValidation";
+import {
+  validateConfirmPassword,
+  validatePassword,
+} from "../../../../utils/Validators";
+import toast from "react-hot-toast";
+import LoadingSpinner from "../../../../components/ui/LoadingSpinner";
 
 export default function EditPassword({
   showPassword,
@@ -8,11 +16,49 @@ export default function EditPassword({
   setShowNewPassword,
   showConfirmPassword,
   setShowConfirmPassword,
+  onUpdatePassword,
 }) {
+  const [loading, setLoading] = useState(false);
+
+  const { values, errors, handleChange, validateAll } = useFormValidation(
+    {
+      oldPassword: "",
+      password: "",
+      confirmPassword: "",
+    },
+    {
+      password: validatePassword,
+      confirmPassword: validateConfirmPassword,
+    },
+  );
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!validateAll()) return;
+
+    try {
+      setLoading(true);
+      await onUpdatePassword({
+        current_password: values.oldPassword,
+        new_password: values.password,
+      });
+      toast.success("Password berhasil diubah!");
+    } catch (err) {
+      if (!err.response) {
+        toast.error("Tidak bisa terhubung ke server!");
+      } else {
+        toast.error(err.response?.data?.message || "Gagal mengubah password");
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] px-6 py-4 rounded-md w-2/3">
       <p className="text-[#FEF8FD] font-medium">Ubah Password</p>
-      <form className="w-1/2 mt-3.5" noValidate>
+      <form className="w-1/2 mt-3.5" onSubmit={handleSubmit} noValidate>
         <div className="mb-2.5">
           <label
             htmlFor="currently-password"
@@ -25,7 +71,8 @@ export default function EditPassword({
             <input
               id="currently-password"
               type={showPassword ? "text" : "password"}
-              placeholder="• • • • • • • •"
+              value={values.oldPassword}
+              onChange={(e) => handleChange("oldPassword", e.target.value)}
               className="w-full outline-0"
             />
             {showPassword ? (
@@ -50,7 +97,8 @@ export default function EditPassword({
             <input
               id="new-password"
               type={showNewPassword ? "text" : "password"}
-              placeholder="• • • • • • • •"
+              value={values.password}
+              onChange={(e) => handleChange("password", e.target.value)}
               className="w-full outline-0"
             />
             {showNewPassword ? (
@@ -65,6 +113,9 @@ export default function EditPassword({
               />
             )}
           </div>
+          <p className="mt-1.5 ml-2.5 text-red-500 font-bold text-[10px]">
+            {errors.password}
+          </p>
         </div>
         <div className="">
           <label
@@ -80,7 +131,8 @@ export default function EditPassword({
             <input
               id="confirm-password"
               type={showConfirmPassword ? "text" : "password"}
-              placeholder="• • • • • • • •"
+              value={values.confirmPassword}
+              onChange={(e) => handleChange("confirmPassword", e.target.value)}
               className="w-full outline-0"
             />
             {showConfirmPassword ? (
@@ -95,12 +147,20 @@ export default function EditPassword({
               />
             )}
           </div>
+          <p className="mt-1.5 ml-2.5 text-red-500 font-bold text-[10px]">
+            {errors.confirmPassword}
+          </p>
         </div>
         <button
-          type="button"
+          type="submit"
+          disabled={loading}
           className="bg-[#FFDB58] rounded-sm py-1.5 font-medium text-[#130F40] transition opacity-100 hover:opacity-80 cursor-pointer w-1/2 mt-9"
         >
-          Ubah Password
+          {loading ? (
+            <LoadingSpinner size={18} color="#1e1633" />
+          ) : (
+            "Ubah Password"
+          )}
         </button>
       </form>
     </div>
