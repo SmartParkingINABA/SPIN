@@ -19,21 +19,21 @@ export const updateProfilePhoto = async (req, res) => {
             mimetype: req.file.mimetype
         });
 
-        const user = await sequelize.models.Users.findByPk({
-            where: { id_users: userId }
-        });
+        const user = await sequelize.models.Users.findByPk(userId);
 
         if (user?.picture_private_key) {
             await deletePictureFromS3(user.picture_private_key);
         }
 
-        await sequelize.models.Users.update({
-            where: { id_users: userId },
-            data : {
-                picture_url: imageUrl,
+        await sequelize.models.Users.update(
+            {
+                profile_picture: imageUrl,
                 picture_private_key: key
+            },
+            {
+                where: { id_users: userId }
             }
-        });
+        );
 
         return res.json({
             message: 'Foto profil berhasil diperbarui',
