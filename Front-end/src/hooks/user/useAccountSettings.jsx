@@ -54,7 +54,9 @@ export const useGetAccountSettings = () => {
           profile_picture: newImageUrl,
         },
       }));
-      toast.success(data.message || "Foto profil berhasil diperbarui!");
+      toast.success(
+        response.message || "Foto profil berhasil diperbarui! oke.",
+      );
     } catch (err) {
       console.error("Gagal upload:", err);
       toast.error("Gagal memperbarui foto");
