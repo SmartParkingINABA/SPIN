@@ -27,6 +27,7 @@ export default function EditForm({
           id="fullName"
           value={fullName}
           disabled={!isEditing}
+          placeholder="Your Name"
           onChange={(e) => setFullName(e.target.value)}
           className={`mt-1 w-full outline-0 rounded-sm px-3 py-1 ${
             isEditing
@@ -65,6 +66,7 @@ export default function EditForm({
           type="text"
           id="phoneNumber"
           value={phoneNumber}
+          placeholder="+1893866385"
           disabled={!isEditing}
           onChange={(e) => setPhoneNumber(e.target.value)}
           className={`mt-1 w-full outline-0 rounded-sm px-3 py-1 ${
@@ -83,6 +85,7 @@ export default function EditForm({
           type="text"
           id="address"
           value={address}
+          placeholder="jl. dimana berada"
           onChange={(e) => setAddress(e.target.value)}
           disabled={!isEditing}
           className={`mt-1 w-full outline-0 rounded-sm px-3 py-1 ${
