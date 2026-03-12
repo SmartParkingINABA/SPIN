@@ -32,8 +32,8 @@ export default function Profile() {
     if (data) {
       setFullName(data.profil.nama_pengendara || "Masukan nama lengkap anda");
       setPhoneNumber(data.profil.no_telp || "Masukan no telepon anda");
-      setAddress(data.profile.alamat || "Masukan alamat anda");
-      setEmail(data.profile.email || "");
+      setAddress(data.profil.alamat || "Masukan alamat anda");
+      setEmail(data.profil.email || "");
     }
     console.log(data);
     console.log(handleUpdateProfile);
