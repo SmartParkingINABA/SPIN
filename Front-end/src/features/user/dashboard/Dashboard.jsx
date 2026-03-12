@@ -14,7 +14,7 @@ export default function Dashboard() {
 
   const summary = overview?.summary || {};
   const vehiclesActive = overview?.kendaraan_aktif || [];
-  const vehiclesStatus = overview?.status_parkir_terakhir || [];
+  const vehiclesStatus = overview?.status_Parkir_terakhir || [];
   const notifications = overview?.notifikasi_terbaru || [];
 
   if (error) {
