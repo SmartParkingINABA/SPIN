@@ -108,7 +108,11 @@ export default function EditForm({
           </button>
           <button
             type="button"
-            className="bg-[#FFDB58] rounded-sm py-1.5 font-medium text-[#130F40] transition opacity-100 hover:opacity-80 cursor-pointer"
+            className={`flex items-center justify-center bg-[#FFDB58] rounded-sm py-1.5 font-medium text-[#130F40] transition hover:opacity-80 ${
+              loading
+                ? "opacity-80 cursor-not-allowed"
+                : "cursor-pointer opacity-100"
+            }`}
             onClick={handleSave}
           >
             {loading ? <LoadingSpinner size={18} color="#1e1633" /> : "Simpan"}
