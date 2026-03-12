@@ -2,6 +2,7 @@ import { CiLocationOn } from "react-icons/ci";
 import { FaRegUser } from "react-icons/fa6";
 import { LuPhone } from "react-icons/lu";
 import { MdOutlineMail } from "react-icons/md";
+import LoadingSpinner from "../../../../../components/ui/LoadingSpinner";
 
 export default function EditForm({
   isEditing,
