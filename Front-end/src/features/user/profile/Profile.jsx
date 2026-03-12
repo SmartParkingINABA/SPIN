@@ -78,6 +78,7 @@ export default function Profile() {
               address={address}
               setAddress={setAddress}
               handleSave={handleSaveProfile}
+              loading={loading}
             />
             <div className="w-1/3 flex flex-col gap-6">
               <PhotoProfile

@@ -14,6 +14,7 @@ export default function EditForm({
   address,
   setAddress,
   handleSave,
+  loading,
 }) {
   return (
     <form className="mt-3.5 w-1/2" noValidate>
@@ -109,7 +110,7 @@ export default function EditForm({
             className="bg-[#FFDB58] rounded-sm py-1.5 font-medium text-[#130F40] transition opacity-100 hover:opacity-80 cursor-pointer"
             onClick={handleSave}
           >
-            Simpan
+            {loading ? <LoadingSpinner size={18} color="#1e1633" /> : "Simpan"}
           </button>
         </div>
       )}

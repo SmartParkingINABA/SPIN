@@ -12,6 +12,7 @@ export default function PrivateInformation({
   address,
   setAddress,
   handleSave,
+  loading,
 }) {
   return (
     <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] px-6 py-4 rounded-md w-2/3">
@@ -27,6 +28,7 @@ export default function PrivateInformation({
         address={address}
         setAddress={setAddress}
         handleSave={handleSave}
+        loading={loading}
       />
     </div>
   );
