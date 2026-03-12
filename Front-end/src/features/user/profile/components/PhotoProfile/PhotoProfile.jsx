@@ -35,9 +35,9 @@ export default function PhotoProfile({ onUpload, userData }) {
         accept="image/*"
         className="hidden"
       />
-      {userData?.profile_picture ? (
+      {userData?.profile_picture || userData?.foto_profil ? (
         <img
-          src={userData?.profile_picture}
+          src={userData.profile_picture || userData.foto_profil}
           alt="Profile"
           className="w-30 h-30 mx-auto rounded-full border border-[rgba(255,236,120,0.5)]" //w-13.5
         />
