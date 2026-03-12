@@ -27,6 +27,7 @@ export default function EditPassword({
       confirmPassword: "",
     },
     {
+      oldPassword: (val) => (!val ? "Password lama wajib diisi" : ""),
       password: validatePassword,
       confirmPassword: validateConfirmPassword,
     },
