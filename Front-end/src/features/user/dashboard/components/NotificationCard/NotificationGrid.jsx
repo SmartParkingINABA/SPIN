@@ -4,7 +4,10 @@ export default function NotificationGrid({ notifications }) {
   return (
     <>
       {notifications.map((notification) => (
-        <NotificationCard key={notification.id} notification={notification} />
+        <NotificationCard
+          key={notification.id_notifikasi}
+          notification={notification}
+        />
       ))}
     </>
   );

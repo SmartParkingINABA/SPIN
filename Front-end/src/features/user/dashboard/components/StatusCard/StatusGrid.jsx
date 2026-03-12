@@ -4,7 +4,7 @@ export default function StatusGrid({ vehicles }) {
   return (
     <>
       {vehicles.map((vehicle) => (
-        <StatusCard key={vehicle.id} vehicle={vehicle} />
+        <StatusCard key={vehicle.id_kendaraan_masuk} vehicle={vehicle} />
       ))}
     </>
   );

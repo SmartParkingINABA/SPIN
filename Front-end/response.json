@@ -1,0 +1,159 @@
+{
+  "summary": {
+    "displayName": "Selamat datang, ",
+    "total_kendaraan": 2,
+    "total_parkir": 10,
+    "total_durasi": "1161 jam 36 menit",
+    "notifikasi_baru": 15
+  },
+  "kendaraan_aktif": [
+    {
+      "id_kendaraan": 4,
+      "no_plat": "D 1234 DEF",
+      "jenis": "Motor",
+      "merk": "Yamaha Aerox",
+      "status": "Aktif",
+      "riwayatMasuk": [
+        {
+          "status_parkir": "Sedang Parkir",
+          "waktu_masuk": "27 Januari 2026 pukul 19.13.31"
+        }
+      ]
+    },
+    {
+      "id_kendaraan": 2,
+      "no_plat": "D 5678 XYZ",
+      "jenis": "Motor",
+      "merk": "Piaggio Vespa Sprint",
+      "status": "Aktif",
+      "riwayatMasuk": []
+    }
+  ],
+  "status_Parkir_terakhir": [
+    {
+      "id_kendaraan_masuk": 14,
+      "kendaraan_id": 2,
+      "petugas_id": 1,
+      "waktu_masuk": "27 Januari 2026 pukul 19.13.59",
+      "status_parkir": "Selesai",
+      "kendaraan": {
+        "no_plat": "D 5678 XYZ"
+      },
+      "kendaraanKeluar": {
+        "waktu_keluar": "27 Januari 2026 pukul 19.15.27"
+      }
+    },
+    {
+      "id_kendaraan_masuk": 12,
+      "kendaraan_id": 4,
+      "petugas_id": 1,
+      "waktu_masuk": "27 Januari 2026 pukul 19.13.31",
+      "status_parkir": "Sedang Parkir",
+      "kendaraan": {
+        "no_plat": "D 1234 DEF"
+      },
+      "kendaraanKeluar": null
+    },
+    {
+      "id_kendaraan_masuk": 11,
+      "kendaraan_id": 4,
+      "petugas_id": 1,
+      "waktu_masuk": "27 Januari 2026 pukul 18.19.45",
+      "status_parkir": "Selesai",
+      "kendaraan": {
+        "no_plat": "D 1234 DEF"
+      },
+      "kendaraanKeluar": {
+        "waktu_keluar": "27 Januari 2026 pukul 18.22.13"
+      }
+    },
+    {
+      "id_kendaraan_masuk": 9,
+      "kendaraan_id": 2,
+      "petugas_id": 1,
+      "waktu_masuk": "27 Januari 2026 pukul 18.18.46",
+      "status_parkir": "Selesai",
+      "kendaraan": {
+        "no_plat": "D 5678 XYZ"
+      },
+      "kendaraanKeluar": {
+        "waktu_keluar": "27 Januari 2026 pukul 19.09.41"
+      }
+    },
+    {
+      "id_kendaraan_masuk": 10,
+      "kendaraan_id": 2,
+      "petugas_id": 1,
+      "waktu_masuk": "27 Januari 2026 pukul 18.18.46",
+      "status_parkir": "Selesai",
+      "kendaraan": {
+        "no_plat": "D 5678 XYZ"
+      },
+      "kendaraanKeluar": {
+        "waktu_keluar": "27 Januari 2026 pukul 19.09.59"
+      }
+    }
+  ],
+  "notifikasi_terbaru": [
+    {
+      "id_notifikasi": 26,
+      "kendaraan_id": 2,
+      "judul": "Kendaraan Keluar",
+      "pesan": "Kendaraan Anda Berhasil Keluar Dari Area Parkir",
+      "jenis": "Keluar",
+      "status_baca": "Belum",
+      "waktu_dibuat": "1033 jam 52 menit",
+      "kendaraan": {
+        "no_plat": "D 5678 XYZ"
+      }
+    },
+    {
+      "id_notifikasi": 25,
+      "kendaraan_id": 2,
+      "judul": "Kendaraan Masuk",
+      "pesan": "Kendaraan Anda Berhasil Masuk Ke Area Parkir",
+      "jenis": "Masuk",
+      "status_baca": "Belum",
+      "waktu_dibuat": "1033 jam 53 menit",
+      "kendaraan": {
+        "no_plat": "D 5678 XYZ"
+      }
+    },
+    {
+      "id_notifikasi": 23,
+      "kendaraan_id": 4,
+      "judul": "Kendaraan Masuk",
+      "pesan": "Kendaraan Anda Berhasil Masuk Ke Area Parkir",
+      "jenis": "Masuk",
+      "status_baca": "Belum",
+      "waktu_dibuat": "1033 jam 53 menit",
+      "kendaraan": {
+        "no_plat": "D 1234 DEF"
+      }
+    },
+    {
+      "id_notifikasi": 22,
+      "kendaraan_id": 2,
+      "judul": "Kendaraan Keluar",
+      "pesan": "Kendaraan Anda Berhasil Keluar Dari Area Parkir",
+      "jenis": "Keluar",
+      "status_baca": "Belum",
+      "waktu_dibuat": "1033 jam 57 menit",
+      "kendaraan": {
+        "no_plat": "D 5678 XYZ"
+      }
+    },
+    {
+      "id_notifikasi": 21,
+      "kendaraan_id": 2,
+      "judul": "Kendaraan Keluar",
+      "pesan": "Kendaraan Anda Berhasil Keluar Dari Area Parkir",
+      "jenis": "Keluar",
+      "status_baca": "Belum",
+      "waktu_dibuat": "1033 jam 57 menit",
+      "kendaraan": {
+        "no_plat": "D 5678 XYZ"
+      }
+    }
+  ]
+}
