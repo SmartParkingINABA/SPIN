@@ -6,6 +6,7 @@ import Statistik from "./components/Statistik";
 import EditPassword from "./components/EditPassword";
 import ButtonCta from "./components/ButtonCta";
 import { useGetAccountSettings } from "../../../hooks/user/useAccountSettings";
+import toast from "react-hot-toast";
 
 export default function Profile() {
   const {
@@ -28,13 +29,34 @@ export default function Profile() {
   const [address, setAddress] = useState("");
 
   useEffect(() => {
+    if (data) {
+      setFullName(data.profil.nama_pengendara || "Masukan nama lengkap anda");
+      setPhoneNumber(data.profil.no_telp || "Masukan no telepon anda");
+      setAddress(data.profile.alamat || "Masukan alamat anda");
+      setEmail(data.profile.email || "");
+    }
     console.log(data);
-  }, [data]);
+    console.log(handleUpdateProfile);
+    console.log(handleUpdatePhoto);
+    console.log(data);
+  }, [data, handleUpdateProfile, handleUpdatePhoto, handleChangePassword]);
 
-  const handleSave = () => {
-    // logic
-    setIsEditing(false);
+  const handleSaveProfile = async () => {
+    try {
+      await handleUpdateProfile({
+        nama_pengendara: fullName,
+        no_telp: phoneNumber,
+        alamat: address,
+      });
+      setIsEditing(false);
+      toast.success("Profil berhasil diperbaharui!");
+    } catch (err) {
+      toast.error("Gagal memperbaharui profil.");
+    }
   };
+
+  if (loading) return <div className="text-black">Loading data...</div>;
+  if (error) return <div className="text-red-500">Error: {error.message}</div>;
 
   return (
     <>
@@ -52,7 +74,7 @@ export default function Profile() {
               setPhoneNumber={setPhoneNumber}
               address={address}
               setAddress={setAddress}
-              handleSave={handleSave}
+              handleSave={handleSaveProfile}
             />
             <div className="w-1/3 flex flex-col gap-6">
               <PhotoProfile />
