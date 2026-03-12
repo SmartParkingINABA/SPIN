@@ -39,7 +39,7 @@ export default function PhotoProfile({ onUpload, userData }) {
         <img
           src={userData.profile_picture}
           alt="Profile"
-          className="w-13.5 rounded-full"
+          className="w-30 h-30 rounded-full" //w-13.5
         />
       ) : (
         <p className="w-30 h-30 rounded-full bg-[rgba(255,236,120,0.5)] flex items-center justify-center mx-auto text-3xl text-[#FFDB58] font-semibold">
