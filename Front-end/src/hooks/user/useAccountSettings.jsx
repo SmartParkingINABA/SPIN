@@ -55,8 +55,6 @@ export const useGetAccountSettings = () => {
         },
       }));
 
-      handleDataProfile();
-
       toast.success(
         response.message || "Foto profil berhasil diperbarui! oke.",
       );
