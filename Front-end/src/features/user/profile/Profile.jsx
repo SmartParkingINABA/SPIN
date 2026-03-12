@@ -5,7 +5,7 @@ import PhotoProfile from "./components/PhotoProfile/PhotoProfile";
 import Statistik from "./components/Statistik";
 import EditPassword from "./components/EditPassword";
 import ButtonCta from "./components/ButtonCta";
-import { useGetAccountSettings } from "../../../hooks/user/useGetAccountSettings";
+import { useGetAccountSettings } from "../../../hooks/user/useAccountSettings";
 
 export default function Profile() {
   const {
