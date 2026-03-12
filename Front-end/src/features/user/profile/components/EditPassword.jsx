@@ -41,7 +41,7 @@ export default function EditPassword({
     try {
       setLoading(true);
       await onUpdatePassword({
-        current_password: values.oldPassword,
+        old_password: values.oldPassword,
         new_password: values.password,
       });
       toast.success("Password berhasil diubah!");
