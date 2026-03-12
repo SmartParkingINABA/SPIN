@@ -54,6 +54,9 @@ export const useGetAccountSettings = () => {
           profile_picture: newImageUrl,
         },
       }));
+
+      handleDataProfile();
+
       toast.success(
         response.message || "Foto profil berhasil diperbarui! oke.",
       );
