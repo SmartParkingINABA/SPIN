@@ -27,7 +27,7 @@ export const updateProfilePhoto = async (req, res) => {
 
         await sequelize.models.Users.update(
             {
-                profile_picture: imageUrl,
+                foto_profil: imageUrl,
                 picture_private_key: key
             },
             {
