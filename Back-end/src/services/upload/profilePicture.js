@@ -7,6 +7,7 @@ export const uploadPictureToS3 = async ({ key, buffer, mimetype }) => {
         Key: key,
         Body: buffer,
         ContentType: mimetype,
+        CacheControl: 'public, max-age=31536000'
     });
 
     await s3Client.send(command);
