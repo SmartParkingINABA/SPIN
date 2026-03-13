@@ -38,7 +38,7 @@ export const updateProfilePhoto = async (req, res) => {
         return res.json({
             message: 'Foto profil berhasil diperbarui',
             data : {
-                profile_picture: imageUrl,
+                foto_profil: imageUrl,
             }
         });
 
