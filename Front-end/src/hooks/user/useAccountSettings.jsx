@@ -51,7 +51,7 @@ export const useGetAccountSettings = () => {
         ...prevData,
         profil: {
           ...prevData.profil,
-          profile_picture: newImageUrl,
+          foto_profil: newImageUrl,
         },
       }));
 
