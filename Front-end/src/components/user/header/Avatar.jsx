@@ -21,11 +21,12 @@ export default function Avatar({ setIsOpen }) {
   };
 
   useEffect(() => {
-    const updateAvatar = (e) => {
+    const handleUpdateAvatar = (e) => {
+      console.log("Avatar menerima data baru:", e.detail);
       setUserProfile(e.detail);
     };
 
-    window.addEventListener("profile-updated", updateAvatar);
+    window.addEventListener("profile-updated", handleUpdateAvatar);
 
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -36,10 +37,12 @@ export default function Avatar({ setIsOpen }) {
     window.addEventListener("click", handleClickOutside);
 
     return () => {
-      window.removeEventListener("profile-updated", updateAvatar);
+      window.removeEventListener("profile-updated", handleUpdateAvatar);
       window.removeEventListener("click", handleClickOutside);
     };
   }, [setIsOpen]);
+
+  const currentPhoto = userProfile?.foto_profil || userProfile?.profile_picture;
 
   return (
     <div className="relative" ref={dropdownRef}>
@@ -48,14 +51,14 @@ export default function Avatar({ setIsOpen }) {
         className="cursor-pointer outline-none"
         onClick={handleToggle}
       >
-        {userProfile?.foto_profile ? (
+        {currentPhoto ? (
           <img
-            src={userProfile.foto_profile}
+            src={currentPhoto}
             alt="User Profile"
             className="w-10 h-10 object-cover rounded-full border border-[rgba(255,236,120,0.5)]"
           />
         ) : (
-          <p className="text-white w-10 h-10 rounded-full bg-[#374151] flex items-center justify-center font-bold">
+          <p className="text-white w-10 h-10 rounded-full border border-[rgba(255,236,120,0.5)] bg-[#374151] flex items-center justify-center font-bold">
             {getInitials(userProfile?.nama_pengendara)}
           </p>
         )}

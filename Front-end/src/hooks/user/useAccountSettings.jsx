@@ -20,9 +20,11 @@ export const useGetAccountSettings = () => {
 
       setData(data);
 
-      window.dispatchEvent(
-        new CustomEvent("profile-updated", { detail: data.profil }),
-      );
+      if (data && data.profil) {
+        window.dispatchEvent(
+          new CustomEvent("profile-updated", { detail: data.profil }),
+        );
+      }
     } catch (err) {
       setError(err);
     } finally {
