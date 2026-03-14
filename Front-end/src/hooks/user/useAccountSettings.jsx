@@ -19,6 +19,10 @@ export const useGetAccountSettings = () => {
       const data = await getAccountSettings();
 
       setData(data);
+
+      window.dispatchEvent(
+        new CustomEvent("profile-updated", { detail: data.profil }),
+      );
     } catch (err) {
       setError(err);
     } finally {
