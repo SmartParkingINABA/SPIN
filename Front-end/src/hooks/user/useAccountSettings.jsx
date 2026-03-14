@@ -45,15 +45,8 @@ export const useGetAccountSettings = () => {
       const formData = new FormData();
       formData.append("foto_profil", file);
       const response = await uploadPhoto(formData);
-      const newImageUrl = response.data.profile_picture;
 
-      setData((prevData) => ({
-        ...prevData,
-        profil: {
-          ...prevData.profil,
-          foto_profil: newImageUrl,
-        },
-      }));
+      await handleDataProfile();
 
       toast.success(
         response.message || "Foto profil berhasil diperbarui! oke.",
