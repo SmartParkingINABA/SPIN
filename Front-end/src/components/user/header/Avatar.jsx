@@ -42,8 +42,6 @@ export default function Avatar({ setIsOpen }) {
     };
   }, [setIsOpen]);
 
-  const currentPhoto = userProfile?.foto_profil;
-
   return (
     <div className="relative" ref={dropdownRef}>
       <button
@@ -51,9 +49,9 @@ export default function Avatar({ setIsOpen }) {
         className="cursor-pointer outline-none"
         onClick={handleToggle}
       >
-        {currentPhoto ? (
+        {userProfile?.foto_profil ? (
           <img
-            src={currentPhoto}
+            src={userProfile?.foto_profil}
             alt="User Profile"
             className="w-10 h-10 object-cover rounded-full border border-[rgba(255,236,120,0.5)]"
           />

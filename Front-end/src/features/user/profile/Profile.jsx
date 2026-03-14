@@ -7,6 +7,7 @@ import EditPassword from "./components/EditPassword";
 import ButtonCta from "./components/ButtonCta";
 import { useGetAccountSettings } from "../../../hooks/user/useAccountSettings";
 import toast from "react-hot-toast";
+import ProfileSkeleton from "./components/ProfileSkeleton";
 
 export default function Profile() {
   const {
@@ -62,50 +63,53 @@ export default function Profile() {
     }
   };
 
-  if (loading) return <div className="text-black">Loading data...</div>;
   if (error) return <div className="text-red-500">Error: {error.message}</div>;
 
   return (
     <>
-      <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
-        <Header />
-        <div className="mt-6 flex flex-col gap-6">
-          <div className="flex gap-6">
-            <PrivateInformation
-              isEditing={isEditing}
-              setIsEditing={setIsEditing}
-              fullName={fullName}
-              setFullName={setFullName}
-              email={email}
-              phoneNumber={phoneNumber}
-              setPhoneNumber={setPhoneNumber}
-              address={address}
-              setAddress={setAddress}
-              handleSave={handleSaveProfile}
-              loading={isUpdating}
-            />
-            <div className="w-1/3 flex flex-col gap-6">
-              <PhotoProfile
-                onUpload={handleUpdatePhoto}
-                userData={data.profil}
+      {loading ? (
+        <ProfileSkeleton />
+      ) : (
+        <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
+          <Header />
+          <div className="mt-6 flex flex-col gap-6">
+            <div className="flex gap-6">
+              <PrivateInformation
+                isEditing={isEditing}
+                setIsEditing={setIsEditing}
+                fullName={fullName}
+                setFullName={setFullName}
+                email={email}
+                phoneNumber={phoneNumber}
+                setPhoneNumber={setPhoneNumber}
+                address={address}
+                setAddress={setAddress}
+                handleSave={handleSaveProfile}
+                loading={isUpdating}
               />
-              <Statistik statistik={data.statistik} />
+              <div className="w-1/3 flex flex-col gap-6">
+                <PhotoProfile
+                  onUpload={handleUpdatePhoto}
+                  userData={data.profil}
+                />
+                <Statistik statistik={data.statistik} />
+              </div>
+            </div>
+            <div className="flex gap-6 items-start">
+              <EditPassword
+                showPassword={showPassword}
+                setShowPassword={setShowPassword}
+                showNewPassword={showNewPassword}
+                setShowNewPassword={setShowNewPassword}
+                showConfirmPassword={showConfirmPassword}
+                setShowConfirmPassword={setShowConfirmPassword}
+                onUpdatePassword={handleChangePassword}
+              />
+              <ButtonCta />
             </div>
           </div>
-          <div className="flex gap-6 items-start">
-            <EditPassword
-              showPassword={showPassword}
-              setShowPassword={setShowPassword}
-              showNewPassword={showNewPassword}
-              setShowNewPassword={setShowNewPassword}
-              showConfirmPassword={showConfirmPassword}
-              setShowConfirmPassword={setShowConfirmPassword}
-              onUpdatePassword={handleChangePassword}
-            />
-            <ButtonCta />
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
     </>
   );
 }
