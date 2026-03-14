@@ -42,7 +42,7 @@ export default function Avatar({ setIsOpen }) {
     };
   }, [setIsOpen]);
 
-  const currentPhoto = userProfile?.foto_profil || userProfile?.profile_picture;
+  const currentPhoto = userProfile?.foto_profil;
 
   return (
     <div className="relative" ref={dropdownRef}>
