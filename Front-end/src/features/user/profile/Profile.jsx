@@ -67,7 +67,7 @@ export default function Profile() {
 
   return (
     <>
-      {loading ? (
+      {!loading ? (
         <ProfileSkeleton />
       ) : (
         <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
