@@ -1,15 +1,8 @@
 import { LuArrowRightFromLine } from "react-icons/lu";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../../context/useAuth";
+import { useHandleLogout } from "../../../../hooks/useHandleLogout";
 
 export default function ButtonCta() {
-  const { logout } = useAuth();
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    logout();
-    navigate("/auth/login", { replace: true });
-  };
+  const handleLogout = useHandleLogout();
 
   return (
     <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] px-6 py-4 rounded-md w-1/3">

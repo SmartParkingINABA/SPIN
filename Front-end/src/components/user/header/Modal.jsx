@@ -1,14 +1,8 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../../context/useAuth";
+import { Link } from "react-router-dom";
+import { useHandleLogout } from "../../../hooks/useHandleLogout";
 
 export default function Modal({ isOpen }) {
-  const { logout } = useAuth();
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    logout();
-    navigate("/auth/login", { replace: true });
-  };
+  const handleLogout = useHandleLogout();
 
   return (
     <div
