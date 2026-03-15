@@ -43,7 +43,7 @@ export default function Avatar({ setIsOpen }) {
   }, [setIsOpen]);
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="" ref={dropdownRef}>
       <button
         type="button"
         className="cursor-pointer outline-none"
