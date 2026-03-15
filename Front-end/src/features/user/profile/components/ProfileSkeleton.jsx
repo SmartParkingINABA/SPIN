@@ -13,20 +13,20 @@ export default function ProfileSkeleton() {
               </div>
               <form className="mt-3.5 w-1/2" noValidate>
                 <div className="mb-2.5">
-                  <p className="h-3 w-[15%] bg-[#93A3B6] rounded-md"></p>
-                  <p className="h-3 w-[13%] bg-[#93A3B6] rounded-md mt-2.5"></p>
+                  <p className="h-3 w-[18%] bg-[#93A3B6] rounded-md"></p>
+                  <p className="h-3 w-[15%] bg-[#93A3B6] rounded-md mt-2.5"></p>
                 </div>
                 <div className="mb-2.5">
-                  <p className="h-3 w-[15%] bg-[#93A3B6] rounded-md"></p>
-                  <p className="h-3 w-[13%] bg-[#93A3B6] rounded-md mt-2.5"></p>
+                  <p className="h-3 w-[18%] bg-[#93A3B6] rounded-md"></p>
+                  <p className="h-3 w-[15%] bg-[#93A3B6] rounded-md mt-2.5"></p>
                 </div>
                 <div className="mb-2.5">
-                  <p className="h-3 w-[15%] bg-[#93A3B6] rounded-md"></p>
-                  <p className="h-3 w-[13%] bg-[#93A3B6] rounded-md mt-2.5"></p>
+                  <p className="h-3 w-[18%] bg-[#93A3B6] rounded-md"></p>
+                  <p className="h-3 w-[15%] bg-[#93A3B6] rounded-md mt-2.5"></p>
                 </div>
                 <div className="">
-                  <p className="h-3 w-[15%] bg-[#93A3B6] rounded-md"></p>
-                  <p className="h-3 w-[13%] bg-[#93A3B6] rounded-md mt-2.5"></p>
+                  <p className="h-3 w-[18%] bg-[#93A3B6] rounded-md"></p>
+                  <p className="h-3 w-[15%] bg-[#93A3B6] rounded-md mt-2.5"></p>
                 </div>
               </form>
             </div>
