@@ -21,6 +21,11 @@ export default function Avatar({ setIsOpen }) {
   };
 
   useEffect(() => {
+    const savedData = localStorage.getItem("user_profile");
+    if (savedData) {
+      setUserProfile(JSON.parse(savedData));
+    }
+
     const handleUpdateAvatar = (e) => {
       console.log("Avatar menerima data baru:", e.detail);
       setUserProfile(e.detail);

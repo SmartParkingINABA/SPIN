@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   getAccountSettings,
   updateProfile,
@@ -12,7 +12,7 @@ export const useGetAccountSettings = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleDataProfile = async () => {
+  const handleDataProfile = useCallback(async () => {
     try {
       setLoading(true);
 
@@ -21,6 +21,8 @@ export const useGetAccountSettings = () => {
       setData(data);
 
       if (data && data.profil) {
+        localStorage.setItem("user_profile", JSON.stringify(data.profil));
+
         window.dispatchEvent(
           new CustomEvent("profile-updated", { detail: data.profil }),
         );
@@ -30,11 +32,11 @@ export const useGetAccountSettings = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     handleDataProfile();
-  }, []);
+  }, [handleDataProfile]);
 
   const handleUpdateProfile = async (profileData) => {
     try {
