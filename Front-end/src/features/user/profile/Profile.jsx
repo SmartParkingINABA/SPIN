@@ -90,9 +90,9 @@ export default function Profile() {
               <div className="w-1/3 flex flex-col gap-6">
                 <PhotoProfile
                   onUpload={handleUpdatePhoto}
-                  userData={data.profil}
+                  userData={data?.profil}
                 />
-                <Statistik statistik={data.statistik} />
+                <Statistik statistik={data?.statistik} />
               </div>
             </div>
             <div className="flex gap-6 items-start">
