@@ -67,9 +67,7 @@ export default function Profile() {
 
   return (
     <>
-      {!loading ? (
-        <ProfileSkeleton />
-      ) : (
+      {loading ? (
         <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
           <Header />
           <div className="mt-6 flex flex-col gap-6">
@@ -109,6 +107,8 @@ export default function Profile() {
             </div>
           </div>
         </section>
+      ) : (
+        <ProfileSkeleton />
       )}
     </>
   );

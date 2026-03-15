@@ -9,7 +9,7 @@ import toast from "react-hot-toast";
 
 export const useGetAccountSettings = () => {
   const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const handleDataProfile = async () => {
