@@ -53,7 +53,7 @@ export default function Avatar({ setIsOpen }) {
           <img
             src={userProfile?.foto_profil}
             alt="User Profile"
-            className="w-10 h-10 flex items-center justify-center object-cover rounded-full border border-[rgba(255,236,120,0.5)]"
+            className="w-10 h-10 object-cover rounded-full border border-[rgba(255,236,120,0.5)] block"
           />
         ) : (
           <p className="text-white w-10 h-10 rounded-full border border-[rgba(255,236,120,0.5)] bg-[#374151] flex items-center justify-center font-bold">
