@@ -6,16 +6,16 @@ export default function Statistik({ statistik }) {
         <div className="pb-3 border-b border-b-[rgba(255,236,120,0.5)]">
           <p className="text-[14px] text-[#93A3B6]">Total Kendaraan</p>
           <p className="text-[#FEF8FD]">
-            {statistik.total_kendaraan} kendaraan
+            {statistik?.total_kendaraan} kendaraan
           </p>
         </div>
         <div className="pb-3 border-b border-b-[rgba(255,236,120,0.5)]">
           <p className="text-[14px] text-[#93A3B6]">Total Parkir</p>
-          <p className="text-[#FEF8FD]">{statistik.total_parkir} Kali</p>
+          <p className="text-[#FEF8FD]">{statistik?.total_parkir} Kali</p>
         </div>
         <div className="">
           <p className="text-[14px] text-[#93A3B6]">Bergabung Sejak</p>
-          <p className="text-[#FEF8FD]">{statistik.bergabung_sejak}</p>
+          <p className="text-[#FEF8FD]">{statistik?.bergabung_sejak}</p>
         </div>
       </div>
     </div>
