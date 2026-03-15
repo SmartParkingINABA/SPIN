@@ -43,7 +43,7 @@ export default function Avatar({ setIsOpen }) {
   }, [setIsOpen]);
 
   return (
-    <div className="" ref={dropdownRef}>
+    <div className="flex" ref={dropdownRef}>
       <button
         type="button"
         className="cursor-pointer outline-none"
@@ -53,7 +53,7 @@ export default function Avatar({ setIsOpen }) {
           <img
             src={userProfile?.foto_profil}
             alt="User Profile"
-            className="w-10 h-10 object-cover rounded-full border border-[rgba(255,236,120,0.5)] block"
+            className="w-10 h-10 object-cover rounded-full border border-[rgba(255,236,120,0.5)]"
           />
         ) : (
           <p className="text-white w-10 h-10 rounded-full border border-[rgba(255,236,120,0.5)] bg-[#374151] flex items-center justify-center font-bold">
