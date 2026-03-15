@@ -1,8 +1,11 @@
 import { Outlet } from "react-router-dom";
 import Header from "../components/user/header/Header";
 import Sidebar from "../components/user/sidebar/Sidebar";
+import { useGetAccountSettings } from "../hooks/user/useAccountSettings";
 
 export default function UserLayout() {
+  useGetAccountSettings();
+
   return (
     <main className="w-full flex font-ubuntu">
       <Header />
