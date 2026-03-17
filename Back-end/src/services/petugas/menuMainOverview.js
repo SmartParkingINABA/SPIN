@@ -8,6 +8,8 @@ class menuMainOverviewService {
         const endOfDay = new Date();
         endOfDay.setHours(23, 59, 59, 999);
 
+        const displayName = 'Selamat datang, ';
+
         const [
             totalMasuk,
             totalKeluar,
@@ -22,6 +24,7 @@ class menuMainOverviewService {
 
         return {
             summary: {
+                displayName: displayName,
                 kendaraan_masuk: totalMasuk,
                 kendaraan_keluar: totalKeluar,
                 sedang_parkir: totalSedangParkir
