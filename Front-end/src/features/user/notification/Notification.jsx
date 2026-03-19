@@ -1,10 +1,10 @@
 import Header from "./components/Header";
-import { notifications } from "./components/notificationsDummy";
+// import { notifications } from "./components/notificationsDummy";
 import NotificationCard from "./components/NotificationCard";
 import { useNotifications } from "../../../hooks/user/useNotifications";
 
 export default function Notification() {
-  // const { notifications, loading, markRead, markAllRead } = useNotifications();
+  const { notifications, loading, markRead, markAllRead } = useNotifications();
 
   return (
     <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
