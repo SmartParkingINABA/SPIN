@@ -14,6 +14,8 @@ export const useNotifications = () => {
     try {
       setLoading(true);
       const data = await getNotifications();
+      console.log("Data notification", data);
+
       setNotifications(data);
     } catch (err) {
       console.error("Gagal ambil notifikasi", err);
@@ -45,7 +47,7 @@ export const useNotifications = () => {
   };
 
   useEffect(() => {
-    console.log(fetchNotifications());
+    fetchNotifications();
   }, [fetchNotifications]);
 
   return {
