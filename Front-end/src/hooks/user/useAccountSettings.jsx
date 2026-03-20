@@ -14,7 +14,7 @@ export const useGetAccountSettings = () => {
 
   const handleDataProfile = useCallback(async () => {
     try {
-      setLoading(true);
+      if (!data) setLoading(true);
 
       const data = await getAccountSettings();
 
