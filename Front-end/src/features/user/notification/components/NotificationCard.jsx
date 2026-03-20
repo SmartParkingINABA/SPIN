@@ -1,9 +1,36 @@
+import { CgDanger } from "react-icons/cg";
+import { FaCarSide } from "react-icons/fa";
 import { IoMdCheckmark } from "react-icons/io";
+import { MdOutlinePhoneAndroid } from "react-icons/md";
 
-export default function NotificationCard({ data }) {
-  const { title, time, message, isNew, icon, iconColor, bgColor, showAction } =
-    data;
-  const Icon = icon;
+export default function NotificationCard({ data, onMarkRead }) {
+  const { title, message, time, is_read, category } = data;
+
+  const getConfig = (cat) => {
+    switch (cat) {
+      case "admin":
+        return {
+          Icon: CgDanger,
+          iconColor: "text-blue-500",
+          bgColor: "bg-blue-50",
+        };
+      case "scan":
+        return {
+          Icon: FaCarSide,
+          iconColor: "text-green-500",
+          bgColor: "bg-green-50",
+        };
+      default:
+        return {
+          Icon: MdOutlinePhoneAndroid,
+          iconColor: "text-orange-500",
+          bgColor: "bg-[#F5E79E]",
+        };
+    }
+  };
+
+  const { Icon, bgColor, iconColor } = getConfig(category);
+
   return (
     <div className={`${bgColor} px-6 py-4 rounded-md flex flex-col gap-y-6`}>
       <div className="flex items-start justify-between">
@@ -15,7 +42,7 @@ export default function NotificationCard({ data }) {
           </div>
         </div>
 
-        {isNew && (
+        {!is_read && (
           <p className="rounded-sm px-[7px] py-0.5 bg-[#130F40] text-[14px] text-[#FEF8FD]">
             Baru
           </p>
@@ -25,8 +52,11 @@ export default function NotificationCard({ data }) {
         <div className="flex items-center justify-between">
           <p className="text-[14px] text-[#130F40]">{message}</p>
 
-          {showAction && (
-            <button className="flex items-center gap-x-1.5 cursor-pointer">
+          {!is_read && (
+            <button
+              className="flex items-center gap-x-1.5 cursor-pointer"
+              onClick={onMarkRead}
+            >
               <IoMdCheckmark className="h-fit w-4.5 text-[#808080]" />
               <p className="text-[14px] text-[#808080]">Tandai Telah Dibaca</p>
             </button>

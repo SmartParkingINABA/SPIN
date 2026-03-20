@@ -13,10 +13,31 @@ export const useNotifications = () => {
   const fetchNotifications = useCallback(async () => {
     try {
       setLoading(true);
-      const data = await getNotifications();
-      console.log("Data notification", data);
+      const res = await getNotifications();
 
-      setNotifications(data);
+      const adminNotifs = (res.data?.notif_admin?.data || []).map((item) => ({
+        id: item.id,
+        title: item.title || "Info Sistem",
+        message: item.message || item.konten,
+        time: item.created_at,
+        is_read: !!item.is_read,
+        category: "admin",
+      }));
+
+      const scanNotifs = (res.data?.notif_scan_qr?.data || []).map((item) => ({
+        id: item.id,
+        title: "Scan QR Berhasil",
+        message: item.keterangan || "Kendaraan anda telah dipindai",
+        time: item.created_at,
+        is_read: !!item.is_read,
+        category: "scan",
+      }));
+
+      const combinedNotifications = [...adminNotifs, ...scanNotifs];
+
+      console.log("Data notification", combinedNotifications);
+
+      setNotifications(combinedNotifications);
     } catch (err) {
       console.error("Gagal ambil notifikasi", err);
     } finally {
@@ -32,6 +53,7 @@ export const useNotifications = () => {
         prev.map((n) => (n.id === id ? { ...n, is_read: true } : n)),
       );
     } catch (err) {
+      console.error("Gagal memperbarui status", err);
       toast.error("Gagal memperbarui status");
     }
   };
@@ -42,6 +64,7 @@ export const useNotifications = () => {
       setNotifications((prev) => prev.map((n) => ({ ...n, is_read: true })));
       toast.success("Semua notifikasi ditandai dibaca");
     } catch (err) {
+      console.error("Gagal memperbarui semua", err);
       toast.error("Gagal memperbarui semua");
     }
   };
