@@ -4,7 +4,7 @@ export default function NotificationSkeleton() {
       <h1 className="h-4 w-[20%] bg-[#93A3B6] rounded-md"></h1>
       <div className="mt-1 flex items-center justify-between">
         <p className="h-3 w-[18%] bg-[#93A3B6] rounded-md mt-2.5"></p>
-        <p className="h-3 w-[18%] bg-[#93A3B6] rounded-md mt-2.5"></p>
+        <p className="h-3 w-[14%] bg-[#93A3B6] rounded-md mt-2.5"></p>
       </div>
       <div className="mt-6 flex flex-col gap-y-3.5">
         {[...Array(4)].map((_, i) => (
