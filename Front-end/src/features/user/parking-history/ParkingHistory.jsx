@@ -28,7 +28,10 @@ export default function ParkingHistory() {
 
   return (
     <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
-      <Header onExport={handleExport} />
+      <Header
+        onExport={handleExport}
+        isExportDisabled={data.history.length === 0}
+      />
       <Dropdown
         filters={filters}
         setFilters={setFilters}
