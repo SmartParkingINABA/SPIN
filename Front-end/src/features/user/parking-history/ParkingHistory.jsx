@@ -8,11 +8,15 @@ import { useOutletContext } from "react-router-dom";
 export default function ParkingHistory() {
   const { data, loading, filters, setFilters, handleExport } =
     useParkingHistory();
-
   const { profileData } = useOutletContext();
-  const userVehicles = profileData?.kendaraan?.map((v) => v.plat_nomor || []);
+
+  const userVehicles = profileData?.kendaraan
+    ? profileData.kendaraan.map((v) => v.plat_nomot).filter(Boolean)
+    : [];
 
   const filteredRows = data.history.filter((row) => {
+    if (!row) return false;
+
     const matchStatus =
       filters.status === "Semua Status" || row.status === filters.status;
     const matchVehicle =
@@ -30,7 +34,7 @@ export default function ParkingHistory() {
         setFilters={setFilters}
         vehicleOptions={["Semua Kendaraan", ...userVehicles]}
       />
-      <StatsGrid stats={data.stats} />
+      <StatsGrid stats={data.stats || {}} />
       <div className="bg-[#1E1633] border border-[rgba(255,236,120,0.5)] rounded-md py-5 px-6 mt-6">
         <h2 className="text-[#93A3B6] font-semibold mb-3.5">Daftar Riwayat</h2>
         {filteredRows.length > 0 ? (
