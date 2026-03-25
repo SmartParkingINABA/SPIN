@@ -1,6 +1,6 @@
 import ExportData from "./ExportData";
 
-export default function Header() {
+export default function Header({ onExport }) {
   return (
     <div className="flex items-center justify-between">
       <div>
@@ -9,7 +9,7 @@ export default function Header() {
           Catatan aktivitas parkir kendaraan anda
         </p>
       </div>
-      <ExportData />
+      <ExportData onExport={onExport} />
     </div>
   );
 }
