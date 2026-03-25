@@ -4,7 +4,7 @@ import Sidebar from "../components/user/sidebar/Sidebar";
 import { useGetAccountSettings } from "../hooks/user/useAccountSettings";
 
 export default function UserLayout() {
-  useGetAccountSettings();
+  const { data, loading } = useGetAccountSettings();
 
   return (
     <main className="w-full flex font-ubuntu">
@@ -12,7 +12,9 @@ export default function UserLayout() {
       <Sidebar />
       <div className="w-[83%] mt-[60px] ml-auto">
         {/* Content */}
-        <Outlet />
+        <Outlet
+          context={{ profileData: data?.profil, loadingProfile: loading }}
+        />
       </div>
     </main>
   );

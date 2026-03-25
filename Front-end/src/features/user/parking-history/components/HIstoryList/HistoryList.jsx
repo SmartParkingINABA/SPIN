@@ -27,7 +27,7 @@ export default function HistoryList({ rows }) {
         <tbody>
           {rows.map((row, i) => (
             <TableRow
-              key={i}
+              key={row.id || i}
               row={row}
               index={i}
               isLast={i === rows.length - 1}

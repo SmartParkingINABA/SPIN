@@ -2,9 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { FaCheck } from "react-icons/fa6";
 
-export default function StatusDropdown({ selectedOption }) {
+export default function StatusDropdown({ selected, onSelect }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState(selectedOption);
   const dropdownRef = useRef(null);
 
   // Toggle dropdown
@@ -15,7 +14,7 @@ export default function StatusDropdown({ selectedOption }) {
 
   // Pilih opsi
   const handleSelect = (value) => {
-    setSelected(value);
+    onSelect(value);
     setIsOpen(false);
   };
 
