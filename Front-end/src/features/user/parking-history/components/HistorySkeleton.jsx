@@ -1,4 +1,4 @@
-export default function ParkingSkeleton() {
+export default function HistorySkeleton() {
   return (
     <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
       <div className="flex items-center justify-between">

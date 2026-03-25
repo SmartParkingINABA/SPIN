@@ -4,7 +4,7 @@ import StatsGrid from "./components/Stats/StatsGrid";
 import HistoryList from "./components/HIstoryList/HistoryList";
 import { useParkingHistory } from "../../../hooks/user/useParkingHistory";
 import { useOutletContext } from "react-router-dom";
-import ParkingSkeleton from "./components/ParkingSkeleton";
+import HistorySkeleton from "./components/HistorySkeleton";
 
 export default function ParkingHistory() {
   const { data, loading, filters, setFilters, handleExport } =
@@ -28,7 +28,7 @@ export default function ParkingHistory() {
   return (
     <>
       {!loading ? (
-        <ParkingSkeleton />
+        <HistorySkeleton />
       ) : (
         <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
           <Header
