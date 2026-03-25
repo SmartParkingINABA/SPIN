@@ -6,7 +6,7 @@ export default function ExportData({ onExport, isDisabled }) {
       className={`inline-flex items-center gap-x-2 py-2 px-3 rounded-sm transition 
         ${
           isDisabled
-            ? "bg-[rgba(255,219,88,0.5)] cursor-not-allowed opacity-50"
+            ? "bg-[rgba(255,219,88,0.8)] cursor-not-allowed opacity-50"
             : "bg-[#FFDB58] hover:opacity-80 cursor-pointer"
         }`}
       onClick={onExport}
