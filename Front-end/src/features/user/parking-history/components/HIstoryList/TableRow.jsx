@@ -3,7 +3,7 @@ import StatusBadge from "./StatusBadge";
 const tdClass = "p-2 text-[14px] text-[#D3CBD1] font-medium";
 
 export default function TableRow({ row, index, isLast }) {
-  const isParked = !row.jamKeluar;
+  const isParked = !row.jam_keluar;
 
   return (
     <tr className={!isLast ? "border-b-2 border-[#D3CBD1]" : ""}>
