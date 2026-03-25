@@ -4,7 +4,7 @@ import StatsGrid from "./components/Stats/StatsGrid";
 import HistoryList from "./components/HIstoryList/HistoryList";
 import { useParkingHistory } from "../../../hooks/user/useParkingHistory";
 import { useOutletContext } from "react-router-dom";
-import ParkingHistorySkeleton from "./components/ParkingHIstorySkeleton";
+import ParkingHistorySkeleton from "./components/ParkingHistory";
 
 export default function ParkingHistory() {
   const { data, loading, filters, setFilters, handleExport } =
