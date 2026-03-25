@@ -37,8 +37,8 @@ export const useParkingHistory = () => {
       toast.loading("Mengunduh data...", { id: "export" });
       const res = await getExportDataParking();
 
-      if (res.data?.url) {
-        window.open(res.data.url, "_blank");
+      if (res.url) {
+        window.open(res.url, "_blank");
       }
 
       toast.success("Data berhasil diekspor", { id: "export" });
