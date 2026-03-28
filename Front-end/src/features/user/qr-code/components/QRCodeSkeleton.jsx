@@ -11,8 +11,8 @@ export default function QRCodeSkeleton() {
           <div className="mt-12 border border-[#FFEC78] bg-[#FEF8FD] w-2/5 h-[412px] mx-auto rounded-xl flex items-center justify-center">
             <div className="text-center">
               <div className="w-48 h-48 mb-8 bg-[#93A3B6]"></div>
-              <p className="h-5 w-[18%] bg-[#93A3B6] mx-auto rounded-md"></p>
-              <p className="h-3 w-[22%] bg-[#93A3B6] mx-auto rounded-md mt-1.5"></p>
+              <p className="h-4 w-[25%] bg-[#93A3B6] mx-auto rounded-md"></p>
+              <p className="h-3 w-[235%] bg-[#93A3B6] mx-auto rounded-md mt-1.5"></p>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-x-6 mt-20">
@@ -22,7 +22,7 @@ export default function QRCodeSkeleton() {
         </div>
         <div className="w-[30%]">
           <div className="bg-[#1E1633] border border-[rgba(255,236,120,0.5)] rounded-md h-35 mb-2.5"></div>
-          <div className="bg-[#1E1633] border border-[rgba(255,236,120,0.5)] rounded-md h-20"></div>
+          <div className="bg-[#1E1633] border border-[rgba(255,236,120,0.5)] rounded-md h-25"></div>
         </div>
       </div>
     </section>
