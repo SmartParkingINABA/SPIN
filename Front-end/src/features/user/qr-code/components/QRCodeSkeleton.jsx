@@ -12,7 +12,7 @@ export default function QRCodeSkeleton() {
             <div className="text-center">
               <div className="w-48 h-48 mb-8 bg-[#93A3B6]"></div>
               <p className="h-4 w-[25%] bg-[#93A3B6] mx-auto rounded-md"></p>
-              <p className="h-3 w-[235%] bg-[#93A3B6] mx-auto rounded-md mt-1.5"></p>
+              <p className="h-3 w-[50%] bg-[#93A3B6] mx-auto rounded-md mt-1.5"></p>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-x-6 mt-20">
