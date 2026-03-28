@@ -6,7 +6,7 @@ export default function HistorySkeleton() {
           <h1 className="h-4 w-full bg-[#93A3B6] rounded-md"></h1>
           <p className="h-3 w-[80%] bg-[#93A3B6] rounded-md mt-2.5"></p>
         </div>
-        <p className="h-3 w-[14%] bg-[#93A3B6] rounded-md mt-2.5"></p>
+        <p className="h-6 w-[14%] bg-[#93A3B6] rounded-md mt-2.5"></p>
       </div>
       <div className="bg-[#1E1633] border border-[rgba(255,236,120,0.5)] rounded-md grid grid-cols-2 gap-6 py-5 px-6 mt-6">
         <div>
