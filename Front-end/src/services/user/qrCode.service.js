@@ -1,7 +1,7 @@
 import api from "../../lib/axios";
 
 export const getQrCodePreview = async () => {
-  const response = await api.get("/dashboard/qr-code-saya/preview");
+  const response = await api.get("/pengendara/dashboard/qr-code-saya/preview");
 
   return response.data;
 };
