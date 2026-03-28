@@ -2,10 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { FaCheck } from "react-icons/fa6";
 
-export default function VehiclesDropdown({ selectedOption }) {
+export default function VehiclesDropdown({ selectedOption, options = [] }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState(selectedOption);
   const dropdownRef = useRef(null);
+  const listOptions = ["Semua Kendaraan", ...options];
 
   // Toggle dropdown
   const handleToggle = (e) => {
@@ -57,7 +58,7 @@ export default function VehiclesDropdown({ selectedOption }) {
             : "opacity-0 -translate-y-2 pointer-events-none"
         }`}
       >
-        {["Semua Kendaraan", "Z 9090 XX", "T 8080 XX"].map((item) => (
+        {listOptions.map((item) => (
           <li
             key={item}
             onClick={() => handleSelect(item)}
