@@ -8,7 +8,7 @@ import {
 
 export const useVehiclesReport = () => {
   const [vehicles, setVehicles] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const fetchVehicles = async () => {
