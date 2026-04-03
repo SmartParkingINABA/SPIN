@@ -6,7 +6,8 @@ import { useVehiclesReport } from "../../../hooks/user/useVehiclesReport";
 
 export default function VehiclesReport() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { vehicles, loading, addVehicle, deleteVehicle } = useVehiclesReport();
+  const { vehicles, loading, addVehicle, updateVehicle, deleteVehicle } =
+    useVehiclesReport();
 
   if (loading) return <div>Memuat halaman data kendaraan</div>;
 
@@ -15,7 +16,11 @@ export default function VehiclesReport() {
       <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
         <Header setIsModalOpen={setIsModalOpen} />
         <div className="grid grid-cols-2 gap-6 mt-7">
-          <VehicleGrid vehicles={vehicles} onDelete={deleteVehicle} />
+          <VehicleGrid
+            vehicles={vehicles}
+            onDelete={deleteVehicle}
+            onUpdate={updateVehicle}
+          />
         </div>
       </section>
       {isModalOpen && (

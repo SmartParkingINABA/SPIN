@@ -43,7 +43,7 @@ export const useVehiclesReport = () => {
       console.log(`[PUT] Update ID ${id} dengan data:`, payload);
       const res = await putVehiclesReport(id, payload);
       console.log("[PUT] Response BE (update):", res);
-      fetchVehicles();
+      await fetchVehicles();
       return { success: true };
     } catch (err) {
       console.error("[PUT] error update kendaraan:", err);
