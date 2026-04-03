@@ -16,11 +16,15 @@ export default function VehiclesReport() {
       <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
         <Header setIsModalOpen={setIsModalOpen} />
         <div className="grid grid-cols-2 gap-6 mt-7">
-          <VehicleGrid
-            vehicles={vehicles}
-            onDelete={deleteVehicle}
-            onUpdate={updateVehicle}
-          />
+          {vehicles.length > 0 ? (
+            <VehicleGrid
+              vehicles={vehicles}
+              onDelete={deleteVehicle}
+              onUpdate={updateVehicle}
+            />
+          ) : (
+            <p className="text-[#93A3B6]">Belum data kendaraan.</p>
+          )}
         </div>
       </section>
       {isModalOpen && (
