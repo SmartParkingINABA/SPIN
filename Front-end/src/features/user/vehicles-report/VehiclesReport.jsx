@@ -23,7 +23,7 @@ export default function VehiclesReport() {
               onUpdate={updateVehicle}
             />
           ) : (
-            <p className="text-[#93A3B6]">Belum data kendaraan.</p>
+            <p className="text-[#93A3B6]">Belum ada data kendaraan.</p>
           )}
         </div>
       </section>
