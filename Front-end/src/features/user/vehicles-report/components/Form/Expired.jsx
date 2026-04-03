@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-export default function Expired({ label }) {
+export default function Expired({ label, name, onChange }) {
   const inputRef = useRef(null);
   return (
     <label>
@@ -9,6 +9,8 @@ export default function Expired({ label }) {
         <input
           ref={inputRef}
           type="date"
+          name={name}
+          onChange={onChange}
           className="bg-transparent outline-0 w-30 placeholder:text-gray-400"
         />
       </div>

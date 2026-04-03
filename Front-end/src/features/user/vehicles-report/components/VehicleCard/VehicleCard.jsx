@@ -3,19 +3,12 @@ import { FaCarSide, FaMotorcycle, FaTrashCan } from "react-icons/fa6";
 import { IoQrCode } from "react-icons/io5";
 import BarIcon from "../../../../../assets/images/user/barIcon.svg?react";
 
-export default function VehicleCard({ vehicle }) {
-  const {
-    plate,
-    category,
-    brand,
-    cc,
-    year,
-    validUntil,
-    status,
-    hasQr,
-    iconType,
-  } = vehicle;
-  const Icon = iconType === "car" ? FaCarSide : FaMotorcycle;
+export default function VehicleCard({ vehicle, onDelete }) {
+  const { id, plate, category, brand, cc, year, validUntil, status, hasQr } =
+    vehicle;
+  const Icon = category?.toLowerCase().includes("mobil")
+    ? FaCarSide
+    : FaMotorcycle;
 
   return (
     <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] rounded-md p-8">
@@ -30,8 +23,11 @@ export default function VehicleCard({ vehicle }) {
           </div>
         </div>
         <div className="flex items-center gap-x-3">
-          <BiSolidEdit className="w-6 h-fit text-[#93A3B6] transition duration-300 ease-in-out hover:text-[#FFEC78]" />
-          <FaTrashCan className="w-5 h-fit text-[#B90404] transition duration-300 ease-in-out hover:text-[#FFEC78]" />
+          <BiSolidEdit className="w-6 h-fit text-[#93A3B6] transition duration-300 ease-in-out hover:text-[#FFEC78] cursor-pointer " />
+          <FaTrashCan
+            className="w-5 h-fit text-[#B90404] transition duration-300 ease-in-out hover:text-[#FFEC78] cursor-pointer"
+            onClick={() => onDelete(id)}
+          />
         </div>
       </div>
       <div className="grid grid-cols-2 mt-5">
