@@ -34,7 +34,7 @@ export default function Item({ item }) {
 
           {/* Tanda Merah */}
           {showNotification && (
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 w-2 h-2 bg-red-500 rounded-full"></span>
+            <span className="absolute right-2 top-1/2 -translate-y-1/2 w-2 h-2 bg-red-500 rounded-full"></span>
           )}
         </li>
       )}
