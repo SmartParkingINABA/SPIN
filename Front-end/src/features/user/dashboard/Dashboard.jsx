@@ -11,6 +11,7 @@ import DashboardSkeleton from "./components/DashboardSkeleton";
 export default function Dashboard() {
   const { loading, overview, error } = useDashboard();
   const { user } = useAuth();
+  const displayIdentity = user?.nama_pengendara || user?.email;
 
   const summary = overview?.summary || {};
   const vehiclesActive = overview?.kendaraan_aktif || [];
@@ -27,7 +28,7 @@ export default function Dashboard() {
         <DashboardSkeleton />
       ) : (
         <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
-          <Header displayName={summary.displayName} user={user?.email} />
+          <Header user={displayIdentity} />
           <div className="mt-6">
             <StatsGrid summary={summary} />
           </div>

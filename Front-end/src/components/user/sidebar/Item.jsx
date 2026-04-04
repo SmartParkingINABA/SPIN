@@ -1,7 +1,14 @@
 import { NavLink } from "react-router-dom";
+import { useAuth } from "../../../context/useAuth";
 
 export default function Item({ item }) {
   const Icon = item.icon;
+  const { user } = useAuth();
+
+  const isProfileMenu = item.label === "Profil Pengguna";
+  const hasNoName =
+    !user?.nama_pengendara || user?.nama_pengendara.trim() === "";
+  const showNotification = isProfileMenu && hasNoName;
 
   return (
     <NavLink to={item.path} end={item.exact}>
@@ -24,6 +31,11 @@ export default function Item({ item }) {
             />
             {item.label}
           </p>
+
+          {/* Tanda Merah */}
+          {showNotification && (
+            <span className="absolute right-4 top-1/2 -translate-y-1/2 w-2 h-2 bg-red-500 rounded-full"></span>
+          )}
         </li>
       )}
     </NavLink>

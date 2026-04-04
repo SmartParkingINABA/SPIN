@@ -8,6 +8,7 @@ import ButtonCta from "./components/ButtonCta";
 import { useGetAccountSettings } from "../../../hooks/user/useAccountSettings";
 import toast from "react-hot-toast";
 import ProfileSkeleton from "./components/ProfileSkeleton";
+import { useAuth } from "../../../context/useAuth";
 
 export default function Profile() {
   const {
@@ -29,6 +30,7 @@ export default function Profile() {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
+  const { updateProfileState } = useAuth();
 
   useEffect(() => {
     if (data) {
@@ -43,11 +45,16 @@ export default function Profile() {
   const handleSaveProfile = async () => {
     try {
       setIsUpdating(true);
-      await handleUpdateProfile({
+      const updatePayload = {
         nama_pengendara: fullName,
         no_telp: phoneNumber,
         alamat: address,
-      });
+      };
+
+      await handleUpdateProfile(updatePayload);
+
+      updateProfileState(updatePayload);
+
       setIsEditing(false);
       toast.success("Profil berhasil diperbaharui!");
     } catch (err) {
