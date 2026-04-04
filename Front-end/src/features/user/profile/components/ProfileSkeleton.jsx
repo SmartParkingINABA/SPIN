@@ -9,7 +9,7 @@ export default function ProfileSkeleton() {
             <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] px-6 py-4 rounded-md w-2/3">
               <div className="flex items-center justify-between">
                 <p className="h-3 w-[15%] bg-[#93A3B6] rounded-md mt-2.5"></p>
-                <p className="h-3.5 w-[8%] bg-[#130F40] border border-[#93A3B6] rounded-sm"></p>
+                <p className="h-3.5 w-[8%] bg-[#93A3B6] rounded-sm"></p>
               </div>
               <form className="mt-3.5 w-1/2" noValidate>
                 <div className="mb-2.5">

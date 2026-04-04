@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import PublicLayout from "../layouts/PublicLayout";
 import NotFoundPage from "../features/not-found/NotFoundPage";
 import Loader from "../components/Loader";
+import UnauthorizedPage from "../components/guard/UnauthorizedPage";
 
 const Home = lazy(() => import("../features/public/Home"));
 const Regulation = lazy(
@@ -20,7 +21,9 @@ export default function PublicRoutes() {
           <Route path="/peraturan" element={<Regulation />} />
           <Route path="/tentang" element={<About />} />
           <Route path="/masuk" element={<Enter />} />
+          <Route path="/unauthorized" element={<UnauthorizedPage />} />
         </Route>
+
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Suspense>

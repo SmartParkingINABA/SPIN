@@ -3,6 +3,7 @@ import { lazy, Suspense } from "react";
 import OfficerLayout from "../layouts/OfficerLayout";
 import NotFoundPage from "../features/not-found/NotFoundPage";
 import Loader from "../components/Loader";
+import ProtectedRoute from "../components/guard/ProtectedRoute";
 
 const OfficerDashboard = lazy(
   () => import("../features/officer/dashboard/Dashboard"),
@@ -25,14 +26,17 @@ export default function OfficerRoutes() {
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
-        <Route path="/" element={<OfficerLayout />}>
-          <Route index element={<OfficerDashboard />} />
-          <Route path="data-kendaraan" element={<OfficerVehiclesReport />} />
-          <Route path="scan-qr-code" element={<OfficerScanQR />} />
-          <Route path="riwayat-parkir" element={<OfficerParkingHistory />} />
-          <Route path="notifikasi" element={<OfficerNotifikasi />} />
-          <Route path="profil-petugas" element={<OfficerProfile />} />
+        <Route element={<ProtectedRoute allowedRoles={["Petugas"]} />}>
+          <Route path="/" element={<OfficerLayout />}>
+            <Route index element={<OfficerDashboard />} />
+            <Route path="data-kendaraan" element={<OfficerVehiclesReport />} />
+            <Route path="scan-qr-code" element={<OfficerScanQR />} />
+            <Route path="riwayat-parkir" element={<OfficerParkingHistory />} />
+            <Route path="notifikasi" element={<OfficerNotifikasi />} />
+            <Route path="profil-petugas" element={<OfficerProfile />} />
+          </Route>
         </Route>
+
         <Route
           path="*"
           element={

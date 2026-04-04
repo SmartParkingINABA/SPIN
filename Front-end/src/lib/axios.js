@@ -1,4 +1,5 @@
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const baseURL = import.meta.env.VITE_BASE_URL;
 
@@ -28,6 +29,8 @@ api.interceptors.request.use(
   },
 );
 
+let isRedirecting = false;
+
 api.interceptors.response.use(
   (response) => {
     console.log(
@@ -47,6 +50,17 @@ api.interceptors.response.use(
       console.error("[API NO RESPONSE]", error.request);
     } else {
       console.error("[API UNKNOWN ERROR]", error.message);
+    }
+
+    if (error.response?.status === 401 && !isRedirecting) {
+      isRedirecting = true;
+
+      toast.error("Sesi anda telah berakhir. Silahkan login kembali.");
+      setTimeout(() => {
+        localStorage.clear();
+        window.location.href = "/auth/login";
+        isRedirecting = false;
+      }, 2000);
     }
 
     return Promise.reject(error);
