@@ -4,17 +4,17 @@ import { IoMdCheckmark } from "react-icons/io";
 import { MdOutlinePhoneAndroid } from "react-icons/md";
 
 export default function NotificationCard({ data, onMarkRead }) {
-  const { title, message, time, is_read, category } = data;
+  const { judul, pesan, waktu, status_baca, jenis } = data;
 
   const getConfig = (cat) => {
     switch (cat) {
-      case "admin":
+      case "Keluar":
         return {
           Icon: CgDanger,
           iconColor: "text-blue-500",
           bgColor: "bg-blue-50",
         };
-      case "scan":
+      case "Masuk":
         return {
           Icon: FaCarSide,
           iconColor: "text-green-500",
@@ -29,7 +29,7 @@ export default function NotificationCard({ data, onMarkRead }) {
     }
   };
 
-  const { Icon, bgColor, iconColor } = getConfig(category);
+  const { Icon, bgColor, iconColor } = getConfig(jenis);
 
   return (
     <div className={`${bgColor} px-6 py-4 rounded-md flex flex-col gap-y-6`}>
@@ -37,22 +37,22 @@ export default function NotificationCard({ data, onMarkRead }) {
         <div className="flex items-start gap-x-2">
           <Icon className={`h-fit w-5 mt-0.5 ${iconColor}`} />
           <div>
-            <p className="text-[#130F40]">{title}</p>
-            <p className="text-[14px] text-[#93A3B6]">{time}</p>
+            <p className="text-[#130F40]">{judul}</p>
+            <p className="text-[14px] text-[#93A3B6]">{waktu}</p>
           </div>
         </div>
 
-        {!is_read && (
+        {!status_baca && (
           <p className="rounded-sm px-[7px] py-0.5 bg-[#130F40] text-[14px] text-[#FEF8FD]">
             Baru
           </p>
         )}
       </div>
-      {message && (
+      {pesan && (
         <div className="flex items-center justify-between">
-          <p className="text-[14px] text-[#130F40]">{message}</p>
+          <p className="text-[14px] text-[#130F40]">{pesan}</p>
 
-          {!is_read && (
+          {!status_baca && (
             <button
               className="flex items-center gap-x-1.5 cursor-pointer"
               onClick={onMarkRead}
