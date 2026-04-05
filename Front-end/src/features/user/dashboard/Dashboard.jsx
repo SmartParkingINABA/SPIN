@@ -7,11 +7,33 @@ import BoxWrapper from "../../../components/ui/BoxWrapper";
 import { useDashboard } from "../../../hooks/user/useDashboard";
 import { useAuth } from "../../../context/useAuth";
 import DashboardSkeleton from "./components/DashboardSkeleton";
+import { useEffect, useState } from "react";
 
 export default function Dashboard() {
   const { loading, overview, error } = useDashboard();
-  const { user } = useAuth();
-  const displayIdentity = user?.nama_pengendara || user?.email;
+  const { user, updateProfileState } = useAuth();
+  const [userProfile, setUserProfile] = useState(() => {
+    const savedData = localStorage.getItem("user_profile");
+    return savedData ? JSON.parse(savedData) : null;
+  });
+
+  useEffect(() => {
+    if (overview?.summary?.nama_pengendara) {
+      const profileData = {
+        nama_pengendara: overview.summary.nama_pengendara,
+        foto_profil: overview.summary.foto_profil,
+      };
+      updateProfileState(profileData);
+      setUserProfile(profileData);
+    }
+
+    const handleUpdate = (e) => {
+      setUserProfile(e.detail);
+    };
+
+    window.addEventListener("profile-updated", handleUpdate);
+    return () => window.removeEventListener("profile-updated", handleUpdate);
+  }, [overview, updateProfileState]);
 
   const summary = overview?.summary || {};
   const vehiclesActive = overview?.kendaraan_aktif || [];
@@ -21,6 +43,8 @@ export default function Dashboard() {
   if (error) {
     return <div className="text-red-500 p-10">Failed to load dashboard</div>;
   }
+
+  const displayIdentity = userProfile?.nama_pengendara || user?.email;
 
   return (
     <>

@@ -25,8 +25,16 @@ export function AuthProvider({ children }) {
   };
 
   const updateProfileState = (newProfileData) => {
-    setUser((prev) => ({ ...prev, ...newProfileData }));
-    localStorage.setItem("user_profile", JSON.stringify(newProfileData));
+    setUser((prev) => {
+      const updated = { ...prev, ...newProfileData };
+      localStorage.setItem("user_profile", JSON.stringify(newProfileData));
+
+      window.dispatchEvent(
+        new CustomEvent("profile-updated", { detail: newProfileData }),
+      );
+
+      return updated;
+    });
   };
 
   const logout = () => {

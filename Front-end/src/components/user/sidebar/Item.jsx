@@ -1,14 +1,24 @@
 import { NavLink } from "react-router-dom";
-import { useAuth } from "../../../context/useAuth";
+import { useEffect, useState } from "react";
 
 export default function Item({ item }) {
   const Icon = item.icon;
-  const { user } = useAuth();
+  const [currentProfile, setCurrentProfile] = useState(() => {
+    const saved = localStorage.getItem("user_profile");
+    return saved ? JSON.parse(saved) : null;
+  });
+
+  useEffect(() => {
+    const handleUpdate = (e) => setCurrentProfile(e.detail);
+    window.addEventListener("profile-updated", handleUpdate);
+    return () => window.removeEventListener("profile-updated", handleUpdate);
+  }, []);
 
   const isProfileMenu = item.label === "Profil Pengguna";
-  const hasNoName =
-    !user?.nama_pengendara || user?.nama_pengendara.trim() === "";
-  const showNotification = isProfileMenu && hasNoName;
+  const hasName =
+    currentProfile?.nama_pengendara &&
+    currentProfile?.nama_pengendara.trim() !== "";
+  const showNotification = isProfileMenu && !hasName;
 
   return (
     <NavLink to={item.path} end={item.exact}>
