@@ -25,7 +25,7 @@ export default function NotificationCard({ data, onMarkRead }) {
         return {
           Icon: MdOutlinePhoneAndroid,
           iconColor: "text-orange-500",
-          bgColor: "bg-[#F5E79E]",
+          bgColor: "bg-red-300",
         };
     }
   };
