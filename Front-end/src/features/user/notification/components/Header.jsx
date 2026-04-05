@@ -3,7 +3,7 @@ import { BiCheckDouble } from "react-icons/bi";
 
 export default function Header({ notifications = [], onMarkAllRead }) {
   const unreadCount = useMemo(() => {
-    return notifications.filter((n) => !n.is_read).length;
+    return notifications.filter((n) => !n.status_baca).length;
   }, [notifications]);
 
   return (
