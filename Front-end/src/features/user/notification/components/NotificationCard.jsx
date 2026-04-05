@@ -1,8 +1,5 @@
-import { CgDanger } from "react-icons/cg";
-import { FaCarSide } from "react-icons/fa";
 import { ImExit, ImEnter } from "react-icons/im";
 import { IoMdCheckmark } from "react-icons/io";
-import { MdOutlinePhoneAndroid } from "react-icons/md";
 import { RiAdminLine } from "react-icons/ri";
 
 export default function NotificationCard({ data, onMarkRead }) {
@@ -26,7 +23,7 @@ export default function NotificationCard({ data, onMarkRead }) {
         return {
           Icon: RiAdminLine,
           iconColor: "text-orange-500",
-          bgColor: "bg-pink-300",
+          bgColor: "bg-red-500",
         };
     }
   };
