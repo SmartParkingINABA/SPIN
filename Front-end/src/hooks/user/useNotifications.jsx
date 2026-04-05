@@ -15,29 +15,29 @@ export const useNotifications = () => {
       setLoading(true);
       const res = await getNotifications();
 
-      const adminNotifs = (res.data?.notif_admin?.data || []).map((item) => ({
-        id: item.id,
-        title: item.title || "Info Sistem",
-        message: item.message || item.konten,
-        time: item.created_at,
-        is_read: !!item.is_read,
-        category: "admin",
-      }));
+      // const adminNotifs = (res.data?.notif_admin?.data || []).map((item) => ({
+      //   id: item.id,
+      //   title: item.title || "Info Sistem",
+      //   message: item.message || item.konten,
+      //   time: item.created_at,
+      //   is_read: !!item.is_read,
+      //   category: "admin",
+      // }));
 
-      const scanNotifs = (res.data?.notif_scan_qr?.data || []).map((item) => ({
-        id: item.id,
-        title: "Scan QR Berhasil",
-        message: item.keterangan || "Kendaraan anda telah dipindai",
-        time: item.created_at,
-        is_read: !!item.is_read,
-        category: "scan",
-      }));
+      // const scanNotifs = (res.data?.notif_scan_qr?.data || []).map((item) => ({
+      //   id: item.id,
+      //   title: "Scan QR Berhasil",
+      //   message: item.keterangan || "Kendaraan anda telah dipindai",
+      //   time: item.created_at,
+      //   is_read: !!item.is_read,
+      //   category: "scan",
+      // }));
 
-      const combinedNotifications = [...adminNotifs, ...scanNotifs];
+      // const combinedNotifications = [...adminNotifs, ...scanNotifs];
 
-      console.log("Data notification", combinedNotifications);
+      // console.log("Data notification", combinedNotifications);
 
-      setNotifications(combinedNotifications);
+      setNotifications(res);
     } catch (err) {
       console.error("Gagal ambil notifikasi", err);
     } finally {
