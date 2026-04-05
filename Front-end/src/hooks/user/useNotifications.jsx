@@ -15,8 +15,8 @@ export const useNotifications = () => {
       setLoading(true);
       const res = await getNotifications();
 
-      const adminData = res?.notif_admin?.data || [];
-      const qrData = res?.notif_scan_qr?.data || [];
+      const adminData = res.data?.notif_admin?.data || [];
+      const qrData = res.data?.notif_scan_qr?.data || [];
 
       const combinedData = [...adminData, ...qrData];
 
