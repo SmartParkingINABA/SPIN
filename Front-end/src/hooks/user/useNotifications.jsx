@@ -50,7 +50,7 @@ export const useNotifications = () => {
       await markAsRead(id);
 
       setNotifications((prev) =>
-        prev.map((n) => (n.id === id ? { ...n, is_read: true } : n)),
+        prev.map((n) => (n.id === id ? { ...n, status_baca: "Sudah" } : n)),
       );
     } catch (err) {
       console.error("Gagal memperbarui status", err);
@@ -61,7 +61,9 @@ export const useNotifications = () => {
   const markAllRead = async () => {
     try {
       await markAllAsRead();
-      setNotifications((prev) => prev.map((n) => ({ ...n, is_read: true })));
+      setNotifications((prev) =>
+        prev.map((n) => ({ ...n, status_baca: "Sudah" })),
+      );
       toast.success("Semua notifikasi ditandai dibaca");
     } catch (err) {
       console.error("Gagal memperbarui semua", err);
