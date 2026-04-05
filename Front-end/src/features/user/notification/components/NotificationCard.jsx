@@ -8,13 +8,13 @@ export default function NotificationCard({ data, onMarkRead }) {
 
   const getConfig = (cat) => {
     switch (cat) {
-      case "scan":
+      case "admin":
         return {
           Icon: CgDanger,
           iconColor: "text-blue-500",
           bgColor: "bg-blue-50",
         };
-      case "admin":
+      case "scan":
         return {
           Icon: FaCarSide,
           iconColor: "text-green-500",
