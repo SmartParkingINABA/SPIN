@@ -14,7 +14,13 @@ export const useNotifications = () => {
     try {
       setLoading(true);
       const res = await getNotifications();
-      setNotifications(res || []);
+
+      const adminData = res?.notif_admin?.data || [];
+      const qrData = res?.notif_scan_qr?.data || [];
+
+      const combinedData = [...adminData, ...qrData];
+
+      setNotifications(combinedData);
     } catch (err) {
       console.error("Gagal ambil notifikasi", err);
     } finally {

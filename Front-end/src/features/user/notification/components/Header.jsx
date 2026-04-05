@@ -5,9 +5,7 @@ export default function Header({ notifications = [], onMarkAllRead }) {
   const unreadCount = useMemo(() => {
     if (!Array.isArray(notifications)) return 0;
 
-    return notifications.filter(
-      (n) => n.status_baca === "Belum" || !n.status_baca,
-    ).length;
+    return notifications.filter((n) => n.status_baca === "Belum").length;
   }, [notifications]);
 
   return (

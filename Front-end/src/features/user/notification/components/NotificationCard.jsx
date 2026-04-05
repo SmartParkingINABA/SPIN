@@ -42,7 +42,7 @@ export default function NotificationCard({ data, onMarkRead }) {
           </div>
         </div>
 
-        {!status_baca && (
+        {status_baca === "Belum" && (
           <p className="rounded-sm px-[7px] py-0.5 bg-[#130F40] text-[14px] text-[#FEF8FD]">
             Baru
           </p>
@@ -52,7 +52,7 @@ export default function NotificationCard({ data, onMarkRead }) {
         <div className="flex items-center justify-between">
           <p className="text-[14px] text-[#130F40]">{pesan}</p>
 
-          {!status_baca && (
+          {status_baca === "Belum" && (
             <button
               className="flex items-center gap-x-1.5 cursor-pointer"
               onClick={onMarkRead}
