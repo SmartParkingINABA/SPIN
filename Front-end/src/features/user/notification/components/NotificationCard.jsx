@@ -1,5 +1,6 @@
 import { CgDanger } from "react-icons/cg";
 import { FaCarSide } from "react-icons/fa";
+import { ImExit, ImEnter } from "react-icons/im";
 import { IoMdCheckmark } from "react-icons/io";
 import { MdOutlinePhoneAndroid } from "react-icons/md";
 
@@ -10,13 +11,13 @@ export default function NotificationCard({ data, onMarkRead }) {
     switch (cat) {
       case "Keluar":
         return {
-          Icon: CgDanger,
+          Icon: ImExit,
           iconColor: "text-blue-500",
           bgColor: "bg-blue-50",
         };
       case "Masuk":
         return {
-          Icon: FaCarSide,
+          Icon: ImEnter,
           iconColor: "text-green-500",
           bgColor: "bg-green-50",
         };
