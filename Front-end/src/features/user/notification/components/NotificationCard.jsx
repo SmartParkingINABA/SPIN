@@ -22,8 +22,8 @@ export default function NotificationCard({ data, onMarkRead }) {
       default:
         return {
           Icon: RiAdminLine,
-          iconColor: "#005b96",
-          bgColor: "#6497b1",
+          iconColor: "#fcbf49",
+          bgColor: "#eae2b7",
         };
     }
   };
