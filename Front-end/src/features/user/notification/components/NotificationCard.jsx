@@ -3,6 +3,7 @@ import { FaCarSide } from "react-icons/fa";
 import { ImExit, ImEnter } from "react-icons/im";
 import { IoMdCheckmark } from "react-icons/io";
 import { MdOutlinePhoneAndroid } from "react-icons/md";
+import { RiAdminLine } from "react-icons/ri";
 
 export default function NotificationCard({ data, onMarkRead }) {
   const { judul, pesan, waktu, status_baca, jenis } = data;
@@ -23,7 +24,7 @@ export default function NotificationCard({ data, onMarkRead }) {
         };
       default:
         return {
-          Icon: MdOutlinePhoneAndroid,
+          Icon: RiAdminLine,
           iconColor: "text-orange-500",
           bgColor: "bg-red-300",
         };
