@@ -3,7 +3,8 @@ import inabaLogo from "../assets/images/public/logo_inaba.webp";
 
 export default function PublicLayout() {
   const location = useLocation();
-  const hideHeader = location.pathname === "/masuk";
+  const hideHeader =
+    location.pathname === "/masuk" && location.pathname === "/unauthorized";
 
   return (
     <main className="relative w-full font-ubuntu bg-[#130F40]">
