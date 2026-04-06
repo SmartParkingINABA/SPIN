@@ -14,6 +14,8 @@ export function AuthProvider({ children }) {
     return { ...userData, ...profileData };
   });
 
+  const displayName = user?.nama_pengendara || user?.email;
+
   const saveUser = (userData) => {
     const storedProfile = JSON.parse(
       localStorage.getItem("user_profile") || "{}",
@@ -45,7 +47,13 @@ export function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider
-      value={{ user, setUser: saveUser, updateProfileState, logout }}
+      value={{
+        user,
+        displayName,
+        setUser: saveUser,
+        updateProfileState,
+        logout,
+      }}
     >
       {children}
     </AuthContext.Provider>

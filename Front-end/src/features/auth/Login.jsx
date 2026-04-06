@@ -48,12 +48,13 @@ export default function Login() {
 
       setUser(res.user);
 
+      const identity = res.user?.nama_pengendara || values.email;
+      toast.success(res.message + identity || "Kamu berhasil login!");
+
       const role = res.user.role.toLowerCase();
       console.log(role);
 
       const redirectPath = roleRedirectMap[role] || "/";
-
-      toast.success(res.message + values.email || "Kamu berhasil login!");
 
       navigate(redirectPath);
     } catch (err) {

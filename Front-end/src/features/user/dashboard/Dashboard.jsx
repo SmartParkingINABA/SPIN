@@ -7,32 +7,19 @@ import BoxWrapper from "../../../components/ui/BoxWrapper";
 import { useDashboard } from "../../../hooks/user/useDashboard";
 import { useAuth } from "../../../context/useAuth";
 import DashboardSkeleton from "./components/DashboardSkeleton";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export default function Dashboard() {
   const { loading, overview, error } = useDashboard();
-  const { user, updateProfileState } = useAuth();
-  const [userProfile, setUserProfile] = useState(() => {
-    const savedData = localStorage.getItem("user_profile");
-    return savedData ? JSON.parse(savedData) : null;
-  });
+  const { displayName, updateProfileState } = useAuth();
 
   useEffect(() => {
     if (overview?.summary?.nama_pengendara) {
-      const profileData = {
+      updateProfileState({
         nama_pengendara: overview.summary.nama_pengendara,
         foto_profil: overview.summary.foto_profil,
-      };
-      updateProfileState(profileData);
-      setUserProfile(profileData);
+      });
     }
-
-    const handleUpdate = (e) => {
-      setUserProfile(e.detail);
-    };
-
-    window.addEventListener("profile-updated", handleUpdate);
-    return () => window.removeEventListener("profile-updated", handleUpdate);
   }, [overview, updateProfileState]);
 
   const summary = overview?.summary || {};
@@ -44,15 +31,13 @@ export default function Dashboard() {
     return <div className="text-red-500 p-10">Failed to load dashboard</div>;
   }
 
-  const displayIdentity = userProfile?.nama_pengendara || user?.email;
-
   return (
     <>
       {loading ? (
         <DashboardSkeleton />
       ) : (
         <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
-          <Header user={displayIdentity} />
+          <Header user={displayName} />
           <div className="mt-6">
             <StatsGrid summary={summary} />
           </div>
