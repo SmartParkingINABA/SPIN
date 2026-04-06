@@ -1,5 +1,4 @@
 import Header from "./components/Header";
-// import { notifications } from "./components/notificationsDummy";
 import NotificationCard from "./components/NotificationCard";
 import { useNotifications } from "../../../hooks/user/useNotifications";
 import NotificationSkeleton from "./components/NotificationSkeleton";
