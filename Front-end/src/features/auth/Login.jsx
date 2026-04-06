@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { IoMdMail } from "react-icons/io";
 import { FaLock } from "react-icons/fa6";
@@ -11,6 +11,7 @@ import LoadingSpinner from "../../components/ui/LoadingSpinner";
 import { login } from "../../services/auth.Service";
 import useAutoFocus from "../../hooks/useAutoFocus";
 import { useAuth } from "../../context/useAuth";
+import { useDashboard } from "../../hooks/user/useDashboard";
 
 const roleRedirectMap = {
   admin: "/admin",
@@ -22,7 +23,33 @@ export default function Login() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { setUser } = useAuth();
+  const { overview } = useDashboard();
+  const { setUser, user, updateProfileState } = useAuth();
+  const [userProfile, setUserProfile] = useState(() => {
+    const savedData = localStorage.getItem("user_profile");
+    return savedData ? JSON.parse(savedData) : null;
+  });
+
+  useEffect(() => {
+    if (overview?.summary?.nama_pengendara) {
+      const profileData = {
+        nama_pengendara: overview.summary.nama_pengendara,
+        foto_profil: overview.summary.foto_profil,
+      };
+      updateProfileState(profileData);
+      setUserProfile(profileData);
+    }
+
+    const handleUpdate = (e) => {
+      setUserProfile(e.detail);
+    };
+
+    window.addEventListener("profile-updated", handleUpdate);
+    return () => window.removeEventListener("profile-updated", handleUpdate);
+  }, [overview, updateProfileState]);
+
+  const displayIdentity = userProfile?.nama_pengendara || user?.email;
+
   const { values, errors, handleChange, validateAll } = useFormValidation(
     {
       email: "",
@@ -53,7 +80,7 @@ export default function Login() {
 
       const redirectPath = roleRedirectMap[role] || "/";
 
-      toast.success(res.message + values.email || "Kamu berhasil login!");
+      toast.success(res.message + displayIdentity || "Kamu berhasil login!");
 
       navigate(redirectPath);
     } catch (err) {
