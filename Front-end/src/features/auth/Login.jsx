@@ -11,6 +11,7 @@ import LoadingSpinner from "../../components/ui/LoadingSpinner";
 import { login } from "../../services/auth.Service";
 import useAutoFocus from "../../hooks/useAutoFocus";
 import { useAuth } from "../../context/useAuth";
+import { getAccountSettings } from "../../services/user/accountSettings.Service";
 
 const roleRedirectMap = {
   admin: "/admin",
@@ -22,7 +23,7 @@ export default function Login() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { setUser } = useAuth();
+  const { setUser, updateProfileState } = useAuth();
   const { values, errors, handleChange, validateAll } = useFormValidation(
     {
       email: "",
@@ -48,23 +49,24 @@ export default function Login() {
 
       setUser(res.user);
 
+      const profileRes = await getAccountSettings();
+      const profile = profileRes?.profil;
+
+      if (profile) {
+        updateProfileState({
+          nama_pengendara: profile.nama_pengendara,
+          foto_profil: profile.foto_profil,
+        });
+      }
+
+      const displayName = profile?.nama_pengendara || res.user.email;
+
       const role = res.user.role.toLowerCase();
       console.log(role);
 
       const redirectPath = roleRedirectMap[role] || "/";
 
-      const getDisplayName = () => {
-        const storedProfile = JSON.parse(
-          localStorage.getItem("user_profile") || "{}",
-        );
-        return storedProfile?.nama_pengendara;
-      };
-
-      const name = getDisplayName();
-
-      toast.success(
-        res.message + name || values.email || "Kamu berhasil login!",
-      );
+      toast.success(res.message + displayName || "Kamu berhasil login!");
 
       navigate(redirectPath);
     } catch (err) {
