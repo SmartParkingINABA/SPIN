@@ -11,7 +11,6 @@ import LoadingSpinner from "../../components/ui/LoadingSpinner";
 import { login } from "../../services/auth.Service";
 import useAutoFocus from "../../hooks/useAutoFocus";
 import { useAuth } from "../../context/useAuth";
-import { useDashboard } from "../../hooks/user/useDashboard";
 
 const roleRedirectMap = {
   admin: "/admin",
@@ -24,8 +23,6 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const { setUser } = useAuth();
-  const { overview } = useDashboard();
-
   const { values, errors, handleChange, validateAll } = useFormValidation(
     {
       email: "",
@@ -56,9 +53,18 @@ export default function Login() {
 
       const redirectPath = roleRedirectMap[role] || "/";
 
-      const identity = overview.summary.nama_pengendara || values.email;
+      const getDisplayName = () => {
+        const storedProfile = JSON.parse(
+          localStorage.getItem("user_profile") || "{}",
+        );
+        return storedProfile?.nama_pengendara;
+      };
 
-      toast.success(res.message + identity || "Kamu berhasil login!");
+      const name = getDisplayName();
+
+      toast.success(
+        res.message + name || values.email || "Kamu berhasil login!",
+      );
 
       navigate(redirectPath);
     } catch (err) {

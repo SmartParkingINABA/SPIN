@@ -27,7 +27,12 @@ export function AuthProvider({ children }) {
   const updateProfileState = (newProfileData) => {
     setUser((prev) => {
       const updated = { ...prev, ...newProfileData };
-      localStorage.setItem("user_profile", JSON.stringify(newProfileData));
+
+      const existingProfile = JSON.parse(
+        localStorage.getItem("user_profile") || "{}",
+      );
+      const mergedProfile = { ...existingProfile, ...newProfileData };
+      localStorage.setItem("user_profile", JSON.stringify(mergedProfile));
 
       window.dispatchEvent(
         new CustomEvent("profile-updated", { detail: newProfileData }),
