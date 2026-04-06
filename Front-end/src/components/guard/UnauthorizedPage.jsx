@@ -7,7 +7,7 @@ export default function UnauthorizedPage() {
       <p>Anda tidak memiliki izin untuk mengakses halaman ini.</p>
       <button
         onClick={() => (window.location.href = "/")}
-        className="mt-5 px-4 py-2 bg-[#62929e] text-white rounded-md cursor-pointer opacity-100 hover:opacity-80"
+        className="mt-5 px-4 py-2 bg-[#62929e] text-white rounded-md cursor-pointer opacity-100 hover:opacity-80 transition duration-300 ease-in-out"
       >
         Kembali ke Beranda
       </button>
