@@ -22,14 +22,14 @@ export default function ParkingHistory() {
           <Dropdown
             filters={filters}
             setFilters={setFilters}
-            vehicleOptions={data.kendaraanList}
+            vehicleOptions={data.kendaraanList || []}
           />
           <StatsGrid stats={data.stats} />
           <div className="bg-[#1E1633] border border-[rgba(255,236,120,0.5)] rounded-md py-5 px-6 mt-6">
             <h2 className="text-[#93A3B6] font-semibold mb-3.5">
               Daftar Riwayat
             </h2>
-            {data.history.length > 0 ? (
+            {(data.history || []).length > 0 ? (
               <HistoryList rows={data.history} />
             ) : (
               <p className="text-[#93A3B6]">Belum ada riwayat parkir.</p>

@@ -25,6 +25,9 @@ export const useParkingHistory = () => {
       const res = await getParkingHistory(filters);
       const backendData = res.data;
 
+      console.log("FULL RESPONSE:", res);
+      console.log("DATA:", res.data);
+
       setData({
         stats: backendData.summary || {},
         kendaraanList: backendData.kendaraan_list || [],
