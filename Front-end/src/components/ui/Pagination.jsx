@@ -15,7 +15,7 @@ export default function Pagination({ pagination, setPagination }) {
   };
 
   return (
-    <div className="flex justify-between items-center mt-4 text-[#D3CBD1]">
+    <div className="flex gap-4 items-center mt-4 text-[#D3CBD1]">
       <button
         onClick={handlePrev}
         disabled={page === 1}
