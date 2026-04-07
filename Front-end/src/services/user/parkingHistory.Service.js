@@ -12,6 +12,7 @@ export const getExportDataParking = async (params) => {
     "/pengendara/dashboard/riwayat-parkir/export",
     {
       params,
+      responseType: "blob",
     },
   );
 

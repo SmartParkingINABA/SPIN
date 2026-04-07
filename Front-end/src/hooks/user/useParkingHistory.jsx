@@ -57,12 +57,18 @@ export const useParkingHistory = () => {
   const handleExport = async () => {
     try {
       toast.loading("Mengunduh data...", { id: "export" });
-      const res = await getExportDataParking(filters);
+      const blob = await getExportDataParking(filters);
+      const url = window.URL.createObjectURL(blob);
+      console.log(blob);
 
-      if (res.url) {
-        window.open(res.url, "_blank");
-      }
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "riwayat-parkir.csv");
+      document.body.appendChild(link);
+      link.click();
 
+      link.remove();
+      window.URL.revokeObjectURL(url);
       toast.success("Data berhasil diekspor", { id: "export" });
     } catch (err) {
       console.error("Gagal ekspor data", err);
