@@ -17,9 +17,9 @@ export default function Notification() {
             {notifications.length > 0 ? (
               notifications.map((item) => (
                 <NotificationCard
-                  key={item.id}
+                  key={`${item.category}-${item.id}`}
                   data={item}
-                  onMarkRead={() => markRead(item.id)}
+                  onMarkRead={() => markRead(item.id, item.category)}
                 />
               ))
             ) : (

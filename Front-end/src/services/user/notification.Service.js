@@ -6,8 +6,10 @@ export const getNotifications = async () => {
   return response.data;
 };
 
-export const markAsRead = async (id) => {
-  const response = await api.patch(`/pengendara/dashboard/${id}/read`);
+export const markAsRead = async (id, type) => {
+  const response = await api.patch(
+    `/pengendara/dashboard/${id}/read?type=${type}`,
+  );
 
   return response.data;
 };

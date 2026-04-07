@@ -38,13 +38,19 @@ export const useNotifications = () => {
     }
   }, []);
 
-  const markRead = async (id) => {
+  const markRead = async (id, type) => {
     try {
-      await markAsRead(id);
+      await markAsRead(id, type);
 
       setNotifications((prev) =>
-        prev.map((n) => (n.id === id ? { ...n, status_baca: "Sudah" } : n)),
+        prev.map((n) =>
+          n.id === id && n.category === type
+            ? { ...n, status_baca: "Sudah" }
+            : n,
+        ),
       );
+
+      await fetchNotifications();
     } catch (err) {
       console.error("Gagal memperbarui status", err);
       toast.error("Gagal memperbarui status");
@@ -58,6 +64,9 @@ export const useNotifications = () => {
       setNotifications((prev) =>
         prev.map((n) => ({ ...n, status_baca: "Sudah" })),
       );
+
+      await fetchNotifications();
+
       toast.success("Semua notifikasi ditandai dibaca");
     } catch (err) {
       console.error("Gagal memperbarui semua", err);
