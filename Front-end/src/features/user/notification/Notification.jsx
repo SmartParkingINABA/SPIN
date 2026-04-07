@@ -2,9 +2,17 @@ import Header from "./components/Header";
 import NotificationCard from "./components/NotificationCard";
 import { useNotifications } from "../../../hooks/user/useNotifications";
 import NotificationSkeleton from "./components/NotificationSkeleton";
+import Pagination from "../../../components/ui/Pagination";
 
 export default function Notification() {
-  const { notifications, loading, markRead, markAllRead } = useNotifications();
+  const {
+    notifications,
+    loading,
+    markRead,
+    markAllRead,
+    pagination,
+    setPagination,
+  } = useNotifications();
 
   return (
     <>
@@ -26,6 +34,7 @@ export default function Notification() {
               <p className="text-[#93A3B6]">Belum ada notifikasi.</p>
             )}
           </div>
+          <Pagination pagination={pagination} setPagination={setPagination} />
         </section>
       )}
     </>

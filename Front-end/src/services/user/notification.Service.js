@@ -1,7 +1,9 @@
 import api from "../../lib/axios";
 
 export const getNotifications = async () => {
-  const response = await api.get("/pengendara/dashboard/notifikasi");
+  const response = await api.get(
+    "/pengendara/dashboard/notifikasi?page=1&limit=50",
+  );
 
   return response.data;
 };

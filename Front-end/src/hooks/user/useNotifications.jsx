@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   getNotifications,
   markAllAsRead,
@@ -7,8 +7,40 @@ import {
 import toast from "react-hot-toast";
 
 export const useNotifications = () => {
-  const [notifications, setNotifications] = useState([]);
+  const [rawNotifications, setRawNotifications] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const [pagination, setPagination] = useState({
+    page: 1,
+    limit: 10,
+    total: 0,
+  });
+
+  const parseDate = (str) => {
+    const bulanMap = {
+      Januari: 0,
+      Februari: 1,
+      Maret: 2,
+      April: 3,
+      Mei: 4,
+      Juni: 5,
+      Juli: 6,
+      Agustus: 7,
+      September: 8,
+      Oktober: 9,
+      November: 10,
+      Desember: 11,
+    };
+
+    const regex = /(\d{1,2}) (\w+) (\d{4}) pukul (\d{2})\.(\d{2})\.(\d{2})/;
+
+    const match = str.match(regex);
+    if (!match) return new Date();
+
+    const [, day, month, year, h, m, s] = match;
+
+    return new Date(year, bulanMap[month], day, h, m, s);
+  };
 
   const fetchNotifications = useCallback(async () => {
     try {
@@ -28,9 +60,16 @@ export const useNotifications = () => {
           category: "scan",
         })) || [];
 
-      const combinedData = [...adminData, ...qrData];
+      const combinedData = [...adminData, ...qrData].sort(
+        (a, b) => parseDate(b.waktu) - parseDate(a.waktu),
+      );
 
-      setNotifications(combinedData);
+      setRawNotifications(combinedData);
+
+      setPagination((prev) => ({
+        ...prev,
+        total: combinedData.length,
+      }));
     } catch (err) {
       console.error("Gagal ambil notifikasi", err);
     } finally {
@@ -38,18 +77,16 @@ export const useNotifications = () => {
     }
   }, []);
 
+  const notifications = useMemo(() => {
+    const start = (pagination.page - 1) * pagination.limit;
+    const end = start + pagination.limit;
+
+    return rawNotifications.slice(start, end);
+  }, [rawNotifications, pagination]);
+
   const markRead = async (id, type) => {
     try {
       await markAsRead(id, type);
-
-      setNotifications((prev) =>
-        prev.map((n) =>
-          n.id === id && n.category === type
-            ? { ...n, status_baca: "Sudah" }
-            : n,
-        ),
-      );
-
       await fetchNotifications();
     } catch (err) {
       console.error("Gagal memperbarui status", err);
@@ -60,10 +97,6 @@ export const useNotifications = () => {
   const markAllRead = async () => {
     try {
       await Promise.all([markAllAsRead("admin"), markAllAsRead("scan")]);
-
-      setNotifications((prev) =>
-        prev.map((n) => ({ ...n, status_baca: "Sudah" })),
-      );
 
       await fetchNotifications();
 
@@ -83,6 +116,8 @@ export const useNotifications = () => {
     loading,
     markRead,
     markAllRead,
+    pagination,
+    setPagination,
     refresh: fetchNotifications,
   };
 };
