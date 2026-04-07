@@ -35,6 +35,10 @@ export default function VehiclesDropdown({
     return () => window.removeEventListener("click", handleClickOutside);
   }, []);
 
+  const selectedLabel =
+    vehicleOptions.find((item) => item.id == selected)?.label ||
+    "Semua Kendaraan";
+
   return (
     <div className="flex flex-col relative z-10" ref={dropdownRef}>
       <button
@@ -43,7 +47,7 @@ export default function VehiclesDropdown({
         onClick={handleToggle}
       >
         <span id="selectedText" className="text-[#130F40] font-medium">
-          {selected}
+          {selectedLabel}
         </span>
         <IoMdArrowDropdown
           className={`w-7 h-fit text-[#130F40] transform transition-transform duration-300 ${
