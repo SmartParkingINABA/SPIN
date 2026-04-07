@@ -12,8 +12,10 @@ export const markAsRead = async (id) => {
   return response.data;
 };
 
-export const markAllAsRead = async () => {
-  const response = await api.patch("/pengendara/dashboard/notifikasi/read-all");
+export const markAllAsRead = async (type) => {
+  const response = await api.patch(
+    `/pengendara/dashboard/notifikasi/read-all?type=${type}`,
+  );
 
   return response.data;
 };

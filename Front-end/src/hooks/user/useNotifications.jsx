@@ -15,8 +15,18 @@ export const useNotifications = () => {
       setLoading(true);
       const res = await getNotifications();
 
-      const adminData = res.data?.notif_admin?.data || [];
-      const qrData = res.data?.notif_scan_qr?.data || [];
+      const adminData =
+        res.data?.notif_admin?.data?.map((item) => ({
+          ...item,
+          category: "admin",
+          jenis: item.tipe,
+        })) || [];
+
+      const qrData =
+        res.data?.notif_scan_qr?.data?.map((item) => ({
+          ...item,
+          category: "scan",
+        })) || [];
 
       const combinedData = [...adminData, ...qrData];
 
@@ -43,7 +53,8 @@ export const useNotifications = () => {
 
   const markAllRead = async () => {
     try {
-      await markAllAsRead();
+      await Promise.all([markAllAsRead("admin"), markAllAsRead("scan")]);
+
       setNotifications((prev) =>
         prev.map((n) => ({ ...n, status_baca: "Sudah" })),
       );
