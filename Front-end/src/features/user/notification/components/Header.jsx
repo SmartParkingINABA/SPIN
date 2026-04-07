@@ -22,9 +22,13 @@ export default function Header({ notifications = [], onMarkAllRead }) {
         <p className="text-[#93A3B6] font-medium">
           Pantau aktivitas kendaraan Anda
         </p>
-        {notifications.length > 0 && (
+        {unreadCount > 0 && (
           <button
-            className="flex items-center gap-x-2 border border-transparent bg-[#93A3B6] py-1 px-1.5 rounded-sm cursor-pointer transition opacity-100 hover:opacity-80"
+            className={`flex items-center gap-x-2 bg-[#93A3B6] py-1 px-1.5 rounded-sm cursor-pointer transition-all duration-300 ${
+              unreadCount === 0
+                ? "opacity-0 pointer-events-none"
+                : "opacity-100"
+            } hover:opacity-80`}
             onClick={onMarkAllRead}
           >
             <BiCheckDouble className="h-fit w-5 text-[#130F40]" />
