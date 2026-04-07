@@ -8,14 +8,21 @@ export default function Dropdown({ filters, setFilters, vehicleOptions }) {
         <p className="text-[#93A3B6] font-medium mb-2">Filter Status</p>
         <StatusDropdown
           selected={filters.status}
-          onSelect={(val) => setFilters((prev) => ({ ...prev, status: val }))}
+          onSelect={(val) =>
+            setFilters((prev) => ({
+              ...prev,
+              status: val === "Semua Status" ? "all" : val,
+            }))
+          }
         />
       </div>
       <div>
         <p className="text-[#93A3B6] font-medium mb-2">Filter Kendaraan</p>
         <VehiclesDropdown
-          selected={filters.vehicle}
-          onSelect={(val) => setFilters((prev) => ({ ...prev, vehicle: val }))}
+          selected={filters.kendaraan_id}
+          onSelect={(val) =>
+            setFilters((prev) => ({ ...prev, kendaraan_id: val }))
+          }
           vehicleOptions={vehicleOptions}
         />
       </div>

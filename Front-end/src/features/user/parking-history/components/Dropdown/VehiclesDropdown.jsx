@@ -62,8 +62,8 @@ export default function VehiclesDropdown({
       >
         {vehicleOptions.map((item) => (
           <li
-            key={item}
-            onClick={() => handleSelect(item)}
+            key={item.id}
+            onClick={() => handleSelect(item.id)}
             className="text-[#ddd] font-medium rounded-sm py-1.5 px-3 cursor-pointer transition duration-300 ease-in-out hover:bg-[#FFEC78] hover:text-[#1E1633] hover:border-transparent flex items-center justify-between group"
           >
             {item}

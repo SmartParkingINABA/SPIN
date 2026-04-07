@@ -6,27 +6,46 @@ import {
 import toast from "react-hot-toast";
 
 export const useParkingHistory = () => {
-  const [data, setData] = useState({ stats: [], history: [] });
+  const [data, setData] = useState({
+    stats: {},
+    history: [],
+    kendaraanList: [],
+  });
   const [loading, setLoading] = useState(true);
 
   const [filters, setFilters] = useState({
-    status: "Semua Status",
-    vehicle: "Semua Kendaraan",
+    status: "all",
+    kendaraan_id: "all",
   });
 
   const fetchHistory = useCallback(async () => {
     try {
       setLoading(true);
 
-      const res = await getParkingHistory();
-      setData({ stats: res.stats || {}, history: res.history || [] });
+      const res = await getParkingHistory(filters);
+      const backendData = res.data;
+
+      setData({
+        stats: backendData.summary || {},
+        kendaraanList: backendData.kendaraan_list || [],
+        history:
+          backendData.riwayat?.data.map((item, index) => ({
+            id: index,
+            plat: item.plat_nomor,
+            tanggal: item.tanggal_masuk,
+            jam_masuk: item.jam_masuk,
+            jam_keluar: item.jam_keluar,
+            durasi: item.durasi,
+            status: item.status,
+          })) || [],
+      });
     } catch (err) {
       console.error("Gagal memuat riwayat parkir", err);
       toast.error("Gagal memuat riwayat parkir");
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [filters]);
 
   useEffect(() => {
     fetchHistory();
@@ -35,7 +54,7 @@ export const useParkingHistory = () => {
   const handleExport = async () => {
     try {
       toast.loading("Mengunduh data...", { id: "export" });
-      const res = await getExportDataParking();
+      const res = await getExportDataParking(filters);
 
       if (res.url) {
         window.open(res.url, "_blank");
@@ -54,6 +73,5 @@ export const useParkingHistory = () => {
     filters,
     setFilters,
     handleExport,
-    refresh: fetchHistory,
   };
 };
