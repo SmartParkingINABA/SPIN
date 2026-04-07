@@ -19,7 +19,7 @@ export default function Pagination({ pagination, setPagination }) {
       <button
         onClick={handlePrev}
         disabled={page === 1}
-        className="px-3 py-1 bg-[#FFEC78] text-[#130F40] rounded disabled:opacity-50"
+        className="px-3 py-1 bg-[#FFEC78] text-[#130F40] rounded cursor-pointer transition duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
       >
         Prev
       </button>
@@ -29,7 +29,7 @@ export default function Pagination({ pagination, setPagination }) {
       <button
         onClick={handleNext}
         disabled={page === totalPages}
-        className="px-3 py-1 bg-[#FFEC78] text-[#130F40] rounded disabled:opacity-50"
+        className="px-3 py-1 bg-[#FFEC78] text-[#130F40] rounded cursor-pointer transition duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
       >
         Next
       </button>
