@@ -2,6 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { FaCheck } from "react-icons/fa6";
 
+const STATUS_OPTIONS = [
+  { label: "Semua Status", value: "all" },
+  { label: "Selesai", value: "Selesai" },
+  { label: "Sedang Parkir", value: "Sedang Parkir" },
+];
+
 export default function StatusDropdown({ selected, onSelect }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -31,6 +37,10 @@ export default function StatusDropdown({ selected, onSelect }) {
     return () => window.removeEventListener("click", handleClickOutside);
   }, []);
 
+  const selectedLabel =
+    STATUS_OPTIONS.find((item) => item.value === selected)?.label ||
+    "Semua Status";
+
   return (
     <div className="flex flex-col relative z-10" ref={dropdownRef}>
       <button
@@ -39,7 +49,7 @@ export default function StatusDropdown({ selected, onSelect }) {
         onClick={handleToggle}
       >
         <span id="selectedText" className="text-[#130F40] font-medium">
-          {selected}
+          {selectedLabel}
         </span>
         <IoMdArrowDropdown
           className={`w-7 h-fit text-[#130F40] transform transition-transform duration-300 ${
@@ -56,16 +66,16 @@ export default function StatusDropdown({ selected, onSelect }) {
             : "opacity-0 -translate-y-2 pointer-events-none"
         }`}
       >
-        {["Semua Status", "Selesai", "Sedang Parkir"].map((item) => (
+        {STATUS_OPTIONS.map((item) => (
           <li
-            key={item}
-            onClick={() => handleSelect(item)}
+            key={item.value}
+            onClick={() => handleSelect(item.value)}
             className="text-[#ddd] font-medium rounded-sm py-1.5 px-3 cursor-pointer transition duration-300 ease-in-out hover:bg-[#FFEC78] hover:text-[#1E1633] hover:border-transparent flex items-center justify-between group"
           >
-            {item}
+            {item.label}
             <FaCheck
               className={`w-4 h-fit transition duration-300 group-hover:opacity-100 ${
-                selected === item ? "opacity-100" : "opacity-0"
+                selected === item.value ? "opacity-100" : "opacity-0"
               }`}
             />
           </li>
