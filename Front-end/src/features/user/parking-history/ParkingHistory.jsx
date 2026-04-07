@@ -4,10 +4,18 @@ import StatsGrid from "./components/Stats/StatsGrid";
 import HistoryList from "./components/HIstoryList/HistoryList";
 import { useParkingHistory } from "../../../hooks/user/useParkingHistory";
 import HistorySkeleton from "./components/HistorySkeleton";
+import Pagination from "../../../components/ui/Pagination";
 
 export default function ParkingHistory() {
-  const { data, loading, filters, setFilters, handleExport } =
-    useParkingHistory();
+  const {
+    data,
+    loading,
+    filters,
+    setFilters,
+    handleExport,
+    pagination,
+    setPagination,
+  } = useParkingHistory();
 
   return (
     <>
@@ -22,6 +30,7 @@ export default function ParkingHistory() {
           <Dropdown
             filters={filters}
             setFilters={setFilters}
+            setPagination={setPagination}
             vehicleOptions={data.kendaraanList || []}
           />
           <StatsGrid stats={data.stats} />
@@ -30,7 +39,13 @@ export default function ParkingHistory() {
               Daftar Riwayat
             </h2>
             {(data.history || []).length > 0 ? (
-              <HistoryList rows={data.history} />
+              <>
+                <HistoryList rows={data.history} />
+                <Pagination
+                  pagination={pagination}
+                  setPagination={setPagination}
+                />
+              </>
             ) : (
               <p className="text-[#93A3B6]">Belum ada riwayat parkir.</p>
             )}

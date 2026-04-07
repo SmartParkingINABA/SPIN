@@ -6,13 +6,17 @@ import {
 import toast from "react-hot-toast";
 
 export const useParkingHistory = () => {
+  const [loading, setLoading] = useState(true);
   const [data, setData] = useState({
     stats: {},
     history: [],
     kendaraanList: [],
   });
-  const [loading, setLoading] = useState(true);
-
+  const [pagination, setPagination] = useState({
+    page: 1,
+    limit: 10,
+    total: 0,
+  });
   const [filters, setFilters] = useState({
     status: "all",
     kendaraan_id: "all",
@@ -22,7 +26,13 @@ export const useParkingHistory = () => {
     try {
       setLoading(true);
 
-      const res = await getParkingHistory(filters);
+      const params = {
+        ...filters,
+        page: pagination.page,
+        limit: pagination.limit,
+      };
+
+      const res = await getParkingHistory(params);
       const backendData = res.data;
 
       console.log("FULL RESPONSE:", res);
@@ -42,13 +52,18 @@ export const useParkingHistory = () => {
             status: item.status,
           })) || [],
       });
+
+      setPagination((prev) => ({
+        ...prev,
+        total: backendData.riwayat?.pagination?.total || 0,
+      }));
     } catch (err) {
       console.error("Gagal memuat riwayat parkir", err);
       toast.error("Gagal memuat riwayat parkir");
     } finally {
       setLoading(false);
     }
-  }, [filters]);
+  }, [filters, pagination.page, pagination.limit]);
 
   useEffect(() => {
     fetchHistory();
@@ -82,5 +97,7 @@ export const useParkingHistory = () => {
     filters,
     setFilters,
     handleExport,
+    pagination,
+    setPagination,
   };
 };
