@@ -6,12 +6,13 @@ import Statistic from "./components/Statistic";
 import WorkInformation from "./components/WorkInformation";
 import ButtonCta from "./components/ButtonCta";
 import { useProfile } from "../../../hooks/officer/useProfile";
+import ProfileSkeleton from "./components/ProfileSkeleton";
 
 export default function Profile() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { loading, profile, updateProfile } = useProfile();
 
-  if (loading) return <p className="p-5">Loading...</p>;
+  if (!loading) return <ProfileSkeleton />;
 
   return (
     <>
