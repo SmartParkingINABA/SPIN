@@ -64,7 +64,7 @@ export const useVehiclesReport = () => {
       const res = await delVehiclesReport(id);
       console.log("[DEL] response be (hapus):", res);
       await fetchVehicles();
-      toast.success("Berhasil memnghapus data kendaraan");
+      toast.success("Berhasil menghapus data kendaraan");
     } catch (err) {
       console.error("[DEL] error hapus kendaraan:", err);
     }

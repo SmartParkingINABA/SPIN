@@ -14,7 +14,7 @@ export const getVehiclesReport = async () => {
     year: item.tahun_keluaran,
     validUntil: item.masa_berlaku,
     status: item.status,
-    hasQr: !!item.qr_code,
+    hasQr: item.qr_code,
   }));
 };
 
