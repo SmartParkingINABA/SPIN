@@ -23,7 +23,6 @@ export default function EditForm({ onClose, onSubmit, vehicleData }) {
     const result = await onSubmit(formData);
     if (result.success) {
       onClose();
-      toast.success("Berhasil memperbarui data kendaraan");
     } else {
       toast.error("Gagal menambah kendaraan: " + result.error);
     }

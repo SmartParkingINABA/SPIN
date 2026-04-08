@@ -23,7 +23,6 @@ export default function AddForm({ onClose, onSubmit }) {
     const result = await onSubmit(formData);
     if (result.success) {
       onClose();
-      toast.success("Berhasil menambah kendaraan");
     } else {
       toast.error("Gagal menambah kendaraan: " + result.error);
     }

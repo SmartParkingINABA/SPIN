@@ -5,6 +5,7 @@ import {
   postVehiclesReport,
   putVehiclesReport,
 } from "../../services/user/vehiclesReport.Service";
+import toast from "react-hot-toast";
 
 export const useVehiclesReport = () => {
   const [vehicles, setVehicles] = useState([]);
@@ -31,6 +32,7 @@ export const useVehiclesReport = () => {
       const res = await postVehiclesReport(payload);
       console.log("[POST] Response BE (Tambah):", res);
       await fetchVehicles();
+      toast.success("Berhasil menambah kendaraan");
       return { success: true };
     } catch (err) {
       console.error("[POST] Error tambah kendaraan:", err);
@@ -44,6 +46,7 @@ export const useVehiclesReport = () => {
       const res = await putVehiclesReport(id, payload);
       console.log("[PUT] Response BE (update):", res);
       await fetchVehicles();
+      toast.success("Berhasil memperbarui data kendaraan");
       return { success: true };
     } catch (err) {
       console.error("[PUT] error update kendaraan:", err);
@@ -61,6 +64,7 @@ export const useVehiclesReport = () => {
       const res = await delVehiclesReport(id);
       console.log("[DEL] response be (hapus):", res);
       await fetchVehicles();
+      toast.success("Berhasil memnghapus data kendaraan");
     } catch (err) {
       console.error("[DEL] error hapus kendaraan:", err);
     }
