@@ -3,8 +3,9 @@ import { IoIosStar, IoIosInformationCircleOutline } from "react-icons/io";
 import { CiEdit } from "react-icons/ci";
 import { LuSave } from "react-icons/lu";
 import { useState } from "react";
+import LoadingSpinner from "../../../../components/ui/LoadingSpinner";
 
-export default function FormEdit({ onClose, data, onSubmit }) {
+export default function FormEdit({ onClose, data, onSubmit, loading }) {
   const [form, setForm] = useState({
     nama_petugas: data.nama_petugas,
     no_telp: data.no_telp,
@@ -84,7 +85,11 @@ export default function FormEdit({ onClose, data, onSubmit }) {
           >
             <div className="w-fit mx-auto flex items-center gap-x-2">
               <LuSave className="h-fit w-5" />
-              Simpan
+              {loading ? (
+                <LoadingSpinner size={18} color="#1e1633" />
+              ) : (
+                "Simpan"
+              )}
             </div>
           </button>
         </form>

@@ -37,6 +37,7 @@ export default function Profile() {
           onClose={() => setIsModalOpen(false)}
           data={profile.informasi_pribadi}
           onSubmit={updateProfile}
+          loading={loading}
         />
       )}
     </>
