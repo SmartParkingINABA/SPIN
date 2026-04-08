@@ -5,11 +5,11 @@ export default function ProfileSkeleton() {
       <p className="h-3 w-[18%] bg-[#93A3B6] rounded-md mt-2.5"></p>
       <div className="mt-6 flex flex-col gap-y-5">
         <div className="flex gap-x-5">
-          <div className="bg-[#93A3B6] rounded-md w-2/3 h-32"></div>
+          <div className="bg-[#93A3B6] rounded-md w-2/3 h-64"></div>
           <div className="bg-[#93A3B6] rounded-md w-1/3"></div>
         </div>
         <div className="flex gap-x-5">
-          <div className="bg-[#93A3B6] rounded-md w-2/3 h-26"></div>
+          <div className="bg-[#93A3B6] rounded-md w-2/3 h-48"></div>
           <div className="bg-[#93A3B6] rounded-md w-1/3"></div>
         </div>
       </div>
