@@ -46,6 +46,7 @@ export const useNotifications = () => {
     try {
       setLoading(true);
       const res = await getNotifications();
+      console.log("RES:", res);
 
       const adminData =
         res.data?.notif_admin?.data?.map((item) => ({
