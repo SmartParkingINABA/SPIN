@@ -92,7 +92,13 @@ export const useNotifications = () => {
   const markRead = async (id, type) => {
     try {
       await markAsRead(id, type);
-      await fetchNotifications();
+      setRawNotifications((prev) =>
+        prev.map((n) =>
+          n.id === id && n.category === type
+            ? { ...n, status_baca: "Sudah" }
+            : n,
+        ),
+      );
     } catch (err) {
       console.error("Gagal memperbarui status", err);
       toast.error("Gagal memperbarui status");
@@ -103,7 +109,9 @@ export const useNotifications = () => {
     try {
       await Promise.all([markAllAsRead("admin"), markAllAsRead("scan")]);
 
-      await fetchNotifications();
+      setRawNotifications((prev) =>
+        prev.map((n) => ({ ...n, status_baca: "Sudah" })),
+      );
 
       toast.success("Semua notifikasi ditandai dibaca");
     } catch (err) {
@@ -114,6 +122,14 @@ export const useNotifications = () => {
 
   useEffect(() => {
     fetchNotifications();
+  }, [fetchNotifications]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetchNotifications();
+    }, 10000);
+
+    return () => clearInterval(interval);
   }, [fetchNotifications]);
 
   return {
