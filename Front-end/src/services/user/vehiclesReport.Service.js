@@ -50,7 +50,7 @@ export const putVehiclesReport = async (id, payload) => {
 
 export const delVehiclesReport = async (id) => {
   const response = await api.delete(
-    `/pengendara/dashboard/data-kendaraan/delete/${id}`,
+    `/pengendara/dashboard/data-kendaraan/${id}/delete`,
   );
 
   return response.data;
