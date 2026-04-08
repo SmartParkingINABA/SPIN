@@ -4,7 +4,7 @@ import {
   getVehiclesReport,
   postVehiclesReport,
   putVehiclesReport,
-} from "../../services/user/vehiclesReport";
+} from "../../services/user/vehiclesReport.Service";
 
 export const useVehiclesReport = () => {
   const [vehicles, setVehicles] = useState([]);
@@ -30,7 +30,7 @@ export const useVehiclesReport = () => {
       console.log("[POST] Mengirim data baru:", payload);
       const res = await postVehiclesReport(payload);
       console.log("[POST] Response BE (Tambah):", res);
-      fetchVehicles();
+      await fetchVehicles();
       return { success: true };
     } catch (err) {
       console.error("[POST] Error tambah kendaraan:", err);
@@ -52,13 +52,15 @@ export const useVehiclesReport = () => {
   };
 
   const deleteVehicle = async (id) => {
-    if (!window.confirm("Apakah anda yakin ingin menghapus kendaraan ini?"))
+    if (
+      !window.confirm("Apakah anda yakin ingin menghapus data kendaraan ini?")
+    )
       return;
     try {
       console.log(`[DEL] menghapus kendaraan ID: ${id}`);
       const res = await delVehiclesReport(id);
       console.log("[DEL] response be (hapus):", res);
-      fetchVehicles();
+      await fetchVehicles();
     } catch (err) {
       console.error("[DEL] error hapus kendaraan:", err);
     }
