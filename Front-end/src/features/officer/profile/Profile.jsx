@@ -5,26 +5,40 @@ import PrivateInformation from "./components/PrivateInformation";
 import Statistic from "./components/Statistic";
 import WorkInformation from "./components/WorkInformation";
 import ButtonCta from "./components/ButtonCta";
+import { useProfile } from "../../../hooks/officer/useProfile";
 
 export default function Profile() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { loading, profile, updateProfile } = useProfile();
+
+  if (loading) return <p className="p-5">Loading...</p>;
 
   return (
     <>
       <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
         <Header />
-        <div className="mt-6 flex flex-col gap-y-5">
-          <div className="flex gap-x-5">
-            <PrivateInformation />
-            <Statistic />
+        {profile ? (
+          <div className="mt-6 flex flex-col gap-y-5">
+            <div className="flex gap-x-5">
+              <PrivateInformation data={profile.informasi_pribadi} />
+              <Statistic data={profile.statistik_hari_ini} />
+            </div>
+            <div className="flex gap-x-5">
+              <WorkInformation data={profile.informasi_kerja} />
+              <ButtonCta setIsModalOpen={() => setIsModalOpen(true)} />
+            </div>
           </div>
-          <div className="flex gap-x-5">
-            <WorkInformation />
-            <ButtonCta setIsModalOpen={() => setIsModalOpen(true)} />
-          </div>
-        </div>
+        ) : (
+          <p className="mt-6 text-[#93A3B6]">Belum ada data profile</p>
+        )}
       </section>
-      {isModalOpen && <FormEdit onClose={() => setIsModalOpen(false)} />}
+      {isModalOpen && (
+        <FormEdit
+          onClose={() => setIsModalOpen(false)}
+          data={profile.informasi_pribadi}
+          onSubmit={updateProfile}
+        />
+      )}
     </>
   );
 }
