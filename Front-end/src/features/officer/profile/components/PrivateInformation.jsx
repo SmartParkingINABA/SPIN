@@ -33,8 +33,8 @@ export default function PrivateInformation({ data }) {
         <div>
           <p className="text-[#93A3B6] text-[14px]">Email</p>
           <p className="text-[#FEF8FD]">{data.email}</p>
+          <p className="text-[#93A3B6] text-[12px]">Email tidak dapat diubah</p>
         </div>
-        <p className="text-[#93A3B6] text-[12px]">Email tidak dapat diubah</p>
       </div>
     </div>
   );

@@ -49,6 +49,7 @@ export default function FormEdit({ onClose, data, onSubmit }) {
               id="nama_petugas"
               value={form.nama_petugas}
               onChange={handleChange}
+              placeholder="John Die"
               className="bg-[#F5E79E] outline-0 py-2 px-3 rounded-sm"
             />
           </div>
@@ -64,6 +65,7 @@ export default function FormEdit({ onClose, data, onSubmit }) {
               id="no_telp"
               value={form.no_telp}
               onChange={handleChange}
+              placeholder="0898 9889 8899"
               className="bg-[#F5E79E] outline-0 py-2 px-3 rounded-sm"
             />
           </div>
