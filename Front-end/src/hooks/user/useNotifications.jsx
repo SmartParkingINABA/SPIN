@@ -124,14 +124,6 @@ export const useNotifications = () => {
     fetchNotifications();
   }, [fetchNotifications]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      fetchNotifications();
-    }, 10000);
-
-    return () => clearInterval(interval);
-  }, [fetchNotifications]);
-
   return {
     notifications,
     loading,
