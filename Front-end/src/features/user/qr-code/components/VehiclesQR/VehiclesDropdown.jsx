@@ -2,11 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { FaCheck } from "react-icons/fa6";
 
-export default function VehiclesDropdown({ selectedOption, options = [] }) {
+export default function VehiclesDropdown({
+  options = [],
+  selectedId,
+  onSelect,
+}) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState(selectedOption);
+  const selected = options.find((v) => v.id === selectedId);
   const dropdownRef = useRef(null);
-  const listOptions = ["Semua Kendaraan", ...options];
 
   // Toggle dropdown
   const handleToggle = (e) => {
@@ -16,7 +19,7 @@ export default function VehiclesDropdown({ selectedOption, options = [] }) {
 
   // Pilih opsi
   const handleSelect = (value) => {
-    setSelected(value);
+    onSelect(value);
     setIsOpen(false);
   };
 
@@ -41,7 +44,7 @@ export default function VehiclesDropdown({ selectedOption, options = [] }) {
         onClick={handleToggle}
       >
         <span id="selectedText" className="text-[#130F40] font-medium">
-          {selected}
+          {selected ? selected.no_plat : "Pilih Kendaraan"}
         </span>
         <IoMdArrowDropdown
           className={`w-7 h-fit text-[#130F40] transform transition-transform duration-300 ${
@@ -58,16 +61,16 @@ export default function VehiclesDropdown({ selectedOption, options = [] }) {
             : "opacity-0 -translate-y-2 pointer-events-none"
         }`}
       >
-        {listOptions.map((item) => (
+        {options.map((item) => (
           <li
-            key={item}
-            onClick={() => handleSelect(item)}
+            key={item.id}
+            onClick={() => handleSelect(item.id)}
             className="text-[#ddd] font-medium rounded-sm py-1.5 px-3 cursor-pointer transition duration-300 ease-in-out hover:bg-[#FFEC78] hover:text-[#1E1633] hover:border-transparent flex items-center justify-between group"
           >
-            {item}
+            {item.no_plat} - {item.merk}
             <FaCheck
               className={`w-4 h-fit transition duration-300 group-hover:opacity-100 ${
-                selected === item ? "opacity-100" : "opacity-0"
+                selected === item.id ? "opacity-100" : "opacity-0"
               }`}
             />
           </li>

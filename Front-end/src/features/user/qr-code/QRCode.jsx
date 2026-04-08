@@ -6,7 +6,14 @@ import { useQrCode } from "../../../hooks/user/useQrCode";
 import QRCodeSkeleton from "./components/QRCodeSkeleton";
 
 export default function QRCode() {
-  const { data, loading, handleDownload, handlePrint } = useQrCode();
+  const {
+    data,
+    loading,
+    handleDownload,
+    handlePrint,
+    selectedId,
+    handleSelectVehicle,
+  } = useQrCode();
 
   return (
     <>
@@ -18,6 +25,8 @@ export default function QRCode() {
           <div className="mt-5 flex items-start gap-6">
             <VehiclesQR
               data={data}
+              selectedId={selectedId}
+              onSelect={handleSelectVehicle}
               handleDownload={handleDownload}
               handlePrint={handlePrint}
             />
