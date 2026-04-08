@@ -49,20 +49,26 @@ export default function Login() {
 
       setUser(res.user);
 
-      const profileRes = await getAccountSettings();
-      const profile = profileRes?.profil;
-
-      if (profile) {
-        updateProfileState({
-          nama_pengendara: profile.nama_pengendara,
-          foto_profil: profile.foto_profil,
-        });
-      }
-
-      const displayName = profile?.nama_pengendara || res.user.email;
-
       const role = res.user.role.toLowerCase();
+      let displayName = res.user.email;
       console.log(role);
+
+      if (role === "pengendara") {
+        try {
+          const profileRes = await getAccountSettings();
+          const profile = profileRes?.profil;
+
+          if (profile) {
+            updateProfileState({
+              nama_pengendara: profile.nama_pengendara,
+              foto_profil: profile.foto_profil,
+            });
+            displayName = profile?.nama_pengendara;
+          }
+        } catch (err) {
+          console.error("Gagal mengambil profil pengendara:", err);
+        }
+      }
 
       const redirectPath = roleRedirectMap[role] || "/";
 
