@@ -99,6 +99,8 @@ export const useNotifications = () => {
             : n,
         ),
       );
+
+      await fetchNotifications();
     } catch (err) {
       console.error("Gagal memperbarui status", err);
       toast.error("Gagal memperbarui status");
@@ -112,6 +114,8 @@ export const useNotifications = () => {
       setRawNotifications((prev) =>
         prev.map((n) => ({ ...n, status_baca: "Sudah" })),
       );
+
+      await fetchNotifications();
 
       toast.success("Semua notifikasi ditandai dibaca");
     } catch (err) {
