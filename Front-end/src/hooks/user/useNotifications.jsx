@@ -49,14 +49,14 @@ export const useNotifications = () => {
       console.log("RES:", res);
 
       const adminData =
-        res.data?.notif_admin?.data?.map((item) => ({
+        res?.data?.notif_admin?.data?.map((item) => ({
           ...item,
           category: "admin",
           jenis: item.tipe,
         })) || [];
 
       const qrData =
-        res.data?.notif_scan_qr?.data?.map((item) => ({
+        res?.data?.notif_scan_qr?.data?.map((item) => ({
           ...item,
           category: "scan",
         })) || [];
