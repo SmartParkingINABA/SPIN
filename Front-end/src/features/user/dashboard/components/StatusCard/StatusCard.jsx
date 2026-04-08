@@ -15,7 +15,7 @@ export default function StatusCard({ vehicle }) {
         </div>
         <div className="">
           <p className="text-[#FEF8FD] text-[14px] font-medium flex items-center gap-x-2.5">
-            {vehicle.kendaraan.no_plat}
+            {vehicle.kendaraan?.no_plat}
             <span
               className={`text-[10px] font-medium px-2 py-0.5 rounded-sm ${isSelesai ? "text-[#1E1633] bg-[#FFEC78]" : "bg-green-500 text-white"}`}
             >
