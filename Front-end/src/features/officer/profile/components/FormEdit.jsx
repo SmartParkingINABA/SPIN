@@ -84,11 +84,13 @@ export default function FormEdit({ onClose, data, onSubmit, loading }) {
             type="submit"
           >
             <div className="w-fit mx-auto flex items-center gap-x-2">
-              <LuSave className="h-fit w-5" />
               {loading ? (
                 <LoadingSpinner size={18} color="#1e1633" />
               ) : (
-                "Simpan"
+                <>
+                  <LuSave className="h-fit w-5" />
+                  <span>Simpan</span>
+                </>
               )}
             </div>
           </button>
