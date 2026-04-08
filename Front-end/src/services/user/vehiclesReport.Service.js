@@ -37,7 +37,7 @@ export const postVehiclesReport = async (payload) => {
 
 export const putVehiclesReport = async (id, payload) => {
   const response = await api.put(
-    `pengendara/dashboard/data-kendaraan/edit/${id}`,
+    `pengendara/dashboard/data-kendaraan/${id}/edit`,
     {
       warna: payload.color,
       cc: Number(payload.cc),
