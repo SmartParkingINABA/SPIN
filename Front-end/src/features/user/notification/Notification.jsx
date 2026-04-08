@@ -12,6 +12,7 @@ export default function Notification() {
     markAllRead,
     pagination,
     setPagination,
+    unreadCount,
   } = useNotifications();
 
   return (
@@ -20,7 +21,7 @@ export default function Notification() {
         <NotificationSkeleton />
       ) : (
         <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
-          <Header notifications={notifications} onMarkAllRead={markAllRead} />
+          <Header onMarkAllRead={markAllRead} unreadCount={unreadCount} />
           <div className="mt-6 flex flex-col gap-y-3.5">
             {notifications.length > 0 ? (
               notifications.map((item) => (

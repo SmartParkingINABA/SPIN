@@ -1,13 +1,6 @@
-import { useMemo } from "react";
 import { BiCheckDouble } from "react-icons/bi";
 
-export default function Header({ notifications = [], onMarkAllRead }) {
-  const unreadCount = useMemo(() => {
-    if (!Array.isArray(notifications)) return 0;
-
-    return notifications.filter((n) => n.status_baca === "Belum").length;
-  }, [notifications]);
-
+export default function Header({ unreadCount = 0, onMarkAllRead }) {
   return (
     <>
       <h1 className="text-[#FEF8FD] text-2xl font-bold flex items-center gap-x-2">

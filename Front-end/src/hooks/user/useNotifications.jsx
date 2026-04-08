@@ -84,6 +84,10 @@ export const useNotifications = () => {
     return rawNotifications.slice(start, end);
   }, [rawNotifications, pagination]);
 
+  const unreadCount = useMemo(() => {
+    return rawNotifications.filter((n) => n.status_baca === "Belum").length;
+  }, [rawNotifications]);
+
   const markRead = async (id, type) => {
     try {
       await markAsRead(id, type);
@@ -118,6 +122,6 @@ export const useNotifications = () => {
     markAllRead,
     pagination,
     setPagination,
-    refresh: fetchNotifications,
+    unreadCount,
   };
 };
