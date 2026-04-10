@@ -7,6 +7,8 @@ export default function Notifikasi() {
     loading,
     notifications,
     unreadCount,
+    pagination,
+    setPagination,
     readNotification,
     readAllNotification,
   } = useNotification();
@@ -15,7 +17,12 @@ export default function Notifikasi() {
 
   return (
     <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
-      <Header unreadCount={unreadCount} onReadAll={readAllNotification} />
+      <Header
+        unreadCount={unreadCount}
+        onReadAll={readAllNotification}
+        pagination={pagination}
+        setPagination={setPagination}
+      />
       <div className="mt-6 flex flex-col gap-y-3.5">
         {notifications.length > 0 ? (
           notifications.map((notif) => (

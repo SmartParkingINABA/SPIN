@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   getAllNotification,
   putReadAllNotification,
@@ -6,18 +6,32 @@ import {
 } from "../../services/officer/notification.Service";
 import { AiOutlineWarning } from "react-icons/ai";
 import { MdInfoOutline } from "react-icons/md";
+import { usePagination } from "./usePagination";
 
 export const useNotification = () => {
   const [notifications, setNotifications] = useState([]);
   const [unreadCount, setUnreadCount] = useState(0);
   const [loading, setLoading] = useState(false);
+  const { pagination, setPagination } = usePagination({
+    page: 1,
+    limit: 10,
+    total: 0,
+  });
 
-  const fetchNotifications = async () => {
+  const fetchNotifications = useCallback(async () => {
     try {
       setLoading(true);
-      const res = await getAllNotification();
+      const res = await getAllNotification({
+        page: pagination.page,
+        limit: pagination.limit,
+      });
       const backendData = res.data;
-      setUnreadCount(backendData.unread_count);
+      setUnreadCount(Number(backendData.unread_count));
+
+      setPagination((prev) => ({
+        ...prev,
+        total: backendData.pagination.total,
+      }));
 
       const mapped = backendData.data.map((item) => ({
         id: item.id,
@@ -36,7 +50,11 @@ export const useNotification = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [pagination.page, pagination.limit, setPagination]);
+
+  useEffect(() => {
+    fetchNotifications();
+  }, [fetchNotifications]);
 
   const readNotification = async (id) => {
     try {
@@ -56,14 +74,12 @@ export const useNotification = () => {
     }
   };
 
-  useEffect(() => {
-    fetchNotifications();
-  }, []);
-
   return {
     notifications,
     unreadCount,
     loading,
+    pagination,
+    setPagination,
     readNotification,
     readAllNotification,
   };

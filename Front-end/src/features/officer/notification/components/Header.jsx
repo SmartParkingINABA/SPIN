@@ -1,6 +1,12 @@
 import { BiCheckDouble } from "react-icons/bi";
+import Pagination from "../../../../components/ui/Pagination";
 
-export default function Header({ unreadCount, onReadAll }) {
+export default function Header({
+  unreadCount,
+  onReadAll,
+  pagination,
+  setPagination,
+}) {
   return (
     <>
       <h1 className="text-[#FEF8FD] text-2xl font-bold flex items-center gap-x-2">
@@ -27,6 +33,7 @@ export default function Header({ unreadCount, onReadAll }) {
           </button>
         )}
       </div>
+      <Pagination pagination={pagination} setPagination={setPagination} />
     </>
   );
 }

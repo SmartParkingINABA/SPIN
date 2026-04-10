@@ -1,7 +1,9 @@
 import api from "../../lib/axios";
 
-export const getAllNotification = async () => {
-  const response = await api.get("/petugas/dashboard/notifikasi");
+export const getAllNotification = async (params) => {
+  const response = await api.get("/petugas/dashboard/notifikasi", {
+    params,
+  });
 
   return response.data;
 };
