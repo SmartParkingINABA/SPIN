@@ -2,6 +2,7 @@ import Header from "./components/Header";
 import NotificationCard from "./components/Notification/NotificationCard";
 import { useNotification } from "../../../hooks/officer/useNotification";
 import Pagination from "../../../components/ui/Pagination";
+import NotificationSkeleton from "./components/NotificationSkeleton";
 
 export default function Notifikasi() {
   const {
@@ -14,7 +15,7 @@ export default function Notifikasi() {
     readAllNotification,
   } = useNotification();
 
-  if (loading) return <p className="p-5">Loading...</p>;
+  if (loading) return <NotificationSkeleton />;
 
   return (
     <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
