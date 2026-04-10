@@ -15,6 +15,9 @@ const api = axios.create({
   },
 });
 
+let isRedirecting = false;
+let hasShownToast = false;
+
 api.interceptors.request.use(
   (config) => {
     console.log(
@@ -29,8 +32,6 @@ api.interceptors.request.use(
   },
 );
 
-let isRedirecting = false;
-
 api.interceptors.response.use(
   (response) => {
     console.log(
@@ -40,6 +41,10 @@ api.interceptors.response.use(
     return response;
   },
   (error) => {
+    const status = error.response?.status;
+    const errMessage =
+      error.response?.data?.err || error.response?.data?.message;
+
     if (error.response) {
       console.error("[API ERROR RESPONSE]", {
         url: error.config?.url,
@@ -52,13 +57,24 @@ api.interceptors.response.use(
       console.error("[API UNKNOWN ERROR]", error.message);
     }
 
-    if (error.response?.status === 401 && !isRedirecting) {
+    const isAuthError =
+      errMessage === "jwt expired" ||
+      errMessage === "Unauthorized" ||
+      status === 401 ||
+      status === 403 ||
+      status === 500;
+
+    if (isAuthError && !isRedirecting) {
       isRedirecting = true;
 
-      toast.error("Sesi anda telah berakhir. Silahkan login kembali.");
+      if (!hasShownToast) {
+        toast.error("Sesi anda telah berakhir. Silahkan login kembali.");
+        hasShownToast = true;
+      }
+
       setTimeout(() => {
         localStorage.clear();
-        window.location.href = "/auth/login";
+        window.location.replace = "/auth/login";
         isRedirecting = false;
       }, 2000);
     }
