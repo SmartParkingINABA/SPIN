@@ -1,6 +1,6 @@
 import { BiCheckDouble } from "react-icons/bi";
 
-export default function Header({ unreadCount = 0, onMarkAllRead }) {
+export default function Header({ unreadCount, onMarkAllRead }) {
   return (
     <>
       <h1 className="text-[#FEF8FD] text-2xl font-bold flex items-center gap-x-2">
