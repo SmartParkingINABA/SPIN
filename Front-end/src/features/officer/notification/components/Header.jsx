@@ -15,15 +15,17 @@ export default function Header({ unreadCount, onReadAll }) {
         <p className="text-[#93A3B6] font-medium">
           Peringatan dan pesan penting dari sistem
         </p>
-        <button
-          className="flex items-center gap-x-2 border border-transparent bg-[#93A3B6] py-1 px-1.5 rounded-sm cursor-pointer transition opacity-100 hover:opacity-80"
-          onClick={onReadAll}
-        >
-          <BiCheckDouble className="h-fit w-5 text-[#130F40]" />
-          <p className="text-[#130F40] text-[14px]">
-            Tandai Semua Telah Dibaca
-          </p>
-        </button>
+        {unreadCount > 0 && (
+          <button
+            className="flex items-center gap-x-2 border border-transparent bg-[#93A3B6] py-1 px-1.5 rounded-sm cursor-pointer hover:opacity-80"
+            onClick={onReadAll}
+          >
+            <BiCheckDouble className="h-fit w-5 text-[#130F40]" />
+            <p className="text-[#130F40] text-[14px]">
+              Tandai Semua Telah Dibaca
+            </p>
+          </button>
+        )}
       </div>
     </>
   );
