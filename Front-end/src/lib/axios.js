@@ -74,7 +74,7 @@ api.interceptors.response.use(
 
       setTimeout(() => {
         localStorage.clear();
-        window.location.replace = "/auth/login";
+        window.location.url = "/auth/login";
         isRedirecting = false;
       }, 2000);
     }
