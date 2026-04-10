@@ -1,3 +1,5 @@
+import Pagination from "../../../components/ui/Pagination";
+import { useParkingHistory } from "../../../hooks/officer/useParkingHistory";
 import Header from "./components/Header";
 import TableHead from "./components/HistoryTable/TableHead";
 import TableRowHistory from "./components/HistoryTable/TableRowHistory";
@@ -5,6 +7,8 @@ import TableWrapper from "./components/HistoryTable/TableWrapper";
 import Search from "./components/Search";
 
 export default function ParkingHistory() {
+  const { data, meta, loading, search, setSearch, pagination, setPagination } =
+    useParkingHistory();
   const columns = [
     "No",
     "Tanggal",
@@ -16,36 +20,39 @@ export default function ParkingHistory() {
     "Status",
   ];
 
-  const rows = [
-    {
-      date: "18 Nov 2025",
-      plate: "A 8993 AB",
-      name: "Yono Bakrie",
-      checkIn: "10:00 WIB",
-      checkOut: "12:00 WIB",
-      duration: "1 hari 24 jam",
-      status: "Selesai",
-    },
-  ];
+  if (loading) return <p className="p-5">Loading...</p>;
 
   return (
     <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
       <Header />
       <div className="mt-6 border border-[rgba(255,236,120,0.5)] bg-[#1E1633] px-6 py-4 rounded-md">
-        <Search />
+        <Search
+          total={meta?.total_data || 0}
+          search={search}
+          setSearch={setSearch}
+        />
         <TableWrapper>
           <TableHead columns={columns} />
           <tbody>
-            {rows.map((row, i) => (
-              <TableRowHistory
-                key={i}
-                data={row}
-                index={i}
-                isLast={i === rows.length - 1}
-              />
-            ))}
+            {data.length === 0 ? (
+              <tr>
+                <td colSpan={8} className="text-center text-[#93A3B6] p-4">
+                  Data tidak tersedia
+                </td>
+              </tr>
+            ) : (
+              data.map((row, i) => (
+                <TableRowHistory
+                  key={i}
+                  data={row}
+                  index={(pagination.page - 1) * pagination.limit + i}
+                  isLast={i === data.length - 1}
+                />
+              ))
+            )}
           </tbody>
         </TableWrapper>
+        <Pagination pagination={pagination} setPagination={setPagination} />
       </div>
     </section>
   );
