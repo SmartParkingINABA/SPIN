@@ -1,7 +1,7 @@
 export default function Pagination({ pagination, setPagination }) {
   const { page, limit, total } = pagination;
 
-  // if (total === 0) return null;
+  if (total === 0) return null;
 
   const totalPages = Math.max(1, total / limit);
 
