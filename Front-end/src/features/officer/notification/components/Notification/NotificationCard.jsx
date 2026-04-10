@@ -9,6 +9,7 @@ export default function NotificationCard({
   bgColor,
   isNew,
   showAction,
+  onRead,
 }) {
   const Icon = icon;
 
@@ -31,7 +32,10 @@ export default function NotificationCard({
       <div className="flex items-center justify-between">
         <p className="text-[14px] text-[#130F40]">{message}</p>
         {showAction && (
-          <button className="flex items-center gap-x-1.5 cursor-pointer">
+          <button
+            className="flex items-center gap-x-1.5 cursor-pointer"
+            onClick={onRead}
+          >
             <IoMdCheckmark className="h-fit w-4.5 text-[#808080]" />
             <p className="text-[14px] text-[#808080]">Tandai Telah Dibaca</p>
           </button>
