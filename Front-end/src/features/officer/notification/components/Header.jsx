@@ -1,5 +1,4 @@
 import { BiCheckDouble } from "react-icons/bi";
-import Pagination from "../../../../components/ui/Pagination";
 
 export default function Header({ unreadCount, onReadAll }) {
   return (

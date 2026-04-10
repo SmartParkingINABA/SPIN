@@ -1,6 +1,9 @@
 export default function Pagination({ pagination, setPagination }) {
   const { page, limit, total } = pagination;
-  const totalPages = Math.ceil(total / limit);
+
+  // if (total === 0) return null;
+
+  const totalPages = Math.max(1, total / limit);
 
   const handlePrev = () => {
     if (page > 1) {
@@ -18,7 +21,7 @@ export default function Pagination({ pagination, setPagination }) {
     <div className="flex gap-4 items-center mt-4 text-[#D3CBD1]">
       <button
         onClick={handlePrev}
-        disabled={page === 1}
+        disabled={page <= 1}
         className="px-3 py-1 bg-[#FFEC78] text-[#130F40] rounded cursor-pointer transition duration-300 ease-in-out hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         Prev
@@ -28,7 +31,7 @@ export default function Pagination({ pagination, setPagination }) {
       </p>
       <button
         onClick={handleNext}
-        disabled={page === totalPages}
+        disabled={page >= totalPages}
         className="px-3 py-1 bg-[#FFEC78] text-[#130F40] rounded cursor-pointer transition duration-300 ease-in-out hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         Next
