@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import TableHead from "./components/HistoryTable/TableHead";
 import TableRowHistory from "./components/HistoryTable/TableRowHistory";
 import TableWrapper from "./components/HistoryTable/TableWrapper";
+import ParkingHistorySkeleton from "./components/ParkingHistorySkeleton";
 import Search from "./components/Search";
 
 export default function ParkingHistory() {
@@ -20,7 +21,7 @@ export default function ParkingHistory() {
     "Status",
   ];
 
-  if (loading) return <p className="p-5">Loading...</p>;
+  if (!loading) return <ParkingHistorySkeleton />;
 
   return (
     <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
