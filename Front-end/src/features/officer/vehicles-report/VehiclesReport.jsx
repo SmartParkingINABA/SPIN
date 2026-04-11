@@ -5,6 +5,7 @@ import TableHeader from "./components/VehiclesTable/TableHeader";
 import TableRow from "./components/VehiclesTable/TableRow";
 import { useVehiclesReport } from "../../../hooks/officer/useVehiclesReport";
 import Pagination from "../../../components/ui/Pagination";
+import VehiclesReportSkeleton from "./components/VehiclesReportSkeleton";
 
 export default function VehiclesReport() {
   const { data, loading, search, setSearch, pagination, setPagination } =
@@ -19,7 +20,7 @@ export default function VehiclesReport() {
     "Durasi",
   ];
 
-  if (loading) return <p className="p-5">Loading...</p>;
+  if (loading) return <VehiclesReportSkeleton />;
 
   return (
     <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
