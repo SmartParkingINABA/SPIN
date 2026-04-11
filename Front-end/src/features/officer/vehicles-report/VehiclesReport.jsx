@@ -4,6 +4,7 @@ import TableWrapper from "./components/VehiclesTable/TableWrapper";
 import TableHeader from "./components/VehiclesTable/TableHeader";
 import TableRow from "./components/VehiclesTable/TableRow";
 import { useVehiclesReport } from "../../../hooks/officer/useVehiclesReport";
+import Pagination from "../../../components/ui/Pagination";
 
 export default function VehiclesReport() {
   const { data, loading, search, setSearch, pagination, setPagination } =
