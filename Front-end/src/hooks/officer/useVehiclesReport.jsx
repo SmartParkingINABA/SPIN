@@ -1,17 +1,25 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { getVehiclesReport } from "../../services/officer/vehiclesReport.Service";
 
 export const useVehiclesReport = () => {
   const [data, setData] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);
   const [meta, setMeta] = useState(null);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const fetchVehicles = async () => {
+  const [pagination, setPagination] = useState({
+    page: 1,
+    limit: 10,
+    total: 0,
+  });
+
+  const fetchVehicles = useCallback(async () => {
     try {
       setLoading(true);
-      const res = await getVehiclesReport();
+      const res = await getVehiclesReport({
+        page: pagination.page,
+        limit: pagination.limit,
+      });
 
       const mapped = res.data.map((item) => ({
         plate: item.no_plat,
@@ -22,30 +30,28 @@ export const useVehiclesReport = () => {
       }));
 
       setData(mapped);
-      setFilteredData(mapped);
       setMeta(res.meta);
+
+      setPagination((prev) => ({
+        ...prev,
+        total: res.meta.total_data,
+      }));
     } catch (err) {
       console.error("Error fetch kendaraan parkir:", err);
     } finally {
       setLoading(false);
     }
-  };
+  }, [pagination.page, pagination.limit]);
 
   useEffect(() => {
     fetchVehicles();
-  }, []);
+  }, [fetchVehicles]);
 
-  useEffect(() => {
-    const keyword = search.toLowerCase();
-
-    const filtered = data.filter(
-      (item) =>
-        item.plate.toLowerCase().includes(keyword) ||
-        item.name.toLowerCase().includes(keyword),
-    );
-
-    setFilteredData(filtered);
-  }, [search, data]);
+  const filteredData = data.filter(
+    (item) =>
+      item.plate.toLowerCase().includes(search.toLowerCase()) ||
+      item.name.toLowerCase().includes(search.toLowerCase()),
+  );
 
   return {
     data: filteredData,
@@ -53,5 +59,7 @@ export const useVehiclesReport = () => {
     loading,
     search,
     setSearch,
+    pagination,
+    setPagination,
   };
 };

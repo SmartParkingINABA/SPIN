@@ -6,7 +6,8 @@ import TableRow from "./components/VehiclesTable/TableRow";
 import { useVehiclesReport } from "../../../hooks/officer/useVehiclesReport";
 
 export default function VehiclesReport() {
-  const { data, loading, search, setSearch } = useVehiclesReport();
+  const { data, loading, search, setSearch, pagination, setPagination } =
+    useVehiclesReport();
 
   const columns = [
     "No",
@@ -45,6 +46,7 @@ export default function VehiclesReport() {
             )}
           </tbody>
         </TableWrapper>
+        <Pagination pagination={pagination} setPagination={setPagination} />
       </div>
     </section>
   );
