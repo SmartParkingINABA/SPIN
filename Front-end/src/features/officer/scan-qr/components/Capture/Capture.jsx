@@ -17,7 +17,7 @@ export default function Capture({ isScanning, onScanSuccess }) {
         { facingMode: "environment" },
         {
           fps: 10,
-          qrbox: { width: 250, height: 250 },
+          qrbox: { width: 350, height: 350 },
         },
         (decodedText) => {
           onScanSuccess(decodedText);
@@ -36,7 +36,7 @@ export default function Capture({ isScanning, onScanSuccess }) {
         scannerRef.current.stop().catch(() => {});
       }
     };
-  }, [isScanning]);
+  }, [isScanning, onScanSuccess]);
 
   return (
     <div className="mt-3.5 bg-[#130F40] h-130 flex justify-center items-center rounded-md">

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Header from "./components/Header";
 import BoxWrapper from "../../../components/ui/BoxWrapper";
 import Capture from "./components/Capture/Capture";
@@ -39,12 +39,15 @@ export default function ScanQR() {
     setIsScanning(true);
   };
 
-  const handleScanSuccess = (qr_code) => {
-    setIsScanning(false);
-    console.log("QR RESULT:", qr_code);
+  const handleScanSuccess = useCallback(
+    (qr_code) => {
+      setIsScanning(false);
+      console.log("QR RESULT:", qr_code);
 
-    scanQr(qr_code);
-  };
+      scanQr(qr_code);
+    },
+    [scanQr],
+  );
 
   if (loading) return <p className="p-5">Loading...</p>;
 
