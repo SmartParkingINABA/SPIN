@@ -9,6 +9,7 @@ import RegisteredVehicle from "./components/Result/RegisteredVehicle";
 import StatusIn from "./components/Status/StatusIn";
 import StatusOut from "./components/Status/StatusOut";
 import { useScanQr } from "../../../hooks/officer/useScanQr";
+import ScanQRSkeleton from "./components/ScanQRSkeleton";
 
 export default function ScanQR() {
   const {
@@ -49,7 +50,7 @@ export default function ScanQR() {
     [scanQr],
   );
 
-  if (loading) return <p className="p-5">Loading...</p>;
+  if (!loading) return <ScanQRSkeleton />;
 
   return (
     <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
