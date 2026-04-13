@@ -80,8 +80,8 @@ export default function ScanQR() {
             handleExit={handleOut}
             loading={loading}
           />
-          <StatusIn actionsStatus={actionsStatus} message={message} />
-          <StatusOut actionsStatus={actionsStatus} message={message} />
+          <StatusIn actionsStatus={actionsStatus} scanResult={scanResult} />
+          <StatusOut actionsStatus={actionsStatus} scanResult={scanResult} />
         </BoxWrapper>
       </div>
     </section>
