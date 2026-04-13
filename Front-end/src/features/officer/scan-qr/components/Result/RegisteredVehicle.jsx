@@ -29,32 +29,30 @@ export default function RegisteredVehicle({
             <LuCreditCard className="h-fit w-5.5 text-[#93A3B6] mt-0.5" />
             <div>
               <p className="text-[#93A3B6] font-medium">ID QR Code</p>
-              <p className="text-[#FEF8FD] font-medium">{scanResult.id}</p>
+              <p className="text-[#FEF8FD] font-medium">{scanResult.qr_code}</p>
             </div>
           </div>
           <div className="flex items-start gap-x-2.5 mb-4">
             <LuCar className="h-fit w-5.5 text-[#93A3B6] mt-0.5" />
             <div>
               <p className="text-[#93A3B6] font-medium">Plat Nomor</p>
-              <p className="text-[#FEF8FD] font-medium">
-                {scanResult.number_plate}
-              </p>
+              <p className="text-[#FEF8FD] font-medium">{scanResult.no_plat}</p>
             </div>
           </div>
           <div className="flex items-start gap-x-2.5 mb-4">
             <IoPersonOutline className="h-fit w-5.5 text-[#93A3B6] mt-0.5" />
             <div>
               <p className="text-[#93A3B6] font-medium">Nama Pengendara</p>
-              <p className="text-[#FEF8FD] font-medium">{scanResult.name}</p>
+              <p className="text-[#FEF8FD] font-medium">
+                {scanResult.nama_pengendara}
+              </p>
             </div>
           </div>
           <div className="flex items-start gap-x-2.5 mb-4">
             <LuCar className="h-fit w-5.5 text-[#93A3B6] mt-0.5" />
             <div>
               <p className="text-[#93A3B6] font-medium">Jenis Kendaraan</p>
-              <p className="text-[#FEF8FD] font-medium">
-                {scanResult.vehicle_type}
-              </p>
+              <p className="text-[#FEF8FD] font-medium">{scanResult.jenis}</p>
             </div>
           </div>
           <div className="flex items-start gap-x-2.5 mb-4">
@@ -62,7 +60,7 @@ export default function RegisteredVehicle({
             <div>
               <p className="text-[#93A3B6] font-medium">Terdaftar Sejak</p>
               <p className="text-[#FEF8FD] font-medium">
-                {scanResult.registered_since}
+                {scanResult.terdaftar_sejak}
               </p>
             </div>
           </div>
