@@ -9,8 +9,8 @@ export default function HandleCapture({
     <button
       onClick={handleScanClick}
       disabled={isScanning || loading}
-      className={`bg-[#FFDB58] mt-6 w-full rounded-md py-2 transition cursor-pointer duration-300 ease-in-out
-               ${isScanning || loading ? "opacity-80 cursor-not-allowed" : "opacity-100"}
+      className={`bg-[#FFDB58] mt-6 w-full rounded-md py-2 transition  duration-300 ease-in-out
+               ${isScanning || loading ? "opacity-80 cursor-not-allowed" : "opacity-100 cursor-pointer"}
                 hover:opacity-80`}
     >
       <div className="flex items-center gap-x-3 w-fit mx-auto">

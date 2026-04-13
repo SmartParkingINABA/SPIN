@@ -92,7 +92,7 @@ export default function RegisteredVehicle({
               className={`bg-green-500 flex rounded-sm py-2 transition ${
                 vehicleStatus === "inside" || loading
                   ? "opacity-80 cursor-not-allowed"
-                  : "opacity-100"
+                  : "opacity-100 cursor-pointer"
               } hover:opacity-80`}
               onClick={handleIn}
             >
@@ -106,7 +106,7 @@ export default function RegisteredVehicle({
               className={`bg-blue-500 flex rounded-sm py-2 transition ${
                 vehicleStatus === "outside" || loading
                   ? "opacity-80 cursor-not-allowed"
-                  : "opacity-100"
+                  : "opacity-100 cursor-pointer"
               } hover:opacity-80`}
               onClick={handleExit}
             >
