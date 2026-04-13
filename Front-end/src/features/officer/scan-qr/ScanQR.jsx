@@ -8,118 +8,63 @@ import NotResultYet from "./components/Result/NotResultYet";
 import RegisteredVehicle from "./components/Result/RegisteredVehicle";
 import StatusIn from "./components/Status/StatusIn";
 import StatusOut from "./components/Status/StatusOut";
+import { useScanQr } from "../../../hooks/officer/useScanQr";
 
 export default function ScanQR() {
+  const {
+    loading,
+    scanResult,
+    vehicleStatus,
+    actionsStatus,
+    message,
+    scanQr,
+    handleIn,
+    handleOut,
+    reset,
+  } = useScanQr();
   const [isScanning, setIsScanning] = useState(false);
-  const [scanResult, setScanResult] = useState(null);
-  const [vehicleStatus, setVehicleStatus] = useState(null);
-  const [actionsStatus, setActionsStatus] = useState(null);
   const [searchID, setSearchID] = useState("");
-
-  const [vehicles, setVehicles] = useState([
-    {
-      id: "QR-2024-002",
-      name: "Siti Nurhaliza",
-      number_plate: "Z 2029 AH",
-      vehicle_type: "Motor",
-      registered_since: "20 Januari 2024",
-      status: "inside",
-    },
-  ]);
 
   const handleSearch = () => {
     if (!searchID) return;
 
-    const found = vehicles.find((item) => item.id === searchID);
-
-    if (found) {
-      setScanResult(found);
-      setVehicleStatus(found.status);
-      setActionsStatus(null);
-    } else {
-      alert("ID tidak ditemukan");
-    }
+    scanQr(searchID);
   };
 
   const handleScanClick = () => {
     if (isScanning) return;
 
+    reset();
+
     setIsScanning(true);
-
-    setTimeout(() => {
-      setIsScanning(false);
-
-      const v = vehicles[0];
-      setScanResult(v);
-
-      // status awal pertama kali scan
-      setVehicleStatus(v?.status ?? "outside");
-    }, 2500);
   };
 
-  const resetView = () => {
-    setActionsStatus(null);
-    setScanResult(null);
-    setVehicleStatus(null);
-    setSearchID("");
+  const handleScanSuccess = (qr_code) => {
+    setIsScanning(false);
+    console.log("QR RESULT:", qr_code);
+
+    scanQr(qr_code);
   };
 
-  const handleIn = () => {
-    if (!scanResult) return;
-
-    // jika kendaraan diluar, baru boleh masuk
-    if (vehicleStatus === "outside") {
-      setVehicles((prev) =>
-        prev.map((v) =>
-          v.id === scanResult.id ? { ...v, status: "inside" } : v
-        )
-      );
-
-      setVehicleStatus("inside");
-    }
-
-    setActionsStatus("in");
-
-    setTimeout(() => {
-      resetView();
-    }, 2500);
-  };
-
-  const handleExit = () => {
-    if (!scanResult) return;
-    // jika kendaraan diluar, baru boleh masuk
-    if (vehicleStatus === "inside") {
-      setVehicles((prev) =>
-        prev.map((v) =>
-          v.id === scanResult.id ? { ...v, status: "outside" } : v
-        )
-      );
-
-      setVehicleStatus("outside");
-    }
-
-    setActionsStatus("out");
-
-    setTimeout(() => {
-      resetView();
-    }, 2500);
-  };
+  if (loading) return <p className="p-5">Loading...</p>;
 
   return (
     <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
       <Header />
       <div className="mt-6 grid grid-cols-2 gap-x-5">
         <BoxWrapper title="Scanner QR">
-          <Capture isScanning={isScanning} />
+          <Capture isScanning={isScanning} onScanSuccess={handleScanSuccess} />
           <HandleCapture
             handleScanClick={handleScanClick}
             isScanning={isScanning}
+            loading={loading}
           />
           <hr className="h-0.5 bg-[#93A3B6] w-full my-6" />
           <SubmitManualId
             searchID={searchID}
             setSearchID={setSearchID}
             handleSearch={handleSearch}
+            loading={loading}
           />
         </BoxWrapper>
         <BoxWrapper title="Hasil Scan & Konfirmasi">
@@ -129,10 +74,11 @@ export default function ScanQR() {
             actionsStatus={actionsStatus}
             vehicleStatus={vehicleStatus}
             handleIn={handleIn}
-            handleExit={handleExit}
+            handleExit={handleOut}
+            loading={loading}
           />
-          <StatusIn actionsStatus={actionsStatus} />
-          <StatusOut actionsStatus={actionsStatus} />
+          <StatusIn actionsStatus={actionsStatus} message={message} />
+          <StatusOut actionsStatus={actionsStatus} message={message} />
         </BoxWrapper>
       </div>
     </section>

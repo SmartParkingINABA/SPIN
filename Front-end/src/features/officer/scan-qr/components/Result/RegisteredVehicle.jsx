@@ -10,6 +10,7 @@ export default function RegisteredVehicle({
   vehicleStatus,
   handleIn,
   handleExit,
+  loading,
 }) {
   return (
     <>
@@ -87,8 +88,9 @@ export default function RegisteredVehicle({
           </div>
           <div className="flex flex-col gap-y-3 mb-3.5">
             <button
+              disabled={vehicleStatus === "inside" || loading}
               className={`bg-green-500 flex rounded-sm py-2 transition ${
-                vehicleStatus === "inside"
+                vehicleStatus === "inside" || loading
                   ? "opacity-80 cursor-not-allowed"
                   : "opacity-100"
               } hover:opacity-80`}
@@ -100,8 +102,9 @@ export default function RegisteredVehicle({
               </div>
             </button>
             <button
+              disabled={vehicleStatus === "outside" || loading}
               className={`bg-blue-500 flex rounded-sm py-2 transition ${
-                vehicleStatus === "outside"
+                vehicleStatus === "outside" || loading
                   ? "opacity-80 cursor-not-allowed"
                   : "opacity-100"
               } hover:opacity-80`}

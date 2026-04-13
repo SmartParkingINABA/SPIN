@@ -2,6 +2,7 @@ export default function SubmitManualId({
   searchID,
   setSearchID,
   handleSearch,
+  loading,
 }) {
   return (
     <>
@@ -11,6 +12,7 @@ export default function SubmitManualId({
       </p>
       <div className="flex gap-x-3 mt-3">
         <input
+          disabled={loading}
           type="text"
           value={searchID}
           onChange={(e) => setSearchID(e.target.value)}
@@ -18,10 +20,11 @@ export default function SubmitManualId({
           placeholder="Masukan ID QR"
         />
         <button
+          disabled={loading}
           onClick={handleSearch}
           className="py-2 bg-[#FFDB58] text-[#130F40] px-5 rounded-md opacity-100 hover:opacity-80 transition"
         >
-          Submit
+          {loading ? "Loading..." : "Submit"}
         </button>
       </div>
     </>
