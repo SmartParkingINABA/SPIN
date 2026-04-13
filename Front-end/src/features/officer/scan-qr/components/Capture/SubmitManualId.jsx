@@ -22,7 +22,7 @@ export default function SubmitManualId({
         <button
           disabled={loading}
           onClick={handleSearch}
-          className="py-2 bg-[#FFDB58] text-[#130F40] px-5 rounded-md opacity-100 hover:opacity-80 transition"
+          className="py-2 bg-[#FFDB58] text-[#130F40] px-5 rounded-md cursor-pointer opacity-100 hover:opacity-80 transition duration-300 ease-in-out"
         >
           {loading ? "Loading..." : "Submit"}
         </button>
