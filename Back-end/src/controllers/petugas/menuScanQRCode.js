@@ -3,7 +3,7 @@ import menuScanQrCode from "../../services/petugas/menuScanQrCode.js";
 class menuScanQrCodeController {
     async scan(req, res, next) {
         try {
-            const { qr_code } = req.body;
+            const { qr_code } = req.query;
             const data = await menuScanQrCode.scan(qr_code);
             res.json(data)
         } catch (err) {
