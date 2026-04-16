@@ -10,7 +10,7 @@ export default function Dashboard() {
 
   const activities = data?.aktivitas_terakhir || [];
 
-  if (!loading) return <DashboardSkeleton />;
+  if (loading) return <DashboardSkeleton />;
 
   return (
     <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
