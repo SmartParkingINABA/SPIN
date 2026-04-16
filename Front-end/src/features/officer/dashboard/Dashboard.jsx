@@ -3,13 +3,14 @@ import StatsGrid from "./components/Stats/StatsGrid";
 import BoxWrapper from "../../../components/ui/BoxWrapper";
 import ActivityCard from "./components/Card/ActivityCard";
 import { useDashboard } from "../../../hooks/officer/useDashboard";
+import DashboardSkeleton from "./components/DashboardSkeleton";
 
 export default function Dashboard() {
   const { data, loading } = useDashboard();
 
   const activities = data?.aktivitas_terakhir || [];
 
-  if (loading) return <p className="p-5">Loading...</p>;
+  if (!loading) return <DashboardSkeleton />;
   return (
     <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
       <Header />
