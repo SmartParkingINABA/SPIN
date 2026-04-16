@@ -1,19 +1,33 @@
 import Header from "./components/Header";
 import StatsGrid from "./components/Stats/StatsGrid";
 import BoxWrapper from "../../../components/ui/BoxWrapper";
-import { activities } from "./components/Card/activitiesDummy";
 import ActivityCard from "./components/Card/ActivityCard";
+import { useDashboard } from "../../../hooks/officer/useDashboard";
 
 export default function Dashboard() {
+  const { data, loading } = useDashboard();
+
+  const activities = data?.aktivitas_terakhir || [];
+
+  if (loading) return <p className="p-5">Loading...</p>;
   return (
     <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
       <Header />
-      <StatsGrid />
+      <StatsGrid summary={data?.summary} />
       <BoxWrapper title="Aktivitas Terakhir">
         {activities.map((item, index) => (
           <ActivityCard
-            key={item.id}
-            data={item}
+            key={index}
+            data={{
+              plate: item.no_plat,
+              activity: item.aktivitas,
+              user: item.nama_pengendara,
+              time: item.waktu,
+              color:
+                item.aktivitas === "Masuk"
+                  ? "text-green-500"
+                  : "text-yellow-500",
+            }}
             isLast={index === activities.length - 1}
           />
         ))}

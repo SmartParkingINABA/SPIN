@@ -1,7 +1,7 @@
 import { GoDotFill } from "react-icons/go";
 
 export default function ActivityCard({ data, isLast }) {
-  const { plate, action, officer, time, color } = data;
+  const { plate, activity, user, time, color } = data;
 
   return (
     <div
@@ -13,9 +13,9 @@ export default function ActivityCard({ data, isLast }) {
         <GoDotFill className={`${color} w-4 h-fit`} />
         <div>
           <p className="text-[#FEF8FD] font-medium">
-            {plate} - {action}
+            {plate} - {activity}
           </p>
-          <p className="text-[#93A3B6] text-[14px]">{officer}</p>
+          <p className="text-[#93A3B6] text-[14px]">{user}</p>
         </div>
       </div>
       <p className="text-[#93A3B6]">{time}</p>

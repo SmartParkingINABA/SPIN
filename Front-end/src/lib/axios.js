@@ -76,7 +76,7 @@ api.interceptors.response.use(
         localStorage.clear();
         window.location.url = "/auth/login";
         isRedirecting = false;
-      }, 2000);
+      }, 1500);
     }
 
     return Promise.reject(error);
