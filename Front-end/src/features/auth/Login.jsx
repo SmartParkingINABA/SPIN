@@ -65,7 +65,7 @@ export default function Login() {
               nama_pengendara: profile.nama_pengendara,
               foto_profil: profile.foto_profil,
             });
-            displayName = profile?.nama_pengendara;
+            displayName = profile?.nama_pengendara || res.user.email;
           }
         } catch (err) {
           console.error("Gagal mengambil profil pengendara:", err);
@@ -82,7 +82,7 @@ export default function Login() {
               nama_petugas: profile.nama_petugas,
             });
 
-            displayName = profile.nama_petugas;
+            displayName = profile.nama_petugas || res.user.email;
           }
         } catch (err) {
           console.error("Gagal mengambil profil petugas:", err);
