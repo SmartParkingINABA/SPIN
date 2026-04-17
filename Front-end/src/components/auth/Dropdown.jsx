@@ -4,16 +4,12 @@ import { IoMdArrowDropdown } from "react-icons/io";
 
 const OPTIONS = [
   {
-    label: "Admin",
+    label: "Petugas",
     value: 1,
   },
   {
-    label: "Petugas",
-    value: 2,
-  },
-  {
     label: "Pengendara",
-    value: 3,
+    value: 2,
   },
 ];
 
