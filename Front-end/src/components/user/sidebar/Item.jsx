@@ -24,7 +24,7 @@ export default function Item({ item }) {
     <NavLink to={item.path} end={item.exact}>
       {({ isActive }) => (
         <li
-          className={`transition duration-300 ease-in-out px-3 py-2.5 rounded-md hover:bg-[#130f40] group ${
+          className={`relative transition duration-300 ease-in-out px-3 py-2.5 rounded-md hover:bg-[#130f40] group ${
             isActive ? "bg-[#130f40]" : "bg-transparent"
           }`}
         >
@@ -44,7 +44,7 @@ export default function Item({ item }) {
 
           {/* Tanda Merah */}
           {showNotification && (
-            <span className="absolute right-16 top-1/2 -translate-y-1/2 w-2 h-2 bg-red-500 rounded-full"></span>
+            <span className="absolute right-14 top-1/2 -translate-y-1/2 w-2 h-2 bg-red-500 rounded-full"></span>
           )}
         </li>
       )}
