@@ -61,8 +61,7 @@ api.interceptors.response.use(
       errMessage === "jwt expired" ||
       errMessage === "Unauthorized" ||
       status === 401 ||
-      status === 403 ||
-      status === 500;
+      status === 403;
 
     if (isAuthError && !isRedirecting) {
       isRedirecting = true;
@@ -74,7 +73,7 @@ api.interceptors.response.use(
 
       setTimeout(() => {
         localStorage.clear();
-        window.location.url = "/auth/login";
+        window.location.replace = "/auth/login";
         isRedirecting = false;
       }, 1500);
     }

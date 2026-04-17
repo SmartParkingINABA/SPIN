@@ -31,7 +31,7 @@ export const useScanQr = () => {
       const mapped = {
         id: res.qr_code,
         nummber_plate: res.no_plat,
-        name: res.name_pengendara,
+        name: res.nama_pengendara,
         vehicle_type: res.jenis,
         registered_since: res.terdaftar_sejak,
         status:
