@@ -16,7 +16,11 @@ export default function VehiclesQR({
       </h2>
       <p className="text-[#93A3B6] font-medium mb-2.5">Pilih Kendaraan</p>
       <VehiclesDropdown
-        options={data?.kendaraan_list || ["Belum ada kendaraan yang terdaftar"]}
+        options={
+          data?.kendaraan_list?.length
+            ? data.kendaraan_list
+            : [{ id: "empty", no_plat: "Belum ada kendaraan", merk: "" }]
+        }
         selectedId={selectedId}
         onSelect={onSelect}
       />
