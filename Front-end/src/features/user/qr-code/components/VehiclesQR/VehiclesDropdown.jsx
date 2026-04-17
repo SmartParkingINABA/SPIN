@@ -70,7 +70,7 @@ export default function VehiclesDropdown({
             {item.no_plat} - {item.merk}
             <FaCheck
               className={`w-4 h-fit transition duration-300 group-hover:opacity-100 ${
-                selected === item.id ? "opacity-100" : "opacity-0"
+                selectedId === item.id ? "opacity-100" : "opacity-0"
               }`}
             />
           </li>
