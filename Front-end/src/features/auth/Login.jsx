@@ -52,7 +52,7 @@ export default function Login() {
 
       const role = res.user.role.toLowerCase();
 
-      let displayName = res.user.email;
+      let displayName;
       console.log(role);
 
       if (role === "pengendara") {
