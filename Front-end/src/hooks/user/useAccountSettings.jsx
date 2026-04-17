@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   getAccountSettings,
   updateProfile,
@@ -14,30 +14,32 @@ export const useGetAccountSettings = () => {
   const [error, setError] = useState(null);
   const { updateProfileState } = useAuth();
 
-  const handleDataProfile = useCallback(async () => {
-    try {
-      setLoading(true);
-
-      const res = await getAccountSettings();
-
-      setData(res);
-
-      if (res?.profil) {
-        updateProfileState({
-          nama_pengendara: res.profil.nama_pengendara,
-          foto_profil: res.profil.foto_profil,
-        });
-      }
-    } catch (err) {
-      setError(err);
-    } finally {
-      setLoading(false);
-    }
-  }, [updateProfileState]);
-
   useEffect(() => {
-    handleDataProfile();
-  }, [handleDataProfile]);
+    const fetchProfile = async () => {
+      try {
+        setLoading(true);
+
+        const res = await getAccountSettings();
+
+        setData(res);
+
+        if (res?.profil) {
+          updateProfileState({
+            nama_pengendara: res.profil.nama_pengendara,
+            foto_profil: res.profil.foto_profil,
+          });
+        }
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProfile();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleUpdateProfile = async (profileData) => {
     try {
@@ -45,7 +47,8 @@ export const useGetAccountSettings = () => {
 
       updateProfileState(profileData);
 
-      await handleDataProfile();
+      const res = await getAccountSettings();
+      setData(res);
     } catch (err) {
       console.error("Gagal update profil:", err);
       throw err;
@@ -58,7 +61,15 @@ export const useGetAccountSettings = () => {
       formData.append("foto_profil", file);
       const response = await uploadPhoto(formData);
 
-      await handleDataProfile();
+      const res = await getAccountSettings();
+      setData(res);
+
+      if (res?.profil) {
+        updateProfileState({
+          nama_pengendara: res.profil.nama_pengendara,
+          foto_profil: res.profil.foto_profil,
+        });
+      }
 
       toast.success(
         response.message || "Foto profil berhasil diperbarui! oke.",

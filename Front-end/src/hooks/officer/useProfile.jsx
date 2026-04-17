@@ -43,6 +43,8 @@ export const useProfile = () => {
 
   useEffect(() => {
     fetchProfile();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return {
