@@ -4,9 +4,11 @@ import BoxWrapper from "../../../components/ui/BoxWrapper";
 import ActivityCard from "./components/Card/ActivityCard";
 import { useDashboard } from "../../../hooks/officer/useDashboard";
 import DashboardSkeleton from "./components/DashboardSkeleton";
+import { useAuth } from "../../../context/useAuth";
 
 export default function Dashboard() {
   const { data, loading } = useDashboard();
+  const { user } = useAuth();
 
   const activities = data?.aktivitas_terakhir || [];
 
@@ -14,7 +16,7 @@ export default function Dashboard() {
 
   return (
     <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
-      <Header />
+      <Header user={user} />
       <StatsGrid summary={data?.summary} />
       <BoxWrapper title="Aktivitas Terakhir">
         {activities.map((item, index) => (

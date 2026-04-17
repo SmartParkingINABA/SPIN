@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { IoQrCode } from "react-icons/io5";
 
-export default function Header() {
+export default function Header({ user }) {
   return (
     <div className="flex items-center justify-between mb-6">
       <div>
         <h1 className="text-[#FEF8FD] text-2xl font-bold">Dashboard Petugas</h1>
         <p className="text-[#93A3B6] font-medium mt-1">
-          Selamat datang, <span>Nama Petugas</span>
+          Selamat datang, <span>{user?.displayName}</span>
         </p>
       </div>
       <Link

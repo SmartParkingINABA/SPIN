@@ -6,33 +6,34 @@ import {
   changePassword,
 } from "../../services/user/accountSettings.Service";
 import toast from "react-hot-toast";
+import { useAuth } from "../../context/useAuth";
 
 export const useGetAccountSettings = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const { updateProfileState } = useAuth();
 
   const handleDataProfile = useCallback(async () => {
     try {
       setLoading(true);
 
-      const data = await getAccountSettings();
+      const res = await getAccountSettings();
 
-      setData(data);
+      setData(res);
 
-      if (data && data.profil) {
-        localStorage.setItem("user_profile", JSON.stringify(data.profil));
-
-        window.dispatchEvent(
-          new CustomEvent("profile-updated", { detail: data.profil }),
-        );
+      if (res?.profil) {
+        updateProfileState({
+          nama_pengendara: res.profil.nama_pengendara,
+          foto_profil: res.profil.foto_profil,
+        });
       }
     } catch (err) {
       setError(err);
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [updateProfileState]);
 
   useEffect(() => {
     handleDataProfile();
@@ -41,7 +42,10 @@ export const useGetAccountSettings = () => {
   const handleUpdateProfile = async (profileData) => {
     try {
       await updateProfile(profileData);
-      handleDataProfile();
+
+      updateProfileState(profileData);
+
+      await handleDataProfile();
     } catch (err) {
       console.error("Gagal update profil:", err);
       throw err;

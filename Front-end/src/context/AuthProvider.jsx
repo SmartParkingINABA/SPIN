@@ -11,14 +11,27 @@ export function AuthProvider({ children }) {
     const userData = JSON.parse(storedUser);
     const profileData = storedProfile ? JSON.parse(storedProfile) : {};
 
-    return { ...userData, ...profileData };
+    return {
+      ...userData,
+      ...profileData,
+      displayName:
+        profileData?.nama_pengendara ||
+        profileData?.nama_petugas ||
+        userData?.email,
+    };
   });
 
   const saveUser = (userData) => {
     const storedProfile = JSON.parse(
       localStorage.getItem("user_profile") || "{}",
     );
-    const combinedData = { ...userData, ...storedProfile };
+
+    const displayName =
+      storedProfile?.nama_pengendara ||
+      storedProfile.nama_petugas ||
+      userData.email;
+
+    const combinedData = { ...userData, ...storedProfile, displayName };
 
     setUser(combinedData);
     localStorage.setItem("user", JSON.stringify(userData));
@@ -26,7 +39,17 @@ export function AuthProvider({ children }) {
 
   const updateProfileState = (newProfileData) => {
     setUser((prev) => {
-      const updated = { ...prev, ...newProfileData };
+      const updatedProfile = { ...prev, ...newProfileData };
+
+      const displayName =
+        newProfileData?.nama_pengendara ||
+        newProfileData?.nama_petugas ||
+        prev?.displayName;
+
+      const finalData = {
+        ...updatedProfile,
+        displayName,
+      };
 
       const existingProfile = JSON.parse(
         localStorage.getItem("user_profile") || "{}",
@@ -35,10 +58,10 @@ export function AuthProvider({ children }) {
       localStorage.setItem("user_profile", JSON.stringify(mergedProfile));
 
       window.dispatchEvent(
-        new CustomEvent("profile-updated", { detail: newProfileData }),
+        new CustomEvent("profile-updated", { detail: finalData }),
       );
 
-      return updated;
+      return finalData;
     });
   };
 

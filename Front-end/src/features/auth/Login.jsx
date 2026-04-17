@@ -12,6 +12,7 @@ import { login } from "../../services/auth.Service";
 import useAutoFocus from "../../hooks/useAutoFocus";
 import { useAuth } from "../../context/useAuth";
 import { getAccountSettings } from "../../services/user/accountSettings.Service";
+import { getProfile } from "../../services/officer/profile.Service";
 
 const roleRedirectMap = {
   admin: "/admin",
@@ -50,6 +51,7 @@ export default function Login() {
       setUser(res.user);
 
       const role = res.user.role.toLowerCase();
+
       let displayName = res.user.email;
       console.log(role);
 
@@ -67,6 +69,23 @@ export default function Login() {
           }
         } catch (err) {
           console.error("Gagal mengambil profil pengendara:", err);
+        }
+      }
+
+      if (role === "petugas") {
+        try {
+          const profileRes = await getProfile();
+          const profile = profileRes?.data?.informasi_pribadi;
+
+          if (profile) {
+            updateProfileState({
+              nama_petugas: profile.nama_petugas,
+            });
+
+            displayName = profile.nama_petugas;
+          }
+        } catch (err) {
+          console.error("Gagal mengambil profil petugas:", err);
         }
       }
 

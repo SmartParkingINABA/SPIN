@@ -36,7 +36,7 @@ export default function Profile() {
       {isModalOpen && (
         <FormEdit
           onClose={() => setIsModalOpen(false)}
-          data={profile.informasi_pribadi}
+          data={profile?.informasi_pribadi}
           onSubmit={updateProfile}
           loading={loading}
         />
