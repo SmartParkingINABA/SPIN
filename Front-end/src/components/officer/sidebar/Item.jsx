@@ -47,7 +47,7 @@ export default function Item({ item }) {
           </p>
 
           {showNotification && (
-            <span className="absolute right-16 top-1/2 -translate-y-1/2 w-2 h-2 bg-red-500 rounded-full"></span>
+            <span className="absolute right-10 top-1/2 -translate-y-1/2 w-2 h-2 bg-red-500 rounded-full"></span>
           )}
         </li>
       )}
