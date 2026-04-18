@@ -26,7 +26,7 @@ export default function FormEdit({ onClose, data, onSubmit, loading }) {
 
   return (
     <div className="font-ubuntu flex justify-center items-center h-screen w-full fixed inset-0 z-50 bg-[rgba(0,0,0,0.54)]">
-      <div className="border border-[rgba(255,236,120,0.5)] bg-[#130F40] rounded-md p-5 pt-6 w-2/5">
+      <div className="border border-[rgba(255,236,120,0.5)] bg-[#130F40] rounded-md p-5 pt-6 w-full sm:w-2/5">
         <div className="flex items-center justify-between mb-6.5">
           <h1 className="text-[#FEF8FD] text-[18px] font-semibold flex items-center gap-x-2.5">
             <CiEdit className="h-fit w-7" />
