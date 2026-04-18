@@ -3,7 +3,7 @@ import { IoTimeOutline } from "react-icons/io5";
 
 export default function WorkInformation({ data }) {
   return (
-    <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] px-6 py-4 rounded-md w-2/3">
+    <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] px-6 py-4 rounded-md w-full sm:w-2/3">
       <p className="text-[#FEF8FD] font-medium">Informasi Kerja</p>
       <div className="flex items-center gap-x-2 my-3.5">
         <IoTimeOutline className="h-fit w-6.5 text-[#93A3B6]" />

@@ -2,7 +2,7 @@ import { PiNotePencilThin } from "react-icons/pi";
 
 export default function ButtonCta({ setIsModalOpen }) {
   return (
-    <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] px-6 py-4 rounded-md w-1/3">
+    <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] px-6 py-4 rounded-md w-full sm:w-1/3">
       <p className="text-[#FEF8FD] font-medium">Aksi</p>
       <div className="mt-3.5 flex flex-col gap-y-3">
         <button

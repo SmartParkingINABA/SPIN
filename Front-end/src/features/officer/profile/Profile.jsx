@@ -30,7 +30,7 @@ export default function Profile() {
             </div>
           </div>
         ) : (
-          <p className="mt-6 text-[#93A3B6]">Belum ada data profile</p>
+          <p className="mt-4 sm:mt-6 text-[#93A3B6]">Belum ada data profile</p>
         )}
       </section>
       {isModalOpen && (
