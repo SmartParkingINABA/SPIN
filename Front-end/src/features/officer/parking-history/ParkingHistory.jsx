@@ -8,7 +8,7 @@ import ParkingHistorySkeleton from "./components/ParkingHistorySkeleton";
 import Search from "./components/Search";
 
 export default function ParkingHistory() {
-  const { data, meta, loading, search, setSearch, pagination, setPagination } =
+  const { data, loading, search, setSearch, pagination, setPagination } =
     useParkingHistory();
   const columns = [
     "No",
@@ -27,11 +27,7 @@ export default function ParkingHistory() {
     <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
       <Header />
       <div className="mt-6 border border-[rgba(255,236,120,0.5)] bg-[#1E1633] px-6 py-4 rounded-md">
-        <Search
-          total={meta?.total_data || 0}
-          search={search}
-          setSearch={setSearch}
-        />
+        <Search total={data.length} search={search} setSearch={setSearch} />
         <TableWrapper>
           <TableHead columns={columns} />
           <tbody>
