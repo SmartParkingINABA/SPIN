@@ -11,11 +11,13 @@ export default function Header({ setSidebarOpen, hamburgerRef }) {
       <h1 className="text-white font-bold hidden sm:block">
         INABA PARKING SYSTEM
       </h1>
-      <RxHamburgerMenu
+      <button
         ref={hamburgerRef}
-        className="text-[#FEF8FD] text-2xl block cursor-pointer sm:hidden"
         onClick={() => setSidebarOpen((prev) => !prev)}
-      />
+        className="block group sm:hidden"
+      >
+        <RxHamburgerMenu className="text-[#FEF8FD] text-2xl  cursor-pointer group-hover:opacity-80" />
+      </button>
       <Avatar setIsOpen={setIsOpen} />
       <Modal isOpen={isOpen} />
     </header>
