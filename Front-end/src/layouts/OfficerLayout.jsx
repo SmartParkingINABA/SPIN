@@ -16,7 +16,7 @@ export default function OfficerLayout() {
         setSidebarOpen={setSidebarOpen}
         hamburgerRef={hamburgerRef}
       />
-      <div className="w-[83%] mt-[60px] ml-auto">
+      <div className="w-full sm:w-[83%] mt-[60px] ml-auto">
         {/* Content */}
         <Outlet />
       </div>
