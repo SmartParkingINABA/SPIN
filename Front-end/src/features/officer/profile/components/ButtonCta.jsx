@@ -7,7 +7,7 @@ export default function ButtonCta({ setIsModalOpen }) {
       <div className="mt-3.5 flex flex-col gap-y-3">
         <button
           onClick={setIsModalOpen}
-          className="w-full flex items-center gap-x-3 bg-[#d3d3d3] rounded-sm py-1.5 px-3 cursor-pointer opacity-100 hover:opacity-80 transition"
+          className="w-full flex items-center gap-2 bg-[#d3d3d3] rounded-sm py-1.5 px-3 cursor-pointer opacity-100 hover:opacity-80 transition"
         >
           <PiNotePencilThin className="w-5 h-fit text-[#48515b]" />
           <p className="text-[#48515b] text-[14px] sm:text-[16px]">
