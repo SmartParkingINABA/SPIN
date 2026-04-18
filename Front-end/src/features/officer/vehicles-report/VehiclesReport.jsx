@@ -6,7 +6,7 @@ import TableRow from "./components/VehiclesTable/TableRow";
 import { useVehiclesReport } from "../../../hooks/officer/useVehiclesReport";
 import Pagination from "../../../components/ui/Pagination";
 import VehiclesReportSkeleton from "./components/VehiclesReportSkeleton";
-import { MobileVehicleCard } from "./components/MobileVehicleCard";
+import { MobileVehicleCard } from "./components/VehiclesTable/MobileVehicleCard";
 
 export default function VehiclesReport() {
   const { data, loading, search, setSearch, pagination, setPagination } =
