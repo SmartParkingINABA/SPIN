@@ -28,8 +28,8 @@ export default function FormEdit({ onClose, data, onSubmit, loading }) {
     <div className="font-ubuntu flex justify-center items-center h-screen w-full fixed inset-0 z-50 bg-[rgba(0,0,0,0.54)] px-5 sm:px-0">
       <div className="border border-[rgba(255,236,120,0.5)] bg-[#130F40] rounded-md p-5 pt-6 w-full sm:w-2/5">
         <div className="flex items-center justify-between mb-6.5">
-          <h1 className="text-[#FEF8FD] text-[18px] font-semibold flex items-center gap-x-2.5">
-            <CiEdit className="h-fit w-7" />
+          <h1 className="text-[#FEF8FD] text-[16px] sm:text-[18px] font-semibold flex items-center gap-x-2.5">
+            <CiEdit className="h-fit w-6 sm:w-7" />
             Edit Profile
           </h1>
           <IoClose
@@ -87,10 +87,10 @@ export default function FormEdit({ onClose, data, onSubmit, loading }) {
               {loading ? (
                 <LoadingSpinner size={18} color="#1e1633" />
               ) : (
-                <>
+                <p className="text-[14px] sm:text-[16px]">
                   <LuSave className="h-fit w-5" />
                   <span>Simpan</span>
-                </>
+                </p>
               )}
             </div>
           </button>
