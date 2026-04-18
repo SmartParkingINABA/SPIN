@@ -63,7 +63,7 @@ export default function ScanQR() {
             isScanning={isScanning}
             loading={loading}
           />
-          <hr className="h-0.5 bg-[#93A3B6] w-full my-6" />
+          <hr className="h-0.5 bg-[#93A3B6] w-full my-4 sm:my-6" />
           <SubmitManualId
             searchID={searchID}
             setSearchID={setSearchID}

@@ -16,13 +16,13 @@ export default function SubmitManualId({
           type="text"
           value={searchID}
           onChange={(e) => setSearchID(e.target.value)}
-          className="w-full bg-[#F5E79E] rounded-md py-2 px-3 outline-0"
+          className="w-full bg-[#F5E79E] rounded-md py-2 px-3 outline-0 placeholder:text-[14px] sm:placeholder:text-[16px]"
           placeholder="Masukan ID QR"
         />
         <button
           disabled={loading}
           onClick={handleSearch}
-          className="py-2 bg-[#FFDB58] text-[#130F40] px-5 rounded-md cursor-pointer opacity-100 hover:opacity-80 transition duration-300 ease-in-out"
+          className="py-2 bg-[#FFDB58] text-[#130F40] px-5 rounded-md cursor-pointer opacity-100 hover:opacity-80 transition duration-300 ease-in-out text-[14px] sm:text-[16px]"
         >
           {loading ? "Loading..." : "Submit"}
         </button>
