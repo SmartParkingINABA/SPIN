@@ -4,12 +4,19 @@ import Header from "./Header";
 import Item from "./Item";
 import { useEffect, useRef } from "react";
 
-export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
+export default function Sidebar({ sidebarOpen, setSidebarOpen, hamburgerRef }) {
   const sidebarRef = useRef();
 
   useEffect(() => {
     function handleClickOutside(e) {
-      if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
+      if (
+        sidebarRef.current &&
+        !sidebarRef.current.contains(
+          e.target &&
+            hamburgerRef.current &&
+            !hamburgerRef.current.contains(e.target),
+        )
+      ) {
         setSidebarOpen(false);
       }
     }
