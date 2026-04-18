@@ -21,7 +21,7 @@ export default function RegisteredVehicle({
               <FiCheckCircle className="h-fit w-5 text-green-400" />
               <p className="text-[#48515b] font-medium">QR Valid & Terdaftar</p>
             </div>
-            <p className="bg-[#130F40] text-[#FEF8FD] rounded-sm px-3.5 py-0.5">
+            <p className="bg-[#130F40] text-[#FEF8FD] rounded-sm px-3.5 py-0.5 text-[14px] sm:text-[16px]">
               aktif
             </p>
           </div>
@@ -68,7 +68,7 @@ export default function RegisteredVehicle({
             <p className="text-[#48515b]">Status Kendaraan Saat Ini</p>
             {vehicleStatus === "outside" && (
               <p className="text-[#48515b]">
-                <span className="bg-[#48515b] text-[#FEF8FD] rounded-sm px-2 py-0.5">
+                <span className="bg-[#48515b] text-[#FEF8FD] rounded-sm px-2 py-0.5 text-[14px] sm:text-[16px]">
                   Di Luar Parkir
                 </span>{" "}
                 Gunakan tombol "Konfirmasi Masuk"
@@ -77,7 +77,7 @@ export default function RegisteredVehicle({
 
             {vehicleStatus === "inside" && (
               <p className="text-[#48515b]">
-                <span className="bg-orange-500 text-[#FEF8FD] rounded-sm px-2 py-0.5">
+                <span className="bg-orange-500 text-[#FEF8FD] rounded-sm px-2 py-0.5 text-[14px] sm:text-[16px]">
                   Di Dalam Parkir
                 </span>{" "}
                 Gunakan tombol "Konfirmasi Keluar"
@@ -95,8 +95,8 @@ export default function RegisteredVehicle({
               onClick={handleIn}
             >
               <div className="flex items-center gap-x-3 text-[#FEF8FD] mx-auto">
-                <FaArrowRightLong className="w-5 h-fit" />
-                <p>Konfirmasi Masuk</p>
+                <FaArrowRightLong className="w-4 sm:w-5 h-fit" />
+                <p className="text-[14px] sm:text-[16px]">Konfirmasi Masuk</p>
               </div>
             </button>
             <button
@@ -109,8 +109,8 @@ export default function RegisteredVehicle({
               onClick={handleExit}
             >
               <div className="flex items-center gap-x-3 text-[#FEF8FD] mx-auto">
-                <FaArrowLeftLong className="w-5 h-fit" />
-                <p>Konfirmasi Keluar</p>
+                <FaArrowLeftLong className="w-4 sm:w-5 h-fit" />
+                <p className="text-[14px] sm:text-[16px]">Konfirmasi Keluar</p>
               </div>
             </button>
           </div>

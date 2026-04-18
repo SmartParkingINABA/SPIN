@@ -6,7 +6,7 @@ export default function NotResultYet({ scanResult, actionsStatus }) {
       {!scanResult && !actionsStatus && (
         <div className="mt-5 sm:mt-20">
           <IoMdCloseCircleOutline className="h-fit w-13 text-[#93A3B6] mx-auto mb-3" />
-          <p className="text-[#93A3B6] text-center mb-1.5">
+          <p className="text-[#93A3B6] text-center sm:mb-1.5">
             Belum ada data terscan
           </p>
           <p className="text-[#93A3B6] text-center">
