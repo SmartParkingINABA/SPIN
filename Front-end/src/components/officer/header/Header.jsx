@@ -3,7 +3,7 @@ import Avatar from "./Avatar";
 import Modal from "./Modal";
 import { RxHamburgerMenu } from "react-icons/rx";
 
-export default function Header() {
+export default function Header({ setSidebarOpen }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -11,7 +11,10 @@ export default function Header() {
       <h1 className="text-white font-bold hidden sm:block">
         INABA PARKING SYSTEM
       </h1>
-      <RxHamburgerMenu className="text-[#FEF8FD] text-2xl block sm:hidden" />
+      <RxHamburgerMenu
+        className="text-[#FEF8FD] text-2xl block cursor-pointer sm:hidden"
+        onClick={() => setSidebarOpen((prev) => !prev)}
+      />
       <Avatar setIsOpen={setIsOpen} />
       <Modal isOpen={isOpen} />
     </header>
