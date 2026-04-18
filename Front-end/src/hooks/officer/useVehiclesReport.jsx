@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { getVehiclesReport } from "../../services/officer/vehiclesReport.Service";
 
 export const useVehiclesReport = () => {
@@ -31,11 +31,6 @@ export const useVehiclesReport = () => {
 
       setData(mapped);
       setMeta(res.meta);
-
-      setPagination((prev) => ({
-        ...prev,
-        total: res.meta.total_data,
-      }));
     } catch (err) {
       console.error("Error fetch kendaraan parkir:", err);
     } finally {
@@ -47,11 +42,23 @@ export const useVehiclesReport = () => {
     fetchVehicles();
   }, [fetchVehicles]);
 
-  const filteredData = data.filter(
-    (item) =>
-      item.plate.toLowerCase().includes(search.toLowerCase()) ||
-      item.name.toLowerCase().includes(search.toLowerCase()),
-  );
+  const filteredData = useMemo(() => {
+    if (!search) return data;
+
+    return data.filter(
+      (item) =>
+        item.plate.toLowerCase().includes(search.toLowerCase()) ||
+        item.name.toLowerCase().includes(search.toLowerCase()),
+    );
+  }, [data, search]);
+
+  useEffect(() => {
+    setPagination((prev) => ({
+      ...prev,
+      total: search ? filteredData.length : meta?.total_data || 0,
+      page: search ? 1 : prev.page,
+    }));
+  }, [filteredData, search, meta]);
 
   return {
     data: filteredData,
