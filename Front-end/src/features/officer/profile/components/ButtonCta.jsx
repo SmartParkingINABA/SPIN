@@ -10,7 +10,9 @@ export default function ButtonCta({ setIsModalOpen }) {
           className="w-full flex items-center gap-x-3 bg-[#d3d3d3] rounded-sm py-1.5 px-3 cursor-pointer opacity-100 hover:opacity-80 transition"
         >
           <PiNotePencilThin className="w-5 h-fit text-[#48515b]" />
-          <p className="text-[#48515b]">Edit Profile</p>
+          <p className="text-[#48515b] text-[14px] sm:text-[16px]">
+            Edit Profile
+          </p>
         </button>
       </div>
     </div>
