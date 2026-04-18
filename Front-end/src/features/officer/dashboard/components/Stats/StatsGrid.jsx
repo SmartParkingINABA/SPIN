@@ -4,7 +4,7 @@ import StatsCard from "./StatsCard";
 
 export default function StatsGrid({ summary }) {
   return (
-    <div className="grid grid-cols-3 gap-6 mb-6">
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-6">
       <StatsCard
         title="Kendaraan Masuk"
         value={summary?.kendaraan_masuk || 0}
