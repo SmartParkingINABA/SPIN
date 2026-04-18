@@ -4,7 +4,7 @@ export default function Search({ search, setSearch, total }) {
   return (
     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3.5 sm:mb-4.5">
       <p className="text-[#FEF8FD] font-semibold">Kendaraan Aktif ({total})</p>
-      <div className="flex items-center gap-x-2 bg-[#F5E79E] py-2 px-3 rounded-sm mt-1 sm:mt-0 w-fit sm:w-full">
+      <div className="flex items-center gap-x-2 bg-[#F5E79E] py-2 px-3 rounded-sm mt-1 sm:mt-0">
         <IoIosSearch className="w-5 h-fit cursor-pointer" />
         <input
           type="text"

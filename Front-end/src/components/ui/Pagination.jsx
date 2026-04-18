@@ -22,17 +22,17 @@ export default function Pagination({ pagination, setPagination }) {
       <button
         onClick={handlePrev}
         disabled={page <= 1}
-        className="px-3 py-1 bg-[#FFEC78] text-[#130F40] rounded cursor-pointer transition duration-300 ease-in-out hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="px-3 py-1 bg-[#FFEC78] text-[#130F40] rounded cursor-pointer transition duration-300 ease-in-out hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed text-[14px] sm:text-[16px]"
       >
         Prev
       </button>
-      <p>
+      <p className="text-[12px] sm:text-[16px]">
         Page {page} of {totalPages}
       </p>
       <button
         onClick={handleNext}
         disabled={page >= totalPages}
-        className="px-3 py-1 bg-[#FFEC78] text-[#130F40] rounded cursor-pointer transition duration-300 ease-in-out hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="px-3 py-1 bg-[#FFEC78] text-[#130F40] rounded cursor-pointer transition duration-300 ease-in-out hover:opacity-80 disabled:opacity-50 disabled:cursor-not-allowed text-[14px] sm:text-[16px]"
       >
         Next
       </button>
