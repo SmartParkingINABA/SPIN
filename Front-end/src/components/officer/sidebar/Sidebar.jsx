@@ -36,7 +36,15 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen, hamburgerRef }) {
       <div className="border-t border-t-[rgba(255,236,120,0.5)] flex flex-col justify-between grow">
         <ul className="py-6 px-5 flex flex-col gap-y-1">
           {sidebarOfficerMenu.map((item) => (
-            <Item key={item.path} item={item} />
+            <Item
+              key={item.path}
+              item={item}
+              onClick={() => {
+                if (window.innerWidth < 640) {
+                  setSidebarOpen(false);
+                }
+              }}
+            />
           ))}
         </ul>
         <SidebarFooter />
