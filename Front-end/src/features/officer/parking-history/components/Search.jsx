@@ -8,7 +8,7 @@ export default function Search({ total, search, setSearch }) {
         <MdDateRange className="w-5 h-fit" />
         Riwayat Parkir ({total} record)
       </p>
-      <div className="flex items-center gap-x-2 bg-[#F5E79E] py-2 px-3 rounded-sm mt-1 sm:mt-0">
+      <div className="flex items-center gap-x-2 bg-[#F5E79E] py-2 px-3 rounded-sm mt-2 sm:mt-0">
         <IoIosSearch className="w-5 h-fit cursor-pointer" />
         <input
           type="text"
