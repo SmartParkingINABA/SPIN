@@ -37,7 +37,11 @@ export default function VehiclesReport() {
             </div>
           ) : (
             data.map((row, i) => (
-              <MobileVehicleCard key={i} data={row} index={i} />
+              <MobileVehicleCard
+                key={i}
+                data={row}
+                index={(pagination.page - 1) * pagination.limit + i}
+              />
             ))
           )}
         </div>
@@ -58,7 +62,7 @@ export default function VehiclesReport() {
                   <TableRow
                     key={i}
                     data={row}
-                    index={i}
+                    index={(pagination.page - 1) * pagination.limit + i}
                     isLast={i === data.length - 1}
                   />
                 ))
