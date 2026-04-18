@@ -20,11 +20,11 @@ export default function Profile() {
         <Header />
         {profile ? (
           <div className="mt-4 sm:mt-6 flex flex-col gap-y-5">
-            <div className="flex flex-col sm:flex-row gap-6">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
               <PrivateInformation data={profile.informasi_pribadi} />
               <Statistic data={profile.statistik_hari_ini} />
             </div>
-            <div className="flex flex-col sm:flex-row gap-6">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
               <WorkInformation data={profile.informasi_kerja} />
               <ButtonCta setIsModalOpen={() => setIsModalOpen(true)} />
             </div>
