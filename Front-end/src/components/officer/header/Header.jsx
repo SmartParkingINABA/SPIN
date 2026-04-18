@@ -11,7 +11,7 @@ export default function Header() {
       <h1 className="text-white font-bold hidden sm:block">
         INABA PARKING SYSTEM
       </h1>
-      <RxHamburgerMenu className="text-[#FEF8FD] block sm:hidden" />
+      <RxHamburgerMenu className="text-[#FEF8FD] text-2xl block sm:hidden" />
       <Avatar setIsOpen={setIsOpen} />
       <Modal isOpen={isOpen} />
     </header>
