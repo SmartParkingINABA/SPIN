@@ -87,10 +87,10 @@ export default function FormEdit({ onClose, data, onSubmit, loading }) {
               {loading ? (
                 <LoadingSpinner size={18} color="#1e1633" />
               ) : (
-                <>
+                <p className="text-[14px] sm:text-[16px] flex items-center gap-3">
                   <LuSave className="h-fit w-5" />
                   <span>Simpan</span>
-                </>
+                </p>
               )}
             </div>
           </button>
