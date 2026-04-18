@@ -25,7 +25,7 @@ export default function VehiclesReport() {
   return (
     <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
       <Header />
-      <div className="mt-6 border border-[rgba(255,236,120,0.5)] bg-[#1E1633] px-6 py-4 rounded-md">
+      <div className="mt-4 sm:mt-6 border border-[rgba(255,236,120,0.5)] bg-[#1E1633] px-6 py-4 rounded-md">
         <Search search={search} setSearch={setSearch} total={data.length} />
         <TableWrapper>
           <TableHeader columns={columns} />
