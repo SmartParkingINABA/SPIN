@@ -3,10 +3,10 @@ import { BiCheckDouble } from "react-icons/bi";
 export default function Header({ unreadCount, onReadAll }) {
   return (
     <>
-      <h1 className="text-[#FEF8FD] text-2xl font-bold flex items-center gap-x-2">
+      <h1 className="text-[#FEF8FD] text-[18px] sm:text-2xl font-bold flex items-center gap-x-2">
         Notifikasi Sistem
         {unreadCount > 0 && (
-          <span className="text-[#FEF8FD] text-[12px] bg-red-500 rounded-sm px-1 py-0.5">
+          <span className="text-[#FEF8FD] text-[10px] sm:text-[12px] bg-red-500 rounded-sm px-1 py-0.5">
             {unreadCount} Baru
           </span>
         )}
