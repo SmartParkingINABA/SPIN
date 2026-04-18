@@ -9,14 +9,11 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen, hamburgerRef }) {
 
   useEffect(() => {
     function handleClickOutside(e) {
-      if (
-        sidebarRef.current &&
-        !sidebarRef.current.contains(
-          e.target &&
-            hamburgerRef.current &&
-            !hamburgerRef.current.contains(e.target),
-        )
-      ) {
+      const clickedSidebar = sidebarRef.current?.contains(e.target);
+
+      const clickedHamburger = hamburgerRef.current?.contains(e.target);
+
+      if (!clickedSidebar && !clickedHamburger) {
         setSidebarOpen(false);
       }
     }
@@ -28,7 +25,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen, hamburgerRef }) {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [sidebarOpen, setSidebarOpen]);
+  }, [sidebarOpen, setSidebarOpen, hamburgerRef]);
 
   return (
     <aside
