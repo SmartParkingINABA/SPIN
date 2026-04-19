@@ -8,7 +8,7 @@ export default function Header({ user }) {
         <h1 className="text-[#FEF8FD] text-[18px] sm:text-2xl font-bold">
           Dashboard Petugas
         </h1>
-        <p className="text-[#93A3B6] text-[14px] sm:text-[18px] font-medium sm:mt-1">
+        <p className="text-[#93A3B6] text-[14px] sm:text-[16px] font-medium sm:mt-1">
           Selamat datang, <span>{user?.displayName}</span>
         </p>
       </div>
