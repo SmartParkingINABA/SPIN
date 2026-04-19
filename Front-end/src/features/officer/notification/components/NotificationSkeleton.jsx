@@ -1,7 +1,7 @@
 export default function NotificationSkeleton() {
   return (
     <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
-      <h1 className="h-4 w-[20%] bg-[#93A3B6] rounded-md"></h1>
+      <h1 className="h-4 w-[40%] sm:w-[20%] bg-[#93A3B6] rounded-md"></h1>
       <div className="mt-1 flex items-center justify-between">
         <p className="h-3 w-[18%] bg-[#93A3B6] rounded-md mt-2.5"></p>
         <p className="h-3 w-[14%] bg-[#93A3B6] rounded-md mt-2.5"></p>

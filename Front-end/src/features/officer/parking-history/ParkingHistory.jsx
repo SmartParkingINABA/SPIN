@@ -22,7 +22,7 @@ export default function ParkingHistory() {
     "Status",
   ];
 
-  if (!loading) return <ParkingHistorySkeleton />;
+  if (loading) return <ParkingHistorySkeleton />;
 
   return (
     <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
