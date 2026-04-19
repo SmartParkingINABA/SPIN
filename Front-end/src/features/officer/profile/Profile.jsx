@@ -19,7 +19,7 @@ export default function Profile() {
       <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
         <Header />
         {profile ? (
-          <div className="mt-4 sm:mt-6 flex flex-col gap-6">
+          <div className="mt-4 sm:mt-6 flex flex-col gap-4 sm:gap-6">
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
               <PrivateInformation data={profile.informasi_pribadi} />
               <Statistic data={profile.statistik_hari_ini} />
