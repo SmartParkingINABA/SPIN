@@ -77,7 +77,7 @@ export default function Profile() {
       {loading ? (
         <ProfileSkeleton />
       ) : (
-        <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
+        <section className="bg-[#130F40] px-5 py-7 h-[calc(100dvh-60px)] overflow-y-auto">
           <Header />
           <div className="mt-6 flex flex-col gap-6">
             <div className="flex gap-6">

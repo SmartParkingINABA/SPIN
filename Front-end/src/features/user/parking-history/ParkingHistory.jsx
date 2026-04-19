@@ -22,7 +22,7 @@ export default function ParkingHistory() {
       {loading ? (
         <HistorySkeleton />
       ) : (
-        <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
+        <section className="bg-[#130F40] px-5 py-7 h-[calc(100dvh-60px)] overflow-y-auto">
           <Header
             onExport={handleExport}
             isExportDisabled={data.history.length === 0}
