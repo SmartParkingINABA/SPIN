@@ -108,10 +108,12 @@ export default function Login() {
   const emailRef = useAutoFocus();
 
   return (
-    <div className="bg-[#1E1633] font-ubuntu h-screen w-full flex justify-center items-center">
+    <div className="bg-[#1E1633] font-ubuntu h-screen w-full flex justify-center items-center p-5 sm:p-0">
       <div className="w-full sm:w-1/4">
-        <h1 className="text-[#ffec78] text-[2.5rem] font-bold mb-1.5">Login</h1>
-        <p className="text-[#FEF8FD] font-bold mb-3.5">
+        <h1 className="text-[#ffec78] text-[18px] sm:text-[2.5rem] font-bold mb-1 sm:mb-1.5">
+          Login
+        </h1>
+        <p className="text-[#FEF8FD] font-bold mb-3 sm:mb-3.5">
           Please login to your account
         </p>
         <form onSubmit={handleSubmit} noValidate>
@@ -138,26 +140,26 @@ export default function Login() {
           >
             {showPassword ? (
               <FaRegEyeSlash
-                className="w-7 h-fit cursor-pointer"
+                className="w-6 sm:w-7 h-fit cursor-pointer"
                 onClick={() => setShowPassword(false)}
               />
             ) : (
               <FaRegEye
-                className="w-7 h-fit cursor-pointer"
+                className="w-6 sm:w-7 h-fit cursor-pointer"
                 onClick={() => setShowPassword(true)}
               />
             )}
           </FormInput>
           <Link
             to="/auth/forgot/request-otp"
-            className="block text-[#93A3B6] font-bold text-right my-4.5 mr-5"
+            className="block text-[#93A3B6] text-[14px] sm:text-[16px] font-bold text-right my-4.5 mr-5"
           >
             Forgot Password ?
           </Link>
           <button
             type="submit"
             disabled={loading}
-            className={`flex items-center justify-center w-full bg-[#FFDB58] text-[#130F40] text-[23px] font-bold h-13 rounded-md transition hover:opacity-80 ${
+            className={`flex items-center justify-center w-full bg-[#FFDB58] text-[#130F40] text-[16px] sm:text-[23px] font-bold h-11.5 sm:h-13 rounded-md transition hover:opacity-80 ${
               loading
                 ? "opacity-80 cursor-not-allowed"
                 : "cursor-pointer opacity-100"

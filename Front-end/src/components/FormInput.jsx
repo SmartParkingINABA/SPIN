@@ -13,7 +13,7 @@ export default function FormInput({
   const Icon = icon;
 
   return (
-    <div className="mb-3">
+    <div className="mb-2.5 sm:mb-3">
       <label
         htmlFor={htmlFor}
         className="text-[#FEF8FD] font-bold text-[15px] ml-2.5"
@@ -21,7 +21,7 @@ export default function FormInput({
         {label}
       </label>
       <div className="flex items-center gap-x-4 bg-[#F5E79E] py-3 px-5 mt-2 rounded-md">
-        {Icon && <Icon className="w-7 h-fit" />}
+        {Icon && <Icon className="w-6 sm:w-7 h-fit" />}
         <input
           id={htmlFor}
           name={htmlFor}
@@ -29,7 +29,7 @@ export default function FormInput({
           value={value}
           placeholder={placeholder}
           ref={ref}
-          className="w-full outline-0 bg-transparent"
+          className="w-full outline-0 bg-transparent placeholder:text-[14px] sm:placeholder:text-[16px]"
           onChange={onChange}
           autoComplete="off"
         />
