@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function ConfirmReset() {
   return (
     <div className="bg-[#1E1633] font-ubuntu min-h-dvh w-full flex justify-center items-center px-5 sm:px-0">
-      <div className="w-full sm:w-1/4w-1/4">
+      <div className="w-full sm:w-1/4">
         <h1 className="text-[#ffec78] text-[27px] sm:text-[2.5rem] font-bold mb-4">
           Password Reset
         </h1>
