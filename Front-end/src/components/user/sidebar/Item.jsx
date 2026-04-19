@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-export default function Item({ item }) {
+export default function Item({ item, onClick }) {
   const Icon = item.icon;
   const [currentProfile, setCurrentProfile] = useState(() => {
     const saved = localStorage.getItem("user_profile");
@@ -21,7 +21,7 @@ export default function Item({ item }) {
   const showNotification = isProfileMenu && !hasName;
 
   return (
-    <NavLink to={item.path} end={item.exact}>
+    <NavLink to={item.path} end={item.exact} onClick={onClick}>
       {({ isActive }) => (
         <li
           className={`relative transition duration-300 ease-in-out px-3 py-2.5 rounded-md hover:bg-[#130f40] group ${
