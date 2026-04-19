@@ -108,7 +108,7 @@ export default function Login() {
   const emailRef = useAutoFocus();
 
   return (
-    <div className="bg-[#1E1633] font-ubuntu h-screen w-full flex justify-center items-center p-5 sm:p-0">
+    <div className="bg-[#1E1633] font-ubuntu min-h-dvh w-full flex justify-center items-center px-5 sm:px-0">
       <div className="w-full sm:w-1/4">
         <h1 className="text-[#ffec78] text-[27px] sm:text-[2.5rem] font-bold mb-1 sm:mb-1.5">
           Login
