@@ -75,12 +75,12 @@ export default function Register() {
   const emailRef = useAutoFocus();
 
   return (
-    <div className="bg-[#1E1633] font-ubuntu h-screen w-full flex justify-center items-center">
-      <div className="w-1/4">
-        <h1 className="text-[#ffec78] text-[2.5rem] font-bold mb-1.5">
+    <div className="bg-[#1E1633] font-ubuntu min-h-dvh w-full flex justify-center items-center px-5 sm:px-0">
+      <div className="w-full sm:w-1/4">
+        <h1 className="text-[#ffec78] text-[27px] sm:text-[2.5rem] font-bold mb-1 sm:mb-1.5">
           Register
         </h1>
-        <p className="text-[#FEF8FD] font-bold mb-3.5">
+        <p className="text-[#FEF8FD] font-bold mb-3 sm:mb-3.5">
           let’s keep it quick, just 3 steps and you’re in
         </p>
         <form onSubmit={handleSubmit} noValidate>
@@ -107,12 +107,12 @@ export default function Register() {
           >
             {showPassword ? (
               <FaRegEyeSlash
-                className="w-7 h-fit cursor-pointer"
+                className="w-6 sm:w-7 h-fit cursor-pointer"
                 onClick={() => setShowPassword(false)}
               />
             ) : (
               <FaRegEye
-                className="w-7 h-fit cursor-pointer"
+                className="w-6 sm:w-7 h-fit cursor-pointer"
                 onClick={() => setShowPassword(true)}
               />
             )}
@@ -129,12 +129,12 @@ export default function Register() {
           >
             {showConfirmPassword ? (
               <FaRegEyeSlash
-                className="w-7 h-fit cursor-pointer"
+                className="w-6 sm:w-7 h-fit cursor-pointer"
                 onClick={() => setShowConfirmPassword(false)}
               />
             ) : (
               <FaRegEye
-                className="w-7 h-fit cursor-pointer"
+                className="w-6 sm:w-7 h-fit cursor-pointer"
                 onClick={() => setShowConfirmPassword(true)}
               />
             )}
