@@ -62,7 +62,7 @@ export default function RequestOtp() {
           Forgot Password?
         </h1>
         <img src={forgotPasswordIcon} alt="" className="w-3/5 mx-auto" />
-        <p className="text-center text-[#FEF8FD] leading-6.5 mb-8">
+        <p className="text-center text-[#FEF8FD] leading-6.5 mb-7 sm:mb-8">
           Don’t worry! It happens. Please enter the email address with your
           account
         </p>
@@ -82,7 +82,7 @@ export default function RequestOtp() {
           <button
             type="submit"
             disabled={loading}
-            className={`mt-8 flex items-center justify-center w-full bg-[#FFDB58] text-[#130F40] text-[23px] font-bold h-13 rounded-md transition hover:opacity-80 ${
+            className={`mt-8 flex items-center justify-center w-full bg-[#FFDB58] text-[#130F40] text-[18px] sm:text-[23px] font-bold h-11.5 sm:h-13 rounded-md transition hover:opacity-80 ${
               loading
                 ? "opacity-80 cursor-not-allowed"
                 : "cursor-pointer opacity-100"
