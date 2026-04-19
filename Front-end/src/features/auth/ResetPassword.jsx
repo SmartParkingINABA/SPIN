@@ -61,13 +61,13 @@ export default function ResetPassword() {
   const passwordRef = useAutoFocus();
 
   return (
-    <div className="bg-[#1E1633] font-ubuntu min-h-dvh w-full flex justify-center items-center">
+    <div className="bg-[#1E1633] font-ubuntu min-h-dvh w-full flex justify-center items-center px-5 sm:px-0">
       <div className="w-full sm:w-1/4">
         <h1 className="text-center text-[#ffec78] text-[27px] sm:text-[2.5rem] font-semibold mb-1 sm:mb-1.5">
           Set new password
         </h1>
         <img src={resetPasswordIcon} alt="" className="w-3/5 mx-auto" />
-        <p className="text-[#FEF8FD] font-bold mb-3 mt-5">
+        <p className="text-center text-[#FEF8FD] font-bold mb-3 mt-4 sm:mt-5">
           Create new password. Ensure it differs from previous ones for security
         </p>
         <form onSubmit={handleSubmit} noValidate>
