@@ -50,7 +50,7 @@ export default function ScanQR() {
     [scanQr],
   );
 
-  if (loading) return <ScanQRSkeleton />;
+  if (!loading) return <ScanQRSkeleton />;
 
   return (
     <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
