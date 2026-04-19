@@ -159,7 +159,7 @@ export default function Register() {
           <button
             type="submit"
             disabled={loading}
-            className={`flex items-center justify-center w-full bg-[#FFDB58] text-[#130F40] text-[23px] font-bold h-13 mt-8 rounded-md transition hover:opacity-80 ${
+            className={`flex items-center justify-center w-full bg-[#FFDB58] text-[#130F40] text-[18px] sm:text-[23px] font-bold h-11.5 sm:h-13 mt-8 rounded-md transition hover:opacity-80 ${
               loading
                 ? "opacity-80 cursor-not-allowed"
                 : "cursor-pointer opacity-100"
