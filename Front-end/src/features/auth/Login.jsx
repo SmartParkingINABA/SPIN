@@ -110,7 +110,7 @@ export default function Login() {
   return (
     <div className="bg-[#1E1633] font-ubuntu h-screen w-full flex justify-center items-center p-5 sm:p-0">
       <div className="w-full sm:w-1/4">
-        <h1 className="text-[#ffec78] text-[18px] sm:text-[2.5rem] font-bold mb-1 sm:mb-1.5">
+        <h1 className="text-[#ffec78] text-[27px] sm:text-[2.5rem] font-bold mb-1 sm:mb-1.5">
           Login
         </h1>
         <p className="text-[#FEF8FD] font-bold mb-3 sm:mb-3.5">
@@ -159,7 +159,7 @@ export default function Login() {
           <button
             type="submit"
             disabled={loading}
-            className={`flex items-center justify-center w-full bg-[#FFDB58] text-[#130F40] text-[16px] sm:text-[23px] font-bold h-11.5 sm:h-13 rounded-md transition hover:opacity-80 ${
+            className={`flex items-center justify-center w-full bg-[#FFDB58] text-[#130F40] text-[18px] sm:text-[23px] font-bold h-11.5 sm:h-13 rounded-md transition hover:opacity-80 ${
               loading
                 ? "opacity-80 cursor-not-allowed"
                 : "cursor-pointer opacity-100"
