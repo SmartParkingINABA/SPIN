@@ -15,7 +15,7 @@ export default function Dashboard() {
   if (loading) return <DashboardSkeleton />;
 
   return (
-    <section className="bg-[#130F40] px-5 py-7 h-[calc(100dvh-60px)]">
+    <section className="bg-[#130F40] px-5 py-7 min-h-[calc(100dvh-60px)]">
       <Header user={user} />
       <StatsGrid summary={data?.summary} />
       <BoxWrapper title="Aktivitas Terakhir">
