@@ -16,7 +16,7 @@ export default function Profile() {
 
   return (
     <>
-      <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
+      <section className="bg-[#130F40] px-5 py-7 h-[calc(100dvh-60px)] overflow-y-auto">
         <Header />
         {profile ? (
           <div className="mt-4 sm:mt-6 flex flex-col gap-4 sm:gap-6">

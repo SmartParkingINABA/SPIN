@@ -53,7 +53,7 @@ export default function ScanQR() {
   if (loading) return <ScanQRSkeleton />;
 
   return (
-    <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
+    <section className="bg-[#130F40] px-5 py-7 h-[calc(100dvh-60px)] overflow-y-auto">
       <Header />
       <div className="mt-4 sm:mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
         <BoxWrapper title="Scanner QR">

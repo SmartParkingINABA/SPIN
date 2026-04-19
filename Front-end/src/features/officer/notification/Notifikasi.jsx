@@ -18,7 +18,7 @@ export default function Notifikasi() {
   if (loading) return <NotificationSkeleton />;
 
   return (
-    <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
+    <section className="bg-[#130F40] px-5 py-7 h-[calc(100dvh-60px)] overflow-y-auto">
       <Header unreadCount={unreadCount} onReadAll={readAllNotification} />
       <div className="mt-6 flex flex-col gap-y-3.5">
         {notifications.length > 0 ? (
