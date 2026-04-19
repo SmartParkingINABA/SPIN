@@ -56,9 +56,9 @@ export default function RequestOtp() {
   const emailRef = useAutoFocus();
 
   return (
-    <div className="bg-[#1E1633] font-ubuntu h-screen w-full flex justify-center items-center">
-      <div className="w-1/4">
-        <h1 className="text-center text-[#ffec78] text-[2.5rem] font-bold mb-4">
+    <div className="bg-[#1E1633] font-ubuntu min-h-dvh w-full flex justify-center items-center px-5 sm:px-0">
+      <div className="w-full sm:w-1/4">
+        <h1 className="text-center text-[#ffec78] text-[27px] sm:text-[2.5rem] font-bold mb-4">
           Forgot Password?
         </h1>
         <img src={forgotPasswordIcon} alt="" className="w-3/5 mx-auto" />
