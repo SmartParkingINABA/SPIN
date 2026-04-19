@@ -9,7 +9,7 @@ export default function OfficerLayout() {
   const hamburgerRef = useRef(null);
 
   return (
-    <main className="flex font-ubuntu w-full min-h-dvh">
+    <main className="flex font-ubuntu w-full">
       <Header setSidebarOpen={setSidebarOpen} hamburgerRef={hamburgerRef} />
       <Sidebar
         sidebarOpen={sidebarOpen}
