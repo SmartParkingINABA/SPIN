@@ -55,7 +55,7 @@ export default function OTPInput({ length = 4, value, onChange, error }) {
             value={digit}
             onChange={(e) => handleChange(e.target.value, index)}
             onKeyDown={(e) => handleKeyDown(e, index)}
-            className="bg-[#F5E79E] text-2xl text-center font-semibold rounded-md py-3 px-5 outline-0"
+            className="bg-[#F5E79E] text-[18px] sm:text-2xl text-center font-semibold rounded-md py-2.5 px-4.5 outline-0"
           />
         ))}
       </div>
