@@ -13,7 +13,7 @@ export default function DashboardSkeleton() {
         <div className="bg-[#93A3B6] h-32 rounded-md"></div>
         <div className="bg-[#93A3B6] h-32 rounded-md"></div>
       </div>
-      <div className="bg-[#93A3B6] h-64 rounded-md"></div>
+      <div className="bg-[#93A3B6] h-32 sm:h-64 rounded-md"></div>
     </section>
   );
 }
