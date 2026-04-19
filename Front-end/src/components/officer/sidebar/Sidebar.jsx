@@ -30,7 +30,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen, hamburgerRef }) {
   return (
     <aside
       ref={sidebarRef}
-      className={`border border-[rgba(255,236,120,0.5)] border-l-0 border-t-0 bg-[#1E1633] fixed top-[60px] left-0 z-40 h-[calc(100vh-60px)] flex flex-col w-[70%] sm:w-[17%] transform transition-transform duration-300 ${sidebarOpen ? "translate-x-0" : "-translate-x-full sm:translate-x-0 border-r-0 sm:border-r"}`}
+      className={`border border-[rgba(255,236,120,0.5)] border-l-0 border-t-0 bg-[#1E1633] fixed top-[60px] left-0 z-40 h-[calc(100dvh-60px)] flex flex-col w-[70%] sm:w-[17%] transform transition-transform duration-300 ${sidebarOpen ? "translate-x-0" : "-translate-x-full sm:translate-x-0 border-r-0 sm:border-r"}`}
     >
       <Header />
       <div className="border-t border-t-[rgba(255,236,120,0.5)] flex flex-col justify-between grow">
