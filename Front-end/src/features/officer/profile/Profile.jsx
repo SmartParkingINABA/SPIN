@@ -12,7 +12,7 @@ export default function Profile() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { loading, profile, updateProfile } = useProfile();
 
-  if (loading) return <ProfileSkeleton />;
+  if (!loading) return <ProfileSkeleton />;
 
   return (
     <>
