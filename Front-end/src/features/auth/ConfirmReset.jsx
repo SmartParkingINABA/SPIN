@@ -13,7 +13,7 @@ export default function ConfirmReset() {
         </p>
         <Link
           to="/auth/forgot/reset-password"
-          className="block text-center w-full bg-[#FFDB58] text-[#130F40] text-[18px] sm:text-[23px] font-bold h-11.5 sm:h-13 mt-30 rounded-md transition opacity-100 hover:opacity-80"
+          className="flex items-center justify-center w-full bg-[#FFDB58] text-[#130F40] text-[18px] sm:text-[23px] font-bold h-11.5 sm:h-13 mt-30 rounded-md transition opacity-100 hover:opacity-80"
         >
           Confirm
         </Link>
