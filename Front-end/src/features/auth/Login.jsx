@@ -109,7 +109,7 @@ export default function Login() {
 
   return (
     <div className="bg-[#1E1633] font-ubuntu h-screen w-full flex justify-center items-center">
-      <div className="w-1/4">
+      <div className="w-full sm:w-1/4">
         <h1 className="text-[#ffec78] text-[2.5rem] font-bold mb-1.5">Login</h1>
         <p className="text-[#FEF8FD] font-bold mb-3.5">
           Please login to your account
