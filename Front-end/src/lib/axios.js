@@ -16,7 +16,6 @@ const api = axios.create({
 });
 
 let isRedirecting = false;
-let hasShownToast = false;
 
 api.interceptors.request.use(
   (config) => {
@@ -63,18 +62,23 @@ api.interceptors.response.use(
       status === 401 ||
       status === 403;
 
-    if (isAuthError && !isRedirecting) {
+    if (window.location.pathname === "/auth/login") {
+      return Promise.reject(error);
+    }
+
+    if (isAuthError) {
+      if (isRedirecting) {
+        return Promise.reject(error);
+      }
+
       isRedirecting = true;
 
-      if (!hasShownToast) {
-        toast.error("Sesi anda telah berakhir. Silahkan login kembali.");
-        hasShownToast = true;
-      }
+      toast.error("Sesi anda telah berakhir. Silahkan login kembali.");
 
       setTimeout(() => {
         localStorage.clear();
-        window.location.replace("/auth/login");
-        isRedirecting = false;
+
+        window.location.href = "/auth/login";
       }, 1500);
     }
 
