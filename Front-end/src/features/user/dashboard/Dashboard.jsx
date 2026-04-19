@@ -28,9 +28,7 @@ export default function Dashboard() {
       ) : (
         <section className="bg-[#130F40] px-5 py-7 h-[calc(100dvh-60px)] overflow-y-auto">
           <Header user={user} />
-          <div className="mt-6">
-            <StatsGrid summary={summary} />
-          </div>
+          <StatsGrid summary={summary} />
           <div className="mt-6">
             <BoxWrapper title="Kendaraan Aktif">
               {vehiclesActive.length === 0 ? (
