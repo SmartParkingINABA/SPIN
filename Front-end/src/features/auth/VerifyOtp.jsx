@@ -78,9 +78,9 @@ export default function VerifyOtp() {
   };
 
   return (
-    <div className="bg-[#1E1633] font-ubuntu h-screen w-full flex justify-center items-center">
-      <div className="w-1/4">
-        <h1 className="text-center text-[#ffec78] text-[2.5rem] font-bold mb-1.5">
+    <div className="bg-[#1E1633] font-ubuntu min-h-dvh w-full flex justify-center items-center px-5 sm:px-0">
+      <div className="w-full sm:w-1/4">
+        <h1 className="text-center text-[#ffec78] text-[27px] sm:text-[2.5rem] font-bold mb-1 sm:mb-1.5">
           Enter OTP
         </h1>
         <img src={forgotPasswordIcon} alt="" className="w-3/5 mx-auto" />
@@ -91,7 +91,7 @@ export default function VerifyOtp() {
         <button
           onClick={handleSubmit}
           disabled={loading}
-          className={`flex items-center justify-center w-full bg-[#FFDB58] text-[#130F40] text-[23px] font-bold h-13 mt-8 rounded-md transition hover:opacity-80 ${
+          className={`flex items-center justify-center w-full bg-[#FFDB58] text-[#130F40] text-[18px] sm:text-[23px] font-bold h-11.5 sm:h-13 mt-8 rounded-md transition hover:opacity-80 ${
             loading
               ? "opacity-80 cursor-not-allowed"
               : "cursor-pointer opacity-100"
