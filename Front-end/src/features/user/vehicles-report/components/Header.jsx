@@ -13,7 +13,7 @@ export default function Header({ setIsModalOpen }) {
       </div>
       <button
         onClick={() => setIsModalOpen(true)}
-        className="bg-[#FFDB58] flex items-center gap-x-1 sm:gap-x-2.5 rounded-md px-2 sm:px-3 py-2 cursor-pointer transition opacity-100 hover:opacity-80"
+        className="bg-[#FFDB58] flex items-center gap-x-1.5 sm:gap-x-2.5 rounded-md px-2 sm:px-3 py-2 cursor-pointer transition opacity-100 hover:opacity-80"
       >
         <FaPlus className="w-4 sm:w-5 h-fit" />
         <p className="text-[#1E1633] font-medium text-[14px] sm:text-[16px]">
