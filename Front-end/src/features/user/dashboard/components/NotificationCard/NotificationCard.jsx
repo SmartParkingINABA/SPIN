@@ -5,7 +5,7 @@ export default function NotificationCard({ notification }) {
 
   return (
     <div
-      className={`mt-3.5 px-6 py-4 rounded-md ${
+      className={`mt-2.5 sm:mt-3.5 p-4 rounded-md ${
         isMasuk ? "bg-[#4B4141]" : "bg-[#130F40]"
       }`}
     >
