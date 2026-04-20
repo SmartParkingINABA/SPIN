@@ -14,7 +14,6 @@ export default function Profile() {
   const {
     data,
     loading,
-    error,
     handleUpdateProfile,
     handleUpdatePhoto,
     handleChangePassword,
@@ -70,53 +69,47 @@ export default function Profile() {
     }
   };
 
-  if (error) return <div className="text-red-500">Error: {error.message}</div>;
+  if (loading) return <ProfileSkeleton />;
 
   return (
-    <>
-      {loading ? (
-        <ProfileSkeleton />
-      ) : (
-        <section className="bg-[#130F40] px-5 py-7 h-[calc(100dvh-60px)] overflow-y-auto">
-          <Header />
-          <div className="mt-6 flex flex-col gap-6">
-            <div className="flex gap-6">
-              <PrivateInformation
-                isEditing={isEditing}
-                setIsEditing={setIsEditing}
-                fullName={fullName}
-                setFullName={setFullName}
-                email={email}
-                phoneNumber={phoneNumber}
-                setPhoneNumber={setPhoneNumber}
-                address={address}
-                setAddress={setAddress}
-                handleSave={handleSaveProfile}
-                loading={isUpdating}
-              />
-              <div className="w-1/3 flex flex-col gap-6">
-                <PhotoProfile
-                  onUpload={handleUpdatePhoto}
-                  userData={data?.profil}
-                />
-                <Statistik statistik={data?.statistik} />
-              </div>
-            </div>
-            <div className="flex gap-6 items-start">
-              <EditPassword
-                showPassword={showPassword}
-                setShowPassword={setShowPassword}
-                showNewPassword={showNewPassword}
-                setShowNewPassword={setShowNewPassword}
-                showConfirmPassword={showConfirmPassword}
-                setShowConfirmPassword={setShowConfirmPassword}
-                onUpdatePassword={handleChangePassword}
-              />
-              <ButtonCta />
-            </div>
+    <section className="bg-[#130F40] px-5 py-7 h-[calc(100dvh-60px)] overflow-y-auto">
+      <Header />
+      <div className="mt-4 sm:mt-6 flex flex-col gap-4 sm:gap-6">
+        <div className="flex flex-col-reverse sm:flex-row gap-4 sm:gap-6">
+          <PrivateInformation
+            isEditing={isEditing}
+            setIsEditing={setIsEditing}
+            fullName={fullName}
+            setFullName={setFullName}
+            email={email}
+            phoneNumber={phoneNumber}
+            setPhoneNumber={setPhoneNumber}
+            address={address}
+            setAddress={setAddress}
+            handleSave={handleSaveProfile}
+            loading={isUpdating}
+          />
+          <div className="w-full sm:w-1/3 flex flex-col gap-4 sm:gap-6">
+            <PhotoProfile
+              onUpload={handleUpdatePhoto}
+              userData={data?.profil}
+            />
+            <Statistik statistik={data?.statistik} />
           </div>
-        </section>
-      )}
-    </>
+        </div>
+        <div className="flex gap-6 items-start">
+          <EditPassword
+            showPassword={showPassword}
+            setShowPassword={setShowPassword}
+            showNewPassword={showNewPassword}
+            setShowNewPassword={setShowNewPassword}
+            showConfirmPassword={showConfirmPassword}
+            setShowConfirmPassword={setShowConfirmPassword}
+            onUpdatePassword={handleChangePassword}
+          />
+          <ButtonCta />
+        </div>
+      </div>
+    </section>
   );
 }
