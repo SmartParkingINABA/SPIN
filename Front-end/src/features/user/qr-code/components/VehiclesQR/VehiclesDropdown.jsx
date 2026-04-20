@@ -43,7 +43,10 @@ export default function VehiclesDropdown({
         className="bg-[#F5E79E] flex justify-between items-center rounded-sm h-10 px-3 cursor-pointer"
         onClick={handleToggle}
       >
-        <span id="selectedText" className="text-[#130F40] font-medium">
+        <span
+          id="selectedText"
+          className="text-[#130F40] text-[14px] sm:text[16px] font-medium"
+        >
           {selected ? selected.no_plat : "Pilih Kendaraan"}
         </span>
         <IoMdArrowDropdown
