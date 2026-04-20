@@ -2,7 +2,7 @@ import { FaDownload, FaPrint } from "react-icons/fa6";
 
 export default function ButtonCta({ onDownload, onPrint }) {
   return (
-    <div className="grid grid-cols-2 gap-4 sm:gap-6 mt-18 sm:mt-20">
+    <div className="grid grid-cols-2 gap-4 sm:gap-6 mt-16 sm:mt-20">
       <button
         className="bg-[#FFDB58] rounded-md border-0 py-1 sm:py-2 transition cursor-pointer opacity-100 hover:opacity-80"
         onClick={onDownload}
