@@ -4,13 +4,13 @@ export default function StatusCard({ vehicle }) {
   const isSelesai = vehicle.status_parkir === "Selesai";
 
   return (
-    <div className="mt-3.5 px-6 py-4 rounded-md bg-[#130F40]">
+    <div className="mt-2.5 sm:mt-3.5 p-4 rounded-md bg-[#130F40]">
       <div className="flex items-center gap-x-3">
-        <div className="bg-[#4B4141] rounded-sm p-3">
+        <div className="bg-[#4B4141] rounded-sm p-2.5 sm:p-3">
           {isSelesai ? (
-            <FaRegCircleCheck className="text-[#FFEC78] w-6 h-fit" />
+            <FaRegCircleCheck className="text-[#FFEC78] w-5 sm:w-6 h-fit" />
           ) : (
-            <FaClock className="text-[#FFEC78] w-6 h-fit" />
+            <FaClock className="text-[#FFEC78] w-5 sm:w-6 h-fit" />
           )}
         </div>
         <div className="">
