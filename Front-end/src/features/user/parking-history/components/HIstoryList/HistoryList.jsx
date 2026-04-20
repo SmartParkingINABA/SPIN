@@ -2,7 +2,7 @@ import TableRow from "./TableRow";
 
 export default function HistoryList({ rows }) {
   return (
-    <div className="border-2 border-[#D3CBD1] rounded-md">
+    <div className="border-2 border-[#D3CBD1] rounded-md mt-3.5">
       <table className="w-full">
         <thead>
           <tr className="border-b-2 border-[#D3CBD1]">
