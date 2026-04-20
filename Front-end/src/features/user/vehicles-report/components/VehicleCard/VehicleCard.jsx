@@ -15,7 +15,7 @@ export default function VehicleCard({ vehicle, onUpdate, onDelete }) {
 
   return (
     <>
-      <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] rounded-md p-6 sm:p-8">
+      <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] rounded-md p-5 sm:p-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-x-3">
             <div className="bg-[#4B4141] rounded-sm p-3">
