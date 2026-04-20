@@ -2,8 +2,8 @@ import { IoQrCode } from "react-icons/io5";
 
 export default function Information() {
   return (
-    <div className="bg-[#1E1633] border border-[rgba(255,236,120,0.5)] rounded-md p-6 mt-6">
-      <p className="text-[#FEF8FD] text-[18px] font-semibold mb-3.5">
+    <div className="bg-[#1E1633] border border-[rgba(255,236,120,0.5)] rounded-md p-6 mt-4 sm:mt-6">
+      <p className="text-[#FEF8FD] text-[16px] sm:text-[18px] font-semibold mb-3.5">
         Informasi
       </p>
       <div className="flex items-center gap-x-2.5 mb-4">

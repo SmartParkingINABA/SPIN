@@ -1,7 +1,7 @@
 export default function HowToUse() {
   return (
     <div className="bg-[#1E1633] border border-[rgba(255,236,120,0.5)] rounded-md p-6">
-      <p className="text-[#FEF8FD] text-[18px] font-semibold mb-3.5">
+      <p className="text-[#FEF8FD] text-[16px] sm:text-[18px] font-semibold mb-3.5">
         Cara Menggunakan
       </p>
       <div className="flex items-start gap-x-3 mb-3.5">
