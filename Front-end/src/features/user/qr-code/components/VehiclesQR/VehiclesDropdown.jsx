@@ -50,7 +50,7 @@ export default function VehiclesDropdown({
           {selected ? selected.no_plat : "Pilih Kendaraan"}
         </span>
         <IoMdArrowDropdown
-          className={`w-7 h-fit text-[#130F40] transform transition-transform duration-300 ${
+          className={`w-6 sm:w-7 h-fit text-[#130F40] transform transition-transform duration-300 ${
             !isOpen ? "rotate-0" : "rotate-180"
           }`}
         />
@@ -72,7 +72,7 @@ export default function VehiclesDropdown({
           >
             {item.no_plat} - {item.merk}
             <FaCheck
-              className={`w-3.5 sm:w-4 h-fit transition duration-300 group-hover:opacity-100 ${
+              className={`w-3 sm:w-4 h-fit transition duration-300 group-hover:opacity-100 ${
                 selectedId === item.id ? "opacity-100" : "opacity-0"
               }`}
             />

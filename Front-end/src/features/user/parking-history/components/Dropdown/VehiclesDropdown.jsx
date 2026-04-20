@@ -40,17 +40,20 @@ export default function VehiclesDropdown({
     "Semua Kendaraan";
 
   return (
-    <div className="flex flex-col relative z-10" ref={dropdownRef}>
+    <div className="flex flex-col relative z-8 sm:z-10" ref={dropdownRef}>
       <button
         id="selectBtn"
         className="bg-[#F5E79E] flex justify-between items-center rounded-sm h-10 px-3 cursor-pointer"
         onClick={handleToggle}
       >
-        <span id="selectedText" className="text-[#130F40] font-medium">
+        <span
+          id="selectedText"
+          className="text-[#130F40] text-[14px] sm:text-[16px] font-medium"
+        >
           {selectedLabel}
         </span>
         <IoMdArrowDropdown
-          className={`w-7 h-fit text-[#130F40] transform transition-transform duration-300 ${
+          className={`w-6 sm:w-7 h-fit text-[#130F40] transform transition-transform duration-300 ${
             !isOpen ? "rotate-0" : "rotate-180"
           }`}
         />
@@ -68,11 +71,11 @@ export default function VehiclesDropdown({
           <li
             key={item.id}
             onClick={() => handleSelect(item.id)}
-            className="text-[#ddd] font-medium rounded-sm py-1.5 px-3 cursor-pointer transition duration-300 ease-in-out hover:bg-[#FFEC78] hover:text-[#1E1633] hover:border-transparent flex items-center justify-between group"
+            className="text-[#ddd] text-[14px] sm:text-[16px] font-medium rounded-sm py-1.5 px-3 cursor-pointer transition duration-300 ease-in-out hover:bg-[#FFEC78] hover:text-[#1E1633] hover:border-transparent flex items-center justify-between group"
           >
             {item.label}
             <FaCheck
-              className={`w-4 h-fit transition duration-300 group-hover:opacity-100 ${
+              className={`w-3 sm:w-4 h-fit transition duration-300 group-hover:opacity-100 ${
                 selected === item.id ? "opacity-100" : "opacity-0"
               }`}
             />
