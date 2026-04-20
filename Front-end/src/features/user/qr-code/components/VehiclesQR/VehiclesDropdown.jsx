@@ -65,11 +65,11 @@ export default function VehiclesDropdown({
           <li
             key={item.id}
             onClick={() => handleSelect(item.id)}
-            className="text-[#ddd] font-medium rounded-sm py-1.5 px-3 cursor-pointer transition duration-300 ease-in-out hover:bg-[#FFEC78] hover:text-[#1E1633] hover:border-transparent flex items-center justify-between group"
+            className="text-[#ddd] text-[14px] sm:text[16px] font-medium rounded-sm py-1.5 px-3 cursor-pointer transition duration-300 ease-in-out hover:bg-[#FFEC78] hover:text-[#1E1633] hover:border-transparent flex items-center justify-between group"
           >
             {item.no_plat} - {item.merk}
             <FaCheck
-              className={`w-4 h-fit transition duration-300 group-hover:opacity-100 ${
+              className={`w-3.5 sm:w-4 h-fit transition duration-300 group-hover:opacity-100 ${
                 selectedId === item.id ? "opacity-100" : "opacity-0"
               }`}
             />
