@@ -1,6 +1,9 @@
-import { FaCarSide } from "react-icons/fa6";
+import { FaCarSide, FaMotorcycle } from "react-icons/fa6";
 
 export default function VehicleCard({ vehicle }) {
+  const Icon = vehicle.jenis?.toLowerCase().includes("mobil")
+    ? FaCarSide
+    : FaMotorcycle;
   return (
     <div className="mt-2.5 sm:mt-3.5 p-4 rounded-md bg-[#130F40] flex items-center justify-between">
       <div className="flex items-center gap-x-3">
