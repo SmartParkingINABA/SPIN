@@ -4,7 +4,7 @@ import { RxLapTimer, RxTimer } from "react-icons/rx";
 
 export default function StatsGrid({ stats }) {
   return (
-    <div className="grid grid-cols-3 gap-6 mt-6">
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-4 sm:mt-6">
       <StatsCard
         icon={LuRepeat2}
         title="Total Parkir"
