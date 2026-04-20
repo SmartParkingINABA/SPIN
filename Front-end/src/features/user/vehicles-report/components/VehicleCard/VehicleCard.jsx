@@ -18,8 +18,8 @@ export default function VehicleCard({ vehicle, onUpdate, onDelete }) {
       <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] rounded-md p-5 sm:p-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-x-3">
-            <div className="bg-[#4B4141] rounded-sm p-3">
-              <Icon className="text-[#FFEC78] w-6 h-fit" />
+            <div className="bg-[#4B4141] rounded-sm p-2.5 sm:p-3">
+              <Icon className="text-[#FFEC78] w-5 sm:w-6 h-fit" />
             </div>
             <div className="">
               <p className="text-[#FEF8FD] text-[14px] font-medium">{plate}</p>
@@ -30,11 +30,11 @@ export default function VehicleCard({ vehicle, onUpdate, onDelete }) {
           </div>
           <div className="flex items-center gap-x-3">
             <BiSolidEdit
-              className="w-6 h-fit text-[#93A3B6] transition duration-300 ease-in-out hover:text-[#FFEC78] cursor-pointer "
+              className="w-5.5 sm:w-6 h-fit text-[#93A3B6] transition duration-300 ease-in-out hover:text-[#FFEC78] cursor-pointer "
               onClick={() => setIsModalOpen(true)}
             />
             <FaTrashCan
-              className="w-5 h-fit text-[#B90404] transition duration-300 ease-in-out hover:text-[#FFEC78] cursor-pointer"
+              className="w-4.5 sm:w-5 h-fit text-[#B90404] transition duration-300 ease-in-out hover:text-[#FFEC78] cursor-pointer"
               onClick={() => onDelete(id)}
             />
           </div>
