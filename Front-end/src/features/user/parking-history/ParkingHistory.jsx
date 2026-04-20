@@ -35,7 +35,7 @@ export default function ParkingHistory() {
           />
           <StatsGrid stats={data.stats} />
           <div className="bg-[#1E1633] border border-[rgba(255,236,120,0.5)] rounded-md p-5 sm:p-6 mt-4 sm:mt-6">
-            <h2 className="text-[#FEF8FD] font-semibold">Daftar Riwayat</h2>
+            <h2 className="text-[#FEF8FD] font-medium">Daftar Riwayat</h2>
             {(data.history || []).length > 0 ? (
               <>
                 <HistoryList rows={data.history} />
