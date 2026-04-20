@@ -16,7 +16,7 @@ export default function VehiclesReport() {
     <>
       <section className="bg-[#130F40] px-5 py-7 h-[calc(100dvh-60px)] overflow-y-auto">
         <Header setIsModalOpen={setIsModalOpen} />
-        <div className="grid grid-cols-2 gap-6 mt-7">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mt-4 sm:mt-6">
           {vehicles.length > 0 ? (
             <VehicleGrid
               vehicles={vehicles}
