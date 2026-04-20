@@ -10,26 +10,24 @@ export default function VehiclesReport() {
   const { vehicles, loading, addVehicle, updateVehicle, deleteVehicle } =
     useVehiclesReport();
 
+  if (loading) return <VehiclesReportSkeleton />;
+
   return (
     <>
-      {loading ? (
-        <VehiclesReportSkeleton />
-      ) : (
-        <section className="bg-[#130F40] px-5 py-7 h-[calc(100dvh-60px)] overflow-y-auto">
-          <Header setIsModalOpen={setIsModalOpen} />
-          <div className="grid grid-cols-2 gap-6 mt-7">
-            {vehicles.length > 0 ? (
-              <VehicleGrid
-                vehicles={vehicles}
-                onDelete={deleteVehicle}
-                onUpdate={updateVehicle}
-              />
-            ) : (
-              <p className="text-[#93A3B6]">Belum ada data kendaraan.</p>
-            )}
-          </div>
-        </section>
-      )}
+      <section className="bg-[#130F40] px-5 py-7 h-[calc(100dvh-60px)] overflow-y-auto">
+        <Header setIsModalOpen={setIsModalOpen} />
+        <div className="grid grid-cols-2 gap-6 mt-7">
+          {vehicles.length > 0 ? (
+            <VehicleGrid
+              vehicles={vehicles}
+              onDelete={deleteVehicle}
+              onUpdate={updateVehicle}
+            />
+          ) : (
+            <p className="text-[#93A3B6]">Belum ada data kendaraan.</p>
+          )}
+        </div>
+      </section>
 
       {isModalOpen && (
         <AddForm onClose={() => setIsModalOpen(false)} onSubmit={addVehicle} />
