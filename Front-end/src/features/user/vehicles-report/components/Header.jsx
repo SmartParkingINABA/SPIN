@@ -8,7 +8,7 @@ export default function Header({ setIsModalOpen }) {
           Data Kendaraan
         </h1>
         <p className="text-[#93A3B6] text-[14px] sm:text-[16px] font-medium sm:mt-1">
-          Kelola kendaraan yang terdaftar
+          Kendaraan yang terdaftar
         </p>
       </div>
       <button
