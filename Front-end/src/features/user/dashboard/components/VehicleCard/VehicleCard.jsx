@@ -8,7 +8,7 @@ export default function VehicleCard({ vehicle }) {
     <div className="mt-2.5 sm:mt-3.5 p-4 rounded-md bg-[#130F40] flex items-center justify-between">
       <div className="flex items-center gap-x-3">
         <div className="bg-[#4B4141] rounded-sm p-2.5 sm:p-3">
-          <FaCarSide className="text-[#FFEC78] w-5 sm:w-6 h-fit" />
+          <Icon className="text-[#FFEC78] w-5 sm:w-6 h-fit" />
         </div>
         <div className="">
           <p className="text-[#FEF8FD] font-medium text-[14px] sm:text-[16px]">
