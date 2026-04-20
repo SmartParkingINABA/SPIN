@@ -1,6 +1,6 @@
 export default function ScanQR({ data }) {
   return (
-    <div className="mt-12 border border-[#FFEC78] bg-[#FEF8FD] w-full sm:w-2/5 h-[412px] mx-auto rounded-xl flex items-center justify-center">
+    <div className="mt-10 sm:mt-12 border border-[#FFEC78] bg-[#FEF8FD] w-full sm:w-2/5 h-[412px] mx-auto rounded-xl flex items-center justify-center">
       <div className="text-center">
         {data?.qr_image ? (
           <img
