@@ -14,7 +14,9 @@ export default function VehiclesQR({
       <h2 className="text-[#FEF8FD] text-[16px] sm:text-[18px] font-semibold mb-3 sm:mb-3.5">
         QR Code Kendaraan
       </h2>
-      <p className="text-[#93A3B6] font-medium mb-2.5">Pilih Kendaraan</p>
+      <p className="text-[#93A3B6] font-medium mb-2.5 text-[14px] sm:text[16px]">
+        Pilih Kendaraan
+      </p>
       <VehiclesDropdown
         options={
           data?.kendaraan_list?.length

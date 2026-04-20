@@ -15,28 +15,24 @@ export default function QRCode() {
     handleSelectVehicle,
   } = useQrCode();
 
+  if (loading) return <QRCodeSkeleton />;
+
   return (
-    <>
-      {loading ? (
-        <QRCodeSkeleton />
-      ) : (
-        <section className="bg-[#130F40] px-5 py-7 h-[calc(100dvh-60px)] overflow-y-auto">
-          <Header />
-          <div className="mt-4 sm:mt-6 flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6">
-            <VehiclesQR
-              data={data}
-              selectedId={selectedId}
-              onSelect={handleSelectVehicle}
-              handleDownload={handleDownload}
-              handlePrint={handlePrint}
-            />
-            <div className="w-full sm:w-[30%]">
-              <HowToUse />
-              <Information />
-            </div>
-          </div>
-        </section>
-      )}
-    </>
+    <section className="bg-[#130F40] px-5 py-7 h-[calc(100dvh-60px)] overflow-y-auto">
+      <Header />
+      <div className="mt-4 sm:mt-6 flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6">
+        <VehiclesQR
+          data={data}
+          selectedId={selectedId}
+          onSelect={handleSelectVehicle}
+          handleDownload={handleDownload}
+          handlePrint={handlePrint}
+        />
+        <div className="w-full sm:w-[30%]">
+          <HowToUse />
+          <Information />
+        </div>
+      </div>
+    </section>
   );
 }
