@@ -29,7 +29,7 @@ export default function EditForm({ onClose, onSubmit, vehicleData }) {
   };
 
   return (
-    <div className="font-ubuntu flex justify-center items-center h-screen w-full bg-[rgba(0,0,0,0.54)] fixed inset-0 z-50 p-5 sm:p-0">
+    <div className="font-ubuntu flex justify-center items-center h-dvh w-full bg-[rgba(0,0,0,0.54)] fixed inset-0 z-50 p-5 sm:p-0">
       <div className="border border-[rgba(255,236,120,0.5)] bg-[#130F40] rounded-md p-5 sm:pt-6 w-full sm:w-2/5">
         <div className="flex items-center justify-between mb-5.5 sm:mb-6.5">
           <h1 className="text-[#FEF8FD] text-[16px] sm:text-[18px] font-semibold">
