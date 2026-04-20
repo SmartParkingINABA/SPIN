@@ -22,7 +22,7 @@ export default function ParkingHistory() {
       {loading ? (
         <HistorySkeleton />
       ) : (
-        <section className="bg-[#130F40] px-5 py-7 h-[calc(100dvh-60px)] overflow-y-auto">
+        <section className="bg-[#130F40] px-5 py-7 min-h-[calc(100dvh-60px)] overflow-y-auto">
           <Header
             onExport={handleExport}
             isExportDisabled={data.history.length === 0}
@@ -38,7 +38,7 @@ export default function ParkingHistory() {
             <h2 className="text-[#FEF8FD] font-medium">Daftar Riwayat</h2>
             {(data.history || []).length > 0 ? (
               <>
-                <HistoryList rows={data.history} />
+                <HistoryList rows={data.history} pagination={pagination} />
                 <Pagination
                   pagination={pagination}
                   setPagination={setPagination}
