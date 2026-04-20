@@ -8,13 +8,13 @@ export default function Information() {
       </p>
       <div className="flex items-center gap-x-2.5 mb-4">
         <IoQrCode className="text-[#FFEC78] w-5 h-fit" />
-        <p className="text-[#93A3B6] font-medium">
+        <p className="text-[#93A3B6] font-medium text-[12px] sm:text[16px]">
           QR Code unik per kendaraan.
         </p>
       </div>
       <div className="flex items-center gap-x-2.5">
         <IoQrCode className="text-[#FFEC78] w-5 h-fit" />
-        <p className="text-[#93A3B6] font-medium">
+        <p className="text-[#93A3B6] font-medium text-[12px] sm:text[16px]">
           Dapat diunduh ulang kapan saja.
         </p>
       </div>

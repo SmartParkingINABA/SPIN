@@ -9,8 +9,10 @@ export default function HowToUse() {
           1
         </p>
         <div>
-          <p className="text-[#FEF8FD] font-semibold">Pilih Kendaraan</p>
-          <p className="text-[#93A3B6] font-medium">
+          <p className="text-[#FEF8FD] font-semibold text-[14px] sm:text[16px]">
+            Pilih Kendaraan
+          </p>
+          <p className="text-[#93A3B6] font-medium text-[12px] sm:text[16px]">
             Pilih kendaraan yang ingin ditampilkan QR Code-nya.
           </p>
         </div>
@@ -20,8 +22,10 @@ export default function HowToUse() {
           2
         </p>
         <div>
-          <p className="text-[#FEF8FD] font-semibold">Unduh atau Cetak</p>
-          <p className="text-[#93A3B6] font-medium">
+          <p className="text-[#FEF8FD] font-semibold text-[14px] sm:text[16px]">
+            Unduh atau Cetak
+          </p>
+          <p className="text-[#93A3B6] font-medium text-[12px] sm:text[16px]">
             Simpan QR Code atau Cetak untuk dipasang di kendaraan.
           </p>
         </div>
@@ -31,8 +35,10 @@ export default function HowToUse() {
           3
         </p>
         <div>
-          <p className="text-[#FEF8FD] font-semibold">Scan Saat Parkir</p>
-          <p className="text-[#93A3B6] font-medium">
+          <p className="text-[#FEF8FD] font-semibold text-[14px] sm:text[16px]">
+            Scan Saat Parkir
+          </p>
+          <p className="text-[#93A3B6] font-medium text-[12px] sm:text[16px]">
             Petugas akan scan QR Code anda saat masuk/keluar parkir.
           </p>
         </div>
