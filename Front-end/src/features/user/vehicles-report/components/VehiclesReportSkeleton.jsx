@@ -9,8 +9,8 @@ export default function VehiclesReportSkeleton() {
         <p className="h-6 w-[18%] sm:w-[14%] bg-[#93A3B6] rounded-md"></p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mt-4 sm:mt-6">
-        <div className="h-48 bg-[#93A3B6] rounded-md"></div>
-        <div className="h-48 bg-[#93A3B6] rounded-md"></div>
+        <div className="h-48 sm:h-56 bg-[#93A3B6] rounded-md"></div>
+        <div className="h-48 sm:h-56 bg-[#93A3B6] rounded-md"></div>
       </div>
     </section>
   );

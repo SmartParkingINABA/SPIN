@@ -15,7 +15,7 @@ export default function QRCode() {
     handleSelectVehicle,
   } = useQrCode();
 
-  if (loading) return <QRCodeSkeleton />;
+  if (!loading) return <QRCodeSkeleton />;
 
   return (
     <section className="bg-[#130F40] px-5 py-7 h-[calc(100dvh-60px)] overflow-y-auto">

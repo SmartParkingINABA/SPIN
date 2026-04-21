@@ -10,7 +10,7 @@ export default function VehiclesReport() {
   const { vehicles, loading, addVehicle, updateVehicle, deleteVehicle } =
     useVehiclesReport();
 
-  if (!loading) return <VehiclesReportSkeleton />;
+  if (loading) return <VehiclesReportSkeleton />;
 
   return (
     <>
