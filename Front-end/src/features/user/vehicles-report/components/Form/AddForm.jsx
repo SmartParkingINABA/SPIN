@@ -118,6 +118,7 @@ export default function AddForm({ onClose, onSubmit }) {
           <Expired
             label="Masa Berlaku"
             name="validUntil"
+            value={formData.validUntil}
             onChange={handleChange}
           />
           <button
