@@ -10,12 +10,12 @@ export default function HistorySkeleton() {
       </div>
       <div className="bg-[#1E1633] border border-[rgba(255,236,120,0.5)] rounded-md grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 p-5 sm:p-6 mt-4 sm:mt-6">
         <div>
-          <p className="h-3 w-[18%] bg-[#93A3B6] rounded-md"></p>
-          <p className="h-6 w-full bg-[#93A3B6] rounded-md mt-1.5 sm:mt-2.5"></p>
+          <p className="h-4 w-[18%] bg-[#93A3B6] rounded-md"></p>
+          <p className="h-8 w-full bg-[#93A3B6] rounded-md mt-1.5 sm:mt-2.5"></p>
         </div>
         <div>
-          <p className="h-3 w-[18%] bg-[#93A3B6] rounded-md"></p>
-          <p className="h-6 w-full bg-[#93A3B6] rounded-md mt-1.5 sm:mt-2.5"></p>
+          <p className="h-4 w-[18%] bg-[#93A3B6] rounded-md"></p>
+          <p className="h-8 w-full bg-[#93A3B6] rounded-md mt-1.5 sm:mt-2.5"></p>
         </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-4 sm:mt-6">
