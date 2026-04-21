@@ -11,13 +11,13 @@ export default function DashboardSkeleton() {
         </div>
       </div>
       <div className="mt-4 sm:mt-6">
-        <div className="bg-[#93A3B6] rounded-md"></div>
+        <div className="h-32 bg-[#93A3B6] rounded-md"></div>
       </div>
       <div className="mt-4 sm:mt-6">
-        <div className="bg-[#93A3B6] rounded-md"></div>
+        <div className="h-32 bg-[#93A3B6] rounded-md"></div>
       </div>
       <div className="mt-4 sm:mt-6">
-        <div className="bg-[#93A3B6] rounded-md"></div>
+        <div className="h-32 bg-[#93A3B6] rounded-md"></div>
       </div>
     </section>
   );
