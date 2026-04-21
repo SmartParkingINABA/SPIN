@@ -11,7 +11,7 @@ export default function Header({ unreadCount, onMarkAllRead }) {
           </span>
         )}
       </h1>
-      <div className="sm:mt-1 flex flex-col sm:items-center sm:justify-between">
+      <div className="sm:mt-1 flex flex-col sm:flex-row sm:items-center sm:justify-between">
         <p className="text-[#93A3B6] text-[14px] sm:text-[16px] font-medium mb-1 sm:mb-0">
           Pantau aktivitas kendaraan Anda
         </p>
