@@ -15,7 +15,7 @@ export default function PrivateInformation({
   loading,
 }) {
   return (
-    <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] px-6 py-4 rounded-md w-full sm:w-2/3">
+    <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] p-5 sm:p-6 rounded-md w-full sm:w-2/3 order-2">
       <EditProfile isEditing={isEditing} setIsEditing={setIsEditing} />
       <EditForm
         isEditing={isEditing}

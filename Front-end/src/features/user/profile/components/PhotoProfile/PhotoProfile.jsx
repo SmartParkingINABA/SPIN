@@ -25,7 +25,7 @@ export default function PhotoProfile({ onUpload, userData }) {
   };
 
   return (
-    <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] px-6 py-4 rounded-md">
+    <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] p-5 sm:p-6 rounded-md">
       <p className="text-[#FEF8FD] font-medium mb-6">Foto Profil</p>
 
       <input
@@ -55,7 +55,7 @@ export default function PhotoProfile({ onUpload, userData }) {
       <button
         type="button"
         onClick={handleButtonClick}
-        className="bg-[#FFDB58] rounded-sm py-1.5 font-medium w-full mt-3.5 text-[#130F40] transition opacity-100 hover:opacity-80 cursor-pointer"
+        className="bg-[#FFDB58] rounded-sm py-1.5 font-medium w-full mt-3.5 text-[#130F40] text-[14px] sm:text-[16px] transition opacity-100 hover:opacity-80 cursor-pointer"
       >
         Ubah Foto
       </button>

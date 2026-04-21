@@ -5,7 +5,7 @@ export default function EditProfile({ isEditing, setIsEditing }) {
       {!isEditing && (
         <button
           onClick={() => setIsEditing(true)}
-          className="text-[#FEF8FD] bg-[#130F40] border border-[#93A3B6] px-2 py-1 rounded-sm text-[14px] cursor-pointer opacity-100 hover:opacity-85"
+          className="text-[#FEF8FD] bg-[#130F40] border border-[#93A3B6] px-2 py-1 rounded-sm text-[12px] sm:text-[14px] cursor-pointer opacity-100 hover:opacity-85"
         >
           Edit Profil
         </button>

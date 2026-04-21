@@ -57,16 +57,22 @@ export default function EditPassword({
   };
 
   return (
-    <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] px-6 py-4 rounded-md w-2/3">
+    <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] p-5 sm:p-6 rounded-md w-full sm:w-2/3">
       <p className="text-[#FEF8FD] font-medium">Ubah Password</p>
-      <form className="w-1/2 mt-3.5" onSubmit={handleSubmit} noValidate>
-        <div className="mb-2.5">
+      <form
+        className="w-full sm:w-1/2 mt-3 sm:mt-3.5"
+        onSubmit={handleSubmit}
+        noValidate
+      >
+        <div className="mb-2 sm:mb-2.5">
           <label
             htmlFor="currently-password"
-            className="flex items-center gap-x-2.5"
+            className="flex items-center gap-x-2 sm:gap-x-2.5"
           >
-            <CiLock className="h-fit w-3.5 text-[#93A3B6]" />
-            <p className="text-[#FEF8FD] text-[15px]">Password Saat Ini</p>
+            <CiLock className="h-fit w-3 sm:w-3.5 text-[#93A3B6]" />
+            <p className="text-[#FEF8FD] text-[14px] sm:text-[16px]">
+              Password Saat Ini
+            </p>
           </label>
           <div className="flex items-center gap-x-4 bg-[#F5E79E] px-3 py-1 mt-1 rounded-md">
             <input
@@ -75,7 +81,7 @@ export default function EditPassword({
               value={values.oldPassword}
               placeholder="••••••••"
               onChange={(e) => handleChange("oldPassword", e.target.value)}
-              className="w-full outline-0"
+              className="w-full outline-0 text-[14px] sm:text-[16px]"
             />
             {showPassword ? (
               <FaRegEyeSlash
@@ -90,10 +96,15 @@ export default function EditPassword({
             )}
           </div>
         </div>
-        <div className="mb-2.5">
-          <label htmlFor="new-password" className="flex items-center gap-x-2.5">
-            <CiLock className="h-fit w-3.5 text-[#93A3B6]" />
-            <p className="text-[#FEF8FD] text-[15px]">Password Baru</p>
+        <div className="mb-2 sm:mb-2.5">
+          <label
+            htmlFor="new-password"
+            className="flex items-center gap-x-2 sm:gap-x-2.5"
+          >
+            <CiLock className="h-fit w-3 sm:w-3.5 text-[#93A3B6]" />
+            <p className="text-[#FEF8FD] text-[14px] sm:text-[16px]">
+              Password Baru
+            </p>
           </label>
           <div className="flex items-center gap-x-4 bg-[#F5E79E] px-3 py-1 mt-1 rounded-md">
             <input
@@ -102,7 +113,7 @@ export default function EditPassword({
               value={values.password}
               placeholder="••••••••"
               onChange={(e) => handleChange("password", e.target.value)}
-              className="w-full outline-0"
+              className="w-full outline-0 text-[14px] sm:text-[16px]"
             />
             {showNewPassword ? (
               <FaRegEyeSlash
@@ -123,10 +134,10 @@ export default function EditPassword({
         <div className="">
           <label
             htmlFor="confirm-password"
-            className="flex items-center gap-x-2.5"
+            className="flex items-center gap-x-2 sm:gap-x-2.5"
           >
-            <CiLock className="h-fit w-3.5 text-[#93A3B6]" />
-            <p className="text-[#FEF8FD] text-[15px]">
+            <CiLock className="h-fit w-3 sm:w-3.5 text-[#93A3B6]" />
+            <p className="text-[#FEF8FD] text-[14px] sm:text-[16px]">
               Konfirmasi Password Baru
             </p>
           </label>
@@ -137,7 +148,7 @@ export default function EditPassword({
               value={values.confirmPassword}
               placeholder="••••••••"
               onChange={(e) => handleChange("confirmPassword", e.target.value)}
-              className="w-full outline-0"
+              className="w-full outline-0 text-[14px] sm:text-[16px]"
             />
             {showConfirmPassword ? (
               <FaRegEyeSlash
@@ -158,7 +169,7 @@ export default function EditPassword({
         <button
           type="submit"
           disabled={loading}
-          className={`flex items-center justify-center bg-[#FFDB58] rounded-sm py-1.5 font-medium text-[#130F40] transition hover:opacity-80 w-1/2 mt-9 ${
+          className={`flex items-center justify-center bg-[#FFDB58] rounded-sm py-1.5 font-medium text-[#130F40] text-[14px] sm:text-[16px] transition hover:opacity-80 w-1/2 mt-9 ${
             loading
               ? "opacity-80 cursor-not-allowed"
               : "cursor-pointer opacity-100"

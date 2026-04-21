@@ -18,11 +18,16 @@ export default function EditForm({
   loading,
 }) {
   return (
-    <form className="mt-3.5 w-1/2" noValidate>
-      <div className="mb-2.5">
-        <label htmlFor="fullName" className="flex items-center gap-x-2.5">
-          <FaRegUser className="h-fit w-3.5 text-[#93A3B6]" />
-          <p className="text-[#FEF8FD] text-[15px]">Name Lengkap</p>
+    <form className="mt-2.5 sm:mt-3.5 w-full sm:w-1/2" noValidate>
+      <div className="mb-2 sm:mb-2.5">
+        <label
+          htmlFor="fullName"
+          className="flex items-center gap-x-2 sm:gap-x-2.5"
+        >
+          <FaRegUser className="h-fit w-3 sm:w-3.5 text-[#93A3B6]" />
+          <p className="text-[#FEF8FD] text-[14px] sm:text-[16px]">
+            Name Lengkap
+          </p>
         </label>
         <input
           type="text"
@@ -31,17 +36,20 @@ export default function EditForm({
           disabled={!isEditing}
           placeholder="Your Name"
           onChange={(e) => setFullName(e.target.value)}
-          className={`mt-1 w-full outline-0 rounded-sm px-3 py-1 ${
+          className={`mt-0.5 sm:mt-1 text-[14px] sm:text-[16px] w-full outline-0 rounded-sm px-3 py-1 ${
             isEditing
               ? "bg-[#F5E79E] cursor-text text-[#130F40]"
               : "bg-transparent cursor-context-menu text-[#93A3B6]"
           }`}
         />
       </div>
-      <div className="mb-2.5">
-        <label htmlFor="email" className="flex items-center gap-x-2.5">
-          <MdOutlineMail className="h-fit w-3.5 text-[#93A3B6]" />
-          <p className="text-[#FEF8FD] text-[15px]">Email</p>
+      <div className="mb-2 sm:mb-2.5">
+        <label
+          htmlFor="email"
+          className="flex items-center gap-x-2 sm:gap-x-2.5"
+        >
+          <MdOutlineMail className="h-fit w-3 sm:w-3.5 text-[#93A3B6]" />
+          <p className="text-[#FEF8FD] text-[14px] sm:text-[16px]">Email</p>
         </label>
         <input
           type="email"
@@ -49,7 +57,7 @@ export default function EditForm({
           disabled={!isEditing}
           value={email}
           readOnly
-          className={`mt-1 w-full outline-0 rounded-sm px-3 py-1 ${
+          className={`mt-0.5 sm:mt-1 text-[14px] sm:text-[16px] w-full outline-0 rounded-sm px-3 py-1 ${
             isEditing
               ? "bg-[#F5E79E] cursor-text text-[rgba(19,15,64,0.5)]"
               : "bg-transparent cursor-context-menu text-[#93A3B6]"
@@ -59,10 +67,15 @@ export default function EditForm({
           Email tidak dapat diubah
         </p>
       </div>
-      <div className="mb-2.5">
-        <label htmlFor="phoneNumber" className="flex items-center gap-x-2.5">
-          <LuPhone className="h-fit w-3.5 text-[#93A3B6]" />
-          <p className="text-[#FEF8FD] text-[15px]">Nomor Telepon</p>
+      <div className="mb:2 sm:mb-2.5">
+        <label
+          htmlFor="phoneNumber"
+          className="flex items-center gap-x-2 sm:gap-x-2.5"
+        >
+          <LuPhone className="h-fit w-3 sm:w-3.5 text-[#93A3B6]" />
+          <p className="text-[#FEF8FD] text-[14px] sm:text-[16px]">
+            Nomor Telepon
+          </p>
         </label>
         <input
           type="text"
@@ -71,7 +84,7 @@ export default function EditForm({
           placeholder="+1893866385"
           disabled={!isEditing}
           onChange={(e) => setPhoneNumber(e.target.value)}
-          className={`mt-1 w-full outline-0 rounded-sm px-3 py-1 ${
+          className={`mt-0.5 sm:mt-1 text-[14px] sm:text-[16px] w-full outline-0 rounded-sm px-3 py-1 ${
             isEditing
               ? "bg-[#F5E79E] cursor-text text-[#130F40]"
               : "bg-transparent cursor-context-menu text-[#93A3B6]"
@@ -79,9 +92,12 @@ export default function EditForm({
         />
       </div>
       <div className="">
-        <label htmlFor="address" className="flex items-center gap-x-2.5">
-          <CiLocationOn className="h-fit w-3.5 text-[#93A3B6]" />
-          <p className="text-[#FEF8FD] text-[15px]">Alamat</p>
+        <label
+          htmlFor="address"
+          className="flex items-center gap-x-2 sm:gap-x-2.5"
+        >
+          <CiLocationOn className="h-fit w-3 sm:w-3.5 text-[#93A3B6]" />
+          <p className="text-[#FEF8FD] text-[14px] sm:text-[16px]">Alamat</p>
         </label>
         <input
           type="text"
@@ -90,7 +106,7 @@ export default function EditForm({
           placeholder="jl. dimana berada"
           onChange={(e) => setAddress(e.target.value)}
           disabled={!isEditing}
-          className={`mt-1 w-full outline-0 rounded-sm px-3 py-1 ${
+          className={`mt-0.5 sm:mt-1 text-[14px] sm:text-[16px] w-full outline-0 rounded-sm px-3 py-1 ${
             isEditing
               ? "bg-[#F5E79E] cursor-text text-[#130F40]"
               : "bg-transparent cursor-context-menu text-[#93A3B6]"
@@ -101,14 +117,14 @@ export default function EditForm({
         <div className="mt-6.5 grid grid-cols-2 gap-x-4.5">
           <button
             type="button"
-            className="bg-[#FFDB58] rounded-sm py-1.5 font-medium text-[#130F40] transition opacity-100 hover:opacity-80 cursor-pointer"
+            className="bg-[#FFDB58] text-[14px] sm:text-[16px] rounded-sm py-1.5 font-medium text-[#130F40] transition opacity-100 hover:opacity-80 cursor-pointer"
             onClick={() => setIsEditing(false)}
           >
             Batal
           </button>
           <button
             type="button"
-            className={`flex items-center justify-center bg-[#FFDB58] rounded-sm py-1.5 font-medium text-[#130F40] transition hover:opacity-80 ${
+            className={`flex items-center justify-center bg-[#FFDB58] text-[14px] sm:text-[16px] rounded-sm py-1.5 font-medium text-[#130F40] transition hover:opacity-80 ${
               loading
                 ? "opacity-80 cursor-not-allowed"
                 : "cursor-pointer opacity-100"

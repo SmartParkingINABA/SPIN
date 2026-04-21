@@ -75,7 +75,7 @@ export default function Profile() {
     <section className="bg-[#130F40] px-5 py-7 h-[calc(100dvh-60px)] overflow-y-auto">
       <Header />
       <div className="mt-4 sm:mt-6 flex flex-col gap-4 sm:gap-6">
-        <div className="flex flex-col-reverse sm:flex-row gap-4 sm:gap-6">
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
           <PrivateInformation
             isEditing={isEditing}
             setIsEditing={setIsEditing}
@@ -89,7 +89,7 @@ export default function Profile() {
             handleSave={handleSaveProfile}
             loading={isUpdating}
           />
-          <div className="w-full sm:w-1/3 flex flex-col gap-4 sm:gap-6">
+          <div className="w-full sm:w-1/3 flex flex-col gap-4 sm:gap-6 order-1">
             <PhotoProfile
               onUpload={handleUpdatePhoto}
               userData={data?.profil}
@@ -97,7 +97,7 @@ export default function Profile() {
             <Statistik statistik={data?.statistik} />
           </div>
         </div>
-        <div className="flex gap-6 items-start">
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start">
           <EditPassword
             showPassword={showPassword}
             setShowPassword={setShowPassword}
