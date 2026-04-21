@@ -1,6 +1,6 @@
 export default function VehiclesReportSkeleton() {
   return (
-    <section className="bg-[#130F40] px-5 py-7 h-[calc(100vh-60px)] overflow-y-auto">
+    <section className="bg-[#130F40] px-5 py-7 h-[calc(100dvh-60px)] overflow-y-auto">
       <div className="flex items-center justify-between">
         <div className="w-[40%] sm:w-[20%]">
           <h1 className="h-4 w-full bg-[#93A3B6] rounded-md"></h1>
