@@ -12,9 +12,7 @@ export const getVehiclesReport = async () => {
     color: item.warna,
     cc: item.cc,
     year: item.tahun_keluaran,
-    validUntil: item.masa_berlaku
-      ? new Date(item.masa_berlaku).toLocaleDateString("id-ID")
-      : "-",
+    validUntil: item.masa_berlaku,
     status: item.status,
     hasQr: item.status === "Aktif",
   }));
