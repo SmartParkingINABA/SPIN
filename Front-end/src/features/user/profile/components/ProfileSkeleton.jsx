@@ -30,7 +30,7 @@ export default function ProfileSkeleton() {
                 </div>
               </form>
             </div>
-            <div className="w-full sm:w-1/3 flex flex-col gap-4 sm:gap-6">
+            <div className="w-full sm:w-1/3 flex flex-col gap-4 sm:gap-6 order-1 sm:order-2">
               <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] p-5 sm:p-6 rounded-md">
                 <p className="h-3 w-[15%] bg-[#93A3B6] rounded-md mb-4 sm:mb-6"></p>
                 <div className="w-30 h-30 mx-auto rounded-full bg-[#93A3B6]"></div>
