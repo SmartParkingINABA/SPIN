@@ -12,7 +12,7 @@ export const getVehiclesReport = async () => {
     color: item.warna,
     cc: item.cc,
     year: item.tahun_keluaran,
-    validUntil: item.masa_berlaku,
+    validUntil: String(item.masa_berlaku),
     status: item.status,
     hasQr: item.status === "Aktif",
   }));
