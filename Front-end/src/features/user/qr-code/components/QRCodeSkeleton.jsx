@@ -21,7 +21,7 @@ export default function QRCodeSkeleton() {
           </div>
         </div>
         <div className="w-full sm:w-[30%]">
-          <div className="bg-[#1E1633] border border-[rgba(255,236,120,0.5)] rounded-md h-45 mb-3.5"></div>
+          <div className="bg-[#1E1633] border border-[rgba(255,236,120,0.5)] rounded-md h-45 mb-4"></div>
           <div className="bg-[#1E1633] border border-[rgba(255,236,120,0.5)] rounded-md h-35"></div>
         </div>
       </div>
