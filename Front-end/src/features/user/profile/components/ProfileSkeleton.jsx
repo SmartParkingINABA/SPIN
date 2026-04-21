@@ -5,7 +5,7 @@ export default function ProfileSkeleton() {
         <h1 className="h-4 w-[40%] sm:w-[20%] bg-[#93A3B6] rounded-md"></h1>
         <p className="h-3 w-[38%] sm:w-[18%] bg-[#93A3B6] rounded-md mt-1.5 sm:mt-2.5"></p>
         <div className="mt-4 sm:mt-6 flex flex-col gap-4 sm:gap-6">
-          <div className="flex gap-4 sm:gap-6">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
             <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] p-5 sm:p-6 rounded-md w-full sm:w-2/3">
               <div className="flex items-center justify-between">
                 <p className="h-3 w-[15%] bg-[#93A3B6] rounded-md"></p>
