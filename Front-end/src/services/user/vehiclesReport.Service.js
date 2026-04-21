@@ -12,7 +12,9 @@ export const getVehiclesReport = async () => {
     color: item.warna,
     cc: item.cc,
     year: item.tahun_keluaran,
-    validUntil: item.masa_berlaku,
+    validUntil: item.masa_berlaku
+      ? new Date(item.masa_berlaku).toLocaleDateString("id-ID")
+      : "-",
     status: item.status,
     hasQr: item.status === "Aktif",
   }));
@@ -37,7 +39,7 @@ export const postVehiclesReport = async (payload) => {
 
 export const putVehiclesReport = async (id, payload) => {
   const response = await api.put(
-    `pengendara/dashboard/data-kendaraan/${id}/edit`,
+    `/pengendara/dashboard/data-kendaraan/${id}/edit`,
     {
       warna: payload.color,
       cc: Number(payload.cc),
