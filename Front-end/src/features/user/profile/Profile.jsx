@@ -69,7 +69,7 @@ export default function Profile() {
     }
   };
 
-  if (loading) return <ProfileSkeleton />;
+  if (!loading) return <ProfileSkeleton />;
 
   return (
     <section className="bg-[#130F40] px-5 py-7 h-[calc(100dvh-60px)] overflow-y-auto">
