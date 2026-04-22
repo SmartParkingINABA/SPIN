@@ -7,6 +7,7 @@ export default function Capture({ isScanning, onScanSuccess }) {
   const qrRef = useRef(null);
   const scannerRef = useRef(null);
   const isRunningRef = useRef(false);
+  const isScannedRef = useRef(false);
   const [qrSize, setQrSize] = useState(200);
 
   const calculateQrSize = useCallback(() => {
@@ -50,6 +51,8 @@ export default function Capture({ isScanning, onScanSuccess }) {
       if (isRunningRef.current) return;
 
       try {
+        isScannedRef.current = false;
+
         await scanner.start(
           {
             facingMode: "environment",
@@ -59,6 +62,8 @@ export default function Capture({ isScanning, onScanSuccess }) {
             qrbox: { width: qrSize, height: qrSize },
           },
           (decodedText) => {
+            if (isScannedRef.current) return;
+            isScannedRef.current = true;
             onScanSuccess(decodedText);
             stop();
           },

@@ -24,22 +24,12 @@ export const useScanQr = () => {
     try {
       setLoading(true);
 
-      reset();
-
       const res = await getScanQr(qr_code);
 
-      const mapped = {
-        id: res.qr_code,
-        nummber_plate: res.no_plat,
-        name: res.nama_pengendara,
-        vehicle_type: res.jenis,
-        registered_since: res.terdaftar_sejak,
-        status:
-          res.status_parkir === "Di Dalam Area Parkir" ? "inside" : "outside",
-      };
-
-      setScanResult(mapped);
-      setVehicleStatus(mapped.status);
+      setScanResult(res);
+      setVehicleStatus(
+        res.status_parkir === "Di Dalam Area Parkir" ? "inside" : "outside",
+      );
     } catch (err) {
       console.error(err);
       toast.error("QR tidak valid / tidak ditemukan");
@@ -55,7 +45,7 @@ export const useScanQr = () => {
       setLoading(true);
 
       const res = await postScanMasuk({
-        qr_code: scanResult.id,
+        qr_code: scanResult.qr_code,
       });
 
       setActionsStatus("in");
@@ -81,7 +71,7 @@ export const useScanQr = () => {
       setLoading(true);
 
       const res = await postScanKeluar({
-        qr_code: scanResult.id,
+        qr_code: scanResult.qr_code,
       });
 
       setActionsStatus("out");
