@@ -13,6 +13,17 @@ export const useScanQr = () => {
   const [actionsStatus, setActionsStatus] = useState(null);
   const [message, setMessage] = useState(null);
 
+  const mapVehicleStatus = (status) => {
+    if (!status) return "outside";
+
+    const s = status.toLowerCase();
+
+    if (s.includes("luar")) return "outside";
+    if (s.includes("sedang") || s.includes("dalam")) return "inside";
+
+    return "outside";
+  };
+
   const reset = () => {
     setScanResult(null);
     setVehicleStatus(null);
@@ -26,13 +37,16 @@ export const useScanQr = () => {
 
       const res = await getScanQr(qr_code);
 
-      setScanResult(res);
-      setVehicleStatus(
-        res.status_parkir === "Di Dalam Area Parkir" ? "inside" : "outside",
-      );
-
       console.log("SCAN RESULT:", res);
       console.log("STATUS:", res.status_parkir);
+
+      setScanResult(res);
+
+      const mappedStatus = mapVehicleStatus(res.status_parkir);
+      console.log("STATUS MAPPED:", mappedStatus);
+
+      setVehicleStatus(mappedStatus);
+      setActionsStatus(null);
     } catch (err) {
       console.error(err);
       toast.error("QR tidak valid / tidak ditemukan");

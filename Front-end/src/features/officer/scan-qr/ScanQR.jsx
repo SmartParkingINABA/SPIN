@@ -45,8 +45,9 @@ export default function ScanQR() {
 
   const handleScanSuccess = useCallback(
     (qr_code) => {
-      setIsScanning(false);
       console.log("QR RESULT:", qr_code);
+
+      setIsScanning(false);
 
       scanQr(qr_code);
     },
