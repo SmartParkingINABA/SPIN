@@ -86,21 +86,23 @@ export default function Capture({ isScanning, onScanSuccess }) {
   }, [isScanning, qrSize, onScanSuccess]);
 
   return (
-    <div className="mt-3.5 bg-[#130F40] h-100 sm:h-130 flex justify-center items-center rounded-md p-6">
-      <div
-        ref={qrRef}
-        className="border-2 border-[rgba(255,236,120,0.5)] rounded-xl w-full aspect-square overflow-hidden flex items-center justify-center relative"
-      >
-        <div id="qr-reader" className="w-full h-full"></div>
+    <div className="mt-3.5 bg-[#130F40] h-100 sm:h-130 rounded-md p-6">
+      <div className="w-full h-full flex justify-center items-center">
+        <div
+          ref={qrRef}
+          className="border-2 border-[rgba(255,236,120,0.5)] rounded-xl w-full aspect-square overflow-hidden flex items-center justify-center relative"
+        >
+          <div id="qr-reader" className="w-full h-full"></div>
 
-        {!isScanning && (
-          <div className="absolute flex flex-col justify-center items-center">
-            <MdOutlineCameraAlt className="h-fit w-13 text-[#93A3B6] mb-2 sm:mb-3" />
-            <p className="text-[#93A3B6] text-center">
-              Kamera siap memindai QR Code
-            </p>
-          </div>
-        )}
+          {!isScanning && (
+            <div className="absolute flex flex-col justify-center items-center">
+              <MdOutlineCameraAlt className="h-fit w-13 text-[#93A3B6] mb-2 sm:mb-3" />
+              <p className="text-[#93A3B6] text-center">
+                Kamera siap memindai QR Code
+              </p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
