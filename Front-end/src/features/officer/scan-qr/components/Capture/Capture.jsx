@@ -17,7 +17,7 @@ export default function Capture({ isScanning, onScanSuccess }) {
         { facingMode: "environment" },
         {
           fps: 10,
-          qrbox: { width: 250, height: 250 },
+          qrbox: { width: 200, height: 200 },
         },
         (decodedText) => {
           onScanSuccess(decodedText);
