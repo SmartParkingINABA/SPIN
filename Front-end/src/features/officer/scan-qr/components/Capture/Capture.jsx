@@ -46,7 +46,9 @@ export default function Capture({ isScanning, onScanSuccess }) {
         ) : (
           <div className="flex flex-col items-center">
             <MdOutlineCameraAlt className="h-fit w-13 mx-auto text-[#93A3B6] mb-3" />
-            <p className="text-[#93A3B6]">Kamera siap memindai QR Code</p>
+            <p className="text-[#93A3B6] text-center">
+              Kamera siap memindai QR Code
+            </p>
           </div>
         )}
       </div>
