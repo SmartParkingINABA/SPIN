@@ -30,6 +30,9 @@ export const useScanQr = () => {
       setVehicleStatus(
         res.status_parkir === "Di Dalam Area Parkir" ? "inside" : "outside",
       );
+
+      console.log("SCAN RESULT:", res);
+      console.log("STATUS:", res.status_parkir);
     } catch (err) {
       console.error(err);
       toast.error("QR tidak valid / tidak ditemukan");
@@ -40,6 +43,11 @@ export const useScanQr = () => {
 
   const handleIn = async () => {
     if (!scanResult) return;
+
+    if (vehicleStatus === "inside") {
+      toast.error("Kendaraan sudah berada di dalam parkir");
+      return;
+    }
 
     try {
       setLoading(true);
@@ -58,7 +66,12 @@ export const useScanQr = () => {
       }, 2500);
     } catch (err) {
       console.error(err);
-      toast.error("Gagal konfirmasi masuk");
+
+      if (err?.response?.status === 409) {
+        toast.error("Kendaraan sudah masuk sebelumnya");
+      } else {
+        toast.error("Gagal konfirmasi masuk");
+      }
     } finally {
       setLoading(false);
     }
@@ -66,6 +79,11 @@ export const useScanQr = () => {
 
   const handleOut = async () => {
     if (!scanResult) return;
+
+    if (vehicleStatus === "outside") {
+      toast.error("Kendaraan sudah berada di luar parkir");
+      return;
+    }
 
     try {
       setLoading(true);
@@ -84,7 +102,12 @@ export const useScanQr = () => {
       }, 2500);
     } catch (err) {
       console.error(err);
-      toast.error("Gagal konfirmasi keluar");
+
+      if (err?.response?.status === 409) {
+        toast.error("Kendaraan sudah keluar sebelumnya");
+      } else {
+        toast.error("Gagal konfirmasi keluar");
+      }
     } finally {
       setLoading(false);
     }
