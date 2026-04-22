@@ -31,7 +31,9 @@ export default function NotificationCard({ data, onMarkRead }) {
   const { Icon, bgColor, iconColor } = getConfig(jenis);
 
   return (
-    <div className={`${bgColor} p-5 sm:p-6 rounded-md flex flex-col gap-y-6`}>
+    <div
+      className={`${bgColor} p-5 sm:p-6 rounded-md flex flex-col gap-4 sm:gap-6`}
+    >
       <div className="flex items-start justify-between">
         <div className="flex items-start gap-x-2">
           <Icon className={`h-fit w-4 sm:w-5 mt-0.5 ${iconColor}`} />
@@ -53,10 +55,10 @@ export default function NotificationCard({ data, onMarkRead }) {
 
           {status_baca === "Belum" && (
             <button
-              className="flex items-center gap-x-1.5 cursor-pointer mt-1 sm:mt-0"
+              className="flex items-center gap-x-1.5 cursor-pointer mt-2 sm:mt-0"
               onClick={onMarkRead}
             >
-              <IoMdCheckmark className="h-fit w-4.5 text-[#808080]" />
+              <IoMdCheckmark className="h-fit w-3.5 sm:w-4.5 text-[#808080]" />
               <p className="text-[12px] sm:text-[14px] text-[#808080]">
                 Tandai Telah Dibaca
               </p>
