@@ -21,7 +21,7 @@ export default function Capture({ isScanning, onScanSuccess }) {
 
     return () => {
       if (scannerRef.current) {
-        scannerRef.current.stop().catch(() => {});
+        safeStop();
         scannerRef.current.clear();
       }
     };
@@ -42,6 +42,20 @@ export default function Capture({ isScanning, onScanSuccess }) {
       window.removeEventListener("orientationchange", handleResize);
     };
   }, [calculateQrSize]);
+
+  const safeStop = async () => {
+    const scanner = scannerRef.current;
+
+    if (!scanner || !isRunningRef.current) return;
+
+    try {
+      await scanner.stop();
+    } catch (err) {
+      console.warn("Scanner already stopped");
+    }
+
+    isRunningRef.current = false;
+  };
 
   useEffect(() => {
     const scanner = scannerRef.current;
@@ -64,9 +78,14 @@ export default function Capture({ isScanning, onScanSuccess }) {
           (decodedText) => {
             if (isScannedRef.current) return;
             isScannedRef.current = true;
-            onScanSuccess(decodedText);
-            stop();
+            try {
+              onScanSuccess(decodedText);
+            } catch (err) {
+              console.error("SCAN CALLBACK ERROR:", err);
+            }
+            safeStop();
           },
+          () => {},
         );
 
         isRunningRef.current = true;
@@ -75,19 +94,8 @@ export default function Capture({ isScanning, onScanSuccess }) {
       }
     };
 
-    const stop = async () => {
-      if (!isRunningRef.current) return;
-
-      try {
-        await scanner.stop();
-        // eslint-disable-next-line no-empty
-      } catch (_) {}
-
-      isRunningRef.current = false;
-    };
-
     if (isScanning) start();
-    else stop();
+    else safeStop();
   }, [isScanning, qrSize, onScanSuccess]);
 
   return (
