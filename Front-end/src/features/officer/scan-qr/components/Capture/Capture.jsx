@@ -40,7 +40,7 @@ export default function Capture({ isScanning, onScanSuccess }) {
 
   return (
     <div className="mt-3.5 bg-[#130F40] h-100 sm:h-130 flex justify-center items-center rounded-md p-6 sm:p-0">
-      <div className="border-2 border-[rgba(255,236,120,0.5)] rounded-xl w-full h-[320px] overflow-hidden flex items-center justify-center">
+      <div className="border-2 border-[rgba(255,236,120,0.5)] rounded-xl w-full h-[300px] overflow-hidden flex items-center justify-center">
         {isScanning ? (
           <div id="qr-reader" className="w-full h-full" ref={qrRef}></div>
         ) : (
