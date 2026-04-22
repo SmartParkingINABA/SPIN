@@ -90,12 +90,12 @@ export default function Capture({ isScanning, onScanSuccess }) {
       <div className="w-full h-full flex justify-center items-center">
         <div
           ref={qrRef}
-          className="border-2 border-[rgba(255,236,120,0.5)] rounded-xl w-full aspect-square overflow-hidden flex items-center justify-center relative"
+          className="border-2 border-[rgba(255,236,120,0.5)] rounded-xl w-full aspect-square overflow-hidden flex items-center justify-center flex-col"
         >
           <div id="qr-reader" className="w-full h-full"></div>
 
           {!isScanning && (
-            <div className="absolute flex flex-col justify-center items-center">
+            <div className="flex flex-col justify-center items-center">
               <MdOutlineCameraAlt className="h-fit w-13 text-[#93A3B6] mb-2 sm:mb-3" />
               <p className="text-[#93A3B6] text-center">
                 Kamera siap memindai QR Code
