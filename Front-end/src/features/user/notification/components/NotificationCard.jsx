@@ -55,7 +55,7 @@ export default function NotificationCard({ data, onMarkRead }) {
 
           {status_baca === "Belum" && (
             <button
-              className="flex items-center gap-x-1.5 cursor-pointer border-b-2 w-fit border-b-[#808080] pb-0.5 mt-2 sm:mt-0"
+              className="flex items-center gap-x-1.5 cursor-pointer border-b w-fit border-b-[#808080] pb-0.5 mt-2 sm:mt-0"
               onClick={onMarkRead}
             >
               <IoMdCheckmark className="h-fit w-3.5 sm:w-4.5 text-[#808080]" />
