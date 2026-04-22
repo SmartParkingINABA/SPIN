@@ -31,33 +31,35 @@ export default function NotificationCard({ data, onMarkRead }) {
   const { Icon, bgColor, iconColor } = getConfig(jenis);
 
   return (
-    <div className={`${bgColor} px-6 py-4 rounded-md flex flex-col gap-y-6`}>
+    <div className={`${bgColor} p-5 sm:p-6 rounded-md flex flex-col gap-y-6`}>
       <div className="flex items-start justify-between">
         <div className="flex items-start gap-x-2">
-          <Icon className={`h-fit w-5 mt-0.5 ${iconColor}`} />
+          <Icon className={`h-fit w-4 sm:w-5 mt-0.5 ${iconColor}`} />
           <div>
-            <p className="text-[#130F40]">{judul}</p>
-            <p className="text-[14px] text-[#93A3B6]">{waktu}</p>
+            <p className="text-[#130F40] text-[14px] sm:text-[16px]">{judul}</p>
+            <p className="text-[12px] sm:text-[14px] text-[#93A3B6]">{waktu}</p>
           </div>
         </div>
 
         {status_baca === "Belum" && (
-          <p className="rounded-sm px-[7px] py-0.5 bg-[#130F40] text-[14px] text-[#FEF8FD]">
+          <p className="rounded-sm px-1.5 sm:px-[7px] py-px sm:py-0.5 bg-[#130F40] text-[12px] sm:text-[14px] text-[#FEF8FD]">
             Baru
           </p>
         )}
       </div>
       {pesan && (
-        <div className="flex items-center justify-between">
-          <p className="text-[14px] text-[#130F40]">{pesan}</p>
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-[12px] sm:text-[14px] text-[#130F40]">{pesan}</p>
 
           {status_baca === "Belum" && (
             <button
-              className="flex items-center gap-x-1.5 cursor-pointer"
+              className="flex items-center gap-x-1.5 cursor-pointer mt-1 sm:mt-0"
               onClick={onMarkRead}
             >
               <IoMdCheckmark className="h-fit w-4.5 text-[#808080]" />
-              <p className="text-[14px] text-[#808080]">Tandai Telah Dibaca</p>
+              <p className="text-[12px] sm:text-[14px] text-[#808080]">
+                Tandai Telah Dibaca
+              </p>
             </button>
           )}
         </div>

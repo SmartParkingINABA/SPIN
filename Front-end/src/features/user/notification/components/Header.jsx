@@ -17,7 +17,7 @@ export default function Header({ unreadCount, onMarkAllRead }) {
         </p>
         {unreadCount > 0 && (
           <button
-            className={`flex items-center gap-x-2 bg-[#93A3B6] py-1 px-1.5 rounded-sm cursor-pointer hover:opacity-80`}
+            className={`flex items-center gap-x-2 bg-[#93A3B6] py-1 px-1.5 rounded-sm cursor-pointer hover:opacity-80 mt-1.5 sm:mt-0`}
             onClick={onMarkAllRead}
           >
             <BiCheckDouble className="h-fit w-4 sm:w-5 text-[#130F40]" />
