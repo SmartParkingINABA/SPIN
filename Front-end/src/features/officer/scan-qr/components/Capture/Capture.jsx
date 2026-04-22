@@ -89,7 +89,7 @@ export default function Capture({ isScanning, onScanSuccess }) {
     <div className="mt-3.5 bg-[#130F40] h-100 sm:h-130 flex justify-center items-center rounded-md p-6">
       <div
         ref={qrRef}
-        className="border-2 border-[rgba(255,236,120,0.5)] rounded-xl w-full h-[300px] overflow-hidden flex items-center justify-center relative"
+        className="border-2 border-[rgba(255,236,120,0.5)] rounded-xl w-full aspect-square overflow-hidden flex items-center justify-center relative"
       >
         <div id="qr-reader" className="w-full h-full"></div>
 
