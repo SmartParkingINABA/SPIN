@@ -94,7 +94,7 @@ export const useScanQr = () => {
       }, 2500);
     } catch (err) {
       console.error(err);
-      toast.success("Gagal konfirmasi keluar");
+      toast.error("Gagal konfirmasi keluar");
     } finally {
       setLoading(false);
     }

@@ -33,11 +33,14 @@ export default function ScanQR() {
   };
 
   const handleScanClick = () => {
-    if (isScanning) return;
+    if (loading) return;
 
-    reset();
-
-    setIsScanning(true);
+    if (isScanning) {
+      setIsScanning(false);
+    } else {
+      reset();
+      setIsScanning(true);
+    }
   };
 
   const handleScanSuccess = useCallback(
