@@ -1,0 +1,31 @@
+import { lazy, Suspense } from "react";
+import { Route, Routes } from "react-router-dom";
+import PublicLayout from "../layouts/PublicLayout";
+import NotFoundPage from "../features/not-found/NotFoundPage";
+import Loader from "../components/Loader";
+import UnauthorizedPage from "../components/guard/UnauthorizedPage";
+
+const Home = lazy(() => import("../features/public/Home"));
+const Regulation = lazy(
+  () => import("../features/public/regulation/Regulation"),
+);
+const About = lazy(() => import("../features/public/about/About"));
+const Enter = lazy(() => import("../features/public/Enter"));
+
+export default function PublicRoutes() {
+  return (
+    <Suspense fallback={<Loader />}>
+      <Routes>
+        <Route element={<PublicLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/peraturan" element={<Regulation />} />
+          <Route path="/tentang" element={<About />} />
+          <Route path="/masuk" element={<Enter />} />
+          <Route path="/unauthorized" element={<UnauthorizedPage />} />
+        </Route>
+
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </Suspense>
+  );
+}

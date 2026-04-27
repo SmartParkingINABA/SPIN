@@ -1,0 +1,43 @@
+export default function FormInput({
+  label,
+  type = "text",
+  value,
+  onChange,
+  error,
+  placeholder,
+  icon,
+  children,
+  htmlFor,
+  ref,
+}) {
+  const Icon = icon;
+
+  return (
+    <div className="mb-2.5 sm:mb-3">
+      <label
+        htmlFor={htmlFor}
+        className="text-[#FEF8FD] font-bold text-[15px] ml-2.5"
+      >
+        {label}
+      </label>
+      <div className="flex items-center gap-x-4 bg-[#F5E79E] py-3 px-5 mt-2 rounded-md">
+        {Icon && <Icon className="w-6 sm:w-7 h-fit" />}
+        <input
+          id={htmlFor}
+          name={htmlFor}
+          type={type}
+          value={value}
+          placeholder={placeholder}
+          ref={ref}
+          className="w-full outline-0 bg-transparent placeholder:text-[14px] sm:placeholder:text-[16px]"
+          onChange={onChange}
+          autoComplete="off"
+        />
+        {children}
+      </div>
+      <p className="mt-1.5 ml-2.5 text-red-500 font-bold text-[10px]">
+        {error}
+      </p>
+    </div>
+  );
+}

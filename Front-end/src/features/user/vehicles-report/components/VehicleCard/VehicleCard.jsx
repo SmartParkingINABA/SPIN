@@ -1,0 +1,83 @@
+import { BiSolidEdit } from "react-icons/bi";
+import { FaCarSide, FaMotorcycle, FaTrashCan } from "react-icons/fa6";
+import { IoQrCode } from "react-icons/io5";
+import BarIcon from "../../../../../assets/images/user/barIcon.svg?react";
+import { useState } from "react";
+import EditForm from "../Form/EditForm";
+
+export default function VehicleCard({ vehicle, onUpdate, onDelete }) {
+  const { id, plate, category, brand, cc, year, validUntil, status, hasQr } =
+    vehicle;
+  const Icon = category?.toLowerCase().includes("mobil")
+    ? FaCarSide
+    : FaMotorcycle;
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  return (
+    <>
+      <div className="border border-[rgba(255,236,120,0.5)] bg-[#1E1633] rounded-md p-5 sm:p-6">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-x-3">
+            <div className="bg-[#4B4141] rounded-sm p-2.5 sm:p-3">
+              <Icon className="text-[#FFEC78] w-5 sm:w-6 h-fit" />
+            </div>
+            <div className="">
+              <p className="text-[#FEF8FD] text-[14px] font-medium">{plate}</p>
+              <p className="text-[#93A3B6] text-[12px] font-medium">
+                {category}
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-x-3">
+            <BiSolidEdit
+              className="w-5.5 sm:w-6 h-fit text-[#93A3B6] transition duration-300 ease-in-out hover:text-[#FFEC78] cursor-pointer "
+              onClick={() => setIsModalOpen(true)}
+            />
+            <FaTrashCan
+              className="w-4.5 sm:w-5 h-fit text-[#B90404] transition duration-300 ease-in-out hover:text-[#FFEC78] cursor-pointer"
+              onClick={() => onDelete(id)}
+            />
+          </div>
+        </div>
+        <div className="grid grid-cols-2 mt-5">
+          <div className="flex flex-col gap-y-3">
+            <Info label="Merk" value={brand} />
+            <Info label="CC" value={cc} />
+          </div>
+          <div className="flex flex-col gap-y-3">
+            <Info label="Tahun" value={year} />
+            <Info label="Berlaku Sampai" value={validUntil} />
+          </div>
+        </div>
+        <BarIcon className="w-full mt-5" />
+        <div className="flex justify-between items-center mt-5">
+          <div className="flex items-center gap-x-3">
+            <IoQrCode className="text-[#FFEC78] w-5 h-fit" />
+            <p className="text-[#FEF8FD] text-[14px] font-medium">
+              {hasQr ? "QR Code Tersedia" : "QR Code Tidak Ada"}
+            </p>
+          </div>
+          <p className="text-[#FFEC78] bg-[#4B4141] text-[10px] px-3 py-1 rounded-sm font-medium">
+            {status}
+          </p>
+        </div>
+      </div>
+      {isModalOpen && (
+        <EditForm
+          vehicleData={vehicle}
+          onClose={() => setIsModalOpen(false)}
+          onSubmit={(payload) => onUpdate(id, payload)}
+        />
+      )}
+    </>
+  );
+}
+
+function Info({ label, value }) {
+  return (
+    <div>
+      <p className="text-[#93A3B6] text-[12px] font-medium">{label}</p>
+      <p className="text-[#FEF8FD] text-[14px] font-medium">{value}</p>
+    </div>
+  );
+}

@@ -1,0 +1,103 @@
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
+
+import reactLogo from "../../assets/images/public/react.svg";
+import tailwindLogo from "../../assets/images/public/tailwind.svg";
+import nodeLogo from "../../assets/images/public/node.svg";
+import sequelizeLogo from "../../assets/images/public/sequelize.svg";
+import mySqlLogo from "../../assets/images/public/mysql.svg";
+import redisLogo from "../../assets/images/public/redis.svg";
+import expressLogo from "../../assets/images/public/express.svg";
+import javaScriptLogo from "../../assets/images/public/javaScript.svg";
+import socketIoLogo from "../../assets/images/public/socket.io.svg";
+import awsLogo from "../../assets/images/public/aws.svg";
+
+export default function TechSlider() {
+  const logos = [
+    {
+      src: tailwindLogo,
+      alt: "Tailwind CSS",
+      name: "Tailwind CSS",
+      link: "https://tailwindcss.com/",
+    },
+    {
+      src: javaScriptLogo,
+      alt: "JavaScript",
+      name: "JavaScript",
+      link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+    },
+    {
+      src: reactLogo,
+      alt: "React JS",
+      name: "React",
+      link: "https://react.dev/",
+    },
+    {
+      src: nodeLogo,
+      alt: "Node JS",
+      name: "Node JS",
+      link: "https://nodejs.org/en",
+    },
+    {
+      src: expressLogo,
+      alt: "Express JS",
+      name: "Express JS",
+      link: "https://expressjs.com/",
+    },
+    {
+      src: mySqlLogo,
+      alt: "MySql",
+      name: "MySql",
+      link: "https://www.mysql.com/",
+    },
+    {
+      src: sequelizeLogo,
+      alt: "Sequelize ORM",
+      name: "Sequelize",
+      link: "https://sequelize.org/",
+    },
+    { src: redisLogo, alt: "Redis", name: "Redis", link: "https://redis.io/" },
+    {
+      src: socketIoLogo,
+      alt: "Socket.io",
+      name: "Socket.io",
+      link: "https://socket.io/",
+    },
+    { src: awsLogo, alt: "AWS", name: "AWS", link: "https://aws.amazon.com/" },
+  ];
+
+  return (
+    <div className="w-full py-6">
+      <Swiper
+        modules={[Autoplay]}
+        slidesPerView={4}
+        spaceBetween={0}
+        loop={true}
+        autoplay={{
+          delay: 0,
+          disableOnInteraction: false,
+        }}
+        speed={3000}
+        className="mySwiper"
+      >
+        {logos.map((logo, index) => (
+          <SwiperSlide key={index} className="flex justify-center">
+            <a
+              href={logo.link}
+              target="_blank"
+              className="flex flex-col items-center group"
+            >
+              <img
+                src={logo.src}
+                alt={logo.alt}
+                className="w-23 opacity-75 group-hover:opacity-100 cursor-pointer transition"
+              />
+              <p className="text-[#93A3B6] mt-2 cursor-pointer">{logo.name}</p>
+            </a>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+  );
+}

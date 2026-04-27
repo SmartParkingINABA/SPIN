@@ -1,0 +1,20 @@
+import { useRef } from "react";
+
+export default function Expired({ label, name, onChange, value }) {
+  const inputRef = useRef(null);
+  return (
+    <label>
+      <span className="text-[#FEF8FD] font-medium">{label}</span>
+      <div className="bg-[#F5E79E] py-2 px-3 mt-1 rounded-sm flex items-center gap-x-3">
+        <input
+          ref={inputRef}
+          type="date"
+          name={name}
+          value={value}
+          onChange={onChange}
+          className="bg-transparent outline-0 w-30 placeholder:text-gray-400"
+        />
+      </div>
+    </label>
+  );
+}

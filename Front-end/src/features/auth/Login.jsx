@@ -1,0 +1,180 @@
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { IoMdMail } from "react-icons/io";
+import { FaLock } from "react-icons/fa6";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { useFormValidation } from "../../hooks/useFormValidation";
+import { validateEmail, validatePassword } from "../../utils/Validators";
+import FormInput from "../../components/FormInput";
+import toast from "react-hot-toast";
+import LoadingSpinner from "../../components/ui/LoadingSpinner";
+import { login } from "../../services/auth.Service";
+import useAutoFocus from "../../hooks/useAutoFocus";
+import { useAuth } from "../../context/useAuth";
+import { getAccountSettings } from "../../services/user/accountSettings.Service";
+import { getProfile } from "../../services/officer/profile.Service";
+
+const roleRedirectMap = {
+  admin: "/admin",
+  petugas: "/petugas",
+  pengendara: "/pengendara",
+};
+
+export default function Login() {
+  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const { setUser, updateProfileState } = useAuth();
+  const { values, errors, handleChange, validateAll } = useFormValidation(
+    {
+      email: "",
+      password: "",
+    },
+    {
+      email: validateEmail,
+      password: validatePassword,
+    },
+  );
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!validateAll()) return;
+
+    try {
+      setLoading(true);
+
+      const res = await login(values.email, values.password);
+      console.log("FULL RESPONSE:", res);
+      console.log("USER:", res?.user);
+
+      setUser(res.user);
+
+      const role = res.user.role.toLowerCase();
+
+      let displayName;
+      console.log(role);
+
+      if (role === "pengendara") {
+        try {
+          const profileRes = await getAccountSettings();
+          const profile = profileRes?.profil;
+
+          if (profile) {
+            updateProfileState({
+              nama_pengendara: profile.nama_pengendara,
+              foto_profil: profile.foto_profil,
+            });
+            displayName = profile?.nama_pengendara || res.user.email;
+          }
+        } catch (err) {
+          console.error("Gagal mengambil profil pengendara:", err);
+        }
+      }
+
+      if (role === "petugas") {
+        try {
+          const profileRes = await getProfile();
+          const profile = profileRes?.data?.informasi_pribadi;
+
+          if (profile) {
+            updateProfileState({
+              nama_petugas: profile.nama_petugas,
+            });
+
+            displayName = profile.nama_petugas || res.user.email;
+          }
+        } catch (err) {
+          console.error("Gagal mengambil profil petugas:", err);
+        }
+      }
+
+      const redirectPath = roleRedirectMap[role] || "/";
+
+      toast.success(res.message + displayName || "Kamu berhasil login!");
+
+      navigate(redirectPath);
+    } catch (err) {
+      if (!err.response) {
+        toast.error("Tidak bisa terhubung ke server!");
+      } else {
+        toast.error(err.response?.data?.message || "Login gagal");
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const emailRef = useAutoFocus();
+
+  return (
+    <div className="bg-[#1E1633] font-ubuntu min-h-dvh w-full flex justify-center items-center px-5 sm:px-0">
+      <div className="w-full sm:w-1/4">
+        <h1 className="text-[#ffec78] text-[27px] sm:text-[2.5rem] font-bold mb-1 sm:mb-1.5">
+          Login
+        </h1>
+        <p className="text-[#FEF8FD] font-bold mb-3 sm:mb-3.5">
+          Please login to your account
+        </p>
+        <form onSubmit={handleSubmit} noValidate>
+          <FormInput
+            label="E-mail Address"
+            type="email"
+            htmlFor="email"
+            value={values.email}
+            icon={IoMdMail}
+            placeholder="johndoe@mail.com"
+            error={errors.email}
+            onChange={(e) => handleChange("email", e.target.value)}
+            ref={emailRef}
+          />
+          <FormInput
+            label="Password"
+            htmlFor="password"
+            type={showPassword ? "text" : "password"}
+            value={values.password}
+            icon={FaLock}
+            placeholder="••••••••"
+            error={errors.password}
+            onChange={(e) => handleChange("password", e.target.value)}
+          >
+            {showPassword ? (
+              <FaRegEyeSlash
+                className="w-6 sm:w-7 h-fit cursor-pointer"
+                onClick={() => setShowPassword(false)}
+              />
+            ) : (
+              <FaRegEye
+                className="w-6 sm:w-7 h-fit cursor-pointer"
+                onClick={() => setShowPassword(true)}
+              />
+            )}
+          </FormInput>
+          <Link
+            to="/auth/forgot/request-otp"
+            className="block text-[#93A3B6] text-[14px] sm:text-[16px] font-bold text-right my-4.5 mr-5"
+          >
+            Forgot Password ?
+          </Link>
+          <button
+            type="submit"
+            disabled={loading}
+            className={`flex items-center justify-center w-full bg-[#FFDB58] text-[#130F40] text-[18px] sm:text-[23px] font-bold h-11.5 sm:h-13 rounded-md transition hover:opacity-80 ${
+              loading
+                ? "opacity-80 cursor-not-allowed"
+                : "cursor-pointer opacity-100"
+            }`}
+          >
+            {loading ? <LoadingSpinner size={25} color="#1e1633" /> : "Login"}
+          </button>
+        </form>
+        <p className="text-sm mt-5 text-center text-[#FEF8FD]">
+          Don't have an account?{" "}
+          <Link to="/auth/register" className="font-bold text-blue-500">
+            Register
+          </Link>
+        </p>
+      </div>
+    </div>
+  );
+}
